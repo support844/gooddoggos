@@ -1,0 +1,329 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<Layout>
+
+<!-- ══════════════════════════════════════════════
+     HERO — ABOUT GOOD DOGGOS
+══════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-[#0B2744] flex items-end" style="min-height: 52vh;">
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=2400"
+      alt="About Good Doggos"
+      class="w-full h-full object-cover object-top"
+      style="opacity: 0.30;"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(11,39,68,0.96) 0%, rgba(11,39,68,0.75) 60%, rgba(11,39,68,0.45) 100%);"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.90) 0%, transparent 60%);"></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-16" style="padding-top: 160px;">
+    <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-5" style="color: rgba(209,178,127,0.60);">Our Story</p>
+    <h1 class="font-heading font-bold text-white leading-[1.05] mb-5" style="font-size: clamp(2.8rem, 5.5vw, 4.5rem);">
+      About Good Doggos
+    </h1>
+    <p class="headline-accent text-2xl md:text-3xl mb-6" style="color: #D1B27F; font-style: italic; font-weight: 700;">
+      "There are no bad dogs."
+    </p>
+    <p class="text-gray-300 max-w-2xl leading-relaxed text-lg">
+      We exist to prove that any dog — regardless of history, breed, or past failures — can become calm, confident, and a joy to live with. All it takes is the right system and a committed handler.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOUNDER STORY
+══════════════════════════════════════════════ -->
+<div class="bg-[#FBF1E9] py-20 px-4">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="grid md:grid-cols-2 gap-14 items-start mb-20">
+      <!-- Founder Photo -->
+      <div class="relative">
+        <div class="rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] aspect-[4/5]">
+          <img
+            src="/images/founder-photo.png"
+            alt="Good Doggos Founder"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
+        <!-- Trainer Background Card — overlaid bottom -->
+        <div class="absolute -bottom-8 left-6 right-6 md:-right-8 rounded-2xl p-6 border border-[#E6DAC6] shadow-[0_8px_24px_rgba(0,0,0,0.10)]" style="background: #FCF9FA;">
+          <p class="text-[10px] font-bold tracking-[0.22em] uppercase mb-3" style="color: rgba(15,109,114,0.65);">Trainer Background</p>
+          <p class="font-heading font-bold text-base mb-3" style="color: #0B2744;">Victor · Head Trainer & Founder</p>
+          <ul class="space-y-1.5">
+            {[
+              "Balanced trainer — prong, e-collar, marker work",
+              "Specialist in leash reactivity & aggression cases",
+              "Pack leader of Simba, Chico & Rocky",
+              "Hundreds of client dogs transformed",
+            ].map(b => (
+              <li class="flex items-start gap-2 text-xs" style="color: rgba(17,32,50,0.70);">
+                <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#0F6D72" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Story -->
+      <div class="pt-4 md:pt-0">
+        <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.65);">Founder Story</p>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6" style="color: #0B2744;">
+          Built from a Problem<br/>
+          <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">No One Would Solve.</span>
+        </h2>
+        <div class="space-y-5 text-base leading-relaxed" style="color: rgba(17,32,50,0.75);">
+          <p>Good Doggos started because of a simple frustration: the training industry was full of advice, but short on results. Reactive dogs were being mismanaged, anxious dogs were being suppressed, and countless families were on the verge of re-homing a dog they loved — simply because they didn't have the right system.</p>
+          <p>Victor built Good Doggos to close that gap. The method is direct, structured, and honest: we use the right tools for the right dog, hold owners accountable, and make measurable progress the standard — not the exception.</p>
+          <p>The pack — Simba, Chico, and Rocky — became the backbone of the training system. Real, calm, stable dogs used as controlled mirrors for every reactive client dog who walks through the gate.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Principles row — with spacing offset for the trainer card overlap -->
+    <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-5">
+      {[
+        {icon: "🛡️", label: "Safety", desc: "Every session starts with a safety-first assessment. Tools, protocols, and distances are chosen per dog."},
+        {icon: "📐", label: "Structure", desc: "Clear rules, consistent communication. Dogs thrive when expectations are predictable."},
+        {icon: "📊", label: "Measurable Progress", desc: "We don't guess. Every program has defined outcome criteria — and a guarantee to match."},
+      ].map(p => (
+        <div class="rounded-2xl p-7 border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background: rgba(15,109,114,0.09);">
+            <span class="text-xl">{p.icon}</span>
+          </div>
+          <h3 class="font-heading font-bold text-base mb-2" style="color: #0B2744;">{p.label}</h3>
+          <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.65);">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SIMBA SECTION — THE PACK ANCHOR
+══════════════════════════════════════════════ -->
+<div id="simba" class="bg-[#112032] scroll-mt-28 py-20 px-4">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4" style="color: rgba(78,205,196,0.55);">The Pack</p>
+      <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-4 leading-tight">
+        Meet Simba:<br/>
+        <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Lead Helper Dog</span>
+      </h2>
+      <p class="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed">
+        Without a stable, trustworthy helper dog, controlled exposure training doesn't exist. Simba is why we can guarantee results.
+      </p>
+    </div>
+
+    <!-- Simba photo + content grid -->
+    <div class="grid md:grid-cols-5 gap-10 items-start mb-14">
+      <!-- Photo -->
+      <div class="md:col-span-2">
+        <div class="rounded-2xl overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.30)] aspect-square">
+          <img
+            src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=800"
+            alt="Simba — Lead Helper Dog"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <!-- Trait chips -->
+        <div class="flex flex-wrap gap-2 mt-4">
+          {["Neutral temperament","Socially fluent","Stress-resilient","Handler-bonded","Prey-drive stable"].map(t => (
+            <span class="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full" style="background: rgba(78,205,196,0.12); color: #4ECDC4; border: 1px solid rgba(78,205,196,0.20);">{t}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- 3 Content blocks -->
+      <div class="md:col-span-3 space-y-5">
+        <!-- Block A -->
+        <div class="rounded-2xl p-7 border" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);">
+          <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style="color: rgba(209,178,127,0.60);">Why Simba</p>
+          <h3 class="font-heading font-bold text-white text-lg mb-3">Temperament That Training Can't Fake</h3>
+          <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.60);">Simba's neutrality is genetic and cultivated — he doesn't escalate, posture, or provoke. His recovery speed from startle events is exceptional. He holds his emotional center regardless of what's in front of him, making every rep predictable and safe for the client dog.</p>
+        </div>
+
+        <!-- Block B -->
+        <div class="rounded-2xl p-7 border" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);">
+          <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style="color: rgba(209,178,127,0.60);">How Helper Dogs Are Used</p>
+          <h3 class="font-heading font-bold text-white text-lg mb-3">Controlled Exposure, Not Random Encounters</h3>
+          <div class="grid sm:grid-cols-2 gap-3">
+            {[
+              {icon:"📏", label:"Controlled distance"},
+              {icon:"🔁", label:"Structured reps"},
+              {icon:"📈", label:"Staged exposure"},
+              {icon:"🧑‍🏫", label:"Handler coaching in real time"},
+            ].map(i => (
+              <div class="flex items-center gap-3 text-sm" style="color: rgba(255,255,255,0.65);">
+                <span class="text-base">{i.icon}</span> {i.label}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Block C -->
+        <div class="rounded-2xl p-7 border" style="background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);">
+          <p class="text-[10px] font-bold tracking-widest uppercase mb-3" style="color: rgba(209,178,127,0.60);">What This Changes For You</p>
+          <h3 class="font-heading font-bold text-white text-lg mb-3">Faster, Safer, More Transferable Results</h3>
+          <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.60);">When exposure is controlled, handlers get cleaner feedback, dogs get cleaner reps, and the behavior transfers to real-world scenarios faster. You leave every session knowing exactly where your dog is and what to work on next.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proof card -->
+    <div class="rounded-2xl p-8 border" style="background: rgba(209,178,127,0.06); border-color: rgba(209,178,127,0.18);">
+      <p class="text-[10px] font-bold tracking-widest uppercase mb-5" style="color: rgba(209,178,127,0.70);">Observed Outcomes</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {[
+          "Calmer on-leash walks after session 1",
+          "Reduced lunging intensity within 2 weeks",
+          "Shorter recovery time from trigger events",
+          "Improved handler timing and body mechanics",
+          "Clearer threshold identification",
+          "Reliable behavior in public spaces by program end",
+        ].map(o => (
+          <div class="flex items-start gap-3 text-sm" style="color: rgba(255,255,255,0.72);">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#D1B27F" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            {o}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     CHICO + ROCKY — SUPPORTING PACK
+══════════════════════════════════════════════ -->
+<div class="bg-[#FBF1E9] py-16 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-3">
+      <div>
+        <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-2" style="color: rgba(15,109,114,0.60);">The Full Pack</p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold" style="color: #0B2744;">Supporting Pack Members</h2>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6 max-w-3xl">
+      <!-- Chico -->
+      <div class="rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80&w=600"
+            alt="Chico"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-heading font-bold text-lg" style="color: #0B2744;">Chico</h3>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(15,109,114,0.09); color: #0F6D72; border: 1px solid rgba(15,109,114,0.18);">Helper Dog</span>
+          </div>
+          <p class="text-sm leading-relaxed mb-4" style="color: rgba(17,32,50,0.68);">Steady, mellow presence used for confidence-building sessions and mild reactivity exposure sets.</p>
+          <div class="flex flex-wrap gap-2">
+            {["Steady neutral partner","Confidence builder","Low arousal baseline"].map(t => (
+              <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full" style="background: #F0EAE0; color: rgba(17,32,50,0.55);">{t}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Rocky -->
+      <div class="rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&q=80&w=600"
+            alt="Rocky"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-heading font-bold text-lg" style="color: #0B2744;">Rocky</h3>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(15,109,114,0.09); color: #0F6D72; border: 1px solid rgba(15,109,114,0.18);">Helper Dog</span>
+          </div>
+          <p class="text-sm leading-relaxed mb-4" style="color: rgba(17,32,50,0.68);">High-energy but reliably neutral. Used for advanced exposure sessions with dogs who need a more "real-world" challenge proxy.</p>
+          <div class="flex flex-wrap gap-2">
+            {["Socially fluent","Advanced exposure partner","High-energy stable"].map(t => (
+              <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full" style="background: #F0EAE0; color: rgba(17,32,50,0.55);">{t}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TRAINING VIDEOS — PROOF SECTION
+══════════════════════════════════════════════ -->
+<div class="bg-[#0B2744] py-20 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4" style="color: rgba(209,178,127,0.55);">Proof of Work</p>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-3">
+        Training <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">in Action</span>
+      </h2>
+      <p class="text-gray-400 max-w-xl mx-auto">Real sessions. Real dogs. Real results.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {[
+        {title: "Neutrality Reps with Simba", desc: "Calm Companion class — threshold work, structured leash reps using Simba as the controlled neutral."},
+        {title: "Threshold Session: Real-World", desc: "Exposed to distraction-heavy public spaces. Watch how controlled distance reshapes the response."},
+        {title: "Handler Coaching in Real Time", desc: "Trainer gives live feedback as the owner handles all corrections — accountability in action."},
+        {title: "Day 1 vs. Week 4 Comparison", desc: "Same dog, same triggers. Transformation documented over 4 weeks of the Calm Companion Challenge."},
+        {title: "Red Zone: Controlled Intro", desc: "Structured muzzle-conditioned helper dog intro for a confirmed reactive/aggressive case."},
+        {title: "Pack Walk Graduation", desc: "Program graduates walk with the pack — Simba, Chico, and Rocky — calm, on leash."},
+      ].map(v => (
+        <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] cursor-pointer transition-all duration-200 hover:border-white/20 hover:bg-white/[0.06]">
+          <!-- Thumbnail placeholder -->
+          <div class="aspect-video flex items-center justify-center relative overflow-hidden" style="background: linear-gradient(135deg, rgba(15,109,114,0.15), rgba(11,39,68,0.30));">
+            <div class="w-14 h-14 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110" style="background: rgba(209,178,127,0.15); border: 2px solid rgba(209,178,127,0.30);">
+              <svg class="w-6 h-6 ml-1" fill="#D1B27F" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="absolute bottom-3 right-3">
+              <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(0,0,0,0.50); color: rgba(255,255,255,0.60);">Video</span>
+            </div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-heading font-bold text-white text-sm mb-1.5">{v.title}</h3>
+            <p class="text-xs leading-relaxed" style="color: rgba(255,255,255,0.45);">{v.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Ready to Begin?</p>
+    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4" style="color: #0B2744;">
+      See What We Can Do<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">With Your Dog.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Start with a free behavioral assessment. No commitment — just an honest conversation about where your dog is and what's possible.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+
+</Layout>

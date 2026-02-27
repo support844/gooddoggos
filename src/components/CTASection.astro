@@ -1,0 +1,96 @@
+---
+---
+
+<section
+  class="relative min-h-[520px] md:min-h-[580px] flex items-center overflow-hidden"
+>
+  <!-- Background: Golden-Hour Dog Photo -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1551717743-a80f45d97d1e?auto=format&fit=crop&q=85&w=2000"
+      alt="Dog in golden hour light"
+      class="w-full h-full object-cover object-center"
+    />
+
+    <!-- Cinematic Overlay: heavy navy on left fading toward dog on right -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(105deg, rgba(11,39,68,0.92) 0%, rgba(11,39,68,0.75) 35%, rgba(11,39,68,0.40) 62%, rgba(11,39,68,0.10) 100%);"
+    >
+    </div>
+
+    <!-- Subtle bottom darkening for grounding -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-[#0B2744]/40 via-transparent to-transparent"
+    >
+    </div>
+  </div>
+
+  <!-- Watermark Logo (right side, very low opacity) -->
+  <div
+    class="absolute right-0 bottom-0 top-0 z-10 flex items-end justify-end pr-8 pb-8 md:pr-16 md:pb-12 pointer-events-none select-none"
+  >
+    <img
+      src="/images/Brand%20Name%20Logo%20-%20White%20-%20Good%20Doggos.png"
+      alt=""
+      aria-hidden="true"
+      class="w-48 md:w-72 h-auto opacity-[0.08] object-contain"
+    />
+  </div>
+
+  <!-- Main Content (Left-aligned) -->
+  <div
+    class="relative z-20 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-20 w-full"
+  >
+    <div class="max-w-xl">
+      <!-- Limited Spots Pill / Kicker -->
+      <div class="inline-flex items-center gap-2 mb-7">
+        <span
+          class="text-[11px] font-bold tracking-[0.22em] uppercase px-4 py-2 rounded-full border border-[#D1B27F]/60 text-[#D1B27F]"
+          style="background: rgba(209,178,127,0.12);"
+        >
+          Limited Spots Available
+        </span>
+      </div>
+
+      <!-- Headline -->
+      <h2 class="font-heading font-bold text-white leading-[1.08] mb-6">
+        <span class="block text-4xl md:text-6xl lg:text-7xl"
+          >Ready to Transform</span
+        >
+        <span class="block text-4xl md:text-6xl lg:text-7xl">Your Dog's</span>
+        <span
+          class="headline-accent block text-4xl md:text-6xl lg:text-7xl mt-1"
+          style="color: #D1B27F;">Future?</span
+        >
+      </h2>
+
+      <!-- Supporting Copy -->
+      <p class="text-gray-300 text-lg leading-relaxed mb-10 max-w-md">
+        Our evaluation queue fills weeks in advance. Take the first step toward
+        a safe, focused relationship with your dog today.
+      </p>
+
+      <!-- Primary CTA Button -->
+      <a
+        href="/apply"
+        class="inline-flex items-center gap-3 bg-[#D1B27F] hover:bg-[#c4a26e] text-[#0B2744] font-bold text-sm tracking-widest uppercase px-10 py-4 rounded-full shadow-[0_6px_24px_rgba(209,178,127,0.40)] hover:shadow-[0_8px_32px_rgba(209,178,127,0.55)] hover:-translate-y-0.5 transition-all duration-200"
+      >
+        BOOK YOUR FREE ASSESSMENT
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2.5"
+            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

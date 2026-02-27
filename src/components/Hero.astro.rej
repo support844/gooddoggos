@@ -1,0 +1,15 @@
+@@ -52,10 +52,11 @@
+                 </h1>
+ 
+                 <!-- Copy -->
+                 <p
+                     class="text-lg md:text-xl text-[#B9C6D3] mb-12 font-normal leading-[1.7] max-w-lg drop-shadow-sm text-balance"
+                 >
+-                    Direct, expert-led rehabilitation for reactive and
+-                    aggressive dogs. We focus on neutralizing conflict and
+-                    building steady, reliable focus in the real world.
++                    Expert-led rehabilitation. From frustrated greeters to
++                    severe aggression, we have a proven protocol for every level
++                    of reactivity. Start with a Free Behavioral Assessment to
++                    build your perfect plan today.
+                 </p>

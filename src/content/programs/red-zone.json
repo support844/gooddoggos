@@ -1,0 +1,21 @@
+{
+    "id": "red-zone",
+    "title": "Reactive Dog Intensive",
+    "tagline": "Serious Help for Serious Issues",
+    "description": "Specialized behavioral modification for aggression, resource guarding, and bite history. Every case is assessed individually. Safety and structured management are our top priorities throughout.",
+    "price_range": "Custom Quote",
+    "duration": "3+ Months",
+    "ideal_for": [
+        "Human aggression",
+        "Dog aggression",
+        "Bite history",
+        "Resource guarding"
+    ],
+    "outcomes": [
+        "Safety protocols",
+        "Trigger management",
+        "Behavioral modification",
+        "Owner confidence"
+    ],
+    "details_url": "/programs#red-zone"
+}

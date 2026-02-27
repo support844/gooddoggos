@@ -1,0 +1,353 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+
+<!-- ══════════════════════════════════════════════
+     A) CINEMATIC HERO
+══════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-[#0B2744] flex items-end" style="min-height: 90vh;">
+  <!-- Background photo -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=85&w=2400"
+      alt="Dog training hero"
+      class="w-full h-full object-cover object-center"
+      style="opacity: 0.45;"
+    />
+    <!-- Cinematic overlay: heavy navy bottom-left, transparent top-right -->
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(11,39,68,0.92) 0%, rgba(11,39,68,0.70) 40%, rgba(11,39,68,0.30) 100%);"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.85) 0%, transparent 55%);"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-20 md:pb-28" style="padding-top: 180px;">
+    <!-- Kicker pill -->
+    <div class="mb-7">
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[11px] font-semibold tracking-[0.20em] uppercase"
+            style="background: rgba(0,0,0,0.18); border: 1px solid #D1B27F; color: #D1B27F; backdrop-filter: blur(6px);">
+        <span style="width:5px; height:5px; border-radius:50%; background:#D1B27F; display:inline-block;"></span>
+        Accepting <span id="ccc-next-month">March 2026</span> Applicants
+      </span>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-end">
+      <!-- Left: Headline + CTAs -->
+      <div>
+        <h1 class="font-heading font-bold text-white leading-[1.06] mb-6" style="font-size: clamp(2.6rem, 5vw, 4.2rem);">
+          The Only Dog Training Program<br />
+          That <span class="headline-accent" style="color: #D1B27F;">Pays You</span> to Get Results
+        </h1>
+        <p class="text-lg text-gray-300 leading-relaxed mb-10 max-w-lg">
+          Our signature challenge transforms your dog's behavior in just 4 weeks. Complete every challenge requirement and win 100% of your money back.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 flex-wrap">
+          <a href="/apply"
+             class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5 whitespace-nowrap flex-shrink-0"
+             style="background: #0F6D72; color: white; padding: 14px 28px; box-shadow: 0 6px 22px rgba(15,109,114,0.40);">
+            Apply for Free Behavioral Assessment →
+          </a>
+          <a href="#fit"
+             class="inline-flex items-center justify-center font-bold text-[13px] tracking-wide rounded-full transition-all duration-200 whitespace-nowrap flex-shrink-0"
+             style="border: 1px solid rgba(255,255,255,0.25); color: white; padding: 14px 26px; background: rgba(255,255,255,0.06);">
+            See if You're a Fit ↓
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Quick stats card -->
+      <div class="hidden md:block">
+        <div class="rounded-2xl p-7 border" style="background: rgba(252,249,250,0.07); border-color: rgba(255,255,255,0.12); backdrop-filter: blur(10px);">
+          <div class="grid grid-cols-2 gap-5">
+            {[
+              {stat: "4", label: "Weeks"},
+              {stat: "$799", label: "Investment"},
+              {stat: "100%", label: "Money Back"},
+              {stat: "∞", label: "Results"},
+            ].map(s => (
+              <div class="text-center py-4 border-b border-white/10 last:border-0 col-span-1">
+                <p class="font-heading font-extrabold text-3xl mb-1" style="color: #4ECDC4;">{s.stat}</p>
+                <p class="text-xs font-bold tracking-widest uppercase text-gray-400">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     B) FIT BOX — "Is This Right For Your Dog?"
+══════════════════════════════════════════════ -->
+<div id="fit" class="bg-[#FBF1E9] scroll-mt-28 py-16 md:py-20 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="rounded-2xl border p-8 md:p-10" style="background: #FCF9FA; border-color: rgba(15,109,114,0.20); box-shadow: 0 4px 24px rgba(0,0,0,0.06);">
+      <div class="flex items-start gap-4 mb-7">
+        <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background: rgba(15,109,114,0.12);">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#0F6D72" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold mb-1" style="color: #112032;">
+            Is This Challenge Right For Your Dog?
+          </h2>
+          <p class="text-sm" style="color: rgba(17,32,50,0.60);">Honest eligibility — we only work with dogs who are a good fit.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Good fit -->
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase mb-4" style="color: #0F6D72;">Good Fit ✓</p>
+          <ul class="space-y-3">
+            {[
+              "Leash reactive to other dogs or people",
+              "Excited, over-aroused greeter",
+              "Mild-to-moderate pulling or jumping",
+              "Puppy or rescue with no bad habits yet",
+              "Owner willing to do daily homework",
+            ].map(item => (
+              <li class="flex items-start gap-3 text-sm" style="color: rgba(17,32,50,0.78);">
+                <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#0F6D72" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <!-- Not a fit -->
+        <div>
+          <p class="text-xs font-bold tracking-widest uppercase mb-4" style="color: #7D2C2D;">Not a Fit ✗</p>
+          <ul class="space-y-3">
+            {[
+              "Confirmed bite history or human aggression",
+              "Severe resource guarding",
+              "Dog-aggressive with no prior training",
+              "Owner unable to commit to the full program",
+            ].map(item => (
+              <li class="flex items-start gap-3 text-sm" style="color: rgba(17,32,50,0.78);">
+                <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#7D2C2D" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div class="mt-5 p-4 rounded-xl text-xs leading-relaxed" style="background: rgba(125,44,45,0.05); border: 1px solid rgba(125,44,45,0.12); color: rgba(17,32,50,0.65);">
+            If your dog doesn't qualify for the Calm Companion Challenge, we may recommend our <strong>Reactive Dog Intensive</strong> or a private evaluation first.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     C) EVERYTHING YOU GET IN THE CHALLENGE
+══════════════════════════════════════════════ -->
+<div class="bg-[#FBF1E9] py-16 md:py-20 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-3" style="color: rgba(15,109,114,0.65);">What's Inside</p>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold mb-3" style="color: #112032;">
+        Everything You Get in the <span class="headline-accent" style="color: #0F6D72; font-style: italic; font-weight: 700;">Challenge</span>
+      </h2>
+      <p class="max-w-xl mx-auto text-base" style="color: rgba(17,32,50,0.62);">Designed for real-world results — not just classroom behavior.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {[
+        {icon: "👥", title: "4 Weekly Group Sessions", desc: "90-minute live sessions with a certified trainer and a small cohort. High reps, real dogs, structured setups."},
+        {icon: "📋", title: "Daily Homework", desc: "Structured daily practice plans delivered each week so training never stops between sessions."},
+        {icon: "✉️", title: "Weekly Check-In & Feedback", desc: "Submit a short video or note each week. Get direct trainer feedback within 24 hours."},
+        {icon: "🐕", title: "Helper Dog Exposure", desc: "Temperament-stable helper dogs used as neutral training partners in every session — not random encounters."},
+        {icon: "🔒", title: "Private Community Access", desc: "Exclusive slack/community channel with accountability partners, progress sharing, and early-access resources."},
+        {icon: "🏆", title: "Win Your Money Back Guarantee", desc: "Complete every requirement and show up to every session — you'll get measurable results or your money back. That's our promise."},
+      ].map(f => (
+        <div class="rounded-2xl p-7 border transition-shadow hover:shadow-md" style="background: #FCF9FA; border-color: #E6DAC6; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background: rgba(15,109,114,0.10);">
+            <span class="text-xl">{f.icon}</span>
+          </div>
+          <h3 class="font-heading font-bold text-base mb-2" style="color: #112032;">{f.title}</h3>
+          <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.65);">{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     D) YOUR 4-WEEK JOURNEY
+══════════════════════════════════════════════ -->
+<div class="bg-[#112032] py-16 md:py-20 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-3" style="color: rgba(78,205,196,0.60);">The Roadmap</p>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-3">
+        Your 4-Week <span class="headline-accent" style="color: #4ECDC4; font-style: italic; font-weight: 700;">Journey</span>
+      </h2>
+      <p class="text-gray-400 max-w-lg mx-auto">Each week builds on the last. No random drills — only structured, purposeful progress.</p>
+    </div>
+
+    <!-- Timeline steps -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-0 relative">
+      <!-- Connector line (desktop) -->
+      <div class="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-[2px]" style="background: linear-gradient(to right, #0F6D72, rgba(15,109,114,0.2));"></div>
+
+      {[
+        {week: "W1", title: "Foundation & Leash Skills", desc: "Establish your communication system. Loose leash walking mechanics, engagement, and the neutral dog concept introduced."},
+        {week: "W2", title: "Introduction to Thresholds", desc: "Learn to read your dog's stress signals. Begin structured near-trigger exercises at safe distances."},
+        {week: "W3", title: "Real-World Practice", desc: "Bring skills into public spaces. Increased distraction levels, helper dog integration, real-world reps with trainer oversight."},
+        {week: "W4", title: "Mastery & Maintenance", desc: "Consolidate all skills. Graduate your dog and build a lasting maintenance plan for life after the challenge."},
+      ].map((step, i) => (
+        <div class="relative px-5 py-8 text-center group">
+          <!-- Circle -->
+          <div class="relative z-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 transition-transform group-hover:scale-105" style="background: linear-gradient(135deg, #0F6D72, #0a4f53); box-shadow: 0 8px 24px rgba(15,109,114,0.35);">
+            <span class="font-heading font-extrabold text-white text-lg">{step.week}</span>
+          </div>
+          <h3 class="font-heading font-bold text-white text-base mb-3">{step.title}</h3>
+          <p class="text-sm leading-relaxed" style="color: rgba(255,255,255,0.55);">{step.desc}</p>
+          <!-- Step number -->
+          <div class="mt-5">
+            <span class="text-[10px] font-bold tracking-widest uppercase" style="color: rgba(78,205,196,0.45);">Week {i + 1} of 4</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     E) CCC VALUE STACK
+══════════════════════════════════════════════ -->
+<div class="bg-[#FBF1E9] py-16 md:py-20 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-3" style="color: rgba(15,109,114,0.55);">Transparency</p>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold leading-tight mb-4" style="color: #0B2744;">
+        The Calm Companion Challenge<br/>
+        <span class="headline-accent" style="color: #0F6D72; font-style: italic; font-weight: 700;">Value Stack</span>
+      </h2>
+      <p class="text-base max-w-lg mx-auto" style="color: rgba(17,32,50,0.58);">See exactly what you're getting (and what it's really worth).</p>
+    </div>
+
+    <div class="rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_8px_32px_rgba(0,0,0,0.08)]">
+      <!-- Table header -->
+      <div class="px-7 py-5 flex justify-between items-center" style="background: #0B2744;">
+        <span class="font-bold text-white text-sm tracking-wide">What You Get When You Join</span>
+        <span class="font-bold text-white text-sm tracking-wide opacity-60">Value</span>
+      </div>
+
+      <!-- Line items -->
+      <div style="background: #FCF9FA;">
+        {[
+          {icon: "📚", label: "4-Week Transformation Curriculum", price: "$800"},
+          {icon: "📝", label: "Daily HW Reviews & Feedback (4 weeks)", price: "$600"},
+          {icon: "🐕", label: "Helper Dog Sessions & Exposure", price: "$500"},
+          {icon: "🎓", label: "The Basic Obedience Vault (Lifetime Access)", price: "$297"},
+          {icon: "💰", label: "Win Your Money Back Opportunity", price: "$799"},
+        ].map((row, i) => (
+          <div class="flex items-center justify-between px-6 py-4" style={`border-bottom: 1px solid #E6DAC6; ${i % 2 === 1 ? 'background: rgba(15,109,114,0.02);' : ''}`}>
+            <div class="flex items-center gap-3">
+              <span class="text-base w-6">{row.icon}</span>
+              <span class="text-sm font-medium" style="color: rgba(11,39,68,0.75);">{row.label}</span>
+            </div>
+            <span class="font-bold text-sm" style="color: #104752;">{row.price}</span>
+          </div>
+        ))}
+
+        <!-- Total Value -->
+        <div class="flex items-center justify-between px-7 py-5" style="border-bottom: 2px solid #E6DAC6; background: rgba(15,109,114,0.04);">
+          <span class="font-bold" style="color: #112032;">Total Value:</span>
+          <span class="font-extrabold text-xl" style="color: #0F6D72; text-decoration: line-through; text-decoration-color: rgba(15,109,114,0.45); text-decoration-thickness: 1.5px;">$2,995+</span>
+        </div>
+
+        <!-- Investment -->
+        <div class="flex items-center justify-between px-6 py-6" style="background: linear-gradient(135deg, #0B2744, #112032);">
+          <div>
+            <p class="text-sm font-bold mb-0.5 tracking-wide" style="color: rgba(255,255,255,0.65);">Your Investment Today</p>
+            <p class="text-xs" style="color: rgba(255,255,255,0.38);">Full program · One-time payment</p>
+          </div>
+          <span class="font-extrabold text-3xl" style="color: #D1B27F;">$799</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guarantee inline note -->
+    <div class="mt-6 flex items-center gap-3 justify-center">
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#0F6D72" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      <p class="text-sm" style="color: rgba(17,32,50,0.60);">Complete the challenge requirements and <strong style="color:#0F6D72;">win your money back</strong>. It's that simple.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     F) GUARANTEE
+══════════════════════════════════════════════ -->
+<div class="bg-[#0B2744] py-16 md:py-20 px-4">
+  <div class="max-w-3xl mx-auto text-center">
+    <!-- Shield icon -->
+    <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-8" style="background: rgba(15,109,114,0.20); border: 2px solid rgba(15,109,114,0.30);">
+      <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="#4ECDC4" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+    </div>
+
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(78,205,196,0.55);">Our Promise</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-5">
+      Win Your <span class="headline-accent" style="color: #4ECDC4; font-style: italic; font-weight: 700;">Money Back</span> Guarantee
+    </h2>
+    <p class="text-lg text-gray-300 leading-relaxed mb-4 max-w-2xl mx-auto">
+      Show up. Do the work. Get your money back. We're so confident in our system that we're willing to pay you to prove it works.
+    </p>
+    <p class="text-sm mb-8 max-w-xl mx-auto" style="color: rgba(255,255,255,0.45);">
+      Requirements: attend all 4 sessions, submit all homework reviews on time, complete the daily protocol for all 4 weeks, and show measurable result criteria at graduation. Meet these and you get a full refund.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #0F6D72; color: white; padding: 16px 36px; box-shadow: 0 6px 22px rgba(15,109,114,0.40);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <div class="mt-6">
+      <a href="/guarantee" class="text-xs transition-colors duration-200" style="color: rgba(255,255,255,0.40); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(209,178,127,0.35);"
+         onmouseover="this.style.color='#D1B27F'; this.style.textDecorationColor='#D1B27F';"
+         onmouseout="this.style.color='rgba(255,255,255,0.40)'; this.style.textDecorationColor='rgba(209,178,127,0.35)';">
+        Read more about our guarantee here →
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     G) FINAL CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden" style="background: #FBF1E9;">
+  <!-- Subtle decorative strip at top -->
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Ready to Begin?</p>
+    <h2 class="text-4xl md:text-5xl font-heading font-bold mb-4" style="color: #112032;">
+      Your Dog's Transformation<br/>
+      <span class="headline-accent" style="color: #0F6D72; font-style: italic; font-weight: 700;">Starts Here.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.62);">
+      We accept a limited number of families each cycle to ensure every dog gets the attention they deserve. Applications close when spots are filled.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #0F6D72; color: white; padding: 18px 40px; box-shadow: 0 6px 24px rgba(15,109,114,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.42);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+
+<script>
+  // Auto-update the badge: always show "Month YYYY"
+  (function() {
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const now = new Date();
+    const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    const el = document.getElementById('ccc-next-month');
+    if (el) el.textContent = months[nextMonth.getMonth()] + ' ' + nextMonth.getFullYear();
+  })();
+</script>
+
+</Layout>

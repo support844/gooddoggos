@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import TestimonialSlider from '../components/TestimonialSlider.astro';
+import CTASection from '../components/CTASection.astro';
+import { getCollection } from 'astro:content';
+import Parser from 'rss-parser';
+
+// Fetch Substack Feed
+let latestPosts = [];
+try {
+  const parser = new Parser();
+  const feed = await parser.parseURL('https://gooddoggos.substack.com/feed');
+  latestPosts = feed.items.slice(0, 3);
+} catch (e) {
+  console.error("Failed to fetch Substack feed", e);
+}
+
+const programs = await getCollection('programs');
+---
+
+<Layout>
+  <Hero />
+
+  <!-- What to Expect in Free Session -->
+  <section class="py-16 bg-surface px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary-navy mb-8">What to Expect in Your Free Session</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="text-4xl mb-4">🔍</div>
+          <h3 class="font-bold text-xl mb-2 text-primary-navy">Behavioral Analysis</h3>
+          <p class="text-gray-600">We observe your dog's triggers and body language to understand the root cause of the behavior.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="text-4xl mb-4">🗣️</div>
+          <h3 class="font-bold text-xl mb-2 text-primary-navy">Honest Feedback</h3>
+          <p class="text-gray-600">No sugar-coating. We tell you exactly what needs to change in your environment and handling.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="text-4xl mb-4">📋</div>
+          <h3 class="font-bold text-xl mb-2 text-primary-navy">Custom Plan</h3>
+          <p class="text-gray-600">If we're a good fit, we recommend the specific program (Calm, Accelerator, or Red Zone) for your goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reactivity Spectrum -->
+  <section class="py-16 bg-white px-4">
+     <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary-navy mb-4">The Reactivity Spectrum</h2>
+        <p class="text-lg text-gray-600 mb-10">Where does your dog fall? We help dogs at every stage.</p>
+        
+        <div class="relative pt-8 pb-12">
+            <!-- Gradient Bar -->
+            <div class="h-4 w-full bg-gradient-to-r from-accent-teal via-accent-gold to-accent-red rounded-full mb-8"></div>
+            
+            <div class="grid grid-cols-3 text-sm md:text-base font-bold">
+                <div class="text-left text-accent-teal">
+                    <span class="block text-2xl mb-1">😌</span>
+                    Calm Companion<br/>(Puppy/Basics)
+                </div>
+                <div class="text-center text-accent-warmGold">
+                     <span class="block text-2xl mb-1">⚡</span>
+                    Excited/Anxious<br/>(Accelerator)
+                </div>
+                <div class="text-right text-accent-red">
+                     <span class="block text-2xl mb-1">🛑</span>
+                    Reactive/Aggressive<br/>(Red Zone)
+                </div>
+            </div>
+        </div>
+     </div>
+  </section>
+
+  <!-- Simba and Pack -->
+  <section class="py-16 bg-accent-soft px-4">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-10">
+        <div class="md:w-1/2">
+            <img src="/images/Circle Navy Dog Mascot Gold BG - Good Doggos.png" alt="Simba the Mascot" class="w-full max-w-sm mx-auto drop-shadow-2xl" />
+        </div>
+        <div class="md:w-1/2 text-center md:text-left">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary-navy mb-4">Meet Simba & The Pack</h2>
+            <p class="text-lg text-ink mb-6">
+                Good Doggos isn't just a business; it's a pack. Led by Head Trainer [Name], our philosophy is built on the belief that <span class="font-bold italic text-primary-navy">calmness is a superpower.</span>
+            </p>
+            <p class="text-lg text-ink mb-6">
+                Simba (pictured) started as a reactive rescue who couldn't handle city life. Today, he's our neutral pack leader, helping other dogs learn how to relax in a chaotic world.
+            </p>
+            <a href="/about" class="text-primary-navy font-bold border-b-2 border-accent-gold hover:text-accent-gold transition-colors">Read our full story &rarr;</a>
+        </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <TestimonialSlider />
+
+  <!-- Substack Feed -->
+  <section class="py-16 bg-surface px-4">
+    <div class="max-w-5xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-gray-200 pb-4">
+            <div>
+                <h2 class="text-3xl font-heading font-bold text-primary-navy mb-2">From the Blog</h2>
+                <p class="text-gray-600">Latest training tips and stories from our Substack.</p>
+            </div>
+            <a href="https://gooddoggos.substack.com" target="_blank" class="text-accent-teal font-bold hover:underline mt-4 md:mt-0">Read on Substack &rarr;</a>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            {latestPosts.map(post => (
+                <article class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-xl mb-3 text-primary-navy line-clamp-2">
+                        <a href={post.link} target="_blank" class="hover:text-accent-gold transition-colors">{post.title}</a>
+                    </h3>
+                    <p class="text-sm text-gray-500 mb-4">{new Date(post.pubDate).toLocaleDateString()}</p>
+                    <p class="text-gray-600 line-clamp-3 mb-4">{post.contentSnippet}</p>
+                    <a href={post.link} target="_blank" class="text-sm font-bold text-secondary-slate hover:text-primary-navy uppercase tracking-wide">Read Article</a>
+                </article>
+            ))}
+        </div>
+        
+        <div class="mt-12 text-center bg-primary-navy rounded-2xl p-8 relative overflow-hidden">
+             <!-- Abstract shapes or texture could go here -->
+             <div class="relative z-10">
+                <h3 class="text-2xl font-bold text-surface mb-2">Join the Pack Newsletter</h3>
+                <p class="text-gray-300 mb-6">Get weekly training tips delivered to your inbox.</p>
+                <form action="https://gooddoggos.substack.com/subscribe" method="post" target="_blank" class="flex flex-col md:flex-row gap-2 justify-center max-w-md mx-auto">
+                    <input type="email" name="email" placeholder="Your email address" class="px-6 py-3 rounded-full text-ink w-full focus:outline-none focus:ring-2 focus:ring-accent-gold" required />
+                    <button type="submit" class="bg-accent-gold hover:bg-accent-warmGold text-primary-navy px-8 py-3 rounded-full transition-colors font-bold shadow-lg">
+                        Subscribe
+                    </button>
+                </form>
+             </div>
+        </div>
+    </div>
+  </section>
+
+  <CTASection />
+</Layout>

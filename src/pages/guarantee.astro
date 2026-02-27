@@ -1,0 +1,629 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+  <section
+    class="relative overflow-hidden bg-[#0B2744] flex items-end"
+    style="min-height: 46vh;"
+  >
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=2400"
+        alt="Our Guarantee"
+        class="w-full h-full object-cover object-center"
+        style="opacity: 0.28;"
+      />
+      <div
+        class="absolute inset-0"
+        style="background: linear-gradient(135deg, rgba(11,39,68,0.95) 0%, rgba(11,39,68,0.75) 50%, rgba(11,39,68,0.45) 100%);"
+      >
+      </div>
+      <div
+        class="absolute inset-0"
+        style="background: linear-gradient(to top, rgba(11,39,68,0.90) 0%, transparent 60%);"
+      >
+      </div>
+    </div>
+    <div
+      class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-16"
+      style="padding-top: 150px;"
+    >
+      <div class="flex items-center gap-3 mb-5">
+        <div
+          class="w-8 h-8 rounded-full flex items-center justify-center"
+          style="background: rgba(209,178,127,0.15); border: 1px solid rgba(209,178,127,0.30);"
+        >
+          <svg
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="#D1B27F"
+            stroke-width="2"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            ></path>
+          </svg>
+        </div>
+        <p
+          class="text-[11px] font-bold tracking-[0.28em] uppercase"
+          style="color: rgba(209,178,127,0.65);"
+        >
+          Backed by Our Promise
+        </p>
+      </div>
+      <h1
+        class="font-heading font-bold text-white leading-[1.06] mb-4"
+        style="font-size: clamp(2.6rem, 5vw, 4rem);"
+      >
+        Our Guarantee
+      </h1>
+      <p
+        class="headline-accent text-2xl md:text-3xl mb-5"
+        style="color: #D1B27F; font-style: italic; font-weight: 700;"
+      >
+        "Your success is our success."
+      </p>
+      <p class="text-gray-300 max-w-xl leading-relaxed">
+        We stand behind our training with powerful, program-specific guarantees.
+        Every program has clearly defined terms — and we honor them without
+        hesitation.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     PROGRAM GUARANTEE CARDS
+══════════════════════════════════════════════ -->
+  <div class="bg-[#FBF1E9] py-20 px-4">
+    <div class="max-w-4xl mx-auto space-y-8">
+      <!-- ── CCC GUARANTEE ── -->
+      <div
+        id="ccc-guarantee"
+        class="rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_6px_28px_rgba(0,0,0,0.07)] bg-[#FCF9FA] flex flex-col"
+      >
+        <!-- Accent bar -->
+        <div class="h-[6px] w-full" style="background: #0F6D72;"></div>
+        <div class="p-8 md:p-10">
+          <!-- Header -->
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-5">
+            <div>
+              <span
+                class="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-3 inline-block"
+                style="background: rgba(15,109,114,0.09); color: #0F6D72; border: 1px solid rgba(15,109,114,0.20);"
+                >Calm Companion Challenge</span
+              >
+              <h2
+                class="text-2xl md:text-3xl font-heading font-bold"
+                style="color: #0B2744;"
+              >
+                The Results Guarantee
+              </h2>
+            </div>
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background: rgba(15,109,114,0.10); border: 1.5px solid rgba(15,109,114,0.22);"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#0F6D72"
+                stroke-width="1.8"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+
+          <p
+            class="text-base leading-relaxed mb-8"
+            style="color: rgba(17,32,50,0.72);"
+          >
+            If you complete every requirement of the Calm Companion Challenge
+            and don't see measurable improvement in your dog's behavior, you get
+            a full refund. Do the work — and the program works for you. If it
+            doesn't, you don't pay.
+          </p>
+
+          <!-- How it works -->
+          <div class="mb-7">
+            <p
+              class="text-[11px] font-bold tracking-[0.22em] uppercase mb-4"
+              style="color: rgba(15,109,114,0.65);"
+            >
+              How It Works
+            </p>
+            <div class="grid md:grid-cols-3 gap-4">
+              {
+                [
+                  {
+                    step: "01",
+                    title: "Complete Everything",
+                    desc: "Attend all sessions, submit all homework, and actively participate throughout the 4 weeks.",
+                  },
+                  {
+                    step: "02",
+                    title: "Document Progress",
+                    desc: "Submit your 'before' videos on Day 1 and your 'after' proof at graduation.",
+                  },
+                  {
+                    step: "03",
+                    title: "If It Doesn't Work",
+                    desc: "You get a full refund — no questions, no negotiation. Simple.",
+                  },
+                ].map((s) => (
+                  <div
+                    class="rounded-xl p-5 border border-[#E6DAC6]"
+                    style="background: rgba(15,109,114,0.03);"
+                  >
+                    <p
+                      class="font-heading font-extrabold text-2xl mb-1"
+                      style="color: rgba(15,109,114,0.25);"
+                    >
+                      {s.step}
+                    </p>
+                    <p class="font-bold text-sm mb-1" style="color: #0B2744;">
+                      {s.title}
+                    </p>
+                    <p
+                      class="text-xs leading-relaxed"
+                      style="color: rgba(17,32,50,0.60);"
+                    >
+                      {s.desc}
+                    </p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Requirements checklist -->
+          <div>
+            <p
+              class="text-[11px] font-bold tracking-[0.22em] uppercase mb-4"
+              style="color: rgba(15,109,114,0.65);"
+            >
+              What You Must Complete
+            </p>
+            <div class="rounded-xl border border-[#E6DAC6] overflow-hidden">
+              {
+                [
+                  {
+                    icon: "🎬",
+                    label: "Before Day 1",
+                    desc: "Submit 'before' videos: your dog walking on leash and performing sit, down, and place.",
+                  },
+                  {
+                    icon: "📅",
+                    label: "All 4 Live Group Sessions",
+                    desc: "Attend every scheduled session, including weekly check-ins and graduation.",
+                  },
+                  {
+                    icon: "📣",
+                    label: "Weekly Progress Post",
+                    desc: "Post at least one progress update in the group channel each week.",
+                  },
+                  {
+                    icon: "📋",
+                    label: "All Weekly Homework",
+                    desc: "Submit practice videos and complete all assigned homework on time, every week.",
+                  },
+                  {
+                    icon: "🙋",
+                    label: "Active Participation",
+                    desc: "Engage in the community — ask questions, report struggles, receive feedback.",
+                  },
+                ].map((r, i) => (
+                  <div
+                    class="flex items-start gap-4 px-6 py-4"
+                    style={`border-bottom: 1px solid #E6DAC6; ${
+                      i % 2 === 1
+                        ? "background: rgba(15,109,114,0.02);"
+                        : "background: white;"
+                    }`}
+                  >
+                    <span class="text-lg mt-0.5 flex-shrink-0">{r.icon}</span>
+                    <div>
+                      <p
+                        class="font-bold text-sm mb-0.5"
+                        style="color: #0B2744;"
+                      >
+                        {r.label}
+                      </p>
+                      <p
+                        class="text-xs leading-relaxed"
+                        style="color: rgba(17,32,50,0.62);"
+                      >
+                        {r.desc}
+                      </p>
+                    </div>
+                    <svg
+                      class="w-4 h-4 mt-1 ml-auto flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#0F6D72"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                ))
+              }
+            </div>
+            <p
+              class="text-xs mt-3 text-center font-semibold"
+              style="color: rgba(15,109,114,0.70);"
+            >
+              Complete all five — and if the program doesn't deliver, you don't
+              pay.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PRIVATE ACCELERATOR GUARANTEE ── -->
+      <div
+        id="pa-guarantee"
+        class="rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_6px_28px_rgba(0,0,0,0.07)] bg-[#FCF9FA] flex flex-col"
+      >
+        <div class="h-[6px] w-full" style="background: #D1B27F;"></div>
+        <div class="p-8 md:p-10">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-5">
+            <div>
+              <span
+                class="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-3 inline-block"
+                style="background: rgba(209,178,127,0.12); color: #B08A4A; border: 1px solid rgba(209,178,127,0.28);"
+                >Private Accelerator</span
+              >
+              <h2
+                class="text-2xl md:text-3xl font-heading font-bold"
+                style="color: #0B2744;"
+              >
+                The Satisfaction Guarantee
+              </h2>
+            </div>
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background: rgba(209,178,127,0.10); border: 1.5px solid rgba(209,178,127,0.25);"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#D1B27F"
+                stroke-width="1.8"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+
+          <p
+            class="text-base leading-relaxed mb-8"
+            style="color: rgba(17,32,50,0.72);"
+          >
+            This program carries a full satisfaction guarantee. If at the end of
+            the program you feel the level of service provided was not equal or
+            superior to your investment, I will write you a refund check myself.
+          </p>
+
+          <!-- Premium confidence block -->
+          <div
+            class="rounded-2xl p-7 border"
+            style="background: linear-gradient(135deg, #0B2744, #112032); border-color: rgba(209,178,127,0.15);"
+          >
+            <p
+              class="text-[10px] font-bold tracking-widest uppercase mb-4"
+              style="color: rgba(209,178,127,0.55);"
+            >
+              The Way I Look At It
+            </p>
+            <div class="grid md:grid-cols-2 gap-5">
+              <div class="text-center p-5 rounded-xl border border-white/10">
+                <p
+                  class="headline-accent text-lg mb-2"
+                  style="color: #D1B27F; font-style: italic; font-weight: 700;"
+                >
+                  Best Case
+                </p>
+                <p class="text-white text-sm leading-relaxed">
+                  I change your life. Your dog becomes the companion you always
+                  knew they could be.
+                </p>
+              </div>
+              <div class="text-center p-5 rounded-xl border border-white/10">
+                <p
+                  class="headline-accent text-lg mb-2"
+                  style="color: #D1B27F; font-style: italic; font-weight: 700;"
+                >
+                  Worst Case
+                </p>
+                <p class="text-white text-sm leading-relaxed">
+                  I trained your dog for free. You have no risk. None.
+                </p>
+              </div>
+            </div>
+            <p
+              class="text-center mt-5 text-sm font-semibold"
+              style="color: rgba(255,255,255,0.55);"
+            >
+              You have absolutely nothing to lose.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── RDI GUARANTEE ── -->
+      <div
+        id="rdi-guarantee"
+        class="rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_6px_28px_rgba(0,0,0,0.07)] bg-[#FCF9FA] flex flex-col"
+      >
+        <div class="h-[6px] w-full" style="background: #7D2C2D;"></div>
+        <div class="p-8 md:p-10">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-5">
+            <div>
+              <span
+                class="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-3 inline-block"
+                style="background: rgba(125,44,45,0.07); color: #7D2C2D; border: 1px solid rgba(125,44,45,0.18);"
+                >Reactive Dog Intensive</span
+              >
+              <h2
+                class="text-2xl md:text-3xl font-heading font-bold"
+                style="color: #0B2744;"
+              >
+                The Goals Guarantee
+              </h2>
+            </div>
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background: rgba(125,44,45,0.08); border: 1.5px solid rgba(125,44,45,0.18);"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#7D2C2D"
+                stroke-width="1.8"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+
+          <p
+            class="text-base leading-relaxed mb-7"
+            style="color: rgba(17,32,50,0.72);"
+          >
+            The Reactive Dog Intensive guarantee is built around goals —
+            specifically, the goals we agree on together during your initial
+            consultation. Because every case is unique, we define success
+            together before we begin.
+          </p>
+
+          <div class="mb-7">
+            <p
+              class="text-[11px] font-bold tracking-[0.22em] uppercase mb-4"
+              style="color: rgba(125,44,45,0.60);"
+            >
+              Example Goal Criteria
+            </p>
+            <div class="grid sm:grid-cols-2 gap-3">
+              {
+                [
+                  "Walk calmly past other dogs without lunging",
+                  "Greet unfamiliar people without aggression",
+                  "Hold a reliable down-stay in a public setting",
+                  "Respond to handler cues under threshold distraction",
+                  "Demonstrate comfortable on-leash exposure to neutral dogs",
+                  "Achieve agreed-upon threshold distances with measurable improvement",
+                ].map((g) => (
+                  <div
+                    class="flex items-start gap-2.5 text-sm"
+                    style="color: rgba(17,32,50,0.72);"
+                  >
+                    <svg
+                      class="w-4 h-4 mt-0.5 flex-shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="#7D2C2D"
+                      stroke-width="2.5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    {g}
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl p-6 border"
+            style="background: rgba(125,44,45,0.04); border-color: rgba(125,44,45,0.14);"
+          >
+            <p class="font-bold text-sm mb-2" style="color: #7D2C2D;">
+              Our Commitment
+            </p>
+            <p
+              class="text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.68);"
+            >
+              If we reach the end of your scheduled program duration and the
+              mutually-agreed goals have not been met, we will continue working
+              with you at no additional cost — for as long as it takes to get
+              there. No re-enrollment, no extra charges.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+     FAQ ACCORDION
+══════════════════════════════════════════════ -->
+  <div class="bg-[#112032] py-16 px-4">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <p
+          class="text-[11px] font-bold tracking-[0.25em] uppercase mb-3"
+          style="color: rgba(209,178,127,0.55);"
+        >
+          Common Questions
+        </p>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-white">
+          Guarantee FAQ
+        </h2>
+      </div>
+
+      <div class="space-y-2">
+        {
+          [
+            {
+              q: "What counts as 'measurable improvement'?",
+              a: "Measurable improvement is defined at the start of the program based on your dog's specific behaviors — typically things like reduced lunging intensity, improved threshold distance, calmer baseline on the walk, or cleaner response to handler cues. For the CCC, it's documented via your before/after videos.",
+            },
+            {
+              q: "What if I miss a session?",
+              a: "For the Calm Companion Challenge, attending all 4 sessions is a requirement of the guarantee. One make-up credit may be offered within the program window if notified at least 48 hours in advance. Missed sessions without proper notice or make-up completion will affect guarantee eligibility.",
+            },
+            {
+              q: "How do refunds work if I qualify?",
+              a: "For the CCC: once we've confirmed all requirements were met, refunds are processed promptly. For the Private Accelerator: if you're not satisfied with the level of service, a refund check is issued directly. No bureaucratic back-and-forth.",
+            },
+            {
+              q: "What if my goals change mid-program?",
+              a: "We're flexible. If your priority goals shift, let us know as early as possible so we can adjust the training plan. Guarantee terms apply to the goals agreed upon at the start — if goals change significantly, we'll align on a new baseline together.",
+            },
+            {
+              q: "Does the guarantee apply to all programs?",
+              a: "Each program has its own guarantee structure: the CCC has a full refund guarantee (requirements-based), the Private Accelerator has a satisfaction guarantee, and the RDI has a goals-based continuation guarantee. All three carry real commitment from us — not just fine print.",
+            },
+          ].map((faq, i) => (
+            <div class="rounded-xl overflow-hidden border border-white/10">
+              <button
+                class="w-full flex justify-between items-center px-6 py-4 text-left"
+                onclick={`toggleGuaranteeFaq('gfaq-${i}')`}
+                style="background: rgba(255,255,255,0.04);"
+              >
+                <span class="text-sm font-medium text-white pr-4">{faq.q}</span>
+                <svg
+                  id={`gfaq-${i}-icon`}
+                  class="w-4 h-4 flex-shrink-0 transition-transform duration-200"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#D1B27F"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </button>
+              <div
+                id={`gfaq-${i}`}
+                class="hidden px-6 pb-4"
+                style="background: rgba(255,255,255,0.02);"
+              >
+                <p
+                  class="text-sm leading-relaxed"
+                  style="color: rgba(255,255,255,0.55);"
+                >
+                  {faq.a}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════════════ -->
+  <div class="relative overflow-hidden bg-[#FBF1E9]">
+    <div
+      class="w-full h-[3px]"
+      style="background: linear-gradient(to right, #0F6D72, #D1B27F, #7D2C2D);"
+    >
+    </div>
+    <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+      <p
+        class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4"
+        style="color: rgba(15,109,114,0.60);"
+      >
+        Zero Risk. Real Results.
+      </p>
+      <h2
+        class="text-3xl md:text-4xl font-heading font-bold mb-4"
+        style="color: #0B2744;"
+      >
+        Ready to Get Started?<br />
+        <span
+          class="headline-accent"
+          style="color: #D1B27F; font-style: italic; font-weight: 700;"
+          >We've Got You Covered.</span
+        >
+      </h2>
+      <p
+        class="text-base mb-10 max-w-lg mx-auto"
+        style="color: rgba(17,32,50,0.60);"
+      >
+        Every program comes with a real guarantee. Start with a free behavioral
+        assessment and we'll find the right fit for your dog.
+      </p>
+      <a
+        href="/apply"
+        class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+        style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);"
+      >
+        Apply for Free Behavioral Assessment →
+      </a>
+      <div class="mt-5">
+        <a
+          href="/contact"
+          class="text-xs transition-colors"
+          style="color: rgba(17,32,50,0.45); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(17,32,50,0.20);"
+          >Have questions? Contact us.</a
+        >
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  function toggleGuaranteeFaq(id: string) {
+    const el = document.getElementById(id);
+    const icon = document.getElementById(`${id}-icon`);
+    if (!el || !icon) return;
+    const hidden = el.classList.toggle("hidden");
+    (icon as HTMLElement).style.transform = hidden ? "" : "rotate(45deg)";
+  }
+  (window as any).toggleGuaranteeFaq = toggleGuaranteeFaq;
+</script>

@@ -1,0 +1,43 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import Banner from "../components/Banner.astro";
+import "../styles/global.css";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link
+            rel="icon"
+            type="image/png"
+            href="/images/Circle%20Navy%20Dog%20Mascot%20Light%20Gold%20BG%20Transparent%20-%20Good%20Doggos.png"
+        />
+        <meta name="generator" content={Astro.generator} />
+        <title>Good Doggos</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Italiana&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="flex flex-col min-h-screen">
+        <div
+            id="site-header"
+            class="fixed top-0 left-0 right-0 z-50 flex flex-col"
+        >
+            <Banner />
+            <Navbar />
+        </div>
+        <main class="flex-grow">
+            <slot />
+        </main>
+        <Footer />
+        <script>
+            import "../scripts/reveal.js";
+        </script>
+    </body>
+</html>

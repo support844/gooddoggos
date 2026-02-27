@@ -1,0 +1,662 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const sections = [
+  { num: "1", title: "Agreement to Terms" },
+  { num: "2", title: "Services" },
+  { num: "3", title: "Payments and Refunds" },
+  { num: "4", title: "Client Responsibilities" },
+  { num: "5", title: "Assumption of Risk & Limitation of Liability" },
+  { num: "6", title: "Intellectual Property" },
+  { num: "7", title: "Governing Law" },
+  { num: "8", title: "Privacy" },
+  { num: "9", title: "Third-Party & Affiliate Links" },
+  { num: "10", title: "Communications" },
+  { num: "11", title: "Changes to These Terms" },
+  { num: "12", title: "Contact" },
+];
+---
+
+<Layout>
+  <!-- ══════════════════════════════════════════════
+     PAGE HEADER STRIP
+══════════════════════════════════════════════ -->
+  <div class="bg-[#0B2744] pt-36 pb-14 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p
+        class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4"
+        style="color: rgba(209,178,127,0.55);"
+      >
+        Legal
+      </p>
+      <h1
+        class="font-heading font-bold text-white mb-3"
+        style="font-size: clamp(2.2rem, 4.5vw, 3.2rem);"
+      >
+        Terms of Service
+      </h1>
+      <p class="text-sm" style="color: rgba(255,255,255,0.40);">
+        Last Updated: October 28, 2025
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+     BODY
+══════════════════════════════════════════════ -->
+  <div class="bg-[#FBF1E9] py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-[240px_1fr] gap-12 items-start">
+        <!-- Table of Contents (sticky sidebar) -->
+        <aside class="hidden md:block sticky top-28">
+          <div
+            class="rounded-2xl border border-[#E6DAC6] bg-[#FCF9FA] p-6 shadow-[0_2px_12px_rgba(0,0,0,0.05)]"
+          >
+            <p
+              class="text-[10px] font-bold tracking-widest uppercase mb-4"
+              style="color: rgba(15,109,114,0.65);"
+            >
+              Contents
+            </p>
+            <nav class="space-y-2">
+              {
+                sections.map((s) => (
+                  <a
+                    href={`#section-${s.num}`}
+                    class="flex items-center gap-2 text-xs transition-colors duration-150 group"
+                    style="color: rgba(17,32,50,0.55);"
+                  >
+                    <span
+                      class="font-bold"
+                      style="color: rgba(209,178,127,0.70);"
+                    >
+                      {s.num}.
+                    </span>
+                    <span class="group-hover:underline">{s.title}</span>
+                  </a>
+                ))
+              }
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="space-y-12">
+          <!-- Preamble -->
+          <div
+            class="text-sm leading-relaxed"
+            style="color: rgba(17,32,50,0.70);"
+          >
+            <p>
+              Please read these Terms of Service ("Terms") carefully before
+              using the Good Doggos website, booking any service, or purchasing
+              any program or product. By accessing our website or engaging our
+              services in any capacity, you agree to be bound by these Terms. If
+              you do not agree, please do not use our services.
+            </p>
+          </div>
+
+          <!-- Section divider helper -->
+          {/* sections rendered below */}
+
+          <!-- 1. Agreement to Terms -->
+          <section id="section-1" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">01</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Agreement to Terms
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                These Terms constitute a legally binding agreement between you
+                ("Client," "you") and Good Doggos ("we," "us," "our"). Your
+                agreement is indicated by any of the following actions:
+              </p>
+              <ul class="space-y-2 ml-4">
+                {
+                  [
+                    "Visiting or using the Good Doggos website or any associated digital property",
+                    "Booking or attending any training session, consultation, or program",
+                    "Purchasing any program, course, product, or digital content from us",
+                    "Completing an application, enrollment form, or onboarding process",
+                  ].map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style="background: #D1B27F;"
+                      />
+                      {item}
+                    </li>
+                  ))
+                }
+              </ul>
+              <p>
+                If you are booking or purchasing on behalf of another person or
+                organization, you represent that you have authority to bind them
+                to these Terms.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 2. Services -->
+          <section id="section-2" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">02</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Services
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                Good Doggos provides dog training services, group and private
+                programs, online courses, digital content, coaching, and related
+                products ("Services"). Services are described on our website and
+                may include, without limitation:
+              </p>
+              <ul class="space-y-2 ml-4">
+                {
+                  [
+                    "The Calm Companion Challenge (group training program)",
+                    "Private Accelerator (private training program)",
+                    "Reactive Dog Intensive (specialized behavior modification program)",
+                    "Breakthrough Sessions (one-time private sessions)",
+                    "Digital products, training plans, and video content",
+                  ].map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style="background: #D1B27F;"
+                      />
+                      {item}
+                    </li>
+                  ))
+                }
+              </ul>
+              <p>
+                We reserve the right to modify, suspend, or discontinue any
+                Service at any time with or without notice. Scheduling, program
+                structure, and availability are subject to change. We will make
+                reasonable efforts to notify enrolled clients of material
+                changes that affect their program.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 3. Payments and Refunds -->
+          <section id="section-3" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">03</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Payments and Refunds
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                <strong style="color: #0B2744;">Payment.</strong> All fees are due
+                in full upon purchase unless an alternative arrangement is explicitly
+                confirmed in writing by Good Doggos. Prices are listed in USD and
+                are subject to change. Published prices at the time of purchase apply
+                to that transaction.
+              </p>
+              <p>
+                <strong style="color: #0B2744;"
+                  >Refunds &amp; Guarantees.</strong
+                > Each program carries specific guarantee terms, which are described
+                on our <a
+                  href="/guarantee"
+                  style="color: #0F6D72; text-decoration: underline;"
+                  >Guarantee page</a
+                >. The terms on that page govern all refund eligibility and are
+                incorporated into these Terms by reference. Refunds, where
+                applicable, are subject to those terms being fully satisfied.
+              </p>
+              <p>
+                <strong style="color: #0B2744;">Chargebacks.</strong> Initiating
+                a chargeback or payment dispute with your bank or card issuer prior
+                to contacting us to resolve a billing concern is a breach of these
+                Terms. We ask that any disputes be raised with us directly first.
+                Clients who initiate unauthorized chargebacks may be permanently
+                barred from future services.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 4. Client Responsibilities -->
+          <section id="section-4" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">04</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Client Responsibilities
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                Your participation and effort directly affect your dog's
+                progress. By enrolling in any Good Doggos program, you agree to
+                the following responsibilities:
+              </p>
+              <ul class="space-y-2.5 ml-4">
+                {
+                  [
+                    {
+                      b: "Accurate Disclosure.",
+                      t: "Provide honest and complete information about your dog's behavioral history, medical history, bite history, and any known aggression incidents before services begin. Failure to disclose known bite history or aggression releases Good Doggos from liability for resulting incidents.",
+                    },
+                    {
+                      b: "Equipment Use.",
+                      t: "Use all training equipment only as instructed by your trainer. Do not modify, misuse, or use equipment outside of sessions without trainer guidance.",
+                    },
+                    {
+                      b: "Attendance & Assignments.",
+                      t: "Attend all scheduled sessions and complete all assigned practice and homework between sessions. Progress depends on consistent, daily implementation.",
+                    },
+                    {
+                      b: "Safety Protocols.",
+                      t: "Follow all safety protocols set by your trainer, including but not limited to muzzle use, leash requirements, and handling procedures. Ensure your dog is properly secured at all times when on Good Doggos premises or during sessions.",
+                    },
+                    {
+                      b: "Participation.",
+                      t: "Actively engage in the program — ask questions, post required updates, and communicate struggles to your trainer in a timely manner.",
+                    },
+                    {
+                      b: "Results Dependence.",
+                      t: "You acknowledge that training outcomes are directly tied to your consistency, effort, and participation. Good Doggos cannot guarantee results for clients who do not follow the program as designed.",
+                    },
+                  ].map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style="background: #D1B27F;"
+                      />
+                      <span>
+                        <strong style="color: #0B2744;">{item.b}</strong>{" "}
+                        {item.t}
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 5. Assumption of Risk + Limitation of Liability -->
+          <section id="section-5" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">05</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Assumption of Risk &amp; Limitation of Liability
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                <strong style="color: #0B2744;">Inherent Risks.</strong> Dog training
+                involves inherent risks, including but not limited to bites, scratches,
+                property damage, reactivity incidents, and unpredictable animal behavior.
+                These risks exist even when reasonable safety protocols are followed.
+              </p>
+              <p>
+                <strong style="color: #0B2744;">Client Responsibility.</strong> You
+                remain solely responsible for your dog's behavior, handler decisions
+                made during and between sessions, and all third-party interactions
+                involving your dog. Good Doggos acts as a trainer and educator —
+                handling decisions ultimately remain yours.
+              </p>
+              <p>
+                <strong style="color: #0B2744;">Indemnification.</strong> You agree
+                to indemnify, defend, and hold harmless Good Doggos, its owner, trainers,
+                staff, and helpers from and against any claims, damages, injuries,
+                or losses caused by or arising from your dog's actions, your handling
+                decisions, or your breach of these Terms.
+              </p>
+              <p>
+                <strong style="color: #0B2744;">Liability Cap.</strong> To the maximum
+                extent permitted by applicable law, Good Doggos's total liability
+                to you for any claim arising out of or related to our services shall
+                not exceed the total amount you paid for the specific service giving
+                rise to the claim.
+              </p>
+              <p>
+                <strong style="color: #0B2744;"
+                  >No Guarantee of Specific Results.</strong
+                > Except as expressly set forth on our <a
+                  href="/guarantee"
+                  style="color: #0F6D72; text-decoration: underline;"
+                  >Guarantee page</a
+                >, Good Doggos makes no guarantee of specific behavioral
+                outcomes. Animal behavior is complex and influenced by factors
+                outside our control. Guarantees on that page apply only where
+                all stated requirements are fulfilled.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 6. Intellectual Property -->
+          <section id="section-6" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">06</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Intellectual Property
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                All content on the Good Doggos website and within our programs —
+                including but not limited to training plans, video content,
+                written materials, graphics, logos, branding, course structures,
+                and methodology — is the exclusive intellectual property of Good
+                Doggos and its owner.
+              </p>
+              <p>
+                <strong style="color: #0B2744;">Prohibited Uses.</strong> Without
+                prior written permission, you may not reproduce, distribute, publish,
+                sell, resell, record, screenshot, screen-record, or share any Good
+                Doggos content in any medium.
+              </p>
+              <p>
+                <strong style="color: #0B2744;">Personal-Use License.</strong> Clients
+                who purchase a program or digital product are granted a limited,
+                non-exclusive, non-transferable, revocable license to access and
+                use that content for their own personal, non-commercial training
+                purposes during the access period. This license does not transfer
+                any ownership rights.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 7. Governing Law -->
+          <section id="section-7" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">07</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Governing Law
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                These Terms are governed by and construed in accordance with the
+                laws of the State of California, without regard to its conflict
+                of law provisions. Any legal action or proceeding related to
+                these Terms shall be brought exclusively in the state or federal
+                courts located in California, and you consent to the personal
+                jurisdiction of such courts.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 8. Privacy -->
+          <section id="section-8" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">08</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Privacy
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                Your use of Good Doggos services is also governed by our Privacy
+                Policy, which is incorporated herein by reference. The Privacy
+                Policy describes how we collect, use, and protect your
+                information. By using our services, you consent to the data
+                practices described therein.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 9. Third-Party & Affiliate Links -->
+          <section id="section-9" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">09</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Third-Party &amp; Affiliate Links
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                Our website and content may contain links to third-party
+                websites, products, or services — including Amazon affiliate
+                links on our Shop page. These links are provided for convenience
+                and informational purposes only. Good Doggos does not endorse,
+                control, or assume responsibility for the content, privacy
+                practices, or actions of any third-party site or vendor.
+              </p>
+              <p>
+                We may earn a small commission on qualifying purchases made
+                through affiliate links at no additional cost to you. This does
+                not influence our product recommendations, which reflect our
+                genuine trainer opinions.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 10. Communications -->
+          <section id="section-10" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">10</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Communications
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                By booking a service or purchasing a program, you consent to
+                receive transactional communications from Good Doggos via email
+                or text (SMS), including booking confirmations, scheduling
+                updates, program materials, and administrative notices.
+              </p>
+              <p>
+                For marketing or promotional communications, we will obtain
+                separate consent where required by law. You may opt out of
+                marketing messages at any time by following the unsubscribe link
+                in any email or replying STOP to any SMS. Transactional messages
+                related to active bookings or programs cannot be opted out of
+                without canceling the relevant service.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 11. Changes to These Terms -->
+          <section id="section-11" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">11</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Changes to These Terms
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                We may update these Terms at any time. Changes become effective
+                when posted to this page, with the "Last Updated" date revised
+                accordingly. We encourage you to review these Terms
+                periodically. Your continued use of our services after changes
+                are posted constitutes your acceptance of the revised Terms.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 12. Contact -->
+          <section id="section-12" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">12</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Contact
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>If you have questions about these Terms, please contact us:</p>
+              <div
+                class="rounded-xl p-5 border border-[#E6DAC6] bg-white inline-block mt-2"
+              >
+                <p class="font-bold text-sm mb-1" style="color: #0B2744;">
+                  Good Doggos
+                </p>
+                <p>
+                  Via our <a
+                    href="/apply"
+                    style="color: #0F6D72; text-decoration: underline;"
+                    >contact/application form</a
+                  > or by reaching out through our social media channels.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Questions callout card -->
+          <div
+            class="rounded-2xl p-7 border flex items-start gap-5"
+            style="background: rgba(15,109,114,0.04); border-color: rgba(15,109,114,0.15);"
+          >
+            <div
+              class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background: rgba(15,109,114,0.10);"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#0F6D72"
+                stroke-width="2"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-bold text-sm mb-1" style="color: #0B2744;">
+                Questions About These Terms?
+              </p>
+              <p class="text-sm" style="color: rgba(17,32,50,0.62);">
+                We're happy to clarify anything before you book. <a
+                  href="/apply"
+                  style="color: #0F6D72; text-decoration: underline; font-weight: 600;"
+                  >Contact us here</a
+                > and we'll respond promptly.
+              </p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</Layout>

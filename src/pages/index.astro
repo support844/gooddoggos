@@ -1,0 +1,1227 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import TestimonialSlider from "../components/TestimonialSlider.astro";
+import CTASection from "../components/CTASection.astro";
+import { getCollection } from "astro:content";
+import Parser from "rss-parser";
+
+// Fetch Substack Feed
+let latestPosts: any[] = [];
+try {
+    const parser = new Parser();
+    const feed = await parser.parseURL("https://gooddoggos.substack.com/feed");
+    latestPosts = feed.items.slice(0, 3);
+} catch (e) {
+    console.error("Failed to fetch Substack feed", e);
+}
+
+const programs = await getCollection("programs");
+---
+
+<Layout>
+    <Hero />
+
+    <!-- What to Expect in Your Free Session -->
+    <section class="py-24 px-4 relative overflow-hidden bg-[#FBF1E9]">
+        <!-- Lighting layers for depth -->
+        <!-- Center Spotlight (Subtle) -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-white opacity-40 rounded-full blur-[140px] pointer-events-none z-0"
+        >
+        </div>
+
+        <!-- Subtle brand watermark/dog outline on the right -->
+        <div
+            class="absolute right-[-10%] top-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none z-0 w-[600px] h-[600px]"
+        >
+            <img
+                src="/images/Horizontal logo - Good Doggos - Navy.png"
+                alt="Watermark"
+                class="w-full h-full object-contain filter grayscale invert"
+            />
+        </div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20">
+                <p class="kicker kicker-dark mb-4">Our Process</p>
+                <h2
+                    class="text-4xl md:text-5xl font-heading font-bold text-primary-navy mb-4 leading-tight"
+                >
+                    What to Expect in Your <br />
+                    <span
+                        class="headline-accent text-4xl md:text-5xl font-bold mt-2 block"
+                        >Free Session</span
+                    >
+                </h2>
+                <p
+                    class="text-lg text-primary-navy/70 max-w-2xl mx-auto font-body"
+                >
+                    Our proven protocol to understand your dog and build the
+                    perfect roadmap for transformation.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 items-stretch mb-12">
+                <!-- ================= THE 3 PROTOCOL STEPS ================= -->
+
+                <!-- STEP 1: Application -->
+                <div
+                    class="bg-[#FCF9FA] rounded-[24px] border border-[#EAE1D3]/60 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4px_10px_rgba(11,39,68,0.04)] p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500"
+                >
+                    <!-- Step Watermark Number -->
+                    <div
+                        class="absolute top-6 right-8 font-heading font-bold text-[80px] leading-none text-primary-navy/10 select-none group-hover:text-primary-navy/15 transition-colors"
+                    >
+                        01
+                    </div>
+
+                    <!-- Icon Chip -->
+                    <div
+                        class="w-14 h-14 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-accent-gold/20"
+                    >
+                        <svg
+                            class="w-7 h-7 text-accent-gold"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                            ></path>
+                        </svg>
+                    </div>
+
+                    <h3
+                        class="text-2xl font-heading font-bold text-primary-navy mb-4"
+                    >
+                        The Application
+                    </h3>
+                    <p
+                        class="text-secondary-slate/85 leading-[1.7] text-[15px] font-body"
+                    >
+                        Secure your spot. Because we take a limited number of
+                        cases, we review every application so we can come
+                        prepared with the right plan and confirm you're a
+                        candidate for our programs.
+                    </p>
+                </div>
+
+                <!-- STEP 2: In-Person Diagnostic -->
+                <div
+                    class="bg-[#FCF9FA] rounded-[24px] border border-[#EAE1D3]/60 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4px_10px_rgba(11,39,68,0.04)] p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500"
+                >
+                    <!-- Step Watermark Number -->
+                    <div
+                        class="absolute top-6 right-8 font-heading font-bold text-[80px] leading-none text-primary-navy/10 select-none group-hover:text-primary-navy/15 transition-colors"
+                    >
+                        02
+                    </div>
+
+                    <!-- Icon Chip -->
+                    <div
+                        class="w-14 h-14 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-accent-gold/20"
+                    >
+                        <svg
+                            class="w-7 h-7 text-accent-gold"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            ></path>
+                        </svg>
+                    </div>
+
+                    <h3
+                        class="text-2xl font-heading font-bold text-primary-navy mb-4"
+                    >
+                        In-Person Diagnostic
+                    </h3>
+                    <p
+                        class="text-secondary-slate/85 leading-[1.7] text-[15px] font-body"
+                    >
+                        We assess triggers, reactivity patterns, and handling
+                        gaps, then teach you 1–2 starter drills you can use
+                        immediately to start shifting your dog's state.
+                    </p>
+                </div>
+
+                <!-- STEP 3: The Roadmap -->
+                <div
+                    class="bg-[#FCF9FA] rounded-[24px] border border-[#EAE1D3]/60 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4_10px_rgba(11,39,68,0.04)] p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500"
+                >
+                    <!-- Step Watermark Number -->
+                    <div
+                        class="absolute top-6 right-8 font-heading font-bold text-[80px] leading-none text-primary-navy/10 select-none group-hover:text-primary-navy/15 transition-colors"
+                    >
+                        03
+                    </div>
+
+                    <!-- Icon Chip -->
+                    <div
+                        class="w-14 h-14 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-accent-gold/20"
+                    >
+                        <svg
+                            class="w-7 h-7 text-accent-gold"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                            ></path>
+                        </svg>
+                    </div>
+
+                    <h3
+                        class="text-2xl font-heading font-bold text-primary-navy mb-4"
+                    >
+                        The Roadmap
+                    </h3>
+                    <p
+                        class="text-secondary-slate/85 leading-[1.7] text-[15px] font-body"
+                    >
+                        We sit down to review findings and hand you a custom
+                        plan. You'll know what's driving the behavior, what to
+                        do first, and the best program to support you.
+                    </p>
+                </div>
+            </div>
+
+            <!-- "You'll Leave With" Card -->
+            <div class="max-w-3xl mx-auto">
+                <div
+                    class="bg-primary-navy rounded-[24px] shadow-[0_30px_60px_rgba(11,39,68,0.25)] p-8 md:p-12 relative overflow-hidden"
+                >
+                    <!-- Material Sheen -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none z-0"
+                    >
+                    </div>
+
+                    <div
+                        class="relative z-10 flex flex-col md:flex-row items-center gap-10"
+                    >
+                        <div class="flex-grow">
+                            <h3
+                                class="text-2xl font-heading font-bold text-white mb-8"
+                            >
+                                You'll Leave With:
+                            </h3>
+                            <ul class="space-y-4">
+                                <li
+                                    class="flex items-center gap-4 text-white/90 font-body"
+                                >
+                                    <div
+                                        class="w-2 h-2 rounded-full bg-accent-gold shadow-[0_0_10px_rgba(209,178,127,0.5)]"
+                                    >
+                                    </div>
+                                    Your dog's root triggers
+                                </li>
+                                <li
+                                    class="flex items-center gap-4 text-white/90 font-body"
+                                >
+                                    <div
+                                        class="w-2 h-2 rounded-full bg-accent-gold shadow-[0_0_10px_rgba(209,178,127,0.5)]"
+                                    >
+                                    </div>
+                                    Custom weekly roadmap
+                                </li>
+                                <li
+                                    class="flex items-center gap-4 text-white/90 font-body"
+                                >
+                                    <div
+                                        class="w-2 h-2 rounded-full bg-accent-gold shadow-[0_0_10px_rgba(209,178,127,0.5)]"
+                                    >
+                                    </div>
+                                    First steps toward faster progress
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="flex-shrink-0">
+                            <a href="/apply" class="btn-apply px-10">
+                                Book Your Free Assessment
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reactivity Spectrum -->
+    <section class="py-24 bg-[#FCF9FA] px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20">
+                <p class="kicker kicker-dark mb-4">Diagnostics</p>
+                <h2
+                    class="text-4xl md:text-5xl font-heading font-bold text-primary-navy mb-4 leading-tight"
+                >
+                    Find Your Dog On The <br />
+                    <span
+                        class="headline-accent text-5xl md:text-6xl mt-2 block"
+                        >Reactivity Spectrum</span
+                    >
+                </h2>
+                <p
+                    class="text-lg text-primary-navy/60 max-w-2xl mx-auto font-body"
+                >
+                    Where does your dog fall? We have a tailored protocol for
+                    every stage of arousal and reactivity.
+                </p>
+            </div>
+
+            <div class="relative flex flex-col md:flex-row gap-8 lg:gap-12">
+                <!-- FAR LEFT VERTICAL RAIL (Desktop) -->
+                <div
+                    class="hidden md:flex flex-col items-center py-10 w-12 flex-shrink-0 relative"
+                >
+                    <!-- The Gradient Rail -->
+                    <div
+                        class="absolute inset-y-0 w-2.5 bg-gradient-to-b from-accent-brightTeal via-accent-warmGold to-[#6B1B1B] rounded-full opacity-80"
+                    >
+                    </div>
+
+                    <div
+                        class="relative h-full flex flex-col justify-between py-10 text-[11px] font-bold text-secondary-slate/60 uppercase tracking-widest leading-none"
+                    >
+                        <div
+                            class="flex flex-col items-center gap-2 transform -rotate-90 origin-center translate-y-4"
+                        >
+                            <span>LOW</span>
+                            <span class="rotate-90">→</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center gap-2 transform -rotate-90 origin-center"
+                        >
+                            <span>MODERATE</span>
+                            <span class="rotate-90">→</span>
+                        </div>
+                        <div
+                            class="flex flex-col items-center gap-2 transform -rotate-90 origin-center -translate-y-4"
+                        >
+                            <span>HIGH</span>
+                            <span class="rotate-90">→</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SPECTRUM BANDS -->
+                <div class="flex-grow space-y-6">
+                    <!-- TIER 1: Frustrated Greeter (Teal) -->
+                    <div class="relative">
+                        <div
+                            class="bg-white rounded-[22px] shadow-[0_12px_45px_rgba(11,39,68,0.05)] border border-[#EAE1D3]/50 overflow-hidden flex flex-col md:flex-row items-stretch group transition-all duration-500"
+                        >
+                            <!-- Left Slanted Color Panel -->
+                            <div
+                                class="w-full md:w-[28%] flex-shrink-0 relative overflow-hidden flex items-center p-6 md:p-8"
+                            >
+                                <!-- Dog Photo Background Texture Layer -->
+                                <div
+                                    class="absolute inset-0 grayscale bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=1000');"
+                                >
+                                </div>
+                                <!-- Color Overlay Layer -->
+                                <div class="absolute inset-0 bg-[#00727A]/78">
+                                </div>
+                                <!-- Gloss Highlight -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-white/15 via-transparent to-transparent pointer-events-none"
+                                >
+                                </div>
+
+                                <!-- Slant overlay for the panel edge -->
+                                <div
+                                    class="absolute top-0 bottom-0 -right-8 w-16 bg-[#00727A] transform -skew-x-[15deg] hidden md:block"
+                                >
+                                </div>
+
+                                <div class="relative z-10 flex flex-col gap-3">
+                                    <!-- Icon Badge Overlapping Panel -->
+                                    <div
+                                        class="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/20 shadow-lg"
+                                    >
+                                        <svg
+                                            class="w-6 h-6 text-white"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="text-[22px] font-heading font-bold text-white leading-tight"
+                                        >
+                                            Frustrated Greeter
+                                        </h3>
+                                        <p
+                                            class="text-white/80 font-body italic text-[13px] mt-0.5"
+                                        >
+                                            Pulling & Excitement
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content area -->
+                            <div
+                                class="p-6 md:p-8 md:pl-12 flex-grow flex flex-col lg:flex-row items-start lg:items-center gap-6 md:gap-12"
+                            >
+                                <!-- Bullets Column -->
+                                <div class="lg:w-[45%]">
+                                    <ul class="space-y-3">
+                                        <li
+                                            class="flex items-start gap-4 text-secondary-slate text-[14px] font-body leading-relaxed"
+                                        >
+                                            <div
+                                                class="w-1.5 h-1.5 rounded-full bg-[#00727A] mt-1.5 flex-shrink-0"
+                                            >
+                                            </div>
+                                            Pulls on leash toward people or dogs
+                                        </li>
+                                        <li
+                                            class="flex items-start gap-4 text-secondary-slate text-[14px] font-body leading-relaxed"
+                                        >
+                                            <div
+                                                class="w-1.5 h-1.5 rounded-full bg-[#00727A] mt-1.5 flex-shrink-0"
+                                            >
+                                            </div>
+                                            Whines or barks out of excitement
+                                        </li>
+                                        <li
+                                            class="flex items-start gap-4 text-secondary-slate text-[14px] font-body leading-relaxed"
+                                        >
+                                            <div
+                                                class="w-1.5 h-1.5 rounded-full bg-[#00727A] mt-1.5 flex-shrink-0"
+                                            >
+                                            </div>
+                                            Friendly intent but over-aroused
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Best Fit Column -->
+                                <div
+                                    class="lg:w-[45%] lg:border-l border-secondary-slate/10 lg:pl-10 flex flex-col gap-4 w-full"
+                                >
+                                    <div>
+                                        <div
+                                            class="flex items-center justify-between mb-2"
+                                        >
+                                            <p
+                                                class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest"
+                                            >
+                                                Best Fit:
+                                            </p>
+                                            <div
+                                                class="flex items-center gap-2"
+                                            >
+                                                <span
+                                                    class="text-[10px] font-bold font-body text-secondary-slate/50"
+                                                    >Intensity: <span
+                                                        class="text-primary-navy"
+                                                        >Low</span
+                                                    >
+                                                </span>
+                                                <div class="flex gap-1">
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-[#00727A]"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-[#00727A]"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-secondary-slate/10"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-secondary-slate/10"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-secondary-slate/10"
+                                                    >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bg-[#00727A]/5 border border-[#00727A]/10 rounded-xl px-6 py-3 w-full"
+                                        >
+                                            <span
+                                                class="text-primary-navy font-bold text-[16px] block leading-tight tracking-tight text-center lg:text-left"
+                                                >Calm Companion Challenge</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <a
+                                        href="/programs#calm-companion"
+                                        class="bg-[#00727A] text-white font-bold text-[13px] py-3.5 rounded-xl w-full flex items-center justify-center gap-2 hover:bg-[#005F65] transition-colors tracking-wide shadow-sm"
+                                    >
+                                        Learn More <span>&rarr;</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TIER 2: Reactive Protector (Gold) -->
+                    <div class="relative">
+                        <div
+                            class="bg-white rounded-[24px] shadow-[0_15px_60px_rgba(11,39,68,0.06)] border border-[#EAE1D3]/50 overflow-hidden flex flex-col md:flex-row items-stretch group transition-all duration-500"
+                        >
+                            <!-- Left Slanted Color Panel -->
+                            <div
+                                class="w-full md:w-[28%] flex-shrink-0 relative overflow-hidden flex items-center p-6 md:p-8"
+                            >
+                                <!-- Dog Photo Background Texture Layer -->
+                                <div
+                                    class="absolute inset-0 grayscale bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&q=80&w=1000');"
+                                >
+                                </div>
+                                <!-- Color Overlay Layer -->
+                                <div class="absolute inset-0 bg-[#D1B27F]/78">
+                                </div>
+                                <!-- Gloss Highlight -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-white/15 via-transparent to-transparent pointer-events-none"
+                                >
+                                </div>
+
+                                <!-- Slant overlay for the panel edge -->
+                                <div
+                                    class="absolute top-0 bottom-0 -right-8 w-16 bg-[#D1B27F] transform -skew-x-[15deg] hidden md:block"
+                                >
+                                </div>
+
+                                <div class="relative z-10 flex flex-col gap-3">
+                                    <div
+                                        class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30 shadow-lg"
+                                    >
+                                        <svg
+                                            class="w-6 h-6 text-white"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="text-[22px] font-heading font-bold text-white leading-tight"
+                                        >
+                                            Reactive Protector
+                                        </h3>
+                                        <p
+                                            class="text-white/80 font-body italic text-[13px] mt-0.5"
+                                        >
+                                            Lunging & Barking
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="p-6 md:p-8 md:pl-12 flex-grow flex flex-col lg:flex-row items-start lg:items-center gap-6 md:gap-12"
+                            >
+                                <!-- Bullets Column -->
+                                <div class="lg:w-[45%]">
+                                    <ul class="space-y-3">
+                                        <li
+                                            class="flex items-start gap-4 text-secondary-slate text-[14px] font-body leading-relaxed"
+                                        >
+                                            <div
+                                                class="w-1.5 h-1.5 rounded-full bg-[#D1B27F] mt-1.5 flex-shrink-0"
+                                            >
+                                            </div>
+                                            Lunges and barks at other dogs or strangers
+                                        </li>
+                                        <li
+                                            class="flex items-start gap-4 text-secondary-slate text-[14px] font-body leading-relaxed"
+                                        >
+                                            <div
+                                                class="w-1.5 h-1.5 rounded-full bg-[#D1B27F] mt-1.5 flex-shrink-0"
+                                            >
+                                            </div>
+                                            Alert barking at home triggers
+                                        </li>
+                                        <li
+                                            class="flex items-start gap-4 text-secondary-slate text-[14px] font-body leading-relaxed"
+                                        >
+                                            <div
+                                                class="w-1.5 h-1.5 rounded-full bg-[#D1B27F] mt-1.5 flex-shrink-0"
+                                            >
+                                            </div>
+                                            Defensive posture but no bite history
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Best Fit Column -->
+                                <div
+                                    class="lg:w-[45%] lg:border-l border-secondary-slate/10 lg:pl-10 flex flex-col gap-4 w-full"
+                                >
+                                    <div>
+                                        <div
+                                            class="flex items-center justify-between mb-2"
+                                        >
+                                            <p
+                                                class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest"
+                                            >
+                                                Best Fit:
+                                            </p>
+                                            <div
+                                                class="flex items-center gap-2"
+                                            >
+                                                <span
+                                                    class="text-[10px] font-bold font-body text-secondary-slate/50"
+                                                    >Intensity: <span
+                                                        class="text-primary-navy"
+                                                        >Medium</span
+                                                    >
+                                                </span>
+                                                <div class="flex gap-1">
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-[#D1B27F]"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-[#D1B27F]"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-[#D1B27F]"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-secondary-slate/10"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-secondary-slate/10"
+                                                    >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bg-[#D1B27F]/5 border border-[#D1B27F]/10 rounded-xl px-6 py-3 w-full"
+                                        >
+                                            <span
+                                                class="text-primary-navy font-bold text-[16px] block leading-tight tracking-tight text-center lg:text-left"
+                                                >Private Accelerator</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <a
+                                        href="/programs#private-accelerator"
+                                        class="bg-[#D1B27F] text-white font-bold text-[13px] py-3.5 rounded-xl w-full flex items-center justify-center gap-2 hover:bg-[#C2A36F] transition-colors tracking-wide shadow-sm"
+                                    >
+                                        Learn More <span>&rarr;</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TIER 3: The Red Zone (Burgundy) -->
+                    <div class="relative">
+                        <div
+                            class="bg-white rounded-[22px] shadow-[0_12px_45px_rgba(11,39,68,0.05)] border border-[#EAE1D3]/50 overflow-hidden flex flex-col md:flex-row items-stretch group transition-all duration-500"
+                        >
+                            <!-- Left Slanted Color Panel -->
+                            <div
+                                class="w-full md:w-[28%] flex-shrink-0 relative overflow-hidden flex items-center p-6 md:p-8"
+                            >
+                                <!-- Dog Photo Background Texture Layer -->
+                                <div
+                                    class="absolute inset-0 grayscale bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                                    style="background-image: url('https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80&w=1000');"
+                                >
+                                </div>
+                                <!-- Color Overlay Layer -->
+                                <div class="absolute inset-0 bg-[#6B1B1B]/78">
+                                </div>
+                                <!-- Gloss Highlight -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-white/15 via-transparent to-transparent pointer-events-none"
+                                >
+                                </div>
+
+                                <!-- Slant overlay for the panel edge -->
+                                <div
+                                    class="absolute top-0 bottom-0 -right-8 w-16 bg-[#6B1B1B] transform -skew-x-[15deg] hidden md:block"
+                                >
+                                </div>
+
+                                <div class="relative z-10 flex flex-col gap-3">
+                                    <div
+                                        class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30 shadow-lg"
+                                    >
+                                        <svg
+                                            class="w-6 h-6 text-white"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            ></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="text-[22px] font-heading font-bold text-white leading-tight"
+                                        >
+                                            The Red Zone
+                                        </h3>
+                                        <p
+                                            class="text-white/80 font-body italic text-[13px] mt-0.5"
+                                        >
+                                            Bite History & Aggression
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                class="p-6 md:p-8 md:pl-12 flex-grow flex flex-col lg:flex-row items-start lg:items-center gap-6 md:gap-12"
+                            >
+                                <!-- Bullets Column -->
+                                <div class="lg:w-[45%]">
+                                    <ul class="space-y-3">
+                                        <li
+                                            class="flex items-start gap-4 text-secondary-slate text-[14px] font-body leading-relaxed"
+                                        >
+                                            <div
+                                                class="w-1.5 h-1.5 rounded-full bg-[#6B1B1B] mt-1.5 flex-shrink-0"
+                                            >
+                                            </div>
+                                            Confirmed history of biting people or
+                                            dogs
+                                        </li>
+                                        <li
+                                            class="flex items-start gap-4 text-secondary-slate text-[14px] font-body leading-relaxed"
+                                        >
+                                            <div
+                                                class="w-1.5 h-1.5 rounded-full bg-[#6B1B1B] mt-1.5 flex-shrink-0"
+                                            >
+                                            </div>
+                                            Severe arousal and safety risks
+                                        </li>
+                                        <li
+                                            class="flex items-start gap-4 text-secondary-slate text-[14px] font-body leading-relaxed"
+                                        >
+                                            <div
+                                                class="w-1.5 h-1.5 rounded-full bg-[#6B1B1B] mt-1.5 flex-shrink-0"
+                                            >
+                                            </div>
+                                            Requires immediate intervention
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Best Fit Column -->
+                                <div
+                                    class="lg:w-[45%] lg:border-l border-secondary-slate/10 lg:pl-10 flex flex-col gap-4 w-full"
+                                >
+                                    <div>
+                                        <div
+                                            class="flex items-center justify-between mb-2"
+                                        >
+                                            <p
+                                                class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest"
+                                            >
+                                                Best Fit:
+                                            </p>
+                                            <div
+                                                class="flex items-center gap-2"
+                                            >
+                                                <span
+                                                    class="text-[10px] font-bold font-body text-secondary-slate/50"
+                                                    >Intensity: <span
+                                                        class="text-primary-navy"
+                                                        >High</span
+                                                    >
+                                                </span>
+                                                <div class="flex gap-1">
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-[#6B1B1B]"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-[#6B1B1B]"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-[#6B1B1B]"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-[#6B1B1B]"
+                                                    >
+                                                    </div>
+                                                    <div
+                                                        class="w-2 h-2 rounded-full bg-[#6B1B1B]"
+                                                    >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bg-[#6B1B1B]/5 border border-[#6B1B1B]/10 rounded-xl px-6 py-3 w-full"
+                                        >
+                                            <span
+                                                class="text-primary-navy font-bold text-[16px] block leading-tight tracking-tight text-center lg:text-left"
+                                                >Reactive Dog Intensive</span
+                                            >
+                                        </div>
+                                    </div>
+                                    <a
+                                        href="/programs#red-zone"
+                                        class="bg-[#6B1B1B] text-white font-bold text-[13px] py-3.5 rounded-xl w-full flex items-center justify-center gap-2 hover:bg-[#5A1717] transition-colors tracking-wide shadow-sm"
+                                    >
+                                        Learn More <span>&rarr;</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Section CTA Bottom -->
+            <div class="text-center mt-16 relative z-10">
+                <a href="/apply" class="btn-apply py-4 px-12 text-base">
+                    Get Your Free Assessment
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simba and Pack - Reimagined -->
+    <section class="relative overflow-hidden bg-[#FBF1E9]">
+        <!-- Part A: Full-Bleed Banner Hero (Top) -->
+        <div
+            class="relative min-h-[450px] md:min-h-[550px] flex flex-col justify-end overflow-hidden pb-8 md:pb-12"
+        >
+            <!-- Hero Backdrop Layer -->
+            <div class="absolute inset-0 z-0">
+                <img
+                    src="/DesignGuidelines/simba and pack banner.png"
+                    alt="Simba and the Pack training background"
+                    class="w-full h-full object-cover object-[center_20%]"
+                />
+                <!-- Targeted Legibility Overlay (Subtle Gradient-to-Right only behind text) -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-r from-primary-navy/60 via-transparent to-transparent opacity-40"
+                >
+                </div>
+                <!-- Sharp Bottom Fade into #FBF1E9 -->
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-[#FBF1E9] via-[#FBF1E9]/20 to-transparent opacity-100"
+                >
+                </div>
+            </div>
+
+            <!-- Headline Layer (Over Image) -->
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-4xl">
+                    <h2
+                        class="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-2 drop-shadow-2xl"
+                    >
+                        Simba and the Pack<br />
+                        <span class="headline-accent !text-[#0B2744]"
+                            >Are Ready to Help.</span
+                        >
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Part B: Solid Content Band (Bottom) -->
+        <div class="pt-12 pb-20 md:pt-16 md:pb-32">
+            <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+                <div class="grid md:grid-cols-12 gap-12 md:gap-20 items-start">
+                    <!-- Column A: The Differentiator & Features -->
+                    <div class="md:col-span-7">
+                        <div class="mb-14">
+                            <p class="kicker kicker-dark mb-4 text-[#0B2744]">
+                                THE DIFFERENTIATOR
+                            </p>
+                            <p
+                                class="text-xl md:text-2xl text-primary-navy/90 leading-relaxed font-medium"
+                            >
+                                We utilize temperament-stable helper dogs as
+                                neutral training partners, using controlled,
+                                structured setups to teach calm behavior and
+                                clear social boundaries in the moments your dog
+                                usually reacts.
+                            </p>
+                        </div>
+
+                        <!-- 3-Item Feature Row -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                            <!-- Feature 1 -->
+                            <div class="flex flex-col items-start gap-5">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-[#112032] shadow-premium border border-[#E6DAC6]/40"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-7 w-7"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-lg font-bold text-primary-navy mb-2 tracking-tight"
+                                    >
+                                        SAFER TRAINING REPS
+                                    </p>
+                                    <p
+                                        class="text-sm md:text-base text-gray-600 leading-relaxed"
+                                    >
+                                        Temperament-stable dogs keep sessions
+                                        safe and controlled.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Feature 2 -->
+                            <div class="flex flex-col items-start gap-5">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-[#112032] shadow-premium border border-[#E6DAC6]/40"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-7 w-7"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                        ></path>
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-lg font-bold text-primary-navy mb-2 tracking-tight"
+                                    >
+                                        REAL-WORLD EXPOSURE
+                                    </p>
+                                    <p
+                                        class="text-sm md:text-base text-gray-600 leading-relaxed"
+                                    >
+                                        Practice encounters under expert
+                                        supervision in public spaces.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Feature 3 -->
+                            <div class="flex flex-col items-start gap-5">
+                                <div
+                                    class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-[#112032] shadow-premium border border-[#E6DAC6]/40"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-7 w-7"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p
+                                        class="text-lg font-bold text-primary-navy mb-2 tracking-tight"
+                                    >
+                                        FASTER BEHAVIOR TRANSFER
+                                    </p>
+                                    <p
+                                        class="text-sm md:text-base text-gray-600 leading-relaxed"
+                                    >
+                                        Dogs learn from dogs. Experience rapid
+                                        behavioral improvement from Day 1.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column B: Dimensional Guarantee Card -->
+                    <div class="md:col-span-5 relative mt-12 md:mt-2">
+                        <!-- Gold Results Stamp -->
+                        <div
+                            class="absolute -top-12 -right-4 md:-top-16 md:-right-8 z-30 transform rotate-12 drop-shadow-2xl"
+                        >
+                            <div
+                                class="relative w-32 h-32 bg-accent-gold rounded-full flex items-center justify-center border-[6px] border-white shadow-lg"
+                            >
+                                <div
+                                    class="absolute inset-0 rounded-full border border-dashed border-white/40 m-1"
+                                >
+                                </div>
+                                <div class="text-center text-white px-2">
+                                    <p
+                                        class="font-bold text-[10px] tracking-tighter uppercase leading-none"
+                                    >
+                                        100%
+                                    </p>
+                                    <p
+                                        class="font-extrabold text-[13px] tracking-tight uppercase leading-none my-1"
+                                    >
+                                        IMPROVEMENT
+                                    </p>
+                                    <p
+                                        class="font-bold text-[8px] tracking-[0.2em] uppercase leading-none opacity-80"
+                                    >
+                                        GUARANTEED
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Main White Card -->
+                        <div
+                            class="bg-white p-8 md:p-12 rounded-[32px] shadow-[0_20px_50px_-20px_rgba(11,39,68,0.2)] border border-gray-100 relative overflow-hidden group"
+                        >
+                            <!-- Subtle Card Accents -->
+                            <div
+                                class="absolute top-0 right-0 w-32 h-32 bg-accent-gold/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110"
+                            >
+                            </div>
+
+                            <h3
+                                class="text-2xl font-bold text-primary-navy mb-4 relative z-10"
+                            >
+                                100% Improvement on Day 1
+                            </h3>
+                            <p
+                                class="text-primary-navy/70 mb-6 leading-relaxed relative z-10"
+                            >
+                                We believe in our process and back it up. Every
+                                dog who has worked with <span
+                                    class="font-bold text-primary-navy"
+                                    >Simba & Pack</span
+                                > has exhibited significant improvement in just 1
+                                day of training with our helper dogs. Experience
+                                the difference.
+                            </p>
+
+                            <a
+                                href="/about#simba"
+                                class="relative z-10 w-full bg-primary-navy text-white text-center py-4 px-8 rounded-full font-bold text-sm tracking-widest uppercase flex items-center justify-center gap-3 hover:bg-ink hover:shadow-xl hover:-translate-y-0.5 transition-all group/btn"
+                            >
+                                LEARN ABOUT THE PACK
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-4 w-4 transform transition-transform group-hover/btn:translate-x-1"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <TestimonialSlider />
+
+    <!-- Substack Feed -->
+    <section class="py-16 bg-surface px-4">
+        <div class="max-w-5xl mx-auto">
+            <div
+                class="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-gray-200 pb-4"
+            >
+                <div>
+                    <h2 class="text-3xl font-heading leading-tight mb-2">
+                        <span class="font-bold text-primary-navy"
+                            >The Behavior</span
+                        >&nbsp;<span
+                            class="headline-accent text-[#D1B27F] text-3xl"
+                            >Journal.</span
+                        >
+                    </h2>
+                    <p class="text-gray-600">
+                        Latest training tips and stories from our Substack.
+                    </p>
+                </div>
+                <a
+                    href="https://gooddoggos.substack.com"
+                    target="_blank"
+                    class="text-accent-teal font-bold hover:underline mt-4 md:mt-0"
+                    >Read on Substack &rarr;</a
+                >
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                {
+                    latestPosts.map((post) => (
+                        <article class="bg-[#FCF9FA] rounded-[20px] border border-[#EAE1D3]/60 shadow-[0_10px_30px_rgba(11,39,68,0.05),0_4px_8px_rgba(11,39,68,0.03)] flex flex-col group hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                            {post.enclosure?.url && (
+                                <div class="w-full h-48 overflow-hidden relative border-b border-[#EAE1D3]/60">
+                                    <img
+                                        src={post.enclosure.url}
+                                        alt={post.title}
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                    <div class="absolute inset-0 bg-primary-navy/10 group-hover:bg-transparent transition-colors duration-300" />
+                                </div>
+                            )}
+                            <div class="p-6 md:p-8 flex flex-col flex-1">
+                                <p class="text-[12px] font-bold tracking-[0.2em] text-accent-gold uppercase mb-3">
+                                    {new Date(post.pubDate).toLocaleDateString(
+                                        "en-US",
+                                        {
+                                            month: "short",
+                                            day: "numeric",
+                                            year: "numeric",
+                                        }
+                                    )}
+                                </p>
+                                <h3 class="font-heading font-bold text-xl mb-3 text-primary-navy line-clamp-2">
+                                    <a
+                                        href={post.link}
+                                        target="_blank"
+                                        class="hover:text-accent-teal transition-colors"
+                                    >
+                                        {post.title}
+                                    </a>
+                                </h3>
+                                <p class="text-sm text-primary-navy/60 line-clamp-3 mb-6 flex-1 leading-relaxed">
+                                    {post.contentSnippet}
+                                </p>
+                                <a
+                                    href={post.link}
+                                    target="_blank"
+                                    class="inline-flex items-center gap-2 text-[13px] font-bold text-primary-navy hover:text-accent-teal uppercase tracking-[0.15em] transition-colors mt-auto"
+                                >
+                                    Read Article
+                                    <svg
+                                        class="w-4 h-4 transition-transform group-hover:translate-x-1"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                        />
+                                    </svg>
+                                </a>
+                            </div>
+                        </article>
+                    ))
+                }
+            </div>
+
+            <div
+                class="mt-12 text-center bg-primary-navy rounded-2xl p-8 relative overflow-hidden"
+            >
+                <!-- Abstract shapes or texture could go here -->
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold text-surface mb-2">
+                        Join the Pack Newsletter
+                    </h3>
+                    <p class="text-gray-300 mb-6">
+                        Get weekly training tips delivered to your inbox.
+                    </p>
+                    <form
+                        action="https://gooddoggos.substack.com/subscribe"
+                        method="post"
+                        target="_blank"
+                        class="flex flex-col md:flex-row gap-2 justify-center max-w-md mx-auto"
+                    >
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Your email address"
+                            class="px-6 py-3 rounded-full bg-[#FBF1E9] text-[#112032] placeholder-[#112032]/55 border border-[#E6DAC6] w-full focus:outline-none focus:ring-2 focus:ring-[#D1B27F]"
+                            required
+                        />
+                        <button
+                            type="submit"
+                            class="bg-[#D1B27F] hover:bg-[#c4a26e] text-[#0B2744] px-8 py-3 rounded-full transition-all duration-300 font-bold tracking-wide shadow-[0_4px_14px_rgba(209,178,127,0.35)] hover:shadow-[0_6px_20px_rgba(209,178,127,0.5)] hover:-translate-y-0.5 whitespace-nowrap"
+                        >
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <CTASection />
+</Layout>

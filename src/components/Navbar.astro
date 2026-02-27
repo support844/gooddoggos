@@ -1,0 +1,134 @@
+---
+const navLinks = [
+  { name: "Programs", href: "/programs" },
+  { name: "About", href: "/about" },
+  { name: "Transformations", href: "/transformations" },
+  { name: "Shop", href: "/shop" },
+];
+---
+
+<nav
+  id="main-nav"
+  class="transition-all duration-300 ease-in-out py-5"
+  style="background: transparent;"
+>
+  <div
+    class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex justify-between items-center"
+  >
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 group">
+      <img
+        src="/images/Circle%20Navy%20Dog%20Mascot%20Light%20Gold%20BG%20Transparent%20-%20Good%20Doggos.png"
+        alt="Good Doggos Mascot"
+        class="h-12 md:h-13 w-auto transform group-hover:rotate-12 transition-transform duration-300"
+      />
+      <img
+        src="/images/Brand%20Name%20Logo%20-%20White%20-%20Good%20Doggos.png"
+        alt="Good Doggos Logo"
+        class="h-16 md:h-20 w-auto"
+      />
+    </a>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex items-center space-x-8">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-white/90 hover:text-accent-gold transition-colors font-semibold text-[12px] uppercase tracking-[0.18em]"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+      <a href="/apply" class="btn-apply"> Apply</a>
+    </div>
+
+    <!-- Mobile Menu Button (Hamburger) -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden text-white focus:outline-none"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-8 w-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu (Hidden by default) -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute top-full left-0 w-full shadow-xl border-t border-white/10"
+    style="background: rgba(17,32,50,0.97); backdrop-filter: blur(12px);"
+  >
+    <div
+      class="flex flex-col p-4 space-y-4 max-w-7xl mx-auto px-4 md:px-6 lg:px-8"
+    >
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-white hover:text-accent-gold font-semibold text-[12px] uppercase tracking-[0.18em] block"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+      <a href="/apply" class="btn-apply w-full text-center justify-center">
+        Apply
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const nav = document.getElementById("main-nav");
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+
+  // Scroll listener: toggle scrolled state
+  function handleScroll() {
+    const header = document.getElementById("site-header");
+    if (!nav || !header) return;
+    const scrolled = window.scrollY > 20;
+    if (scrolled) {
+      nav.style.background = "#0B2744";
+      nav.style.backdropFilter = "none";
+      nav.style.webkitBackdropFilter = "none";
+      nav.style.borderBottom = "1px solid rgba(255,255,255,0.10)";
+      nav.style.boxShadow = "0 10px 30px rgba(11,39,68,0.35)";
+      nav.style.paddingTop = "14px";
+      nav.style.paddingBottom = "14px";
+    } else {
+      nav.style.background = "transparent";
+      nav.style.backdropFilter = "none";
+      nav.style.webkitBackdropFilter = "none";
+      nav.style.borderBottom = "none";
+      nav.style.boxShadow = "none";
+      nav.style.paddingTop = "20px";
+      nav.style.paddingBottom = "20px";
+    }
+  }
+
+  // Run on load to set initial state
+  handleScroll();
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+
+  // Mobile menu toggle
+  if (btn && menu) {
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  }
+</script>

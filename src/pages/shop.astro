@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const categories = [
+  {
+    id: "leashes",
+    label: "Leashes & Long Lines",
+    products: [
+      {name: "Mendota Pet Slip Lead", why: "The trainer gold standard. One piece, no hardware to fail, correct in an instant.", bullets: ["British-style slip mechanism","Floats in water, easy to clean","Sizes for all breeds"], tags: ["Best for: Reactivity","Training Walks"], img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "Biothane Long Line — 30ft", why: "Waterproof, no-tangle recall training line. Doesn't absorb mud, dries instantly.", bullets: ["Rated to 400 lbs","Easy to disinfect between dogs","Available in multiple lengths"], tags: ["Recall Training","Outdoor Use"], img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "Ruffwear Knot-a-Leash", why: "Bomber build for dogs that pull hard. Great for transitioning between handler and tie-out.", bullets: ["Reflective threading","Stainless swivel clip","6ft standard length"], tags: ["Heavy Pullers","Safety"], img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+    ]
+  },
+  {
+    id: "collars",
+    label: "Collars & Harnesses",
+    products: [
+      {name: "Herm Sprenger Prong Collar", why: "When fitted correctly, the most humane and effective pressure tool for leash reactivity. Must be sized properly.", bullets: ["Stainless steel, lasts a lifetime","Distributor pressure evenly around neck","Multiple size options"], tags: ["Reactivity","Leash Training"], img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "Ruffwear Front Range Harness", why: "Our top harness pick for calm, leash-trained dogs who need comfortable daily wear.", bullets: ["Four points of adjustment","Padded chest & belly panel","Front & back clip options"], tags: ["Puppies","Daily Wear"], img: "https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "Martingale Collar — Limited Slip", why: "Safe for escape artists. Tightens just enough to prevent backing out, then releases.", bullets: ["No choke mechanism","Great for sighthounds & slim-necked breeds","Machine washable nylon version available"], tags: ["Safety","Puppies","Travel"], img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+    ]
+  },
+  {
+    id: "muzzles",
+    label: "Muzzles & Safety",
+    products: [
+      {name: "Baskerville Ultra Muzzle", why: "The best basket muzzle on the market. Allows panting, drinking, and treat delivery — fully humane.", bullets: ["Soft rubber basket design","Padded nose bridge","Pairs perfectly with muzzle conditioning protocol"], tags: ["Safety","Aggression Cases","Required Gear"], img: "https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "Dean & Tyler DT No-Bite Muzzle", why: "Heavy-duty leather muzzle for maximum aggression management during early rehab stages.", bullets: ["Tooled leather, durable","Adjustable straps for security","Professional-grade hold"], tags: ["Advanced Cases","Safety"], img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+    ]
+  },
+  {
+    id: "treats",
+    label: "Treats & Training Rewards",
+    products: [
+      {name: "Zuke's Mini Naturals", why: "Small, soft, low-calorie — the perfect reward for high-repetition training sessions.", bullets: ["Pea-sized, great for rate of reinforcement","Multiple flavors to test preference","No wheat, corn, or soy"], tags: ["Puppies","Training Sessions"], img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "Vital Farms Freeze-Dried Beef Liver", why: "High-value 'jackpot' reward for breakthrough moments. Use sparingly — this is the big gun.", bullets: ["Single ingredient: beef liver","Break into smaller pieces","Powerful motivator for food-driven dogs"], tags: ["Reactivity","High Drive Dogs"], img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "Farmer's Dog (Fresh Food)", why: "If your dog is on kibble, this is the upgrade. Diet affects behavior. Fresh food = calmer baseline.", bullets: ["Vet-formulated recipes","Pre-portioned delivery","Significant coat + energy improvement"], tags: ["Nutrition","Daily Use"], img: "https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+    ]
+  },
+  {
+    id: "place",
+    label: "Place Beds & Crates",
+    products: [
+      {name: "Kuranda Dog Bed (Aluminum Frame)", why: "Elevated, chew-resistant, easy to clean. The 'place' command needs a real place bed.", bullets: ["23-gauge aluminum frame","Ballistic nylon cover option","Sized for every breed"], tags: ["Place Training","Daily Use"], img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "MidWest iCrate Single Door", why: "Properly-sized crating is foundational for calm behavior at home. This is the reliable standard.", bullets: ["Foldable, portable","Includes divider panel for puppies","Easy latch mechanism"], tags: ["Puppies","Crate Training"], img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+    ]
+  },
+  {
+    id: "enrichment",
+    label: "Toys & Enrichment",
+    products: [
+      {name: "KONG Classic", why: "Stuffed with kibble + a little peanut butter and frozen — the gold-standard calm enrichment tool.", bullets: ["Durable natural rubber","Dishwasher safe","Satisfies foraging instinct"], tags: ["Enrichment","Daily Use","Puppies"], img: "https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "Snuffle Mat — Varied Texture", why: "Nose work lowers arousal fast. A snuffle mat before a walk is a game-changer for reactive dogs.", bullets: ["Encourages slow foraging","Machine washable","Reduces pre-walk excitement"], tags: ["Reactivity","Enrichment"], img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "West Paw Toppl", why: "Like a KONG but easier to fill and more durable. Great for breed-specific jaw shapes.", bullets: ["Interlocks with KONG for bigger challenge","Dishwasher safe","Float-friendly"], tags: ["Enrichment","Daily Use"], img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+    ]
+  },
+];
+---
+
+<Layout>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-[#0B2744] flex items-end" style="min-height: 44vh;">
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=2400"
+      alt="Shop — Trainer-approved gear"
+      class="w-full h-full object-cover object-center"
+      style="opacity: 0.30;"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(11,39,68,0.95) 0%, rgba(11,39,68,0.70) 60%, rgba(11,39,68,0.40) 100%);"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.92) 0%, transparent 55%);"></div>
+  </div>
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-14" style="padding-top: 150px;">
+    <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4" style="color: rgba(209,178,127,0.60);">Trainer-Approved Gear</p>
+    <h1 class="font-heading font-bold text-white leading-[1.06] mb-3" style="font-size: clamp(2.6rem, 5vw, 4rem);">Shop</h1>
+    <p class="headline-accent text-2xl md:text-3xl mb-4" style="color: #D1B27F; font-style: italic; font-weight: 700;">"Tools we actually use in training."</p>
+    <p class="text-gray-300 max-w-xl leading-relaxed">Curated gear that supports calm behavior, safety, and structure — nothing on this list is filler.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     AFFILIATE DISCLOSURE
+══════════════════════════════════════════════ -->
+<div class="bg-[#FBF1E9] py-4 px-4 border-b border-[#E6DAC6]">
+  <div class="max-w-7xl mx-auto">
+    <p class="text-xs text-center" style="color: rgba(17,32,50,0.42);">
+      <strong style="color: rgba(17,32,50,0.55);">Disclosure:</strong> Some links on this page are Amazon affiliate links. If you purchase through them, we may earn a small commission at no extra cost to you. We only recommend gear we've personally used in training.
+    </p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     CATEGORY TABS + PRODUCT GRID
+══════════════════════════════════════════════ -->
+<div class="bg-[#FBF1E9] py-14 px-4">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Sticky category tabs -->
+    <div class="flex flex-wrap gap-2 mb-12 justify-center">
+      {categories.map(c => (
+        <a
+          href={`#${c.id}`}
+          class="px-4 py-2 rounded-full text-[11px] font-bold tracking-widest uppercase transition-all duration-200"
+          style="border: 1px solid #E6DAC6; background: #FCF9FA; color: rgba(17,32,50,0.55);"
+          onmouseover={`this.style.borderColor='#D1B27F'; this.style.color='#B08A4A';`}
+          onmouseout={`this.style.borderColor='#E6DAC6'; this.style.color='rgba(17,32,50,0.55)';`}
+        >
+          {c.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Category sections -->
+    {categories.map(cat => (
+      <div id={cat.id} class="scroll-mt-28 mb-16">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="h-[2px] flex-1 rounded-full" style="background: linear-gradient(to right, #E6DAC6, transparent);"></div>
+          <h2 class="font-heading font-bold text-xl whitespace-nowrap" style="color: #0B2744;">{cat.label}</h2>
+          <div class="h-[2px] flex-1 rounded-full" style="background: linear-gradient(to left, #E6DAC6, transparent);"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {cat.products.map(p => (
+            <div class="bg-[#FCF9FA] rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_3px_16px_rgba(0,0,0,0.06)] flex flex-col group hover:shadow-[0_6px_24px_rgba(0,0,0,0.10)] transition-shadow duration-200">
+              <!-- Product image -->
+              <div class="relative overflow-hidden" style="height: 160px;">
+                <img src={p.img} alt={p.name} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 50%, rgba(11,39,68,0.45) 100%);"></div>
+              </div>
+              <!-- Card body -->
+              <div class="flex flex-col flex-1 p-6">
+                <h3 class="font-heading font-bold text-base mb-2" style="color: #0B2744;">{p.name}</h3>
+                <p class="text-xs italic mb-4 leading-relaxed" style="color: rgba(17,32,50,0.58);">{p.why}</p>
+                <ul class="space-y-1.5 mb-4">
+                  {p.bullets.map(b => (
+                    <li class="flex items-start gap-2 text-xs" style="color: rgba(17,32,50,0.65);">
+                      <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#D1B27F" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+                <!-- Tag chips -->
+                <div class="flex flex-wrap gap-1.5 mb-5">
+                  {p.tags.map(t => (
+                    <span class="text-[9px] font-bold tracking-wider uppercase px-2 py-1 rounded-full" style="background: rgba(209,178,127,0.10); color: #B08A4A; border: 1px solid rgba(209,178,127,0.20);">{t}</span>
+                  ))}
+                </div>
+                <div class="flex-1"></div>
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  class="w-full inline-flex items-center justify-center gap-2 text-xs font-bold tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+                  style="background: #D1B27F; color: #0B2744; padding: 12px 20px; box-shadow: 0 4px 12px rgba(209,178,127,0.28);"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                  Shop on Amazon
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     MERCH COMING SOON
+══════════════════════════════════════════════ -->
+<div class="bg-[#0B2744] py-16 px-4">
+  <div class="max-w-3xl mx-auto text-center">
+    <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4" style="color: rgba(209,178,127,0.50);">Coming Soon</p>
+    <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mb-3">
+      Good Doggos <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Merch</span>
+    </h2>
+    <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-xl mx-auto">
+      Hats, hoodies, and pack gear — for owners who take their dog's training seriously. Drop alerts go out to our Substack community first.
+    </p>
+    <a
+      href="https://gooddoggos.substack.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+      style="border: 2px solid rgba(209,178,127,0.40); color: #D1B27F; padding: 14px 32px; background: rgba(209,178,127,0.06);"
+    >
+      Subscribe on Substack →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(255,255,255,0.30);">Be first to know when merch drops.</p>
+  </div>
+</div>
+
+</Layout>

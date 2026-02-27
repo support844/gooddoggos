@@ -1,0 +1,21 @@
+{
+    "id": "calm-companion",
+    "title": "Calm Companion Challenge",
+    "tagline": "The Foundation for a Happy Home",
+    "description": "Perfect for adult dogs needing basic obedience and manner refinement. We focus on engagement, neutrality, and household manners.",
+    "price_range": "$799",
+    "duration": "4 Weeks",
+    "ideal_for": [
+        "Adult Dogs",
+        "Rescue Dogs",
+        "Mild pulling",
+        "Jumping"
+    ],
+    "outcomes": [
+        "Loose leash mastery",
+        "Basic obedience",
+        "Social neutrality",
+        "Community & feedback"
+    ],
+    "details_url": "/programs#calm-companion"
+}

@@ -1,0 +1,661 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const sections = [
+  { num: "1", title: "Introduction" },
+  { num: "2", title: "Information We Collect" },
+  { num: "3", title: "How We Use Your Information" },
+  { num: "4", title: "Cookies & Tracking Technologies" },
+  { num: "5", title: "How We Share Your Information" },
+  { num: "6", title: "Data Security" },
+  { num: "7", title: "Your Data Protection Rights" },
+  { num: "8", title: "Children's Privacy" },
+  { num: "9", title: "Data Retention" },
+  { num: "10", title: "Contact Us" },
+];
+---
+
+<Layout>
+  <!-- ══════════════════════════════════════════════
+     PAGE HEADER STRIP
+══════════════════════════════════════════════ -->
+  <div class="bg-[#0B2744] pt-36 pb-14 px-4">
+    <div class="max-w-4xl mx-auto">
+      <p
+        class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4"
+        style="color: rgba(209,178,127,0.55);"
+      >
+        Legal
+      </p>
+      <h1
+        class="font-heading font-bold text-white mb-3"
+        style="font-size: clamp(2.2rem, 4.5vw, 3.2rem);"
+      >
+        Privacy Policy
+      </h1>
+      <p class="text-sm" style="color: rgba(255,255,255,0.40);">
+        Last Updated: October 28, 2025
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+     BODY
+══════════════════════════════════════════════ -->
+  <div class="bg-[#FBF1E9] py-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid md:grid-cols-[240px_1fr] gap-12 items-start">
+        <!-- Sticky TOC sidebar -->
+        <aside class="hidden md:block sticky top-28">
+          <div
+            class="rounded-2xl border border-[#E6DAC6] bg-[#FCF9FA] p-6 shadow-[0_2px_12px_rgba(0,0,0,0.05)]"
+          >
+            <p
+              class="text-[10px] font-bold tracking-widest uppercase mb-4"
+              style="color: rgba(15,109,114,0.65);"
+            >
+              Contents
+            </p>
+            <nav class="space-y-2">
+              {
+                sections.map((s) => (
+                  <a
+                    href={`#pp-${s.num}`}
+                    class="flex items-center gap-2 text-xs transition-colors duration-150 group"
+                    style="color: rgba(17,32,50,0.55);"
+                  >
+                    <span
+                      class="font-bold"
+                      style="color: rgba(209,178,127,0.70);"
+                    >
+                      {s.num}.
+                    </span>
+                    <span class="group-hover:underline">{s.title}</span>
+                  </a>
+                ))
+              }
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="space-y-12">
+          <!-- Preamble -->
+          <p
+            class="text-sm leading-relaxed"
+            style="color: rgba(17,32,50,0.68);"
+          >
+            Good Doggos ("we," "us," "our") is committed to protecting the
+            privacy of our clients, website visitors, and anyone who interacts
+            with our services. This Privacy Policy explains what information we
+            collect, how we use it, and your rights with respect to that
+            information. By using our website or services, you agree to the
+            practices described here.
+          </p>
+
+          <!-- 1. Introduction -->
+          <section id="pp-1" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">01</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Introduction
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                This Privacy Policy applies to information collected through the
+                Good Doggos website, booking flows, application forms, programs,
+                digital products, and any other interactions with our business.
+                It does not apply to third-party websites or services linked
+                from our site — those are governed by their own privacy
+                policies.
+              </p>
+              <p>
+                We collect only the information necessary to provide our
+                services, communicate with you, and improve our offerings. We do
+                not sell your personal information.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 2. Information We Collect -->
+          <section id="pp-2" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">02</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Information We Collect
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-5 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <div>
+                <p class="font-semibold mb-2" style="color: #0B2744;">
+                  Information You Provide Directly
+                </p>
+                <ul class="space-y-2 ml-4">
+                  {
+                    [
+                      "Name, email address, phone number",
+                      "Dog's name, breed, age, behavioral history, and medical disclosures",
+                      "Messages submitted through forms, applications, or direct contact",
+                      "Program or session preferences and scheduling information",
+                    ].map((item) => (
+                      <li class="flex items-start gap-2">
+                        <span
+                          class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                          style="background: #D1B27F;"
+                        />
+                        {item}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-semibold mb-2" style="color: #0B2744;">
+                  Payment &amp; Order Information
+                </p>
+                <p>
+                  Payments are processed by third-party payment processors (such
+                  as Stripe or similar services). We do not store your full
+                  credit card details on our servers. We may retain records of
+                  transaction amounts, dates, and the services purchased for
+                  billing and recordkeeping purposes.
+                </p>
+              </div>
+
+              <div>
+                <p class="font-semibold mb-2" style="color: #0B2744;">
+                  Automatically Collected Information
+                </p>
+                <p class="mb-2">
+                  When you visit our website, certain technical data may be
+                  collected automatically:
+                </p>
+                <ul class="space-y-2 ml-4">
+                  {
+                    [
+                      "Device type, browser type and version, operating system",
+                      "IP address and approximate geographic location (city/region level)",
+                      "Pages visited, time spent, and navigation paths",
+                      "Referring URL (how you arrived at our site)",
+                      "Cookie and tracking data (see Section 4)",
+                    ].map((item) => (
+                      <li class="flex items-start gap-2">
+                        <span
+                          class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                          style="background: #D1B27F;"
+                        />
+                        {item}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 3. How We Use Your Information -->
+          <section id="pp-3" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">03</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                How We Use Your Information
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-2 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p class="mb-3">We use the information we collect to:</p>
+              <ul class="space-y-2.5 ml-4">
+                {
+                  [
+                    {
+                      b: "Provide and improve services.",
+                      t: "Deliver training, programs, and digital content you've enrolled in, and improve their quality over time.",
+                    },
+                    {
+                      b: "Process payments and orders.",
+                      t: "Facilitate transactions and maintain billing records.",
+                    },
+                    {
+                      b: "Send transactional communications.",
+                      t: "Booking confirmations, scheduling updates, program materials, and other service-related messages.",
+                    },
+                    {
+                      b: "Customer support.",
+                      t: "Respond to inquiries, feedback, and service concerns.",
+                    },
+                    {
+                      b: "Marketing communications.",
+                      t: "Send occasional newsletters, updates, or promotions where you have opted in. You can opt out at any time.",
+                    },
+                    {
+                      b: "Safety and fraud prevention.",
+                      t: "Protect the security of client accounts, detect and prevent fraudulent activity, and ensure safe training environments.",
+                    },
+                    {
+                      b: "Legal compliance.",
+                      t: "Fulfill legal obligations, respond to legal requests, and enforce our Terms of Service.",
+                    },
+                  ].map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style="background: #D1B27F;"
+                      />
+                      <span>
+                        <strong style="color: #0B2744;">{item.b}</strong>{" "}
+                        {item.t}
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 4. Cookies -->
+          <section id="pp-4" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">04</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Cookies &amp; Tracking Technologies
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-4 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                Cookies are small text files placed on your device when you
+                visit a website. They help sites remember your preferences and
+                how you interact with them. We and our service providers may use
+                cookies and similar technologies (such as web beacons and
+                pixels) on our site.
+              </p>
+              <div class="space-y-3">
+                {
+                  [
+                    {
+                      label: "Essential Cookies",
+                      desc: "Required for the website to function. These cannot be disabled without affecting core functionality (e.g., form submissions, session handling).",
+                    },
+                    {
+                      label: "Analytics Cookies",
+                      desc: "Help us understand how visitors use the site — pages visited, time spent, error rates. We use this data in aggregate to improve the site.",
+                    },
+                    {
+                      label: "Marketing Cookies",
+                      desc: "May be used by third-party advertising platforms to show you relevant content across other websites. We keep these minimal.",
+                    },
+                  ].map((c) => (
+                    <div class="rounded-xl p-5 border border-[#E6DAC6] bg-white">
+                      <p
+                        class="font-semibold text-sm mb-1"
+                        style="color: #0B2744;"
+                      >
+                        {c.label}
+                      </p>
+                      <p>{c.desc}</p>
+                    </div>
+                  ))
+                }
+              </div>
+              <p>
+                <strong style="color: #0B2744;">Browser Controls.</strong> You can
+                control or disable cookies through your browser settings. Note that
+                disabling certain cookies may impact site functionality — for example,
+                forms or booking tools may not work correctly. Most browsers also
+                allow you to clear existing cookies at any time.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 5. Sharing -->
+          <section id="pp-5" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">05</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                How We Share Your Information
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                We do not sell your personal information. We may share your
+                information in the following limited circumstances:
+              </p>
+              <ul class="space-y-2.5 ml-4">
+                {
+                  [
+                    {
+                      b: "Service Providers.",
+                      t: "We work with trusted vendors who help operate our business — including email platforms, scheduling tools, website hosting, analytics services, and payment processors. These parties are bound by confidentiality obligations and may only use your data to provide their services to us.",
+                    },
+                    {
+                      b: "Legal Requirements.",
+                      t: "We may disclose information if required by law, court order, or government authority, or to protect the rights, property, or safety of Good Doggos, our clients, or the public.",
+                    },
+                    {
+                      b: "Business Transfers.",
+                      t: "If Good Doggos is involved in a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction. We will notify you of any such change via email or a notice on this page.",
+                    },
+                  ].map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style="background: #D1B27F;"
+                      />
+                      <span>
+                        <strong style="color: #0B2744;">{item.b}</strong>{" "}
+                        {item.t}
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 6. Data Security -->
+          <section id="pp-6" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">06</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Data Security
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                We implement reasonable administrative, technical, and physical
+                safeguards to protect your personal information from
+                unauthorized access, loss, misuse, or alteration. These measures
+                include HTTPS encryption, access controls, and working with
+                security-conscious third-party vendors.
+              </p>
+              <p>
+                However, no method of transmission over the internet or
+                electronic storage is 100% secure. We cannot guarantee absolute
+                security and encourage you to avoid sending highly sensitive
+                information through standard web forms where possible.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 7. Your Rights -->
+          <section id="pp-7" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">07</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Your Data Protection Rights
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                Depending on your location and applicable law, you may have the
+                following rights regarding your personal information:
+              </p>
+              <ul class="space-y-2 ml-4">
+                {
+                  [
+                    {
+                      b: "Access.",
+                      t: "Request a copy of the personal information we hold about you.",
+                    },
+                    {
+                      b: "Correction.",
+                      t: "Request that inaccurate or incomplete information be corrected.",
+                    },
+                    {
+                      b: "Deletion.",
+                      t: "Request that we delete your personal information, subject to legal retention requirements.",
+                    },
+                    {
+                      b: "Portability.",
+                      t: "Request your data in a structured, machine-readable format where technically feasible.",
+                    },
+                    {
+                      b: "Restriction or Objection.",
+                      t: "Request that we limit or stop certain processing of your information.",
+                    },
+                    {
+                      b: "Marketing Opt-Out.",
+                      t: "Unsubscribe from marketing communications at any time via the unsubscribe link in emails or by contacting us directly.",
+                    },
+                  ].map((item) => (
+                    <li class="flex items-start gap-2">
+                      <span
+                        class="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style="background: #D1B27F;"
+                      />
+                      <span>
+                        <strong style="color: #0B2744;">{item.b}</strong>{" "}
+                        {item.t}
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+              <p>
+                To exercise any of these rights, contact us at <a
+                  href="mailto:support@gooddoggos.com"
+                  style="color: #0F6D72; text-decoration: underline;"
+                  >support@gooddoggos.com</a
+                >. We will respond within a reasonable timeframe consistent with
+                applicable law. Note that certain rights may be limited
+                depending on your jurisdiction and the nature of the request.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 8. Children -->
+          <section id="pp-8" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">08</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Children's Privacy
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                The Good Doggos website and services are not directed to
+                children under the age of 13. We do not knowingly collect
+                personal information from children under 13. If you believe we
+                have inadvertently collected information from a child under 13,
+                please contact us immediately at <a
+                  href="mailto:support@gooddoggos.com"
+                  style="color: #0F6D72; text-decoration: underline;"
+                  >support@gooddoggos.com</a
+                > and we will take steps to delete it promptly.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 9. Retention -->
+          <section id="pp-9" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">09</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Data Retention
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                We retain personal information for as long as necessary to
+                provide our services, comply with legal obligations, resolve
+                disputes, and enforce our agreements. When information is no
+                longer needed for these purposes, we delete or anonymize it in a
+                reasonably secure manner.
+              </p>
+              <p>
+                Specific retention periods depend on the type of information and
+                the purpose for which it was collected. For example, booking and
+                payment records may be retained for several years for tax and
+                legal compliance purposes.
+              </p>
+            </div>
+            <div class="mt-6 border-t border-[#E6DAC6]"></div>
+          </section>
+
+          <!-- 10. Contact -->
+          <section id="pp-10" class="scroll-mt-28">
+            <div class="flex items-start gap-4 mb-4">
+              <span
+                class="font-heading font-extrabold text-2xl flex-shrink-0"
+                style="color: rgba(209,178,127,0.35);">10</span
+              >
+              <h2
+                class="font-heading font-bold text-xl pt-1"
+                style="color: #0B2744;"
+              >
+                Contact Us
+              </h2>
+            </div>
+            <div
+              class="pl-10 space-y-3 text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.70);"
+            >
+              <p>
+                If you have questions, concerns, or requests related to this
+                Privacy Policy or your personal information, please contact us:
+              </p>
+              <div
+                class="rounded-xl p-5 border border-[#E6DAC6] bg-white inline-block mt-2"
+              >
+                <p class="font-bold text-sm mb-1" style="color: #0B2744;">
+                  Good Doggos
+                </p>
+                <p>
+                  Email: <a
+                    href="mailto:support@gooddoggos.com"
+                    style="color: #0F6D72; text-decoration: underline;"
+                    >support@gooddoggos.com</a>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Contact callout -->
+          <div
+            class="rounded-2xl p-7 border flex items-start gap-5"
+            style="background: rgba(15,109,114,0.04); border-color: rgba(15,109,114,0.15);"
+          >
+            <div
+              class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background: rgba(15,109,114,0.10);"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#0F6D72"
+                stroke-width="2"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <p class="font-bold text-sm mb-1" style="color: #0B2744;">
+                Questions About Your Privacy?
+              </p>
+              <p class="text-sm" style="color: rgba(17,32,50,0.62);">
+                Reach us any time at <a
+                  href="mailto:support@gooddoggos.com"
+                  style="color: #0F6D72; text-decoration: underline; font-weight: 600;"
+                  >support@gooddoggos.com</a
+                > — we respond promptly and take all privacy requests seriously.
+              </p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</Layout>

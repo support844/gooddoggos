@@ -1,0 +1,230 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const videos = [
+  {
+    id: "v1",
+    dog: "Luna",
+    breed: "German Shepherd Mix · 3 yrs",
+    result: "Leash Reactivity → Calm On-Leash",
+    desc: "Luna came in lunging at every dog and person within 30 feet. After 4 weeks in the Calm Companion Challenge, she walks past distractions with a loose leash.",
+    thumb: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=800",
+    src: "", // ← replace with real video URL
+  },
+  {
+    id: "v2",
+    dog: "Bear",
+    breed: "Doberman · 2 yrs",
+    result: "Handler Aggression → Reliable Obedience",
+    desc: "Bear was flagged by two previous trainers as 'too much.' He graduated the Calm Companion Challenge and now competes in rally obedience.",
+    thumb: "https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=800",
+    src: "", // ← replace with real video URL
+  },
+  {
+    id: "v3",
+    dog: "Mia",
+    breed: "Dutch Shepherd · 18 mo",
+    result: "Threshold Work → Real-World Confidence",
+    desc: "Mia's reactivity threshold was under 10 feet. Controlled exposure sessions with Simba expanded it to 50+ feet in 3 weeks — and she held it in a crowded park.",
+    thumb: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=800",
+    src: "", // ← replace with real video URL
+  },
+];
+---
+
+<Layout>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-[#0B2744] flex items-end" style="min-height: 46vh;">
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=2400"
+      alt="Transformations"
+      class="w-full h-full object-cover object-center"
+      style="opacity: 0.30;"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(11,39,68,0.95) 0%, rgba(11,39,68,0.72) 55%, rgba(11,39,68,0.40) 100%);"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.92) 0%, transparent 55%);"></div>
+  </div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-16" style="padding-top: 150px;">
+    <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4" style="color: rgba(209,178,127,0.60);">Proof of Work</p>
+    <h1 class="font-heading font-bold text-white leading-[1.06] mb-4" style="font-size: clamp(2.6rem, 5vw, 4rem);">Transformations</h1>
+    <p class="headline-accent text-2xl md:text-3xl mb-5" style="color: #D1B27F; font-style: italic; font-weight: 700;">"Real dogs. Real progress."</p>
+    <p class="text-gray-300 max-w-xl leading-relaxed">
+      Every video here documents measurable behavioral change — not tricks, not suppression. Handlers who showed up, did the work, and collected the proof.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     VIDEO GRID
+══════════════════════════════════════════════ -->
+<div class="bg-[#FBF1E9] py-20 px-4">
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-14">
+      <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-3" style="color: rgba(15,109,114,0.60);">Client Results</p>
+      <h2 class="text-3xl md:text-4xl font-heading font-bold" style="color: #0B2744;">
+        Watch the <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Progress</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+      {videos.map(v => (
+        <div
+          class="group bg-[#FCF9FA] rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_4px_20px_rgba(0,0,0,0.07)] flex flex-col cursor-pointer transition-shadow duration-200 hover:shadow-[0_8px_32px_rgba(0,0,0,0.12)]"
+          onclick={v.src ? `openVideoModal('${v.id}', '${v.src}')` : undefined}
+        >
+          <!-- Thumbnail -->
+          <div class="relative overflow-hidden aspect-video">
+            <img
+              src={v.thumb}
+              alt={`${v.dog} transformation`}
+              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+            <!-- Dark overlay -->
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(11,39,68,0.08) 0%, rgba(11,39,68,0.50) 100%);"></div>
+
+            <!-- Play button -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-14 h-14 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:scale-110"
+                   style="background: rgba(209,178,127,0.18); border: 2px solid rgba(209,178,127,0.45); backdrop-filter: blur(4px);">
+                <svg class="w-6 h-6 ml-0.5" fill="#D1B27F" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+
+            <!-- Result label chip -->
+            <div class="absolute bottom-3 left-3 right-3">
+              <span class="inline-block text-[10px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full text-white"
+                    style="background: rgba(15,109,114,0.80); backdrop-filter: blur(4px);">
+                {v.result}
+              </span>
+            </div>
+          </div>
+
+          <!-- Card body -->
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-start justify-between mb-3">
+              <div>
+                <h3 class="font-heading font-bold text-lg" style="color: #0B2744;">{v.dog}</h3>
+                <p class="text-xs font-semibold tracking-wide" style="color: #0F6D72;">{v.breed}</p>
+              </div>
+              <svg class="w-4 h-4 mt-1 flex-shrink-0 opacity-30" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.65);">{v.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- "What You'll See" mini section -->
+    <div class="mt-16 rounded-2xl p-8 md:p-10 border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+      <div class="text-center mb-8">
+        <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-2" style="color: rgba(15,109,114,0.60);">In Every Video</p>
+        <h3 class="text-xl font-heading font-bold" style="color: #0B2744;">What You'll See</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-2xl mx-auto">
+        {[
+          {icon: "🚶", label: "Calm Walks", desc: "Dogs that walked in pulling and lunging — walking out loose-leashed."},
+          {icon: "📏", label: "Threshold Work", desc: "Controlled distance sessions that expand the dog's comfort zone rep by rep."},
+          {icon: "🌍", label: "Real-World Reps", desc: "Public settings, real distractions, real improvement. No controlled studio environments."},
+        ].map(item => (
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(15,109,114,0.08);">
+              <span class="text-lg">{item.icon}</span>
+            </div>
+            <div>
+              <p class="font-bold text-sm mb-1" style="color: #0B2744;">{item.label}</p>
+              <p class="text-xs leading-relaxed" style="color: rgba(17,32,50,0.60);">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     VIDEO MODAL
+══════════════════════════════════════════════ -->
+<div id="video-modal" class="fixed inset-0 z-[9999] hidden items-center justify-center px-4" style="background: rgba(0,0,0,0.85);">
+  <div class="relative w-full max-w-4xl">
+    <button
+      onclick="closeVideoModal()"
+      class="absolute -top-10 right-0 text-white/60 hover:text-white text-sm font-bold tracking-widest uppercase flex items-center gap-2"
+    >
+      Close ✕
+    </button>
+    <div class="rounded-2xl overflow-hidden aspect-video bg-black">
+      <iframe
+        id="video-frame"
+        class="w-full h-full"
+        src=""
+        frameborder="0"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+</Layout>
+
+<script>
+  function openVideoModal(id: string, src: string) {
+    const modal = document.getElementById('video-modal');
+    const frame = document.getElementById('video-frame') as HTMLIFrameElement;
+    if (!modal || !frame) return;
+    if (!src) return; // no-op until real URLs are set
+    frame.src = src;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideoModal() {
+    const modal = document.getElementById('video-modal');
+    const frame = document.getElementById('video-frame') as HTMLIFrameElement;
+    if (!modal || !frame) return;
+    frame.src = '';
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  // Close on backdrop click
+  document.getElementById('video-modal')?.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) closeVideoModal();
+  });
+
+  // Expose globally
+  (window as any).openVideoModal = openVideoModal;
+  (window as any).closeVideoModal = closeVideoModal;
+</script>
