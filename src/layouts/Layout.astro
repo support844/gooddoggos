@@ -3,6 +3,14 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import Banner from "../components/Banner.astro";
 import "../styles/global.css";
+
+export interface Props {
+    title?: string;
+    description?: string;
+    headerAlwaysSolid?: boolean;
+}
+
+const { title = "Good Doggos", description = "Good Doggos — Expert dog trainer in San Jacinto, CA specializing in reactive and aggressive dogs. Apply for a Free Behavioral Assessment today.", headerAlwaysSolid = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -16,7 +24,9 @@ import "../styles/global.css";
             href="/images/Circle%20Navy%20Dog%20Mascot%20Light%20Gold%20BG%20Transparent%20-%20Good%20Doggos.png"
         />
         <meta name="generator" content={Astro.generator} />
-        <title>Good Doggos</title>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <slot name="head" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -30,7 +40,7 @@ import "../styles/global.css";
             class="fixed top-0 left-0 right-0 z-50 flex flex-col"
         >
             <Banner />
-            <Navbar />
+            <Navbar alwaysSolid={headerAlwaysSolid} />
         </div>
         <main class="flex-grow">
             <slot />

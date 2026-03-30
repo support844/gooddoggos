@@ -12,19 +12,13 @@ import Layout from "../layouts/Layout.astro";
   >
     <div class="absolute inset-0 z-0">
       <img
-        src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=2400"
+        src="/images/high five.jpg"
         alt="Our Guarantee"
-        class="w-full h-full object-cover object-center"
-        style="opacity: 0.28;"
+        class="w-full h-full object-cover opacity-50"
+        style="object-position: center 35%;"
       />
       <div
-        class="absolute inset-0"
-        style="background: linear-gradient(135deg, rgba(11,39,68,0.95) 0%, rgba(11,39,68,0.75) 50%, rgba(11,39,68,0.45) 100%);"
-      >
-      </div>
-      <div
-        class="absolute inset-0"
-        style="background: linear-gradient(to top, rgba(11,39,68,0.90) 0%, transparent 60%);"
+        class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"
       >
       </div>
     </div>
@@ -102,7 +96,7 @@ import Layout from "../layouts/Layout.astro";
                 class="text-2xl md:text-3xl font-heading font-bold"
                 style="color: #0B2744;"
               >
-                The Results Guarantee
+                Win-Your-Money-Back Guarantee
               </h2>
             </div>
             <div
@@ -128,10 +122,10 @@ import Layout from "../layouts/Layout.astro";
             class="text-base leading-relaxed mb-8"
             style="color: rgba(17,32,50,0.72);"
           >
-            If you complete every requirement of the Calm Companion Challenge
-            and don't see measurable improvement in your dog's behavior, you get
-            a full refund. Do the work — and the program works for you. If it
-            doesn't, you don't pay.
+            If you show up, do the work, and complete every requirement, you
+            qualify to earn 100% of your investment back — regardless of
+            results. We're so confident the process works, we're willing to PAY
+            YOU to follow it.
           </p>
 
           <!-- How it works -->
@@ -157,8 +151,8 @@ import Layout from "../layouts/Layout.astro";
                   },
                   {
                     step: "03",
-                    title: "If It Doesn't Work",
-                    desc: "You get a full refund — no questions, no negotiation. Simple.",
+                    title: "Graduate",
+                    desc: "Win 100% of your money back. Guaranteed.",
                   },
                 ].map((s) => (
                   <div
@@ -263,8 +257,143 @@ import Layout from "../layouts/Layout.astro";
                 ))
               }
             </div>
+
+            <!-- New Disqualifying Accordion -->
+            <div
+              class="mt-4 rounded-xl border border-[#E6DAC6] overflow-hidden"
+            >
+              <button
+                class="w-full flex justify-between items-center px-6 py-4 text-left bg-white transition-colors hover:bg-gray-50"
+                onclick="toggleGuaranteeFaq('ccc-disqualify')"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="text-lg flex-shrink-0">⚠️</span>
+                  <span class="font-bold text-sm" style="color: #0B2744;"
+                    >What would disqualify me?</span
+                  >
+                </div>
+                <svg
+                  id="ccc-disqualify-icon"
+                  class="w-4 h-4 flex-shrink-0 transition-transform duration-200"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="#0F6D72"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 4v16m8-8H4"></path>
+                </svg>
+              </button>
+              <div
+                id="ccc-disqualify"
+                class="hidden px-6 py-4 border-t border-[#E6DAC6]"
+                style="background: rgba(15,109,114,0.02);"
+              >
+                <p
+                  class="text-[11px] mb-3 leading-relaxed"
+                  style="color: rgba(17,32,50,0.72);"
+                >
+                  This guarantee is built to reward full participation. The
+                  items below may make you ineligible for the
+                  win-your-money-back outcome.
+                </p>
+                <ul
+                  class="text-[11px] leading-relaxed space-y-2 list-disc pl-4 mb-4"
+                  style="color: rgba(17,32,50,0.72);"
+                >
+                  <li>
+                    Missing required live sessions, check-ins, or graduation
+                    without coordinating an approved make-up per policy
+                  </li>
+                  <li>
+                    Not submitting the required baseline ("before") videos on
+                    time (or submitting videos that don't meet the required
+                    criteria for verification)
+                  </li>
+                  <li>
+                    Not submitting weekly homework / practice videos as
+                    required, or repeatedly submitting incomplete work after
+                    reminders
+                  </li>
+                  <li>
+                    Refusing or repeatedly failing to follow the program's
+                    required management plan during the challenge (handling
+                    rules, setup rules, safety protocols)
+                  </li>
+                  <li>
+                    Using training tools or methods that conflict with the
+                    program rules during the challenge (e.g., aversive/punitive
+                    methods if prohibited), which makes progress and
+                    verification unreliable
+                  </li>
+                  <li>
+                    Withholding, minimizing, or misrepresenting key safety
+                    information during intake (e.g., bite history,
+                    human-directed aggression, severe reactivity, known
+                    triggers, legal restrictions)
+                  </li>
+                  <li>
+                    Arriving to sessions without required safety equipment
+                    (leash, collar/harness, muzzle if required, etc.) or
+                    refusing required handling instructions needed to keep
+                    sessions safe
+                  </li>
+                  <li>
+                    Behavior that makes safe participation impossible (e.g.,
+                    repeated attempts to bite, uncontrolled aggression at
+                    sessions, inability to remain under threshold with the
+                    required management tools) if the team determines the
+                    current program format is unsafe
+                  </li>
+                  <li>
+                    Violating community standards in a way that disrupts safe
+                    participation (harassment, unsafe advice, refusal to follow
+                    group rules), including removal from the community space
+                  </li>
+                  <li>
+                    Failing to engage with support when needed (e.g., repeatedly
+                    not responding to coach outreach when homework is missing
+                    and deadlines pass)
+                  </li>
+                  <li>
+                    Requesting a refund after initiating a chargeback, disputing
+                    payments, or engaging in fraudulent behavior (the guarantee
+                    is void in these cases)
+                  </li>
+                  <li>
+                    Attempting to transfer participation to another handler/dog,
+                    or substantially changing the dog's training environment
+                    mid-challenge in a way that prevents consistent verification
+                    (unless the coach approves a plan)
+                  </li>
+                  <li>
+                    Not using reasonable veterinary care when a medical issue is
+                    clearly impacting training (pain/injury/illness) and
+                    continuing without clearance, making results unverifiable
+                    and potentially unsafe
+                  </li>
+                </ul>
+                <p
+                  class="text-[11px] leading-relaxed mb-3 font-medium"
+                  style="color: rgba(15,109,114,0.8);"
+                >
+                  If something happens that could affect your eligibility
+                  (travel, illness, emergencies), tell us as soon as possible.
+                  When we can safely do so, we'll help you stay on track with
+                  make-ups or an adjusted plan.
+                </p>
+                <p class="text-[10px]" style="color: rgba(17,32,50,0.5);">
+                  <a href="/terms" class="hover:underline transition-colors"
+                    >Additional terms of service can be found here.</a
+                  >
+                </p>
+              </div>
+            </div>
+
             <p
-              class="text-xs mt-3 text-center font-semibold"
+              class="text-xs mt-5 text-center font-semibold"
               style="color: rgba(15,109,114,0.70);"
             >
               Complete all five — and if the program doesn't deliver, you don't
@@ -292,7 +421,7 @@ import Layout from "../layouts/Layout.astro";
                 class="text-2xl md:text-3xl font-heading font-bold"
                 style="color: #0B2744;"
               >
-                The Satisfaction Guarantee
+                Goal-Based Guarantee
               </h2>
             </div>
             <div
@@ -318,53 +447,164 @@ import Layout from "../layouts/Layout.astro";
             class="text-base leading-relaxed mb-8"
             style="color: rgba(17,32,50,0.72);"
           >
-            This program carries a full satisfaction guarantee. If at the end of
-            the program you feel the level of service provided was not equal or
-            superior to your investment, I will write you a refund check myself.
+            This is a focused private program. We pick ONE measurable goal
+            together at the start (the "Primary Goal"). We work the full
+            advertised program scope AND track the Primary Goal. If you meet the
+            requirements and your dog does not hit the Primary Goal by the end
+            of the program, you receive a full refund.
           </p>
 
-          <!-- Premium confidence block -->
-          <div
-            class="rounded-2xl p-7 border"
-            style="background: linear-gradient(135deg, #0B2744, #112032); border-color: rgba(209,178,127,0.15);"
-          >
+          <!-- How it works -->
+          <div class="mb-7">
             <p
-              class="text-[10px] font-bold tracking-widest uppercase mb-4"
-              style="color: rgba(209,178,127,0.55);"
+              class="text-[11px] font-bold tracking-[0.22em] uppercase mb-4"
+              style="color: rgba(209,178,127,0.8);"
             >
-              The Way I Look At It
+              How It Works
             </p>
-            <div class="grid md:grid-cols-2 gap-5">
-              <div class="text-center p-5 rounded-xl border border-white/10">
-                <p
-                  class="headline-accent text-lg mb-2"
-                  style="color: #D1B27F; font-style: italic; font-weight: 700;"
-                >
-                  Best Case
-                </p>
-                <p class="text-white text-sm leading-relaxed">
-                  I change your life. Your dog becomes the companion you always
-                  knew they could be.
-                </p>
-              </div>
-              <div class="text-center p-5 rounded-xl border border-white/10">
-                <p
-                  class="headline-accent text-lg mb-2"
-                  style="color: #D1B27F; font-style: italic; font-weight: 700;"
-                >
-                  Worst Case
-                </p>
-                <p class="text-white text-sm leading-relaxed">
-                  I trained your dog for free. You have no risk. None.
-                </p>
-              </div>
+            <div class="grid md:grid-cols-3 gap-4">
+              {
+                [
+                  {
+                    step: "01",
+                    title: "Define the Goal",
+                    desc: "We pick ONE measurable and observable Primary Goal at the start.",
+                  },
+                  {
+                    step: "02",
+                    title: "Follow the Plan",
+                    desc: "Attend sessions, complete homework, and maintain the management plan.",
+                  },
+                  {
+                    step: "03",
+                    title: "Measure & Verify",
+                    desc: "We use clear before/after criteria to verify the goal was met.",
+                  },
+                ].map((s) => (
+                  <div
+                    class="rounded-xl p-5 border border-[#E6DAC6]"
+                    style="background: rgba(209,178,127,0.03);"
+                  >
+                    <p
+                      class="font-heading font-extrabold text-2xl mb-1"
+                      style="color: rgba(209,178,127,0.4);"
+                    >
+                      {s.step}
+                    </p>
+                    <p class="font-bold text-sm mb-1" style="color: #0B2744;">
+                      {s.title}
+                    </p>
+                    <p
+                      class="text-xs leading-relaxed"
+                      style="color: rgba(17,32,50,0.60);"
+                    >
+                      {s.desc}
+                    </p>
+                  </div>
+                ))
+              }
             </div>
+          </div>
+
+          <div class="mb-7">
             <p
-              class="text-center mt-5 text-sm font-semibold"
-              style="color: rgba(255,255,255,0.55);"
+              class="text-[11px] font-bold tracking-[0.22em] uppercase mb-3"
+              style="color: rgba(209,178,127,0.8);"
             >
-              You have absolutely nothing to lose.
+              Example Primary Goals
             </p>
+            <ul
+              class="text-[13px] leading-relaxed list-disc pl-4 space-y-2"
+              style="color: rgba(17,32,50,0.72);"
+            >
+              <li>Walk calmly past other dogs without lunging</li>
+              <li>Hold a reliable down-stay in a public setting</li>
+              <li>Demonstrate comfortable on-leash exposure to neutral dogs</li>
+              <li>Greet unfamiliar people without aggression</li>
+              <li>Respond to handler cues under threshold distractions</li>
+              <li>
+                Achieve agreed-upon threshold distances with measurable
+                improvement
+              </li>
+            </ul>
+          </div>
+
+          <!-- Requirements Accordion -->
+          <div class="rounded-xl border border-[#E6DAC6] overflow-hidden mb-5">
+            <button
+              class="w-full flex justify-between items-center px-6 py-4 text-left bg-white transition-colors hover:bg-gray-50"
+              onclick="toggleGuaranteeFaq('pa-requirements')"
+            >
+              <span class="font-bold text-sm" style="color: #0B2744;"
+                >Conditions Apply - See Full Details</span
+              >
+              <svg
+                id="pa-requirements-icon"
+                class="w-4 h-4 flex-shrink-0 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#D1B27F"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4v16m8-8H4"></path>
+              </svg>
+            </button>
+            <div
+              id="pa-requirements"
+              class="hidden px-6 py-4 border-t border-[#E6DAC6]"
+              style="background: rgba(209,178,127,0.02);"
+            >
+              <ul
+                class="text-[11px] leading-relaxed space-y-2 list-disc pl-4 mb-4"
+                style="color: rgba(17,32,50,0.72);"
+              >
+                <li>Missing sessions without approved reschedule window</li>
+                <li>
+                  Not completing assigned reps/homework required to measure the
+                  goal
+                </li>
+                <li>
+                  Not using required management/safety equipment (e.g., leash,
+                  long line, muzzle if recommended/required)
+                </li>
+                <li>
+                  Withholding bite history, aggression incidents, or other
+                  material intake details that change the plan/safety profile
+                </li>
+                <li>
+                  Safety rule violations that prevent safe training sessions
+                  (for people, dogs, staff, or the public)
+                </li>
+                <li>
+                  Using tools or methods that directly conflict with the
+                  training plan/safety protocol during the program (if
+                  applicable)
+                </li>
+                <li>
+                  Major medical/medication/health changes that materially affect
+                  behavior not disclosed during the program (if relevant)
+                </li>
+                <li>
+                  Any conduct that prevents completing sessions safely (e.g.,
+                  repeated no-shows, hostile behavior, unsafe handling)
+                </li>
+              </ul>
+              <p
+                class="text-[11px] font-medium"
+                style="color: rgba(209,178,127,0.8);"
+              >
+                If you have questions about eligibility, contact us before your
+                first session.
+              </p>
+              <p class="text-[10px] mt-2" style="color: rgba(17,32,50,0.5);">
+                <a href="/terms" class="hover:underline transition-colors"
+                  >Additional terms of service can be found here.</a
+                >
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -387,7 +627,7 @@ import Layout from "../layouts/Layout.astro";
                 class="text-2xl md:text-3xl font-heading font-bold"
                 style="color: #0B2744;"
               >
-                The Goals Guarantee
+                Safety Standard Guarantee
               </h2>
             </div>
             <div
@@ -413,69 +653,178 @@ import Layout from "../layouts/Layout.astro";
             class="text-base leading-relaxed mb-7"
             style="color: rgba(17,32,50,0.72);"
           >
-            The Reactive Dog Intensive guarantee is built around goals —
-            specifically, the goals we agree on together during your initial
-            consultation. Because every case is unique, we define success
-            together before we begin.
+            This program is for serious reactivity and aggression risk. We
+            define specific goals and a "Safety Standard" during the initial
+            consult. Our guarantee means we provide continued support until the
+            Safety Standard is met.
           </p>
+
+          <!-- Safety Standard Callout -->
+          <div
+            class="rounded-xl p-5 border mb-7"
+            style="background: rgba(125,44,45,0.04); border-color: rgba(125,44,45,0.14);"
+          >
+            <p class="font-bold text-sm mb-1" style="color: #7D2C2D;">
+              What is a Safety Standard?
+            </p>
+            <p
+              class="text-sm leading-relaxed"
+              style="color: rgba(17,32,50,0.8);"
+            >
+              The Safety Standard is the written, measurable success criteria we
+              define together during your consultation. It describes what "safe
+              and manageable" means for your dog in your real life — using the
+              agreed handling plan and risk controls.
+            </p>
+          </div>
 
           <div class="mb-7">
             <p
               class="text-[11px] font-bold tracking-[0.22em] uppercase mb-4"
               style="color: rgba(125,44,45,0.60);"
             >
-              Example Goal Criteria
+              Examples of Safety Standard Goals
             </p>
-            <div class="grid sm:grid-cols-2 gap-3">
-              {
-                [
-                  "Walk calmly past other dogs without lunging",
-                  "Greet unfamiliar people without aggression",
-                  "Hold a reliable down-stay in a public setting",
-                  "Respond to handler cues under threshold distraction",
-                  "Demonstrate comfortable on-leash exposure to neutral dogs",
-                  "Achieve agreed-upon threshold distances with measurable improvement",
-                ].map((g) => (
-                  <div
-                    class="flex items-start gap-2.5 text-sm"
-                    style="color: rgba(17,32,50,0.72);"
-                  >
-                    <svg
-                      class="w-4 h-4 mt-0.5 flex-shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="#7D2C2D"
-                      stroke-width="2.5"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {g}
-                  </div>
-                ))
-              }
-            </div>
+            <ul
+              class="text-[13px] leading-relaxed list-disc pl-4 space-y-2 mb-3"
+              style="color: rgba(17,32,50,0.72);"
+            >
+              <li>
+                Controlled neutrality past other dogs at an agreed threshold
+                distance (distance defined during consult)
+              </li>
+              <li>
+                Visitor protocol safety: dog can be managed safely using the
+                agreed plan (crate/place/behind barrier, muzzle if required)
+              </li>
+              <li>
+                Reliable Place for 20 minutes during a meal or structured
+                visitor-entry routine
+              </li>
+              <li>
+                Reduced intensity + recoverability: reactions de-escalate and
+                dog returns to baseline within X seconds/minutes (define "X"
+                during consult)
+              </li>
+              <li>
+                No uncontrolled lunging within agreed environments under proper
+                handling (equipment + management plan followed)
+              </li>
+              <li>
+                Handler control metrics: improved response to disengage cues /
+                emergency U-turn / pattern games (as defined in the plan)
+              </li>
+            </ul>
+            <p class="text-[11px] italic" style="color: rgba(125,44,45,0.8);">
+              Your specific Safety Standard is defined collaboratively during
+              your consultation.
+            </p>
           </div>
 
           <div
-            class="rounded-xl p-6 border"
-            style="background: rgba(125,44,45,0.04); border-color: rgba(125,44,45,0.14);"
+            class="rounded-xl p-6 border mb-7"
+            style="background: #112032; border-color: #0B2744;"
           >
-            <p class="font-bold text-sm mb-2" style="color: #7D2C2D;">
-              Our Commitment
-            </p>
+            <p class="font-bold text-sm mb-2 text-white">Our Commitment</p>
             <p
               class="text-sm leading-relaxed"
-              style="color: rgba(17,32,50,0.68);"
+              style="color: rgba(255,255,255,0.7);"
             >
-              If we reach the end of your scheduled program duration and the
-              mutually-agreed goals have not been met, we will continue working
-              with you at no additional cost — for as long as it takes to get
-              there. No re-enrollment, no extra charges.
+              If you complete the program and the mutually-agreed goals are not
+              met, we continue working with you at no additional cost until they
+              are. No re-enrollment, no extra charges.
             </p>
+          </div>
+
+          <!-- Requirements Accordion -->
+          <div class="rounded-xl border border-[#E6DAC6] overflow-hidden mb-5">
+            <button
+              class="w-full flex justify-between items-center px-6 py-4 text-left bg-white transition-colors hover:bg-gray-50"
+              onclick="toggleGuaranteeFaq('rdi-requirements')"
+            >
+              <span class="font-bold text-sm" style="color: #0B2744;"
+                >What could pause or void continued no-cost support?</span
+              >
+              <svg
+                id="rdi-requirements-icon"
+                class="w-4 h-4 flex-shrink-0 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#7D2C2D"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 4v16m8-8H4"></path>
+              </svg>
+            </button>
+            <div
+              id="rdi-requirements"
+              class="hidden px-6 py-4 border-t border-[#E6DAC6]"
+              style="background: rgba(125,44,45,0.02);"
+            >
+              <ul
+                class="text-[11px] leading-relaxed space-y-2 list-disc pl-4 mb-4"
+                style="color: rgba(17,32,50,0.72);"
+              >
+                <li>
+                  Repeated missed sessions / repeated no-shows without an
+                  approved reschedule window
+                </li>
+                <li>
+                  Not following required safety protocols (muzzle, leash,
+                  barriers, crate/place plan) when specified
+                </li>
+                <li>
+                  Repeated unsafe exposure outside the plan (e.g., testing
+                  thresholds, unmanaged greetings, dog parks) that undermines
+                  the program
+                </li>
+                <li>
+                  Materially inaccurate or withheld bite history / prior
+                  incidents / known triggers disclosed after the plan is built
+                </li>
+                <li>
+                  Introducing new high-risk environments or scenarios without
+                  trainer approval when safety planning is required
+                </li>
+                <li>
+                  Failure to promptly communicate setbacks, incidents, injuries,
+                  or escalations that materially affect the training plan
+                </li>
+                <li>
+                  Using off-plan training methods or aversive tools that
+                  conflict with the safety plan (if applicable)
+                </li>
+                <li>
+                  Handler noncompliance that prevents safe continuation (trainer
+                  determines the risk threshold)
+                </li>
+                <li>
+                  Aggression escalation caused by unmanaged variables outside
+                  the plan (e.g., repeated uncontrolled exposure), where
+                  continued support would be unsafe until corrective steps are
+                  taken
+                </li>
+                <li>
+                  Threats, harassment, or behavior that violates staff/community
+                  safety policies
+                </li>
+              </ul>
+              <p
+                class="text-[11px] font-medium"
+                style="color: rgba(125,44,45,0.8);"
+              >
+                Whenever possible, we'll first try to pause, stabilize, and
+                re-align the plan before anything is voided. Safety comes first.
+              </p>
+              <p class="text-[10px] mt-2" style="color: rgba(17,32,50,0.5);">
+                <a href="/terms" class="hover:underline transition-colors"
+                  >Additional terms of service can be found here.</a
+                >
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -503,24 +852,24 @@ import Layout from "../layouts/Layout.astro";
         {
           [
             {
-              q: "What counts as 'measurable improvement'?",
-              a: "Measurable improvement is defined at the start of the program based on your dog's specific behaviors — typically things like reduced lunging intensity, improved threshold distance, calmer baseline on the walk, or cleaner response to handler cues. For the CCC, it's documented via your before/after videos.",
+              q: "What counts as 'completing the requirements'?",
+              a: "Each program has specific attendance, homework, and safety requirements to ensure we can accurately measure progress safely. Please check the 'Requirements' or 'Conditions' section under your specific program above for the exact checklist.",
             },
             {
-              q: "What if I miss a session?",
-              a: "For the Calm Companion Challenge, attending all 4 sessions is a requirement of the guarantee. One make-up credit may be offered within the program window if notified at least 48 hours in advance. Missed sessions without proper notice or make-up completion will affect guarantee eligibility.",
+              q: "What happens if I miss a session?",
+              a: "Consistent attendance is key to our guarantees. While life happens, missing sessions without an approved reschedule or make-up plan may void your guarantee coverage. Always communicate with us as early as possible if an emergency arises.",
             },
             {
-              q: "How do refunds work if I qualify?",
-              a: "For the CCC: once we've confirmed all requirements were met, refunds are processed promptly. For the Private Accelerator: if you're not satisfied with the level of service, a refund check is issued directly. No bureaucratic back-and-forth.",
+              q: "Can goals change mid-program?",
+              a: "Yes. If your priorities or your dog's needs change significantly, we can adjust the plan. Any mutually agreed-upon changes to your primary goals or safety standard will be documented and the guarantee will apply to those new baselines.",
             },
             {
-              q: "What if my goals change mid-program?",
-              a: "We're flexible. If your priority goals shift, let us know as early as possible so we can adjust the training plan. Guarantee terms apply to the goals agreed upon at the start — if goals change significantly, we'll align on a new baseline together.",
+              q: "Where do I submit videos and homework?",
+              a: "For the Calm Companion Challenge, all videos are submitted directly within our dedicated community platform. For private programs (PA and RDI), you will share updates directly with your trainer via your assigned channel.",
             },
             {
-              q: "Does the guarantee apply to all programs?",
-              a: "Each program has its own guarantee structure: the CCC has a full refund guarantee (requirements-based), the Private Accelerator has a satisfaction guarantee, and the RDI has a goals-based continuation guarantee. All three carry real commitment from us — not just fine print.",
+              q: "What could disqualify me?",
+              a: "Generally, failing to follow the safety plan, withholding critical behavior history (like bites), or repeatedly not doing the required work will void a guarantee. See the specific dropdown accordion in each program section above for the full list.",
             },
           ].map((faq, i) => (
             <div class="rounded-xl overflow-hidden border border-white/10">
@@ -607,7 +956,7 @@ import Layout from "../layouts/Layout.astro";
       </a>
       <div class="mt-5">
         <a
-          href="/contact"
+          href="tel:951-401-6252"
           class="text-xs transition-colors"
           style="color: rgba(17,32,50,0.45); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(17,32,50,0.20);"
           >Have questions? Contact us.</a

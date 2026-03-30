@@ -142,4 +142,86 @@
             0 4px 10px rgba(202, 164, 103, 0.3),
             inset 0 1px 1px rgba(255, 255, 255, 0.4);
     }
+
+    /* ─── TEAL APPLY BUTTON ───────────────────────────────────
+       Variation of the primary apply button. Used for Calm 
+       Companion and supportive service CTAs. */
+    .btn-apply-teal {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: linear-gradient(to bottom, #0F6D72, #0a4f53);
+        color: white;
+        font-family: var(--font-heading);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 16px 36px;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow:
+            0 8px 20px rgba(15, 109, 114, 0.35),
+            inset 0 1px 1px rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    .btn-apply-teal:hover {
+        box-shadow:
+            0 12px 25px rgba(15, 109, 114, 0.45),
+            inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .btn-apply-teal:active {
+        transform: translateY(0);
+        box-shadow:
+            0 4px 10px rgba(15, 109, 114, 0.3),
+            inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    /* ─── RED APPLY BUTTON ────────────────────────────────────
+       Variation of the primary apply button. Used for Red Zone
+       / high-intensity program CTAs. */
+    .btn-apply-red {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: linear-gradient(to bottom, #7D2C2D, #5A1717);
+        color: white;
+        font-family: var(--font-heading);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 16px 36px;
+        border-radius: 9999px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow:
+            0 8px 20px rgba(125, 44, 45, 0.35),
+            inset 0 1px 1px rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    .btn-apply-red:hover {
+        box-shadow:
+            0 12px 25px rgba(125, 44, 45, 0.45),
+            inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .btn-apply-red:active {
+        transform: translateY(0);
+        box-shadow:
+            0 4px 10px rgba(125, 44, 45, 0.3),
+            inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
 }

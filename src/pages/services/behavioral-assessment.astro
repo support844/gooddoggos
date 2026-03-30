@@ -1,0 +1,113 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Behavior Assessment San Jacinto | Good Doggos";
+const description = "Professional behavior assessment in San Jacinto. Stop guessing and start leading with a clear roadmap for your dog's behavior.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Behavioral Assessment & Consultation",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Good Doggos",
+    "url": "https://gooddoggos.com",
+    "telephone": "+19514016252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Jacinto",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Riverside County"
+  },
+  "url": "https://gooddoggos.com/services/behavioral-assessment"
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        <span>&rsaquo;</span>
+        <a href="/services/behavioral-modification" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Behavioral Modification</a>
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">Behavioral Assessment</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        Professional Behavior Assessment in San Jacinto
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <!-- Main Content -->
+      <div class="prose max-w-none">
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          If you’re looking for a consultation, you’re likely at the end of your rope. You’ve watched a thousand videos, bought every harness on the market, and your dog still acts like a Tasmanian devil on San Jacinto Avenue.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          These frustrations are symptoms of a missing roadmap. Because we are professionals, we do not guess. We evaluate your dog in person to perform a professional reactive dog evaluation & assessment, finding the source of the fire rather than just treating the symptoms. You don't need another "tip"—you need a clear blueprint.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mt-12 mb-6">
+          The Blueprint for a Balanced Dog
+        </h2>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          At Good Doggos, an assessment isn't just a "meet and greet." It’s a deep dive into your dog's psychology. For 8 years, I’ve handled the cases others turn away in Riverside County. We evaluate the four pillars: environment, biological fulfillment, relationship, and the dog's understanding of pressure.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          I provide an honest, balanced perspective from minute one. I’m going to watch how your dog reacts to pressure, how quickly they pivot to a reward, and where their "off switch" is. I don't guess; I test. Whether we’re at your home or a local spot like Hemet Lake, the goal is to identify the root cause. Most trainers just treat the symptoms; I find the source of the fire.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          I remember one "unfixable" case where a dog was labeled aggressive, but the assessment revealed the dog was simply lacking any clear leadership and was "working" to protect its owner out of insecurity. By implementing a balanced roadmap—clear "place" boundaries at home and calibrated leash work—we turned that aggression into neutrality in just a few weeks.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          By the end of this 90-minute session, you’ll have a professional roadmap. We’ll discuss how the San Jacinto heat impacts irritability, how your leash handling might be "loading" the behavior, and exactly which tools will get results. I’m not here to tell you what you want to hear; I’m here to tell you how to keep your dog safe and your sanity intact.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6 font-bold">
+          Stop guessing and start leading. Apply for a Free Behavioral Assessment.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>

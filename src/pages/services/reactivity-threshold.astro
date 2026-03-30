@@ -1,0 +1,110 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Reactivity Threshold Management San Jacinto | Good Doggos";
+const description = "Find and expand your dog's working zone in San Jacinto. We specialize in managing reactivity thresholds using Balanced Clarity and professional leadership.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Reactivity Threshold Management",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Good Doggos",
+    "url": "https://gooddoggos.com",
+    "telephone": "+19514016252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Jacinto",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Riverside County"
+  },
+  "url": "https://gooddoggos.com/services/reactivity-threshold"
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        <span>&rsaquo;</span>
+        <a href="/services/leash-reactivity-bootcamp" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Leash Reactivity Bootcamp</a>
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">Reactivity Threshold</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        Reactivity Threshold Management in San Jacinto
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <!-- Main Content -->
+      <div class="prose max-w-none">
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          If you’ve seen your dog "flip a switch" the moment they spot another dog on San Jacinto Avenue, you’ve seen a threshold crossing. One second they're sniffing grass, the next they're a frantic mess.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          These sudden explosions are symptoms of a dog that has been pushed past their mental limit. Because we are professionals, we do not guess or give out "one-size-fits-all" tips. We must evaluate your dog in person to find their exact "Working Zone"—the space where they can still hear you before the adrenaline takes over. To fix reactivity, you have to stop managing the explosion and start managing the space *before* the explosion happens.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mt-12 mb-6">
+          Training in the "Working Zone"
+        </h2>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          At Good Doggos, I specialize in identifying and expanding your dog’s threshold. For 8 years, I’ve shown Inland Empire owners that the key isn't just avoiding triggers—it’s teaching the dog how to handle them. I focus on finding the "Working Zone" where the dog is aware of a distraction but hasn't lost their mind yet.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          I remember working with a dog at a distance from Valley-Wide Recreation. By using my helper dog Simba as a controlled trigger, we found the exact yardage where the dog could still "hear" the owner. Through "Balanced Clarity"—rewarding calm engagement and using calibrated corrections for fixating—we systematically closed that gap. Within a few sessions, the "Working Zone" had expanded until the dog could walk past Simba on the same sidewalk.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          We take this out into the real-world distractions of San Jacinto. I’ll teach you to read the subtle "pre-load" signals—the ear flick, the tail height, the stiffening. By combining positive reinforcement with fair accountability, we push that threshold back. My goal is a dog that sees a stimulus and chooses to check in with you instead of checking out of reality.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6 font-bold">
+          Build a calmer dog today. Apply for a Free Behavioral Assessment.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>

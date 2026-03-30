@@ -1,0 +1,78 @@
+---
+export interface Props {
+    program: "ccc" | "pa" | "rdi";
+}
+
+const { program } = Astro.props;
+
+const config = {
+    ccc: {
+        title: "Win-Your-Money-Back Guarantee",
+        body: "Show up, do the work, and qualify to earn 100% back.",
+        linkText: "See Guarantee Details.",
+        color: "#0F6D72",
+        bg: "rgba(15,109,114,0.06)",
+    },
+    pa: {
+        title: "Goal-Based Guarantee",
+        body: "On Day 1, we define one measurable goal together. If that goal is not hit, you get your money back.",
+        linkText: "See Guarantee Details.",
+        color: "#D1B27F",
+        bg: "rgba(209,178,127,0.10)",
+    },
+    rdi: {
+        title: "Safety Standard Guarantee",
+        body: "On Day 1, we define your most important safety standard. We keep working until that agreed safety standard is met.",
+        linkText: "See Guarantee Details.",
+        color: "#7D2C2D",
+        bg: "rgba(125,44,45,0.06)",
+    },
+};
+
+const g = config[program];
+---
+
+<div
+    class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg transition-all w-full md:w-auto text-left"
+    style={`background: ${g.bg}; border: 1px solid ${g.color}30;`}
+>
+    <div
+        class="flex-shrink-0 w-7 h-7 rounded-full bg-white flex items-center justify-center"
+        style={`border: 1px solid ${g.color}30; box-shadow: 0 1px 3px rgba(0,0,0,0.04);`}
+    >
+        <!-- Shield Icon -->
+        <svg
+            class="w-4 h-4"
+            style={`color: ${g.color};`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.2"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+            ></path>
+        </svg>
+    </div>
+    <div class="flex-1 min-w-0">
+        <p
+            class="text-[14px] leading-tight font-semibold font-heading truncate mb-0.5"
+            style="color: #112032; font-family: 'Poppins', sans-serif;"
+        >
+            {g.title}
+        </p>
+        <p
+            class="text-[12px] leading-tight"
+            style="color: rgba(17,32,50,0.72);"
+        >
+            <span class="hidden lg:inline">{g.body}</span>
+            <a
+                href="/guarantee"
+                class="font-medium hover:underline inline"
+                style={`color: ${g.color};`}>{g.linkText}</a
+            >
+        </p>
+    </div>
+</div>

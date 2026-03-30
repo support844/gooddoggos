@@ -4,22 +4,53 @@ import Hero from "../components/Hero.astro";
 import TestimonialSlider from "../components/TestimonialSlider.astro";
 import CTASection from "../components/CTASection.astro";
 import { getCollection } from "astro:content";
-import Parser from "rss-parser";
-
-// Fetch Substack Feed
-let latestPosts: any[] = [];
-try {
-    const parser = new Parser();
-    const feed = await parser.parseURL("https://gooddoggos.substack.com/feed");
-    latestPosts = feed.items.slice(0, 3);
-} catch (e) {
-    console.error("Failed to fetch Substack feed", e);
-}
 
 const programs = await getCollection("programs");
 ---
 
-<Layout>
+<Layout title="Dog Trainer San Jacinto CA | Reactive Dogs | Good Doggos" description="Good Doggos — San Jacinto's expert dog trainer specializing in reactive and aggressive dogs. Apply for a Free Behavioral Assessment today.">
+    <Fragment slot="head">
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Good Doggos",
+          "description": "Expert dog trainer in San Jacinto, CA specializing in reactive, aggressive, and fear-based dog behavior. Using a balanced training approach to transform problem dogs into calm companions.",
+          "url": "https://gooddoggos.com",
+          "telephone": "+19514016252",
+          "priceRange": "$$",
+          "image": "https://gooddoggos.com/images/Circle%20Navy%20Dog%20Mascot%20Light%20Gold%20BG%20Transparent%20-%20Good%20Doggos.png",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "San Jacinto",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 33.7847,
+            "longitude": -116.9589
+          },
+          "areaServed": [
+            { "@type": "City", "name": "San Jacinto" },
+            { "@type": "City", "name": "Hemet" },
+            { "@type": "AdministrativeArea", "name": "Riverside County" },
+            { "@type": "AdministrativeArea", "name": "Inland Empire" }
+          ],
+          "serviceType": [
+            "Dog Training",
+            "Pet Training",
+            "Dog Walking",
+            "Pet Sitting",
+            "Aggression Rehabilitation",
+            "Leash Reactivity Training"
+          ],
+          "sameAs": [
+            "https://gooddoggos.substack.com"
+          ]
+        }
+        </script>
+    </Fragment>
     <Hero />
 
     <!-- What to Expect in Your Free Session -->
@@ -57,8 +88,7 @@ const programs = await getCollection("programs");
                 <p
                     class="text-lg text-primary-navy/70 max-w-2xl mx-auto font-body"
                 >
-                    Our proven protocol to understand your dog and build the
-                    perfect roadmap for transformation.
+                    Our proven protocol to understand your dog and build the perfect dog training roadmap for transformation, guided by an expert pet trainer.
                 </p>
             </div>
 
@@ -253,6 +283,9 @@ const programs = await getCollection("programs");
                         <div class="flex-shrink-0">
                             <a href="/apply" class="btn-apply px-10">
                                 Book Your Free Assessment
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -271,15 +304,14 @@ const programs = await getCollection("programs");
                 >
                     Find Your Dog On The <br />
                     <span
-                        class="headline-accent text-5xl md:text-6xl mt-2 block"
+                        class="headline-accent text-4xl md:text-5xl font-bold mt-2 block"
                         >Reactivity Spectrum</span
                     >
                 </h2>
                 <p
-                    class="text-lg text-primary-navy/60 max-w-2xl mx-auto font-body"
+                    class="text-lg text-primary-navy/70 max-w-2xl mx-auto font-body"
                 >
-                    Where does your dog fall? We have a tailored protocol for
-                    every stage of arousal and reactivity.
+                    Where does your dog fall? We have a tailored <a href="/programs" class="text-accent-teal hover:underline font-semibold">dog training program</a> for every stage of arousal and reactivity.
                 </p>
             </div>
 
@@ -336,7 +368,7 @@ const programs = await getCollection("programs");
                                 >
                                 </div>
                                 <!-- Color Overlay Layer -->
-                                <div class="absolute inset-0 bg-[#00727A]/78">
+                                <div class="absolute inset-0 bg-[#00727A]/70">
                                 </div>
                                 <!-- Gloss Highlight -->
                                 <div
@@ -500,11 +532,11 @@ const programs = await getCollection("programs");
                                 <!-- Dog Photo Background Texture Layer -->
                                 <div
                                     class="absolute inset-0 grayscale bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                    style="background-image: url('https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&q=80&w=1000');"
+                                    style="background-image: url('/DesignGuidelines/sumeet-singh-0JEfPcomlZs-unsplash.jpg');"
                                 >
                                 </div>
                                 <!-- Color Overlay Layer -->
-                                <div class="absolute inset-0 bg-[#D1B27F]/78">
+                                <div class="absolute inset-0 bg-[#D1B27F]/70">
                                 </div>
                                 <!-- Gloss Highlight -->
                                 <div
@@ -666,11 +698,11 @@ const programs = await getCollection("programs");
                                 <!-- Dog Photo Background Texture Layer -->
                                 <div
                                     class="absolute inset-0 grayscale bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                    style="background-image: url('https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&q=80&w=1000');"
+                                    style="background-image: url('/DesignGuidelines/alexas_fotos-8UW56BhhUoc-unsplash.jpg');"
                                 >
                                 </div>
                                 <!-- Color Overlay Layer -->
-                                <div class="absolute inset-0 bg-[#6B1B1B]/78">
+                                <div class="absolute inset-0 bg-[#6B1B1B]/70">
                                 </div>
                                 <!-- Gloss Highlight -->
                                 <div
@@ -827,6 +859,9 @@ const programs = await getCollection("programs");
             <div class="text-center mt-16 relative z-10">
                 <a href="/apply" class="btn-apply py-4 px-12 text-base">
                     Get Your Free Assessment
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
                 </a>
             </div>
         </div>
@@ -858,13 +893,15 @@ const programs = await getCollection("programs");
             </div>
 
             <!-- Headline Layer (Over Image) -->
-            <div class="container mx-auto px-4 relative z-10">
-                <div class="max-w-4xl">
+            <div
+                class="px-4 md:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 w-full"
+            >
+                <div class="text-left flex flex-col items-start">
                     <h2
-                        class="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-2 drop-shadow-2xl"
+                        class="text-4xl md:text-6xl font-bold text-white leading-[1.1] mb-2 drop-shadow-2xl"
                     >
                         Simba and the Pack<br />
-                        <span class="headline-accent !text-[#0B2744]"
+                        <span class="headline-accent !text-primary-navy"
                             >Are Ready to Help.</span
                         >
                     </h2>
@@ -873,13 +910,15 @@ const programs = await getCollection("programs");
         </div>
 
         <!-- Part B: Solid Content Band (Bottom) -->
-        <div class="pt-12 pb-20 md:pt-16 md:pb-32">
+        <div class="pt-8 pb-20 md:pt-12 md:pb-32">
             <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
                 <div class="grid md:grid-cols-12 gap-12 md:gap-20 items-start">
                     <!-- Column A: The Differentiator & Features -->
                     <div class="md:col-span-7">
                         <div class="mb-14">
-                            <p class="kicker kicker-dark mb-4 text-[#0B2744]">
+                            <p
+                                class="kicker kicker-dark mb-4 text-[#0B2744] font-bold tracking-[0.2em] text-[10px]"
+                            >
                                 THE DIFFERENTIATOR
                             </p>
                             <p
@@ -894,15 +933,17 @@ const programs = await getCollection("programs");
                         </div>
 
                         <!-- 3-Item Feature Row -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                        <div
+                            class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+                        >
                             <!-- Feature 1 -->
-                            <div class="flex flex-col items-start gap-5">
+                            <div class="flex flex-col items-start gap-4">
                                 <div
-                                    class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-[#112032] shadow-premium border border-[#E6DAC6]/40"
+                                    class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#D1B27F] shadow-premium border border-[#D1B27F]/40"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="h-7 w-7"
+                                        class="h-6 w-6"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -915,14 +956,14 @@ const programs = await getCollection("programs");
                                         ></path>
                                     </svg>
                                 </div>
-                                <div>
+                                <div class="w-full">
                                     <p
-                                        class="text-lg font-bold text-primary-navy mb-2 tracking-tight"
+                                        class="text-[12px] font-bold text-primary-navy mb-1.5 tracking-[0.05em] uppercase whitespace-nowrap"
                                     >
                                         SAFER TRAINING REPS
                                     </p>
                                     <p
-                                        class="text-sm md:text-base text-gray-600 leading-relaxed"
+                                        class="text-[13px] text-gray-600 leading-relaxed opacity-90"
                                     >
                                         Temperament-stable dogs keep sessions
                                         safe and controlled.
@@ -931,13 +972,13 @@ const programs = await getCollection("programs");
                             </div>
 
                             <!-- Feature 2 -->
-                            <div class="flex flex-col items-start gap-5">
+                            <div class="flex flex-col items-start gap-4">
                                 <div
-                                    class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-[#112032] shadow-premium border border-[#E6DAC6]/40"
+                                    class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#D1B27F] shadow-premium border border-[#D1B27F]/40"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="h-7 w-7"
+                                        class="h-6 w-6"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -956,14 +997,14 @@ const programs = await getCollection("programs");
                                         ></path>
                                     </svg>
                                 </div>
-                                <div>
+                                <div class="w-full">
                                     <p
-                                        class="text-lg font-bold text-primary-navy mb-2 tracking-tight"
+                                        class="text-[12px] font-bold text-primary-navy mb-1.5 tracking-[0.05em] uppercase whitespace-nowrap"
                                     >
                                         REAL-WORLD EXPOSURE
                                     </p>
                                     <p
-                                        class="text-sm md:text-base text-gray-600 leading-relaxed"
+                                        class="text-[13px] text-gray-600 leading-relaxed opacity-90"
                                     >
                                         Practice encounters under expert
                                         supervision in public spaces.
@@ -972,13 +1013,13 @@ const programs = await getCollection("programs");
                             </div>
 
                             <!-- Feature 3 -->
-                            <div class="flex flex-col items-start gap-5">
+                            <div class="flex flex-col items-start gap-4">
                                 <div
-                                    class="w-14 h-14 rounded-full bg-white flex items-center justify-center text-[#112032] shadow-premium border border-[#E6DAC6]/40"
+                                    class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#D1B27F] shadow-premium border border-[#D1B27F]/40"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        class="h-7 w-7"
+                                        class="h-6 w-6"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -991,14 +1032,14 @@ const programs = await getCollection("programs");
                                         ></path>
                                     </svg>
                                 </div>
-                                <div>
+                                <div class="w-full">
                                     <p
-                                        class="text-lg font-bold text-primary-navy mb-2 tracking-tight"
+                                        class="text-[12px] font-bold text-primary-navy mb-1.5 tracking-[0.05em] uppercase whitespace-nowrap"
                                     >
                                         FASTER BEHAVIOR TRANSFER
                                     </p>
                                     <p
-                                        class="text-sm md:text-base text-gray-600 leading-relaxed"
+                                        class="text-[13px] text-gray-600 leading-relaxed opacity-90"
                                     >
                                         Dogs learn from dogs. Experience rapid
                                         behavioral improvement from Day 1.
@@ -1097,131 +1138,279 @@ const programs = await getCollection("programs");
     <!-- Testimonials -->
     <TestimonialSlider />
 
-    <!-- Substack Feed -->
-    <section class="py-16 bg-surface px-4">
-        <div class="max-w-5xl mx-auto">
-            <div
-                class="flex flex-col md:flex-row justify-between items-end mb-8 border-b border-gray-200 pb-4"
-            >
-                <div>
-                    <h2 class="text-3xl font-heading leading-tight mb-2">
-                        <span class="font-bold text-primary-navy"
-                            >The Behavior</span
-                        >&nbsp;<span
-                            class="headline-accent text-[#D1B27F] text-3xl"
-                            >Journal.</span
-                        >
-                    </h2>
-                    <p class="text-gray-600">
-                        Latest training tips and stories from our Substack.
+    <!-- Support Services Section -->
+    <section class="py-24 px-4 bg-white relative text-center lg:text-left">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Header section -->
+            <div class="mb-12 text-center flex flex-col items-center max-w-3xl mx-auto">
+                <p class="kicker kicker-dark mb-4">Support Services</p>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary-navy mb-6 leading-tight">
+                    More Than Care.<br/>
+                    <span class="headline-accent text-4xl md:text-5xl font-bold mt-2 block">Built for Progress.</span>
+                </h2>
+                <p class="text-lg text-primary-navy/70 font-body text-center">
+                    For owners who need added support between sessions, a lower-commitment starting point, or more consistency in daily life, our support services blend dependable care with light training reinforcement.
+                </p>
+            </div>
+
+
+
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 text-left">
+                <!-- Dog Walker Card -->
+                <div class="bg-[#FCF9FA] rounded-[32px] border border-[#EAE1D3]/50 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4px_10px_rgba(11,39,68,0.04)] flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(11,39,68,0.08)] transition-all duration-500 group relative">
+                    <!-- Photo Banner -->
+                    <div class="relative">
+                        <div class="h-64 overflow-hidden rounded-t-[32px] relative z-0">
+                            <img src="/images/christian-testa-kqLl6Ao7V4k-unsplash.jpg" alt="Dog Walking" class="w-full h-full object-cover transition-transform duration-700 delay-100 group-hover:scale-[1.03]" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                        </div>
+                        <!-- Icon Badge -->
+                        <div class="absolute -bottom-6 left-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-premium border border-[#EAE1D3]/50 z-10 text-primary-navy">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 pt-12 flex flex-col flex-1 relative z-0">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-heading font-bold text-primary-navy leading-tight">Dog Walker</h3>
+                            <span class="bg-accent-teal/10 text-accent-teal border border-accent-teal/20 text-[9px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest whitespace-nowrap shadow-sm">Includes simple reinforcement</span>
+                        </div>
+                        <p class="text-secondary-slate text-[14px] font-body leading-relaxed mb-6 flex-grow">
+                            A walk through your neighborhood should feel calm, structured, and productive. Our <a href="/services/dog-walker" class="text-accent-teal hover:underline font-semibold">professional dog walker in San Jacinto</a> treats each walk as an opportunity to reinforce better leash manners, engagement, and calmer responses around everyday distractions. When appropriate, we also incorporate controlled practice around helper dogs to build neutrality in the moments dogs usually react.
+                        </p>
+                        
+                        <div class="mt-auto flex flex-col gap-6 pt-2">
+                            <div>
+                                <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-2">BEST FOR:</p>
+                                <div class="bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-5 py-3 w-full">
+                                    <span class="text-primary-navy font-body text-[13px] block leading-snug">
+                                        Owners who want structured exercise with built-in training support
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="/services#dog-walking" class="inline-flex items-center justify-center gap-3 w-full text-[11px] font-bold tracking-[0.18em] uppercase rounded-full transition-all duration-300 hover:-translate-y-0.5" style="background:#0B2744; color:white; padding:16px 24px; box-shadow:0 6px 15px rgba(11,39,68,0.15);">
+                                Dog Walking Details
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pet Sitter Card -->
+                <div class="bg-[#FCF9FA] rounded-[32px] border border-[#EAE1D3]/50 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4px_10px_rgba(11,39,68,0.04)] flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(11,39,68,0.08)] transition-all duration-500 group relative">
+                    <!-- Photo Banner -->
+                    <div class="relative">
+                        <div class="h-64 overflow-hidden rounded-t-[32px] relative z-0">
+                            <img src="/images/jamie-street-s9Tf1eBDFqw-unsplash.jpg" alt="Pet Sitting" class="w-full h-full object-cover transition-transform duration-700 delay-100 group-hover:scale-[1.03]" />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                        </div>
+                        <!-- Icon Badge -->
+                        <div class="absolute -bottom-6 left-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-premium border border-[#EAE1D3]/50 z-10 text-primary-navy">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-10 pt-12 flex flex-col flex-1 relative z-0">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-heading font-bold text-primary-navy leading-tight">Pet Sitter</h3>
+                            <span class="bg-accent-teal/10 text-accent-teal border border-accent-teal/20 text-[9px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest whitespace-nowrap shadow-sm">Includes simple reinforcement</span>
+                        </div>
+                        <p class="text-secondary-slate text-[14px] font-body leading-relaxed mb-6 flex-grow">
+                            Real progress happens at home. Our <a href="/services/pet-sitter" class="text-accent-teal hover:underline font-semibold">behavior-focused pet sitter in San Jacinto</a> reinforces structure where it matters most, helping support house manners, boundaries, and more stable behavior in your dog’s everyday environment. When appropriate, we can also incorporate carefully managed work with Simba or the pack to help address territorial behavior on your property.
+                        </p>
+                        
+                        <div class="mt-auto flex flex-col gap-6 pt-2">
+                            <div>
+                                <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-2">BEST FOR:</p>
+                                <div class="bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-5 py-3 w-full">
+                                    <span class="text-primary-navy font-body text-[13px] block leading-snug">
+                                        Owners who want in-home support with built-in behavior reinforcement
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="/services#pet-sitting" class="inline-flex items-center justify-center gap-3 w-full text-[11px] font-bold tracking-[0.18em] uppercase rounded-full transition-all duration-300 hover:-translate-y-0.5" style="background:#0B2744; color:white; padding:16px 24px; box-shadow:0 6px 15px rgba(11,39,68,0.15);">
+                                Pet Sitting Details
+                                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Panel (Moved Below Cards) -->
+            <div class="mt-16 max-w-4xl mx-auto w-full text-left bg-[#FCF9FA] border border-[#EAE1D3]/80 rounded-[32px] px-8 pt-5 pb-8 shadow-[0_15px_40px_rgba(11,39,68,0.04)]">
+                <div class="text-center max-w-2xl mx-auto">
+                    <img src="/images/Horizontal logo - Good Doggos - Navy.png" alt="Good Doggos Logo" class="w-full max-w-[380px] h-auto mx-auto mb-3 -mt-2 block" />
+                    <h3 class="font-heading font-bold text-2xl md:text-3xl text-primary-navy mb-2">Training Programs vs Support Services</h3>
+                    <p class="text-[11px] font-bold text-accent-gold uppercase tracking-widest mb-4">What's the difference?</p>
+                    <p class="text-secondary-slate font-body text-[15px] leading-relaxed mb-6">
+                        Training programs are built for meaningful behavioral change. Support services provide a lighter layer of structure and reinforcement — whether you’re just getting started or maintaining results after training.
                     </p>
                 </div>
-                <a
-                    href="https://gooddoggos.substack.com"
-                    target="_blank"
-                    class="text-accent-teal font-bold hover:underline mt-4 md:mt-0"
-                    >Read on Substack &rarr;</a
-                >
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                {
-                    latestPosts.map((post) => (
-                        <article class="bg-[#FCF9FA] rounded-[20px] border border-[#EAE1D3]/60 shadow-[0_10px_30px_rgba(11,39,68,0.05),0_4px_8px_rgba(11,39,68,0.03)] flex flex-col group hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                            {post.enclosure?.url && (
-                                <div class="w-full h-48 overflow-hidden relative border-b border-[#EAE1D3]/60">
-                                    <img
-                                        src={post.enclosure.url}
-                                        alt={post.title}
-                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                    <div class="absolute inset-0 bg-primary-navy/10 group-hover:bg-transparent transition-colors duration-300" />
+                
+                <details class="group mx-auto">
+                    <summary class="list-none [&::-webkit-details-marker]:hidden cursor-pointer flex justify-center items-center gap-2 text-[11px] font-bold text-primary-navy tracking-[0.15em] uppercase hover:text-accent-gold transition-colors select-none py-2 w-max mx-auto">
+                        <span class="group-open:hidden">View more</span>
+                        <span class="hidden group-open:block">View less</span>
+                        <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </summary>
+                    
+                    <div class="pt-8 overflow-hidden transition-all duration-300 border-t border-[#EAE1D3]/50 mt-6 md:px-4">
+                        <div class="grid md:grid-cols-2 gap-8 md:gap-0 relative">
+                            <!-- Divider Line -->
+                            <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-[#EAE1D3]/60 -translate-x-1/2"></div>
+                            
+                            <!-- Left Column: Programs -->
+                            <div class="md:pr-10 flex flex-col h-full">
+                                <h4 class="font-heading font-bold text-[18px] text-primary-navy border-b border-[#EAE1D3]/50 pb-3 mb-4">Dog Training Programs</h4>
+                                <p class="text-secondary-slate text-[13px] font-body mb-5">
+                                    Built for owners who want clear behavior change, stronger obedience, and a more reliable dog in everyday life.
+                                </p>
+                                <div class="space-y-4 flex-grow font-body">
+                                    <div>
+                                        <p class="text-[9px] font-bold text-secondary-slate/50 uppercase tracking-widest mb-1.5">Best for:</p>
+                                        <p class="text-primary-navy font-semibold text-[13px] leading-snug">Behavior goals, obedience work, reactivity concerns, and long-term transformation</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[9px] font-bold text-secondary-slate/50 uppercase tracking-widest mb-1.5">Level of support:</p>
+                                        <p class="text-primary-navy font-semibold text-[13px] leading-snug">Higher structure, active coaching, and a defined training plan</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[9px] font-bold text-secondary-slate/50 uppercase tracking-widest mb-1.5">Outcome:</p>
+                                        <p class="text-primary-navy font-semibold text-[13px] leading-snug">A dog who knows what to do — and an owner who knows how to lead</p>
+                                    </div>
                                 </div>
-                            )}
-                            <div class="p-6 md:p-8 flex flex-col flex-1">
-                                <p class="text-[12px] font-bold tracking-[0.2em] text-accent-gold uppercase mb-3">
-                                    {new Date(post.pubDate).toLocaleDateString(
-                                        "en-US",
-                                        {
-                                            month: "short",
-                                            day: "numeric",
-                                            year: "numeric",
-                                        }
-                                    )}
-                                </p>
-                                <h3 class="font-heading font-bold text-xl mb-3 text-primary-navy line-clamp-2">
-                                    <a
-                                        href={post.link}
-                                        target="_blank"
-                                        class="hover:text-accent-teal transition-colors"
-                                    >
-                                        {post.title}
-                                    </a>
-                                </h3>
-                                <p class="text-sm text-primary-navy/60 line-clamp-3 mb-6 flex-1 leading-relaxed">
-                                    {post.contentSnippet}
-                                </p>
-                                <a
-                                    href={post.link}
-                                    target="_blank"
-                                    class="inline-flex items-center gap-2 text-[13px] font-bold text-primary-navy hover:text-accent-teal uppercase tracking-[0.15em] transition-colors mt-auto"
-                                >
-                                    Read Article
-                                    <svg
-                                        class="w-4 h-4 transition-transform group-hover:translate-x-1"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                                        />
-                                    </svg>
-                                </a>
                             </div>
-                        </article>
-                    ))
-                }
-            </div>
 
-            <div
-                class="mt-12 text-center bg-primary-navy rounded-2xl p-8 relative overflow-hidden"
-            >
-                <!-- Abstract shapes or texture could go here -->
-                <div class="relative z-10">
-                    <h3 class="text-2xl font-bold text-surface mb-2">
-                        Join the Pack Newsletter
-                    </h3>
-                    <p class="text-gray-300 mb-6">
-                        Get weekly training tips delivered to your inbox.
+                            <!-- Right Column: Services -->
+                            <div class="md:pl-10 flex flex-col h-full mt-6 md:mt-0 pt-6 md:pt-0 border-t border-[#EAE1D3]/50 md:border-0 relative">
+                                <h4 class="font-heading font-bold text-[18px] text-primary-navy border-b border-[#EAE1D3]/50 pb-3 mb-4">Support Services</h4>
+                                <p class="text-secondary-slate text-[13px] font-body mb-5">
+                                    Built for owners who need reinforcement between sessions, extra structure during the week, or behavior-conscious care at home and on walks.
+                                </p>
+                                <div class="space-y-4 flex-grow font-body">
+                                    <div>
+                                        <p class="text-[9px] font-bold text-secondary-slate/50 uppercase tracking-widest mb-1.5">Best for:</p>
+                                        <p class="text-primary-navy font-semibold text-[13px] leading-snug">Maintenance, routine support, light reinforcement, and lifestyle consistency</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[9px] font-bold text-secondary-slate/50 uppercase tracking-widest mb-1.5">Level of support:</p>
+                                        <p class="text-primary-navy font-semibold text-[13px] leading-snug">Lower commitment, practical help, and training-aware handling</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-[9px] font-bold text-secondary-slate/50 uppercase tracking-widest mb-1.5">Outcome:</p>
+                                        <p class="text-primary-navy font-semibold text-[13px] leading-snug">An introduction to structure, reinforcement, and support in everyday life</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+            
+            <!-- Muted Note Below Panel -->
+            <p class="text-[13px] text-secondary-slate/60 font-body mt-6 mb-8 text-center tracking-wide">
+                Not sure where to start? <a href="/apply" class="text-accent-gold hover:text-primary-navy transition-colors underline underline-offset-2 font-bold">Apply now</a> and we’ll help you choose the right fit.
+            </p>
+        </div>
+    </section>
+
+    <!-- Additional Services Editorial Block -->
+    <section class="py-32 bg-[#FBF1E9] px-4 relative overflow-hidden">
+        <!-- Upper Left Watermark (tilted left) -->
+        <div class="absolute -top-10 -left-10 md:-top-40 md:-left-40 opacity-[0.06] pointer-events-none select-none w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] transform -rotate-12">
+            <img src="/images/Navy Dog Mascot Transparent - Good Doggos.png" alt="" class="w-full h-full object-contain" />
+        </div>
+        <!-- Lower Right Watermark (tilted right, flipped leftwards) -->
+        <div class="absolute -bottom-20 -right-20 md:-bottom-40 md:-right-40 opacity-[0.06] pointer-events-none select-none w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] transform rotate-12 scale-x-[-1]">
+            <img src="/images/Navy Dog Mascot Transparent - Good Doggos.png" alt="" class="w-full h-full object-contain" />
+        </div>
+        
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="mb-20 text-center max-w-3xl mx-auto">
+                <p class="kicker kicker-dark mb-4">Additional Services</p>
+                <h2 class="text-4xl md:text-5xl font-heading font-bold text-primary-navy mb-6 leading-tight">Looking for a specific kind of help?</h2>
+                <p class="text-lg text-primary-navy/70 font-body leading-relaxed">
+                    Not every dog needs the same kind of support. Some owners need training. Others need help with a specific behavior challenge. This section can help you find the path that makes the most sense for your dog.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-x-16 gap-y-16">
+                <!-- Pet Trainer -->
+                <div class="bg-white/40 rounded-3xl p-8 border border-white/60 shadow-[0_10px_30px_rgba(11,39,68,0.02)] flex flex-col h-full">
+                    <h2 class="text-2xl font-heading font-bold text-primary-navy mb-4">Pet Trainer</h2>
+                    <p class="text-secondary-slate leading-[1.8] font-body text-[14px] mb-8 flex-grow">
+                        Living with a dog who ignores you can make everyday life feel frustrating and unpredictable. Our <a href="/services/pet-trainer" class="text-primary-navy font-semibold hover:underline">San Jacinto pet trainer</a> focuses on clear communication, meaningful accountability, and real-world follow-through. We reward good choices heavily, use fair guidance to interrupt unwanted behavior, and create structured practice around everyday distractions. When appropriate, we also incorporate our stable helper dogs—Simba, Chico, and Rocky—to model calmer social behavior and reinforce better choices in the moment.
                     </p>
-                    <form
-                        action="https://gooddoggos.substack.com/subscribe"
-                        method="post"
-                        target="_blank"
-                        class="flex flex-col md:flex-row gap-2 justify-center max-w-md mx-auto"
-                    >
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Your email address"
-                            class="px-6 py-3 rounded-full bg-[#FBF1E9] text-[#112032] placeholder-[#112032]/55 border border-[#E6DAC6] w-full focus:outline-none focus:ring-2 focus:ring-[#D1B27F]"
-                            required
-                        />
-                        <button
-                            type="submit"
-                            class="bg-[#D1B27F] hover:bg-[#c4a26e] text-[#0B2744] px-8 py-3 rounded-full transition-all duration-300 font-bold tracking-wide shadow-[0_4px_14px_rgba(209,178,127,0.35)] hover:shadow-[0_6px_20px_rgba(209,178,127,0.5)] hover:-translate-y-0.5 whitespace-nowrap"
-                        >
-                            Subscribe
-                        </button>
-                    </form>
+                    <div class="border-t border-[#EAE1D3]/50 pt-5 mt-auto">
+                        <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-3">BEST FIT:</p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <a href="/programs#private-accelerator" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
+                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Private Accelerator <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
+                            </a>
+                            <div class="flex items-center justify-center text-[10px] font-bold text-secondary-slate/40 uppercase px-1 py-1">or</div>
+                            <a href="/programs" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
+                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Hourly Training <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aggression Rehabilitation -->
+                <div class="bg-white/40 rounded-3xl p-8 border border-white/60 shadow-[0_10px_30px_rgba(11,39,68,0.02)] flex flex-col h-full">
+                    <h2 class="text-2xl font-heading font-bold text-primary-navy mb-4">Aggression Rehabilitation</h2>
+                    <p class="text-secondary-slate leading-[1.8] font-body text-[14px] mb-8 flex-grow">
+                        Living with a dog who has shown aggressive behavior can feel overwhelming, isolating, and scary. Our <a href="/services/aggression-rehabilitation" class="text-primary-navy font-semibold hover:underline">aggression rehabilitation program</a> is built for dogs who need more structure, more accountability, and a safer plan than standard obedience can provide. We focus on reducing dangerous behavior, improving handler control, and rebuilding stability through clear training and carefully managed exposure work. When appropriate, Simba and the pack help create controlled setups that support safer, more productive learning.
+                    </p>
+                    <div class="border-t border-[#EAE1D3]/50 pt-5 mt-auto">
+                        <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-3">BEST FIT:</p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <a href="/programs#red-zone" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center w-full hover:bg-primary-navy/10 transition-colors">
+                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Reactive Dog Intensive <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Behavioral Modification & Foundation -->
+                <div class="bg-white/40 rounded-3xl p-8 border border-white/60 shadow-[0_10px_30px_rgba(11,39,68,0.02)] flex flex-col h-full">
+                    <h2 class="text-2xl font-heading font-bold text-primary-navy mb-4">Behavioral Modification & Foundation</h2>
+                    <p class="text-secondary-slate leading-[1.8] font-body text-[14px] mb-8 flex-grow">
+                        When your dog’s behavior feels unpredictable at home, daily life can start to revolve around stress management. Our <a href="/services/behavioral-modification" class="text-primary-navy font-semibold hover:underline">behavioral modification and foundation training</a> helps address the root of problem behaviors while building the skills your dog needs to function more calmly in real life. We focus on communication, structure, impulse control, and follow-through, giving owners a clearer framework for handling the behaviors that keep disrupting life at home.
+                    </p>
+                    <div class="border-t border-[#EAE1D3]/50 pt-5 mt-auto">
+                        <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-3">BEST FIT:</p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <a href="/programs#private-accelerator" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
+                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Private Accelerator <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
+                            </a>
+                            <div class="flex items-center justify-center text-[10px] font-bold text-secondary-slate/40 uppercase px-1 py-1">or</div>
+                            <a href="/programs#red-zone" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
+                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Reactive Dog Intensive <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leash Reactivity Bootcamp -->
+                <div class="bg-white/40 rounded-3xl p-8 border border-white/60 shadow-[0_10px_30px_rgba(11,39,68,0.02)] flex flex-col h-full">
+                    <h2 class="text-2xl font-heading font-bold text-primary-navy mb-4">Leash Reactivity Bootcamp</h2>
+                    <p class="text-secondary-slate leading-[1.8] font-body text-[14px] mb-8 flex-grow">
+                        Walks should not revolve around barking, lunging, and trying to dodge every trigger in sight. Our <a href="/services/leash-reactivity-bootcamp" class="text-primary-navy font-semibold hover:underline">Leash Reactivity Bootcamp in San Jacinto</a> is designed to help dogs build calmer leash behavior, better engagement, and more neutral responses around real-world distractions. We use structured leash work, clear follow-through, and meaningful rewards to reinforce steadier choices. When appropriate, Simba, Chico, and Rocky help create controlled practice setups that safely support reactivity work.
+                    </p>
+                    <div class="border-t border-[#EAE1D3]/50 pt-5 mt-auto">
+                        <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-3">BEST FIT:</p>
+                        <div class="flex flex-col sm:flex-row gap-2">
+                            <a href="/programs#calm-companion" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center w-full hover:bg-primary-navy/10 transition-colors">
+                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Calm Companion Challenge <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <CTASection />
+    <CTASection imageSrc="/DesignGuidelines/pauline-loroy-U3aF7hgUSrk-unsplash.jpg" />
 </Layout>

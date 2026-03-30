@@ -1,16 +1,27 @@
 ---
+export interface Props {
+  alwaysSolid?: boolean;
+}
+
 const navLinks = [
   { name: "Programs", href: "/programs" },
+  { name: "Services", href: "/services" },
   { name: "About", href: "/about" },
   { name: "Transformations", href: "/transformations" },
   { name: "Shop", href: "/shop" },
+  { name: "Blog", href: "/blog" },
 ];
+
+const { alwaysSolid = false } = Astro.props;
 ---
 
 <nav
   id="main-nav"
-  class="transition-all duration-300 ease-in-out py-5"
-  style="background: transparent;"
+  data-always-solid={alwaysSolid ? "true" : undefined}
+  class={`transition-all duration-300 ease-in-out ${
+    alwaysSolid ? "py-[14px] border-b border-white/10 shadow-premium" : "py-5"
+  }`}
+  style={`background: ${alwaysSolid ? "#0B2744" : "transparent"};`}
 >
   <div
     class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex justify-between items-center"
@@ -100,7 +111,8 @@ const navLinks = [
   function handleScroll() {
     const header = document.getElementById("site-header");
     if (!nav || !header) return;
-    const scrolled = window.scrollY > 20;
+    const isAlwaysSolid = nav.hasAttribute("data-always-solid");
+    const scrolled = window.scrollY > 20 || isAlwaysSolid;
     if (scrolled) {
       nav.style.background = "#0B2744";
       nav.style.backdropFilter = "none";

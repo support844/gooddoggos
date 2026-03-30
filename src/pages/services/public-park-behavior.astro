@@ -1,0 +1,110 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Public Park Behavior San Jacinto | Good Doggos";
+const description = "Master public park behavior in San Jacinto. We specialize in neutrality and focus amidst the unpredictable chaos of local parks using a balanced approach.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Public Park Behavior Sessions",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Good Doggos",
+    "url": "https://gooddoggos.com",
+    "telephone": "+19514016252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Jacinto",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Riverside County"
+  },
+  "url": "https://gooddoggos.com/services/public-park-behavior"
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        <span>&rsaquo;</span>
+        <a href="/services/leash-reactivity-bootcamp" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Leash Reactivity Bootcamp</a>
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">Public Park Behavior</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        Public Park Behavior Sessions in San Jacinto
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <!-- Main Content -->
+      <div class="prose max-w-none">
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          It’s a beautiful Saturday morning, but instead of enjoying the air, you’re scanning Hiram Deville Park like a tactical operator, praying no "off-leash" dogs charge you. We've all been there: an owner shouting "He's friendly!" while your dog is vibrating with intensity at the end of the lead.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          These tense moments are symptoms of a dog and handler who don't have a solid plan for real-world chaos. Because we are professionals, we do not guess or give out generic park tips. We must evaluate your dog in person to see how they handle the squirrels, screaming kids, and unpredictable energy of a San Jacinto park before we can build their neutrality.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mt-12 mb-6">
+          Training Where the Triggers Are
+        </h2>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          At Good Doggos, I don’t believe training is finished until it works in public. For 8 years, I’ve specialized in taking my sessions into the heart of Riverside County’s busy parks. My balanced approach is built for these high-stakes environments. I use rewards to keep your dog’s head in the game, but I also use calibrated corrections to ensure "stay" actually means stay—even when a cyclist whizzes by.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Crossing paths with a "friendly" off-leash dog at Hiram Deville is the ultimate stress test. I provide the tools to advocate for your dog and stay calm, because Simba and I have already "stress-tested" your skills in the heat. By using my stable pack (Simba, Chico, and Rocky) as controlled distractions during our sessions, we prepare you for the real park scenarios where hope isn't a safety plan.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Our Public Park Behavior Sessions are about neutrality. I want your dog to see the chaos of Mistletoe Park and decide that you are still the most relevant thing in their universe. We practice "place" on park benches while other dogs pass and navigate the energy of San Jacinto afternoons. I’ll show you how to turn a stressful outing into a relaxed stroll.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6 font-bold">
+          Stop avoiding the local parks. Apply for a Free Behavioral Assessment and start enjoying them.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>

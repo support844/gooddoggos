@@ -1,0 +1,110 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Fearful Dog Confidence Building San Jacinto | Good Doggos";
+const description = "Empower your fearful dog with confidence building in San Jacinto. We help dogs navigate the world with curiosity instead of terror through leadership and neutral role models.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Fearful Dog Confidence Building",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Good Doggos",
+    "url": "https://gooddoggos.com",
+    "telephone": "+19514016252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Jacinto",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Riverside County"
+  },
+  "url": "https://gooddoggos.com/services/fearful-dog-confidence"
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        <span>&rsaquo;</span>
+        <a href="/services/behavioral-modification" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Behavioral Modification</a>
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">Fearful Dog Confidence Building</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        Fearful Dog Confidence Building in San Jacinto
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <!-- Main Content -->
+      <div class="prose max-w-none">
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          If your dog spends most of their life trying to disappear into the floorboards, it’s heartbreaking. Whether they’re spooked by garbage trucks or need rescue dog decompression support after arriving in a new home, you know something is wrong when your dog pancakes to the sidewalk on a windy Riverside County afternoon.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          These "pancaking" behaviors are symptoms of a dog without a leader to trust. Because we are professionals, we do not guess or hand out generic confidence-building tips. We must evaluate your dog in person to see how they process the world before we can empower them with curiosity instead of terror. Hope isn't a training strategy, and your dog deserves more than a life spent hiding under the dining room table.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mt-12 mb-6">
+          Building a Foundation of Certainty
+        </h2>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          At Good Doggos, I don’t just pity fearful dogs; I empower them. For 8 years, I’ve specialized in taking dogs from shut-down anxiety to curious engagement. My balanced approach is the key. While I use heavy praise and rewards to mark "brave" choices, I also provide the physical structure a nervous dog craves. Usually, a fearful dog is a dog without a leader; they think they have to monitor every threat themselves.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          I often use my helper dog, Chico, for these cases. Chico is my "happy-go-lucky" dog with a non-threatening, submissive personality. When a "pancaking" dog sees Chico existing happily and safely near local San Jacinto landmarks, it help them realize the world isn't a trap. By watching Chico's neutrality, they learn to stop monitoring everyone else and start trusting my leadership.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          We don't just stay in the backyard. True confidence is built in the real world—amidst the San Jacinto heat, the traffic on State Street, and the distractions near Valley-Wide Regional Park. We teach your dog how to "reset" after a scare rather than spiraling into a panic. We aren't looking to create a dog that's just "getting by"; we want a dog that can hold their head up and actually enjoy our community.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6 font-bold">
+          Stop watching your dog hide and start helping them lead a bigger life. Apply for a Free Behavioral Assessment today.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>

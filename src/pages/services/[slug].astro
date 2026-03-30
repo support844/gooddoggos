@@ -1,0 +1,286 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import fs from "fs";
+import path from "path";
+
+// ─── STATIC PATHS ─────────────────────────────────────────────────────────────
+export function getStaticPaths() {
+  const PAGES: Record<string, { file: string; parentSlug: string | null; parentName: string }> = {
+    "pet-trainer":   { file: "category_pettrainer", parentSlug: null, parentName: "Home" },
+    "dog-walker":    { file: "category_dogwalker",   parentSlug: null, parentName: "Home" },
+    "pet-sitter":    { file: "category_petsitter",   parentSlug: null, parentName: "Home" },
+    "adult-dog-obedience":                    { file: "adult_dog_obedience",                    parentSlug: "pet-trainer", parentName: "Pet Trainer" },
+    "noise-phobia-training":                   { file: "noise_phobia_and_sensitivity_training",  parentSlug: "pet-trainer", parentName: "Pet Trainer" },
+    "pet-service":                            { file: "pet_service",                            parentSlug: "pet-trainer", parentName: "Pet Trainer" },
+    "puppy-foundations":                      { file: "puppy_foundations",                      parentSlug: "pet-trainer", parentName: "Pet Trainer" },
+    "vet-visit-desensitization":              { file: "vet_visit_desensitization",              parentSlug: "pet-trainer", parentName: "Pet Trainer" },
+    "dog-socialization":                      { file: "dog_socialization",                      parentSlug: "pet-trainer", parentName: "Pet Trainer" },
+    "pet-trainer-san-jacinto":                { file: "pet_trainer",                            parentSlug: "pet-trainer", parentName: "Pet Trainer" },
+    "loose-leash-walking-for-reactive-dogs":  { file: "loose_leash_walking_for_reactive_dogs",  parentSlug: "dog-walker", parentName: "Dog Walker" },
+    "on-leash-lunging-and-barking-correction":{ file: "on_leash_lunging_and_barking_correction", parentSlug: "dog-walker", parentName: "Dog Walker" },
+    "reactive-dog-walking-skills":            { file: "reactive_dog_walking_skills",            parentSlug: "dog-walker", parentName: "Dog Walker" },
+    "urban-desensitization-training":         { file: "urban_desensitization_training",         parentSlug: "dog-walker", parentName: "Dog Walker" },
+    "in-home-behavior-consultations":         { file: "in_home_behavior_consultations",         parentSlug: "pet-sitter", parentName: "Pet Sitter" },
+    "in-home-dog-training":                   { file: "in_home_dog_training",                   parentSlug: "pet-sitter", parentName: "Pet Sitter" },
+    "separation-anxiety-training":            { file: "separation_anxiety_training",            parentSlug: "pet-sitter", parentName: "Pet Sitter" },
+    "aggression-rehabilitation":              { file: "aggression_rehabilitation",              parentSlug: null, parentName: "Home" },
+    "aggressive-dog-training-near-me":        { file: "aggressive_dog_training_near_me",        parentSlug: null, parentName: "Home" },
+    "anxiety-and-fear-behavior-modification": { file: "anxiety_and_fear_behavior_modification", parentSlug: null, parentName: "Home" },
+    "barrier-frustration-training":           { file: "barrier_frustration_training",           parentSlug: null, parentName: "Home" },
+    "behavior-adjustment-training":           { file: "behavior_adjustment_training",           parentSlug: null, parentName: "Home" },
+    "behavior-assessment-and-consultation":   { file: "behavior_assessment_and_consultation",   parentSlug: null, parentName: "Home" },
+    "counter-conditioning-and-desensitization": { file: "counter_conditioning_and_desensitization", parentSlug: null, parentName: "Home" },
+    "dog-behaviorist":                        { file: "dog_behaviorist",                        parentSlug: null, parentName: "Home" },
+    "dog-to-dog-reactivity-modification":     { file: "dog_to_dog_reactivity_modification",     parentSlug: null, parentName: "Home" },
+    "dog-training":                           { file: "dog_training",                           parentSlug: null, parentName: "Home" },
+    "fear-based-aggression-therapy":          { file: "fear_based_aggression_therapy",          parentSlug: null, parentName: "Home" },
+    "fearful-dog-confidence-building":        { file: "fearful_dog_confidence_building",        parentSlug: null, parentName: "Home" },
+    "food-aggression-correction":             { file: "food_agression_correction",              parentSlug: null, parentName: "Home" },
+    "human-directed-reactivity-training":     { file: "human_directed_reactivity_training",     parentSlug: null, parentName: "Home" },
+    "intra-household-dog-conflict-resolution":{ file: "intra_household_dog_conflict_resolution",parentSlug: null, parentName: "Home" },
+    "leash-reactivity-bootcamp":              { file: "leash_reactivity_bootcamp",              parentSlug: null, parentName: "Home" },
+    "leash-reactivity-training":              { file: "leash_reactivity_training",              parentSlug: null, parentName: "Home" },
+    "muzzle-training-and-conditioning":       { file: "muzzle_training_and_conditioning",       parentSlug: null, parentName: "Home" },
+    "off-leash-reliability-for-reactive-dogs":{ file: "off_leash_realibility_for_reactive_dogs",parentSlug: null, parentName: "Home" },
+    "possessive-aggression-training":         { file: "possesive_aggression_training",          parentSlug: null, parentName: "Home" },
+    "private-reactive-dog-lessons":           { file: "private_reactive_dog_lessons",           parentSlug: null, parentName: "Home" },
+    "public-park-behavior-sessions":          { file: "public_park_behavior_sessions",          parentSlug: null, parentName: "Home" },
+    "reactive-dog-evaluation-and-assessment": { file: "reactive_dog_evaluation_and_assessment", parentSlug: null, parentName: "Home" },
+    "reactivity-threshold-management":        { file: "reactivity_threshold_management",        parentSlug: null, parentName: "Home" },
+    "reactivity-training":                    { file: "reactivity_training",                    parentSlug: null, parentName: "Home" },
+    "redirected-aggression-prevention":       { file: "redirected_aggression_prevention",       parentSlug: null, parentName: "Home" },
+    "rescue-dog-decompression-support":       { file: "rescue_dog_decompression_support",       parentSlug: null, parentName: "Home" },
+    "resource-guarding-modification":         { file: "resource_guarding_modification",         parentSlug: null, parentName: "Home" },
+    "territorial-aggression-management":      { file: "territorial_aggression_management",      parentSlug: null, parentName: "Home" },
+  };
+
+  const CATEGORY_CHILDREN: Record<string, { h2Match: string; slug: string }[]> = {
+    "pet-trainer": [
+      { h2Match: "Adult Dog Obedience",                   slug: "adult-dog-obedience" },
+      { h2Match: "Noise Phobia and Sensitivity Training",  slug: "noise-phobia-training" },
+      { h2Match: "Structured Pet Services",                slug: "pet-service" },
+      { h2Match: "Puppy Foundations",                      slug: "puppy-foundations" },
+      { h2Match: "Vet Visit Desensitization",              slug: "vet-visit-desensitization" },
+      { h2Match: "Dog Socialization",                      slug: "dog-socialization" },
+      { h2Match: "Expert Pet Trainer in San Jacinto",      slug: "pet-trainer-san-jacinto" },
+    ],
+    "dog-walker": [
+      { h2Match: "Loose Leash Walking for Reactive Dogs",  slug: "loose-leash-walking-for-reactive-dogs" },
+      { h2Match: "On-Leash Lunging and Barking Correction",slug: "on-leash-lunging-and-barking-correction" },
+      { h2Match: "Reactive Dog Walking Skills",            slug: "reactive-dog-walking-skills" },
+      { h2Match: "Urban Desensitization Training",         slug: "urban-desensitization-training" },
+    ],
+    "pet-sitter": [
+      { h2Match: "In-Home Behavior Consultations",         slug: "in-home-behavior-consultations" },
+      { h2Match: "In-Home Dog Training",                   slug: "in-home-dog-training" },
+      { h2Match: "Separation Anxiety Training",            slug: "separation-anxiety-training" },
+    ],
+  };
+
+  function parseTxt(raw: string, slug: string) {
+    const lines = raw.split("\n");
+    let title = "", h1 = "", sections: { h2: string | null; paragraphs: string[] }[] = [];
+    let currentH2: string | null = null;
+    let currentParas: string[] = [];
+
+    const isCategory = slug === "pet-trainer" || slug === "dog-walker" || slug === "pet-sitter";
+    const categoryChildren = isCategory ? (CATEGORY_CHILDREN[slug] ?? []) : [];
+    const knownH2s = categoryChildren.map(c => c.h2Match.toLowerCase());
+
+    for (const line of lines) {
+      const t = line.trim();
+      if (!t || t.startsWith("Apply for")) continue;
+      if (t.startsWith("Title Tag:")) { title = t.slice("Title Tag:".length).trim(); continue; }
+      if (t.startsWith("H1:"))       { h1    = t.slice("H1:".length).trim();       continue; }
+      if (t.startsWith("H2:")) {
+        if (currentH2 !== null || currentParas.length > 0) {
+          sections.push({ h2: currentH2, paragraphs: currentParas });
+        }
+        currentH2 = t.slice("H2:".length).trim();
+        currentParas = [];
+        continue;
+      }
+
+      // Auto-detect H2s for category pages based on known titles
+      if (isCategory && knownH2s.includes(t.toLowerCase())) {
+        if (currentH2 !== null || currentParas.length > 0) {
+          sections.push({ h2: currentH2, paragraphs: currentParas });
+        }
+        currentH2 = t; // Use the actual matched line
+        currentParas = [];
+        continue;
+      }
+
+      currentParas.push(t);
+    }
+    if (currentH2 !== null || currentParas.length > 0) {
+      sections.push({ h2: currentH2, paragraphs: currentParas });
+    }
+
+    const description = sections[0]?.paragraphs[0]?.slice(0, 160) ?? title;
+    return { title, h1, description, sections };
+  }
+
+  const contentDir = path.join(process.cwd(), "src/content/good_doggos_seo_pages_final");
+
+  return Object.keys(PAGES).map((slug) => {
+    const pageInfo = PAGES[slug];
+    const raw = fs.readFileSync(path.join(contentDir, `${pageInfo.file}.txt`), "utf-8");
+    let { title, h1, description, sections } = parseTxt(raw, slug);
+
+    const isCategory = slug === "pet-trainer" || slug === "dog-walker" || slug === "pet-sitter";
+    const categoryName = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); 
+    
+    if (isCategory) {
+      h1 = `${categoryName} in San Jacinto | Professional Behavioral Mastery`;
+    }
+
+    const categoryChildren = isCategory ? (CATEGORY_CHILDREN[slug] ?? []) : [];
+
+    const contextualLinks: Record<string, string> = {
+      "adult-dog-obedience": "adult dog is dragging you down the street",
+      "noise-phobia-and-sensitivity-training": "panic during fireworks or Inland Empire summer storms",
+      "pet-service": "dependable pet service shouldn't be a gamble",
+      "puppy-foundations": "puppy foundations program in San Jacinto",
+      "vet-visit-desensitization": "prepare their dogs for handling and exams",
+      "dog-socialization": "neutral around other animals",
+      "pet-trainer-san-jacinto": "expert pet trainer in San Jacinto",
+      "loose-leash-walking-for-reactive-dogs": "Walking a reactive dog sounds impossible",
+      "on-leash-lunging-and-barking-correction": "lunging dog with treats",
+      "reactive-dog-walking-skills": "defensive walking",
+      "urban-desensitization-training": "Taking your dog into downtown areas or crowded parks",
+      "in-home-behavior-consultations": "tackle the problem where it happens",
+      "in-home-dog-training": "jumping, window barking, and house manners",
+      "separation-anxiety-training": "Separation anxiety is miserable for you and your dog",
+    };
+
+    function linkifyParagraphs(paragraphs: string[]): string[] {
+      if (!isCategory) return paragraphs;
+      
+      return paragraphs.map(text => {
+        let newText = text;
+        for (const child of categoryChildren) {
+          const snippet = contextualLinks[child.slug];
+          if (snippet && newText.includes(snippet)) {
+            newText = newText.replace(snippet, `<a href="/services/${child.slug}" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">${snippet}</a>`);
+          }
+        }
+        return newText;
+      });
+    }
+
+    // Process sections to linkify all paragraphs globally
+    const processedSections = sections.map(sec => {
+      return {
+        ...sec,
+        paragraphs: linkifyParagraphs(sec.paragraphs)
+      };
+    });
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": h1,
+      "description": description,
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Good Doggos",
+        "url": "https://gooddoggos.com",
+        "telephone": "+19514016252",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "San Jacinto",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        }
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Riverside County"
+      },
+      "url": `https://gooddoggos.com/services/${slug}`
+    };
+
+    const breadcrumbName = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+    return {
+      params: { slug },
+      props: { pageInfo, title, h1, description, sections: processedSections, jsonLd, breadcrumbName }
+    };
+  });
+}
+
+// ─── PAGE DATA ────────────────────────────────────────────────────────────────
+const { pageInfo, title, h1, description, sections, jsonLd, breadcrumbName } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        {pageInfo.parentSlug && (
+          <>
+            <span>&rsaquo;</span>
+            <a href={`/services/${pageInfo.parentSlug}`} class="hover:text-white/80 transition-colors capitalize">
+              {pageInfo.parentName}
+            </a>
+          </>
+        )}
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">{breadcrumbName}</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        {h1}
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-10">
+      {sections.map((section: any) => (
+        <div>
+          {section.h2 && (
+            <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+              {section.h2}
+            </h2>
+          )}
+          {section.paragraphs.map((para: string) => (
+            <p class="text-secondary-slate leading-[1.8] font-body text-[15px] mb-4" set:html={para} />
+          ))}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>

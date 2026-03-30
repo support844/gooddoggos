@@ -1,0 +1,162 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Leash Reactivity Bootcamp San Jacinto | Good Doggos";
+const description = "If a walk around your neighborhood in Hemet or San Jacinto feels like a weightlifting competition, you aren't alone. Your heart rate spikes when you see another dog.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Leash Reactivity Bootcamp in San Jacinto",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Good Doggos",
+    "url": "https://gooddoggos.com",
+    "telephone": "+19514016252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Jacinto",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Riverside County"
+  },
+  "url": "https://gooddoggos.com/services/leash-reactivity-bootcamp"
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">Leash Reactivity Bootcamp</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        Leash Reactivity Bootcamp in San Jacinto
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <!-- Main Content -->
+      <div>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          If a walk around your neighborhood in Hemet or San Jacinto feels like a weightlifting competition, you aren't alone. Your heart rate spikes when you see another dog because you know what's coming: the lunging, barking, and spinning. These reactive outbursts are symptoms of deeper frustration or a lack of clear direction.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Because we are professionals, we do not guess or hand out generic advice. We must evaluate your dog in person first to understand their specific thresholds and triggers before we can offer a real solution.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4 mt-8">
+          The Balanced Fix for Reactivity
+        </h2>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Leash reactivity is rarely about "hating" other dogs. Through specialized reactivity training and leash reactivity training, we address what is usually a mix of frustration and a lack of direction. At Good Doggos, my Leash Reactivity Bootcamp strips away the noise. I use a balanced approach because a reactive dog is in an emotional "Red Zone." I use high-value rewards for building positive associations, but I also introduce clear, fair leash communication. If your dog is throwing a tantrum, they need to know that behavior is unacceptable—not just that a treat is waiting if they stop.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          I remember a dog that couldn't be within 50 feet of another animal without a meltdown. Using my helper dog Simba as a controlled, neutral target, we were able to bridge the communication gap. Through "Balanced Clarity," the owner learned how to interrupt the dog's fixation before the explosion. The first time they successfully walked through a crowded local park in Riverside County without an incident was the moment they got their freedom back.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          I don't do cookie-cutter training. Some dogs need more "Yes" (praise and play), and some need a clearer "No" (leash pressure and boundaries). I calibrate the work to the specific dog in front of us, ensuring they respect the leash as a communication tool.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px]">
+          You deserve to enjoy a San Jacinto evening without dreading every corner. Let's stop the lunging and start walking.
+        </p>
+      </div>
+
+      <!-- Child Services Grid/List -->
+      <div class="space-y-12 pt-8 border-t border-primary-navy/10">
+        
+        <!-- 1. Dog-to-Dog Reactivity Modification -->
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Dog-to-Dog Reactivity Modification
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            The embarrassment of your dog screaming at every passing pet is isolating. I provide <a href="/services/dog-to-dog-reactivity" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Dog-to-Dog Reactivity Modification</a> to break that cycle of lunging and barking. Using our Balanced Clarity approach, I teach your dog how to ignore other dogs and focus on you as their leader. We replace the frantic noise with calm, controlled walks.
+          </p>
+        </div>
+
+        <!-- 2. Barrier Frustration Training -->
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Barrier Frustration Training
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            It is exhausting when your dog loses their mind at fences, windows, or car glass. My <a href="/services/barrier-frustration" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Barrier Frustration Training</a> addresses the pent-up stress caused by physical restraints. I show your dog how to disengage from triggers they can see but can't reach, bringing peace back to your home and vehicle through clear leadership.
+          </p>
+        </div>
+
+        <!-- 3. Reactivity Threshold Management -->
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Reactivity Threshold Management
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            Walking shouldn't feel like a tactical mission to avoid every neighbor. With <a href="/services/reactivity-threshold" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Reactivity Threshold Management</a>, I teach you exactly how to read your dog's body language before they explode. We find the distance your dog needs to stay successful, gradually shrinking that bubble until the world feels small and manageable again.
+          </p>
+        </div>
+
+        <!-- 4. Off-Leash Reliability for Reactive Dogs -->
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Off-Leash Reliability for Reactive Dogs
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            The fear that your dog might bolt and start a fight keeps you living on a short leash. I build <a href="/services/off-leash-reliability" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Off-Leash Reliability for Reactive Dogs</a> by establishing a bulletproof recall and absolute boundaries. Even if a trigger appears, my Balanced Clarity approach ensures your dog listens to your instruction over their own impulses.
+          </p>
+        </div>
+
+        <!-- 5. Public Park Behavior Sessions -->
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Public Park Behavior Sessions
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            Real-world distractions are the ultimate test for a reactive dog. During my <a href="/services/public-park-behavior" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Public Park Behavior Sessions</a>, we train in the actual San Jacinto environments—like Valley-Wide Regional Park—where you struggle the most. I am right there with you, coaching you through high-trigger situations so you can finally enjoy a Saturday morning at the park.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>

@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import CTASection from "../components/CTASection.astro";
+import GuaranteeBadge from "../components/GuaranteeBadge.astro";
 
 // ── Canonical program color tokens ──
 const TEAL = {
@@ -21,42 +22,82 @@ const RED = {
   border: "rgba(125,44,45,0.25)",
   tint: "rgba(125,44,45,0.07)",
 };
+
+const showPromoBanner = true;
+const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather months, when training shifts to brief sunset sessions and additional remote support.";
 ---
 
 <style>
-  /* Anchor pill hover/active color-coded states */
-  .pill-teal:hover {
-    background: rgba(15, 109, 114, 0.1) !important;
-    outline-color: #0f6d72 !important;
-    color: #0f6d72 !important;
+  /* Segmented Navigation */
+  .segmented-nav {
+    display: flex;
+    background: rgba(248, 250, 252, 0.08); /* Minimal frosted rail */
+    backdrop-filter: blur(12px);
+    border-radius: 100px;
+    padding: 6px;
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
   }
-  .pill-gold:hover {
-    background: rgba(209, 178, 127, 0.12) !important;
-    outline-color: #d1b27f !important;
-    color: #b8983f !important;
+
+  .segment-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.75);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
   }
-  .pill-red:hover {
-    background: rgba(125, 44, 45, 0.08) !important;
-    outline-color: #7d2c2d !important;
-    color: #7d2c2d !important;
+
+  /* Segment Hover & Active States */
+  .segment-item[href="#calm-companion"]:hover,
+  .segment-item[href="#calm-companion"].active {
+    background: #0f6d72; /* Teal */
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(15, 109, 114, 0.35);
   }
-  .pill-teal:focus,
-  .pill-teal.active {
-    background: rgba(15, 109, 114, 0.1) !important;
-    outline-color: #0f6d72 !important;
-    color: #0f6d72 !important;
+
+  .segment-item[href="#private-accelerator"]:hover,
+  .segment-item[href="#private-accelerator"].active {
+    background: #d1b27f; /* Gold */
+    color: #0b2744 !important;
+    box-shadow: 0 4px 15px rgba(209, 178, 127, 0.35);
   }
-  .pill-gold:focus,
-  .pill-gold.active {
-    background: rgba(209, 178, 127, 0.12) !important;
-    outline-color: #d1b27f !important;
-    color: #b8983f !important;
+
+  .segment-item[href="#red-zone"]:hover,
+  .segment-item[href="#red-zone"].active {
+    background: #7d2c2d; /* red */
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(125, 44, 45, 0.35);
   }
-  .pill-red:focus,
-  .pill-red.active {
-    background: rgba(125, 44, 45, 0.08) !important;
-    outline-color: #7d2c2d !important;
-    color: #7d2c2d !important;
+
+  @media (max-width: 768px) {
+    .segmented-nav {
+      max-width: 100%;
+      gap: 4px;
+    }
+    .segment-item {
+      font-size: 8.5px;
+      padding: 10px 4px;
+      letter-spacing: 0.08em;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .pa-photo {
+      object-position: center 20%;
+    }
   }
 </style>
 
@@ -70,12 +111,13 @@ const RED = {
   >
     <div class="absolute inset-0 z-0">
       <img
-        src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=2400"
+        src="/images/oleksandr-horbach-qBnIX-B4n-w-unsplash.jpg"
         alt="Dog training"
-        class="w-full h-full object-cover object-center opacity-35"
+        class="w-full h-full object-cover opacity-50"
+        style="object-position: center 15%;"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/85 via-[#0B2744]/65 to-[#0B2744]"
+        class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"
       >
       </div>
     </div>
@@ -89,7 +131,7 @@ const RED = {
           class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4"
           style="color: rgba(209,178,127,0.65);"
         >
-          Training Programs
+          Dog Training Programs
         </p>
         <h1
           class="text-5xl md:text-6xl font-heading font-bold text-white leading-tight mb-3"
@@ -103,30 +145,14 @@ const RED = {
           >
         </p>
 
-        <!-- Anchor Pills — each colored by program -->
-        <div class="flex flex-wrap justify-center gap-3">
-          <a
-            href="#calm-companion"
-            class="pill-teal px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-200"
-            style="outline: 1px solid rgba(15,109,114,0.5); color: rgba(209,178,127,0.8); background: transparent;"
+        <!-- Segmented Navigation -->
+        <nav class="segmented-nav">
+          <a href="#calm-companion" class="segment-item">Calm Companion</a>
+          <a href="#private-accelerator" class="segment-item"
+            >Private Accelerator</a
           >
-            Calm Companion
-          </a>
-          <a
-            href="#private-accelerator"
-            class="pill-gold px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-200"
-            style="outline: 1px solid rgba(209,178,127,0.45); color: rgba(209,178,127,0.8); background: transparent;"
-          >
-            Private Accelerator
-          </a>
-          <a
-            href="#red-zone"
-            class="pill-red px-5 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-200"
-            style="outline: 1px solid rgba(125,44,45,0.4); color: rgba(209,178,127,0.8); background: transparent;"
-          >
-            Red Zone Intensive
-          </a>
-        </div>
+          <a href="#red-zone" class="segment-item">Reactive Dog Intensive</a>
+        </nav>
       </div>
     </div>
   </section>
@@ -143,12 +169,20 @@ const RED = {
         id="calm-companion"
         class="scroll-mt-36 rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_4px_20px_rgba(0,0,0,0.07)] flex flex-col"
       >
+        {showPromoBanner && (
+          <div class="bg-[#EBF3F4] text-[#0B2744] text-[13px] md:text-sm font-medium px-5 py-3 border-b border-[#E6DAC6] flex items-start md:items-center justify-center gap-2 text-center">
+            <svg class="w-4 h-4 text-[#0F6D72] flex-shrink-0 mt-0.5 md:mt-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <span class="leading-relaxed text-left md:text-center"><strong style="color:#0F6D72;">Seasonal Summer Rate:</strong> Save $200 during hot-weather months, when training shifts to brief sunset sessions and additional remote support.</span>
+          </div>
+        )}
         <!-- Teal left accent strip via flex row wrapper -->
         <div class="flex flex-col md:flex-row flex-1">
           <!-- Accent Strip -->
           <div
             class="hidden md:block flex-shrink-0"
-            style="width: 11px; background: #0F6D72; border-radius: 16px 0 0 0;"
+            style="width: 11px; background: #0F6D72;"
           >
           </div>
           <div
@@ -161,12 +195,12 @@ const RED = {
             class="flex-1 grid grid-cols-1 md:grid-cols-[272px_1fr_1fr] gap-0"
           >
             <!-- Photo -->
-            <div class="relative overflow-hidden" style="min-height: 260px;">
+            <div class="relative overflow-hidden" style="height: 300px;">
               <img
-                src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=600"
+                src="/images/dog in water.jpg"
                 alt="Calm Companion Training"
                 class="w-full h-full object-cover"
-                style="min-height:260px;"
+                style="height: 300px; transform: scale(1.35); transform-origin: center;"
               />
               <div
                 class="absolute inset-0"
@@ -225,29 +259,17 @@ const RED = {
                 {
                   [
                     "Loose-leash walking proficiency",
-                    "Engagement & focus framework",
+                    "Engagement and focus framework",
                     "Core obedience reliability",
                     "Calm settling routine (off-switch)",
-                    "Household manners & boundary skills",
+                    "Household manners and boundary skills",
                     "Social neutrality in real-world settings",
                   ].map((item) => (
                     <li
                       class="flex items-start gap-2.5 text-sm"
                       style="color: rgba(17,32,50,0.78);"
                     >
-                      <svg
-                        class="w-4 h-4 mt-0.5 flex-shrink-0"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="#0F6D72"
-                        stroke-width="2.5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
+                      <img src="/images/Paw Prints/Teal Paw Print.png" alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />
                       {item}
                     </li>
                   ))
@@ -255,24 +277,32 @@ const RED = {
               </ul>
               <a
                 href="/apply"
-                class="inline-flex items-center justify-center gap-2 text-sm font-bold tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
-                style="background:#0F6D72; color:white; padding:14px 28px; box-shadow:0 4px 14px rgba(15,109,114,0.30);"
+                class="btn-apply-teal"
               >
-                Apply for Assessment →
+                Apply for Free Assessment
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Centered "View Full Details" pill -->
-        <div class="flex justify-center py-4 border-t border-[#E6DAC6]/60">
+        <!-- Footer Strip -->
+        <div
+          class="flex flex-col md:flex-row items-center justify-between px-7 py-4 border-t border-[#E6DAC6]/60 gap-4"
+        >
+          <!-- Constrained wrapper: narrower, left-aligned callout -->
+          <div class="w-full md:max-w-[520px] mr-auto flex-shrink-0">
+            <GuaranteeBadge program="ccc" />
+          </div>
           <button
             id="calm-toggle"
             onclick="toggleSlab('calm')"
-            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all duration-200"
+            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-200"
             style="border: 1px solid #E6DAC6; background: #FCF9FA; color: #112032;"
           >
-            <span id="calm-label">View Full Details</span>
+            <span id="calm-label">View Full Program Details</span>
             <svg
               id="calm-chevron"
               class="w-3.5 h-3.5 transition-transform duration-200"
@@ -296,7 +326,7 @@ const RED = {
                 class="text-xs font-bold tracking-widest uppercase mb-4"
                 style="color: rgba(17,32,50,0.40);"
               >
-                What's Included
+                What We'll Focus On:
               </p>
               <ul class="space-y-3">
                 {
@@ -312,7 +342,7 @@ const RED = {
                     { icon: "🎓", text: "Graduation Certificate" },
                     {
                       icon: "🏆",
-                      text: "100% Money-Back Guarantee (conditions apply)",
+                      text: "100% Money-Back Guarantee (<a href=\"/guarantee\" class=\"underline\" style=\"color:#0F6D72\">conditions apply</a>)",
                     },
                   ].map((i) => (
                     <li
@@ -320,7 +350,7 @@ const RED = {
                       style="color: rgba(17,32,50,0.78);"
                     >
                       <span>{i.icon}</span>
-                      {i.text}
+                      <span set:html={i.text} />
                     </li>
                   ))
                 }
@@ -328,10 +358,13 @@ const RED = {
             </div>
             <div>
               <p
-                class="text-xs font-bold tracking-widest uppercase mb-4"
+                class="text-xs font-bold tracking-widest uppercase mb-1"
                 style="color: rgba(17,32,50,0.40);"
               >
-                Value Stack
+                Included in Your Enrollment
+              </p>
+              <p class="text-[11px] leading-snug mb-4" style="color: rgba(17,32,50,0.55);">
+                Everything below is included at no extra cost. Values shown reflect standalone retail value.
               </p>
               <div
                 class="rounded-xl border border-[#E6DAC6] bg-white p-5 text-sm"
@@ -342,22 +375,36 @@ const RED = {
                     ["Daily Homework Reviews & Feedback", "$600"],
                     ["Helper Dog Demos & Exposure", "$500"],
                     ["Basic Obedience Vault (Lifetime Access)", "$297"],
-                    ["Win-Your-Money-Back Guarantee Opportunity", "$799"],
+                    ["100% Win-Your-Money-Back Guarantee", "Included"],
                   ].map(([label, price]) => (
-                    <div class="flex justify-between py-2 border-b border-[#E6DAC6]/50 last:border-0">
-                      <span style="color:rgba(17,32,50,0.65);">{label}</span>
-                      <span class="font-bold" style="color:#0F6D72;">
-                        {price}
-                      </span>
+                    <div class="flex justify-between py-2 border-b border-[#E6DAC6]/50 last:border-0 items-center">
+                      <span class="pr-3 leading-snug" style="color:rgba(17,32,50,0.65);">{label}</span>
+                      {price === "Included" ? (
+                        <span class="font-bold text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full whitespace-nowrap" style="background:rgba(15,109,114,0.1); color:#0F6D72; border:1px solid rgba(15,109,114,0.2);">
+                          Included
+                        </span>
+                      ) : (
+                        <span class="font-bold whitespace-nowrap" style="color:#0F6D72;">
+                          {price}
+                        </span>
+                      )}
                     </div>
                   ))
                 }
-                <div class="flex justify-between pt-3">
-                  <span class="font-bold" style="color:#112032;"
-                    >Total Value:</span
+                <div class="flex justify-between items-center pt-4 pb-1">
+                  <span class="font-bold text-sm" style="color:rgba(17,32,50,0.45);"
+                    >Retail Value:</span
                   >
-                  <span class="font-extrabold text-base" style="color:#0F6D72;"
-                    >$2,995+</span
+                  <span class="font-bold text-sm line-through" style="color:rgba(17,32,50,0.45);"
+                    >$2,996+</span
+                  >
+                </div>
+                <div class="flex justify-between items-center pt-3 mt-1 border-t border-[#E6DAC6]">
+                  <span class="font-bold text-base" style="color:#112032;"
+                    >Your Price Today:</span
+                  >
+                  <span class="font-extrabold text-2xl" style="color:#0F6D72;"
+                    >$799</span
                   >
                 </div>
               </div>
@@ -377,7 +424,7 @@ const RED = {
         >
           <span
             class="text-xs font-bold tracking-widest uppercase"
-            style="color:rgba(17,32,50,0.42);">Calm Companion FAQs (4)</span
+            style="color:rgba(17,32,50,0.42);">Calm Companion FAQs (5)</span
           >
           <svg
             id="cc-faqs-chevron"
@@ -396,16 +443,20 @@ const RED = {
           {
             [
               {
+                q: "Do I leave my dog for training, or am I part of it?",
+                a: "You’re absolutely a part of it! And a significant part, at that. This is not a drop-off program. We train both you and your dog so the results carry over into daily life, real routines, and the moments that actually matter.",
+              },
+              {
                 q: "Is this right for excited greeters and leash pullers?",
                 a: "Yes — it's our most common entry point. We address over-arousal, threshold reactivity, and pulling using structured exposure and helper dog setups that simulate real-world triggers.",
               },
               {
                 q: "What if I miss a session?",
-                a: "We offer one makeup credit per program cycle. Sessions can be rescheduled within the same window if space allows. 48-hour cancellation notice required.",
+                a: "We offer one makeup credit per program cycle. Sessions can be rescheduled within the same program window if space allows. A 12-hour cancellation notice is required.",
               },
               {
                 q: "What does the guarantee require?",
-                a: "Complete all sessions, submit all homework on time, and follow the daily protocol. Clients who meet all requirements and don't see measurable progress receive a full refund.",
+                a: "Complete every session, submit all homework on time, and follow the daily protocol. If you do the work, you earn 100% of your money back—regardless of your dog’s rate of progress. We’re so confident in the process, we’re willing to pay you to prove it. The reps matter.",
               },
               {
                 q: "Can I start if my dog has never been trained?",
@@ -471,13 +522,12 @@ const RED = {
           <div
             class="flex-1 grid grid-cols-1 md:grid-cols-[272px_1fr_1fr] gap-0"
           >
-            <!-- Photo -->
-            <div class="relative overflow-hidden" style="min-height: 260px;">
+            <!-- Photo — centered crop -->
+            <div class="relative overflow-hidden" style="height: 300px;">
               <img
-                src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80&w=600"
+                src="/images/hamza-gharnati-9S4GyfpxnTI-unsplash.jpg"
                 alt="Private Accelerator Training"
-                class="w-full h-full object-cover"
-                style="min-height:260px;"
+                class="w-full h-full object-cover pa-photo"
               />
               <div
                 class="absolute inset-0"
@@ -499,7 +549,7 @@ const RED = {
                 <span
                   class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full"
                   style="background: rgba(209,178,127,0.12); color: #B08A4A; border: 1px solid rgba(209,178,127,0.30);"
-                  >4 sessions</span
+                  >6 sessions</span
                 >
                 <span
                   class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full"
@@ -514,42 +564,39 @@ const RED = {
                 Private Accelerator
               </h2>
               <p class="text-sm font-semibold mb-3" style="color: #D1B27F;">
-                Intensive On-Leash & Off-Leash Reliability
+                Rapid Results in a Private Training Setting
               </p>
               <p class="text-2xl font-bold mb-4" style="color: #112032;">
                 <span style="color: #D1B27F;">$1,199</span>
               </p>
+              <p
+                class="text-sm leading-relaxed"
+                style="color: rgba(17,32,50,0.72);"
+              >
+                Private, fast-track training for families who want results
+                quickly. Six 1-on-1 sessions to sharpen obedience, improve leash
+                control, and build calmer real-world outings you can trust.
+              </p>
             </div>
 
             <!-- Bullets + CTA -->
-            <div class="px-7 py-7 flex flex-col justify-between">
+            <div class="px-7 py-5 flex flex-col justify-between">
               <ul class="space-y-2 mb-6">
                 {
                   [
-                    "Reactivity reduction roadmap",
-                    "Structured leash-walk protocol",
-                    "Neutral pass-by skills (dogs/people)",
-                    "Disengage & recovery patterning",
-                    "High-distraction responsiveness",
-                    "Owner handling + accountability system",
+                    "Advanced obedience reliability",
+                    "Stronger focus around distractions",
+                    "Real-world leash handling skills",
+                    "Public manners and outing control",
+                    "Structured neutrality around dogs and people",
+                    "Clear follow-through and owner accountability",
+                    "Lifestyle freedom through consistent rules",
                   ].map((item) => (
                     <li
                       class="flex items-start gap-2.5 text-sm"
                       style="color: rgba(17,32,50,0.78);"
                     >
-                      <svg
-                        class="w-4 h-4 mt-0.5 flex-shrink-0"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="#D1B27F"
-                        stroke-width="2.5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
+                      <img src="/images/Paw Prints/Gold Paw Print.png" alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />
                       {item}
                     </li>
                   ))
@@ -557,24 +604,32 @@ const RED = {
               </ul>
               <a
                 href="/apply"
-                class="inline-flex items-center justify-center gap-2 text-sm font-bold tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
-                style="background:#D1B27F; color:#0B2744; padding:14px 28px; box-shadow:0 4px 14px rgba(209,178,127,0.35);"
+                class="btn-apply"
               >
-                Apply for Program →
+                Apply for Free Assessment
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Centered pill toggle -->
-        <div class="flex justify-center py-4 border-t border-[#E6DAC6]/60">
+        <!-- Footer Strip -->
+        <div
+          class="flex flex-col md:flex-row items-center justify-between px-7 py-4 border-t border-[#E6DAC6]/60 gap-4"
+        >
+          <!-- Constrained wrapper: narrower, left-aligned callout -->
+          <div class="w-full md:max-w-[520px] mr-auto flex-shrink-0">
+            <GuaranteeBadge program="pa" />
+          </div>
           <button
             id="pa-toggle"
             onclick="toggleSlab('pa')"
-            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all duration-200"
+            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-200"
             style="border: 1px solid #E6DAC6; background: #FCF9FA; color: #112032;"
           >
-            <span id="pa-label">View Full Details</span>
+            <span id="pa-label">View Full Program Details</span>
             <svg
               id="pa-chevron"
               class="w-3.5 h-3.5 transition-transform duration-200"
@@ -598,7 +653,7 @@ const RED = {
                 class="text-xs font-bold tracking-widest uppercase mb-4"
                 style="color: rgba(17,32,50,0.40);"
               >
-                What's Included
+                What We'll Focus On:
               </p>
               <ul class="space-y-3">
                 {
@@ -632,36 +687,47 @@ const RED = {
             </div>
             <div>
               <p
-                class="text-xs font-bold tracking-widest uppercase mb-4"
+                class="text-xs font-bold tracking-widest uppercase mb-1"
                 style="color: rgba(17,32,50,0.40);"
               >
-                Value Stack
+                Included in Your Enrollment
+              </p>
+              <p class="text-[11px] leading-snug mb-4" style="color: rgba(17,32,50,0.55);">
+                Everything below is included at no extra cost. Values shown reflect standalone retail value.
               </p>
               <div
                 class="rounded-xl border border-[#E6DAC6] bg-white p-5 text-sm"
               >
                 {
                   [
-                    ["4 Private Sessions", "$1,200"],
+                    ["6 Private Sessions", "$1,800"],
                     ["Public Transfer Training Trips", "$900"],
-                    ["Daily HW Reviews", "$600"],
+                    ["Daily Homework Reviews", "$600"],
                     ["Helper Dog Exposure Reps", "$750"],
                     ["Advanced Obedience Vault", "$497"],
                   ].map(([label, price]) => (
-                    <div class="flex justify-between py-2 border-b border-[#E6DAC6]/50 last:border-0">
-                      <span style="color:rgba(17,32,50,0.65);">{label}</span>
-                      <span class="font-bold" style="color:#D1B27F;">
+                    <div class="flex justify-between py-2 border-b border-[#E6DAC6]/50 last:border-0 items-center">
+                      <span class="pr-3 leading-snug" style="color:rgba(17,32,50,0.65);">{label}</span>
+                      <span class="font-bold whitespace-nowrap" style="color:#D1B27F;">
                         {price}
                       </span>
                     </div>
                   ))
                 }
-                <div class="flex justify-between pt-3">
-                  <span class="font-bold" style="color:#112032;"
-                    >Total Value:</span
+                <div class="flex justify-between items-center pt-4 pb-1">
+                  <span class="font-bold text-sm" style="color:rgba(17,32,50,0.45);"
+                    >Retail Value:</span
                   >
-                  <span class="font-extrabold text-base" style="color:#D1B27F;"
+                  <span class="font-bold text-sm line-through" style="color:rgba(17,32,50,0.45);"
                     >$4,547+</span
+                  >
+                </div>
+                <div class="flex justify-between items-center pt-3 mt-1 border-t border-[#E6DAC6]">
+                  <span class="font-bold text-base" style="color:#112032;"
+                    >Your Price Today:</span
+                  >
+                  <span class="font-extrabold text-2xl" style="color:#D1B27F;"
+                    >$1,199</span
                   >
                 </div>
               </div>
@@ -774,12 +840,11 @@ const RED = {
             class="flex-1 grid grid-cols-1 md:grid-cols-[272px_1fr_1fr] gap-0"
           >
             <!-- Photo — muzzle photo -->
-            <div class="relative overflow-hidden" style="min-height: 260px;">
+            <div class="relative overflow-hidden" style="height: 300px;">
               <img
                 src="/images/muzzle-photo.jpg"
                 alt="Reactive Dog Intensive Training"
                 class="w-full h-full object-cover"
-                style="min-height:260px;"
               />
               <div
                 class="absolute inset-0"
@@ -820,7 +885,7 @@ const RED = {
               </p>
               <p class="text-2xl font-bold mb-4" style="color: #112032;">
                 Custom Quote — <span style="color: #7D2C2D;"
-                  >starts ~$4,000+</span
+                  >starts ~$2,500+</span
                 >
               </p>
               <p
@@ -835,34 +900,23 @@ const RED = {
             </div>
 
             <!-- Bullets + CTA -->
-            <div class="px-7 py-7 flex flex-col justify-between">
+            <div class="px-7 py-5 flex flex-col justify-between">
               <ul class="space-y-2 mb-6">
                 {
                   [
-                    "Comprehensive intake & safety assessment",
-                    "Private behavior modification sessions",
-                    "Controlled helper dog exposure therapy",
-                    "Neutral pack walks & socialization",
-                    "Advanced management & handler tools",
-                    "Relapse prevention + maintenance plan",
+                    "Safer handling and management skills",
+                    "Trigger awareness and threshold reading",
+                    "Structured behavior modification work",
+                    "Clear safety routines for daily life",
+                    "Recovery and regulation under stress",
+                    "Controlled exposure and social rehabilitation",
+                    "Practical real-world stability and control",
                   ].map((item) => (
                     <li
                       class="flex items-start gap-2.5 text-sm"
                       style="color: rgba(17,32,50,0.78);"
                     >
-                      <svg
-                        class="w-4 h-4 mt-0.5 flex-shrink-0"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="#7D2C2D"
-                        stroke-width="2.5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
+                      <img src="/images/Paw Prints/Red Paw Print.png" alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />
                       {item}
                     </li>
                   ))
@@ -870,24 +924,32 @@ const RED = {
               </ul>
               <a
                 href="/apply"
-                class="inline-flex items-center justify-center gap-2 text-sm font-bold tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
-                style="background:#7D2C2D; color:white; padding:14px 28px; box-shadow:0 4px 14px rgba(125,44,45,0.30);"
+                class="btn-apply-red"
               >
-                Request Assessment →
+                Apply for Free Assessment
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
               </a>
             </div>
           </div>
         </div>
 
-        <!-- Centered pill toggle -->
-        <div class="flex justify-center py-4 border-t border-[#E6DAC6]/60">
+        <!-- Footer Strip -->
+        <div
+          class="flex flex-col md:flex-row items-center justify-between px-7 py-4 border-t border-[#E6DAC6]/60 gap-4"
+        >
+          <!-- Constrained wrapper: narrower, left-aligned callout -->
+          <div class="w-full md:max-w-[520px] mr-auto flex-shrink-0">
+            <GuaranteeBadge program="rdi" />
+          </div>
           <button
             id="rz-toggle"
             onclick="toggleSlab('rz')"
-            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold tracking-wide transition-all duration-200"
+            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-all duration-200"
             style="border: 1px solid #E6DAC6; background: #FCF9FA; color: #112032;"
           >
-            <span id="rz-label">View Full Details</span>
+            <span id="rz-label">View Full Program Details</span>
             <svg
               id="rz-chevron"
               class="w-3.5 h-3.5 transition-transform duration-200"
@@ -911,7 +973,7 @@ const RED = {
                 class="text-xs font-bold tracking-widest uppercase mb-4"
                 style="color: rgba(17,32,50,0.40);"
               >
-                What's Included
+                What We'll Focus On:
               </p>
               <ul class="space-y-3">
                 {
@@ -959,38 +1021,49 @@ const RED = {
             </div>
             <div>
               <p
-                class="text-xs font-bold tracking-widest uppercase mb-4"
+                class="text-xs font-bold tracking-widest uppercase mb-1"
                 style="color: rgba(17,32,50,0.40);"
               >
-                Pricing Guide
+                Included in Your Enrollment
+              </p>
+              <p class="text-[11px] leading-snug mb-4" style="color: rgba(17,32,50,0.55);">
+                Everything below is included at no extra cost. Values shown reflect standalone retail value.
               </p>
               <div
                 class="rounded-xl border border-[#E6DAC6] bg-white p-5 text-sm"
               >
-                <p class="text-xs mb-3" style="color:rgba(17,32,50,0.42);">
-                  Every case is unique. Quote provided after assessment.
-                </p>
                 {
                   [
-                    ["Intake Evaluation", "Included"],
-                    ["Behavior Modification Sessions", "Custom"],
-                    ["Helper Dog Therapy Reps", "Custom"],
-                    ["Management Tools & Equipment", "At cost"],
+                    ["Full Clinical Rehabilitation Protocol", "$2,500"],
+                    ["Helper Dog Exposure Therapy", "$1,600"],
+                    ["In-Home Environmental Reset", "$1,500"],
+                    ["Real-World Field Trip Proofing", "$800"],
+                    ["Priority Daily Analysis (VIP Pocket Access)", "$1,200"],
+                    ["“Crisis Management” Safety Toolkit", "$500"],
+                    ["Lifetime Alumni Annual Regression Classes", "$1,500"],
                   ].map(([label, price]) => (
-                    <div class="flex justify-between py-2 border-b border-[#E6DAC6]/50 last:border-0">
-                      <span style="color:rgba(17,32,50,0.65);">{label}</span>
-                      <span class="font-bold" style="color:#7D2C2D;">
+                    <div class="flex justify-between py-2 border-b border-[#E6DAC6]/50 last:border-0 items-center">
+                      <span class="pr-3 leading-snug" style="color:rgba(17,32,50,0.65);">{label}</span>
+                      <span class="font-bold whitespace-nowrap" style="color:#7D2C2D;">
                         {price}
                       </span>
                     </div>
                   ))
                 }
-                <div class="flex justify-between pt-3">
-                  <span class="font-bold" style="color:#112032;"
-                    >Starting from:</span
+                <div class="flex justify-between items-center pt-4 pb-1">
+                  <span class="font-bold text-sm" style="color:rgba(17,32,50,0.45);"
+                    >Retail Value:</span
                   >
-                  <span class="font-extrabold text-base" style="color:#7D2C2D;"
-                    >$4,000+</span
+                  <span class="font-bold text-sm line-through" style="color:rgba(17,32,50,0.45);"
+                    >$9,600</span
+                  >
+                </div>
+                <div class="flex justify-between items-center pt-3 mt-1 border-t border-[#E6DAC6]">
+                  <span class="font-bold text-base" style="color:#112032;"
+                    >Your Price Today:</span
+                  >
+                  <span class="font-extrabold text-xl" style="color:#7D2C2D;"
+                    >Starts at $2,500</span
                   >
                 </div>
               </div>
@@ -1028,7 +1101,7 @@ const RED = {
             [
               {
                 q: "Do you take dogs with confirmed bite histories?",
-                a: "Yes, but only after a mandatory intake evaluation. We assess severity, context, and history. Not every case is a fit — we'll be honest upfront.",
+                a: "Yes. These are the cases our trainer is most passionate about. At Good Doggos, we do not believe in “bad dogs.” Every bite-history case begins with a mandatory intake evaluation so we can assess severity, context, and history, then build the safest and clearest plan forward from day one.",
               },
               {
                 q: "What does a 'custom quote' actually include?",
@@ -1080,30 +1153,37 @@ const RED = {
         </div>
       </div>
     </div><!-- /space-y slabs -->
+  </div>
+  <!-- /FBF1E9 bg -->
 
-    <!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════════════
        BREAKTHROUGH SESSION
   ════════════════════════════════════════ -->
-    <div class="max-w-7xl mx-auto px-4 md:px-8 pt-24 pb-16">
+  <div class="bg-[#F8F9FA] border-t border-[#E6DAC6]/40 relative overflow-hidden">
+    <!-- Upper Left Watermark (tilted left) -->
+    <div class="absolute -top-10 -left-10 md:-top-32 md:-left-32 opacity-[0.06] pointer-events-none select-none w-[500px] h-[500px] md:w-[800px] md:h-[800px] transform -rotate-12">
+        <img src="/images/Navy Dog Mascot Transparent - Good Doggos.png" alt="" class="w-full h-full object-contain" />
+    </div>
+    <!-- Lower Right Watermark (tilted right, flipped leftwards) -->
+    <div class="absolute -bottom-20 -right-20 md:-bottom-32 md:-right-32 opacity-[0.06] pointer-events-none select-none w-[500px] h-[500px] md:w-[800px] md:h-[800px] transform rotate-12 scale-x-[-1]">
+        <img src="/images/Navy Dog Mascot Transparent - Good Doggos.png" alt="" class="w-full h-full object-contain" />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-12 relative z-10">
       <!-- Logo Stamp -->
       <div class="text-center mb-4">
         <img
           src="/images/Brand%20Name%20Logo%20-%20White%20-%20Good%20Doggos.png"
           alt="Good Doggos"
-          class="h-28 md:h-32 w-auto mx-auto mb-5"
+          class="h-44 md:h-52 w-auto mx-auto mb-5"
           style="filter: brightness(0) saturate(100%) invert(15%) sepia(30%) saturate(700%) hue-rotate(185deg);"
         />
         <p
-          class="headline-accent text-4xl md:text-5xl"
+          class="headline-accent text-4xl md:text-5xl mb-8"
           style="color: #D1B27F; font-style: italic; font-weight: 700;"
         >
           Breakthrough Session
         </p>
-        <div
-          class="w-16 h-[2px] mx-auto mt-4 mb-8 rounded-full"
-          style="background: linear-gradient(to right, transparent, #D1B27F, transparent);"
-        >
-        </div>
       </div>
 
       <p
@@ -1122,7 +1202,7 @@ const RED = {
         >
           <div class="relative overflow-hidden" style="height:170px;">
             <img
-              src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=700"
+              src="/DesignGuidelines/ben-blumentritt-GbCee6shpx4-unsplash.jpg"
               alt="Standard session"
               class="w-full h-full object-cover object-center"
             />
@@ -1144,7 +1224,7 @@ const RED = {
               class="text-[11px] font-bold tracking-[0.20em] uppercase mb-4"
               style="color:rgba(17,32,50,0.38);"
             >
-              Ages 8 wk – 18 mo · Occasional reactivity
+              AGES 12+ MO · OCCASIONAL REACTIVITY
             </p>
             <div class="mb-1">
               <span
@@ -1170,19 +1250,7 @@ const RED = {
                     class="flex items-start gap-2.5 text-sm"
                     style="color:rgba(17,32,50,0.70);"
                   >
-                    <svg
-                      class="w-4 h-4 mt-0.5 flex-shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="#0F6D72"
-                      stroke-width="2.5"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
+                    <img src="/DesignGuidelines/Paw Prints/Teal Paw Print.png" alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />
                     {b}
                   </li>
                 ))
@@ -1191,10 +1259,13 @@ const RED = {
             <div class="flex-1"></div>
             <a
               href="/apply"
-              class="w-full inline-flex items-center justify-center text-sm font-bold tracking-widest uppercase rounded-full transition-all duration-200 hover:bg-[#0B2744] hover:text-white hover:-translate-y-0.5"
-              style="border:2px solid #0B2744; color:#0B2744; padding:14px 24px; background:transparent;"
-              >Request Private Session</a
+              class="btn-apply"
             >
+              Request Private Session
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -1204,7 +1275,7 @@ const RED = {
         >
           <div class="relative overflow-hidden" style="height:170px;">
             <img
-              src="https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=700"
+              src="/images/andrescarlofotografia-muzzle-5240921_1920.jpg"
               alt="Reactive & Aggressive session"
               class="w-full h-full object-cover object-center"
             />
@@ -1226,7 +1297,7 @@ const RED = {
               class="text-[11px] font-bold tracking-[0.20em] uppercase mb-4"
               style="color:rgba(17,32,50,0.38);"
             >
-              Ages 18+ mo · Confirmed reactivity or aggression
+              AGES 12+ MO · CONFIRMED AGGRESSION
             </p>
             <div class="mb-1">
               <span
@@ -1252,19 +1323,7 @@ const RED = {
                     class="flex items-start gap-2.5 text-sm"
                     style="color:rgba(17,32,50,0.70);"
                   >
-                    <svg
-                      class="w-4 h-4 mt-0.5 flex-shrink-0"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="#7D2C2D"
-                      stroke-width="2.5"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
+                    <img src="/DesignGuidelines/Paw Prints/Red Paw Print.png" alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />
                     {b}
                   </li>
                 ))
@@ -1273,16 +1332,18 @@ const RED = {
             <div class="flex-1"></div>
             <a
               href="/apply"
-              class="w-full inline-flex items-center justify-center text-sm font-bold tracking-widest uppercase rounded-full transition-all duration-200 hover:bg-[#0B2744] hover:text-white hover:-translate-y-0.5"
-              style="border:2px solid #0B2744; color:#0B2744; padding:14px 24px; background:transparent;"
-              >Request Private Session</a
+              class="btn-apply-red text-xs"
             >
+              Request Private Session
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- /FBF1E9 bg -->
 
   <CTASection />
 
@@ -1293,7 +1354,9 @@ const RED = {
       const chev = document.getElementById(`${id}-chevron`);
       if (!drawer || !label || !chev) return;
       const wasHidden = drawer.classList.toggle("hidden");
-      label.textContent = wasHidden ? "View Full Details" : "Hide Details";
+      label.textContent = wasHidden
+        ? "View Full Program Details"
+        : "Hide Details";
       (chev as HTMLElement).style.transform = wasHidden ? "" : "rotate(180deg)";
     }
     function toggleFaqBlock(id: string) {
@@ -1313,5 +1376,57 @@ const RED = {
     (window as any).toggleSlab = toggleSlab;
     (window as any).toggleFaqBlock = toggleFaqBlock;
     (window as any).toggleFaq = toggleFaq;
+
+    // --- Segmented Nav Scroll Spy & Smooth Scroll ---
+    const navItems = document.querySelectorAll(".segment-item");
+    const sections = ["calm-companion", "private-accelerator", "red-zone"].map(
+      (id) => document.getElementById(id)
+    );
+
+    // Smooth scroll
+    navItems.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = (item as HTMLAnchorElement).getAttribute("href");
+        const element = document.querySelector(targetId!);
+        if (element) {
+          window.scrollTo({
+            top: (element as HTMLElement).offsetTop - 120, // Adjust for header height
+            behavior: "smooth",
+          });
+          // Update active state manually on click
+          navItems.forEach((i) => i.classList.remove("active"));
+          item.classList.add("active");
+          // Update URL without jump
+          history.pushState(null, "", targetId);
+        }
+      });
+    });
+
+    // Scroll Spy
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          navItems.forEach((item) => {
+            if (item.getAttribute("href") === `#${id}`) {
+              item.classList.add("active");
+            } else {
+              item.classList.remove("active");
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      if (section) observer.observe(section);
+    });
   </script>
 </Layout>

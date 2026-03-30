@@ -1,0 +1,153 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Pet Trainer San Jacinto | Good Doggos";
+const description = "Professional pet training and behavioral mastery in San Jacinto. We help you move from managing to leading with Balanced Clarity.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Professional Pet Training & Behavioral Mastery",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Good Doggos",
+    "url": "https://gooddoggos.com",
+    "telephone": "+19514016252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Jacinto",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Riverside County"
+  },
+  "url": "https://gooddoggos.com/services/pet-trainer"
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">Pet Trainer</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        Professional Pet Training & Behavioral Mastery in San Jacinto
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <!-- Main Content -->
+      <div>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          It is exhausting to live with a dog that refuses to listen. Whether they are dragging you down the street in San Jacinto or barking at every neighbor who walks by, the frustration is real. You might feel like you’ve tried everything, but these behaviors are usually just symptoms of a deeper disconnect.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Because we are professionals, we never guess or hand out generic advice. Every dog is different, and we must evaluate your dog in person first to find the root cause of the issue. We don't just bribe your dog with treats; we provide a balanced approach that pairs high-value rewards with fair, well-timed corrections to build real listening skills that work in the real world.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Take the case of Camila, a reactive Pitbull/Boxer mix labeled as "un-trainable." Once her owner learned to stop enabling bad behavior and started showing real leadership, Camila responded exactly how she always hoped. Stop making excuses for bad habits—it is time to take your household back.
+        </p>
+      </div>
+
+      <!-- Child Services List -->
+      <div class="space-y-12 pt-8 border-t border-primary-navy/10">
+        
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Adult Dog Obedience
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            It is never too late to have the dog you actually want to live with. My <a href="/services/adult-dog-obedience" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Adult Dog Obedience</a> program uses Balanced Clarity to clean up messy habits and sharpen listening skills. I make sure your dog understands exactly what "sit" or "stay" means, ensuring they remain reliable even when life gets busy.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Puppy Foundations
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            Start your new best friend on the right path before bad habits take root. Through <a href="/services/puppy-foundations" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Puppy Foundations</a>, I help you build a language of trust and clear boundaries from day one. We focus on basics like crate training and house manners, ensuring your pup grows into a calm, confident adult who understands clear leadership.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Dog Socialization
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            Seeing your dog play safely with others is a huge relief. My approach to <a href="/services/dog-socialization" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Dog Socialization</a> isn't about throwing your pet into a chaotic dog park. I supervise controlled interactions so your dog learns how to read body language and stay polite, turning social anxiety into genuine, relaxed confidence through proper canine feedback.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Noise Phobia and Sensitivity Training
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            Thunder or fireworks shouldn't send your dog into a panicked hiding spot. I use <a href="/services/noise-phobia-training" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Noise Phobia and Sensitivity Training</a> to change how your dog processes scary sounds. By creating a predictable environment and using well-timed leadership to stop frantic pacing, I help them stay grounded and calm when the world gets loud.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Vet Visit Desensitization
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            Imagine a trip to the clinic without the shaking, whining, or snapping. My <a href="/services/vet-visit-desensitization" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Vet Visit Desensitization</a> sessions teach your dog to accept handling and medical tools with ease. I work on making the exam table a neutral place by holding them accountable, saving both you and your vet from a high-stress ordeal.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Private Reactive Dog Lessons
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            If a group class feels too overwhelming, my <a href="/services/private-reactive-dog-lessons" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Private Reactive Dog Lessons</a> provide the one-on-one focus you need. I come to you in San Jacinto to bridge the communication gap. We move at your dog’s pace, building the leadership skills necessary to handle real-world triggers with absolute clarity and calm authority.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>

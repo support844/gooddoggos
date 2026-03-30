@@ -1,0 +1,212 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CTASection from "../components/CTASection.astro";
+import Parser from "rss-parser";
+
+// Fetch Substack Feed
+let allPosts: any[] = [];
+try {
+    const parser = new Parser();
+    const feed = await parser.parseURL("https://gooddoggos.substack.com/feed");
+    allPosts = feed.items || [];
+} catch (e) {
+    console.error("Failed to fetch Substack feed", e);
+}
+
+const featuredPost = allPosts.length > 0 ? allPosts[0] : null;
+const gridPosts = allPosts.length > 1 ? allPosts.slice(1, 10) : [];
+---
+
+<Layout title="The Behavior Journal | Good Doggos Dog Training" description="Read the latest dog training tips, behavioral insights, and case studies from the Good Doggos team.">
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden bg-[#0B2744] flex items-end" style="min-height: 52vh;">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="/images/jamie-street-MoDcnVRN5JU-unsplash.jpg"
+                alt="The Behavior Journal"
+                class="w-full h-full object-cover"
+                style="opacity: 0.50; object-position: center 35%;"
+            />
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-16" style="padding-top: 160px;">
+            <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-5" style="color: rgba(209,178,127,0.60);">Our Blog</p>
+            <h1 class="font-heading font-bold text-white leading-[1.05] mb-5" style="font-size: clamp(2.8rem, 5.5vw, 4.5rem);">
+                The Behavior Journal
+            </h1>
+            <p class="headline-accent text-2xl md:text-3xl mb-6" style="color: #D1B27F; font-style: italic; font-weight: 700;">
+                Insights, tips, and real-world transformations.
+            </p>
+            <p class="text-gray-300 max-w-2xl leading-relaxed text-lg">
+                Stay updated with our latest training strategies, client success stories, and practical advice to help your dog become a calm, confident companion.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTENT SECTION -->
+    <section class="bg-[#FBF1E9] py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            {allPosts.length === 0 ? (
+                <div class="bg-white rounded-[24px] shadow-[0_15px_40px_rgba(11,39,68,0.08)] border border-[#E6DAC6] p-10 md:p-16 text-center mb-20">
+                    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.65);">More Updates</p>
+                    <h4 class="text-2xl font-heading font-bold text-[#0B2744] mb-4">No posts yet &mdash; check back soon.</h4>
+                    <a href="https://gooddoggos.substack.com" target="_blank" rel="noopener noreferrer" class="btn-apply py-4 px-10 inline-flex items-center gap-2 mt-4">
+                        Visit Substack <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            ) : (
+                <>
+                    {/* FEATURED POST */}
+                    {featuredPost && (
+                        <div class="mb-20">
+                            <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-6" style="color: rgba(15,109,114,0.65);">Featured Article</p>
+                            <div class="bg-white rounded-[24px] shadow-[0_20px_50px_-20px_rgba(11,39,68,0.15)] overflow-hidden border border-[#E6DAC6] flex flex-col lg:flex-row group hover:shadow-[0_20px_50px_-20px_rgba(11,39,68,0.25)] transition-shadow duration-500">
+                                <!-- Image Area -->
+                                <div class="w-full lg:w-1/2 relative overflow-hidden min-h-[300px] lg:min-h-full">
+                                    {featuredPost.enclosure?.url ? (
+                                        <img
+                                            src={featuredPost.enclosure.url}
+                                            alt={featuredPost.title}
+                                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                    ) : (
+                                        <div class="absolute inset-0 w-full h-full" style="background: linear-gradient(135deg, rgba(11,39,68,0.1), rgba(15,109,114,0.2));"></div>
+                                    )}
+                                    <div class="absolute inset-0 bg-primary-navy/5 group-hover:bg-transparent transition-colors duration-300"></div>
+                                </div>
+                                
+                                <!-- Content Area -->
+                                <div class="w-full lg:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-[#FCF9FA]">
+                                    <p class="text-[12px] font-bold tracking-[0.2em] text-[#D1B27F] uppercase mb-4">
+                                        {new Date(featuredPost.pubDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                                    </p>
+                                    <h2 class="text-3xl md:text-4xl font-heading font-bold text-[#0B2744] mb-6 leading-tight">
+                                        <a href={featuredPost.link} target="_blank" rel="noopener noreferrer" class="hover:text-accent-teal transition-colors">
+                                            {featuredPost.title}
+                                        </a>
+                                    </h2>
+                                    <p class="text-base text-secondary-slate/85 leading-relaxed mb-8 line-clamp-4">
+                                        {featuredPost.contentSnippet}
+                                    </p>
+                                    <div>
+                                        <a
+                                            href={featuredPost.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="btn-apply"
+                                        >
+                                            Read Article
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* LATEST POSTS GRID */}
+                    {gridPosts.length > 0 && (
+                        <div>
+                            <div class="mb-10 border-b border-[#EAE1D3] pb-4">
+                                <p class="text-[11px] font-bold tracking-[0.25em] uppercase" style="color: rgba(15,109,114,0.65);">Latest Articles</p>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {gridPosts.map((post) => (
+                                    <article class="bg-[#FCF9FA] rounded-[20px] border border-[#EAE1D3]/60 shadow-[0_10px_30px_rgba(11,39,68,0.05),0_4px_8px_rgba(11,39,68,0.03)] flex flex-col group hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                                        {post.enclosure?.url ? (
+                                            <div class="w-full h-48 overflow-hidden relative border-b border-[#EAE1D3]/60">
+                                                <img
+                                                    src={post.enclosure.url}
+                                                    alt={post.title}
+                                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                />
+                                                <div class="absolute inset-0 bg-primary-navy/10 group-hover:bg-transparent transition-colors duration-300" />
+                                            </div>
+                                        ) : (
+                                            <div class="w-full h-48 overflow-hidden relative border-b border-[#EAE1D3]/60" style="background: linear-gradient(135deg, rgba(11,39,68,0.05), rgba(15,109,114,0.1));"></div>
+                                        )}
+                                        <div class="p-6 md:p-8 flex flex-col flex-1">
+                                            <p class="text-[12px] font-bold tracking-[0.2em] text-[#D1B27F] uppercase mb-3">
+                                                {new Date(post.pubDate).toLocaleDateString(
+                                                    "en-US",
+                                                    { month: "short", day: "numeric", year: "numeric" }
+                                                )}
+                                            </p>
+                                            <h3 class="font-heading font-bold text-xl mb-3 text-[#0B2744] line-clamp-2">
+                                                <a
+                                                    href={post.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="hover:text-[#0F6D72] transition-colors"
+                                                >
+                                                    {post.title}
+                                                </a>
+                                            </h3>
+                                            <p class="text-sm text-secondary-slate/75 line-clamp-3 mb-6 flex-1 leading-relaxed">
+                                                {post.contentSnippet}
+                                            </p>
+                                            <a
+                                                href={post.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="inline-flex items-center gap-2 text-[13px] font-bold text-[#0B2744] hover:text-[#0F6D72] uppercase tracking-[0.15em] transition-colors mt-auto"
+                                            >
+                                                Read Article
+                                                <svg
+                                                    class="w-4 h-4 transition-transform group-hover:translate-x-1"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                >
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </>
+            )}
+
+            {/* SUBSCRIBE NEWSLETTER SECTION */}
+            <div class="mt-12 md:mt-16 rounded-[24px] p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 border border-[#E6DAC6]" style="background: linear-gradient(135deg, #0B2744 0%, #112032 100%); box-shadow: 0 20px 50px -20px rgba(11,39,68,0.4);">
+                <!-- Abstract sheen -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-[#D1B27F]/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+                
+                <div class="relative z-10 text-left md:max-w-xl">
+                    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-3 text-[#D1B27F]">Stay Updated</p>
+                    <h3 class="text-3xl font-heading font-bold text-white mb-3">
+                        Join the Pack Newsletter
+                    </h3>
+                    <p class="text-white/70 leading-relaxed text-[15px]">
+                        Get weekly training tips, deep dives into canine psychology, and real updates from our behavior journal delivered straight to your inbox.
+                    </p>
+                </div>
+                
+                <div class="relative z-10 w-full md:w-auto flex-shrink-0 text-center">
+                    <a
+                        href="https://gooddoggos.substack.com/subscribe"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-apply w-full md:w-auto py-4 px-10 flex items-center justify-center gap-2"
+                    >
+                        Subscribe on Substack 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <CTASection />
+</Layout>

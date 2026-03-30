@@ -5,9 +5,22 @@ const testimonials = await getCollection('testimonials');
 ---
 
 <section class="relative py-24 md:py-32 bg-primary-navy overflow-hidden">
+  <!-- Premium Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/DesignGuidelines/jametlene-reskp-fliwkBbS7oM-unsplash.jpg"
+      alt="Happy dogs background"
+      class="w-full h-full object-cover object-center opacity-35"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/85 via-[#0B2744]/65 to-[#0B2744]"
+    >
+    </div>
+  </div>
+
   <!-- Subtle Radial Vignette / Cinematic Spotlight -->
   <div
-    class="absolute inset-0 pointer-events-none"
+    class="absolute inset-0 pointer-events-none z-[1]"
     style="background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 60%), radial-gradient(ellipse at 50% 100%, rgba(0,0,0,0.22) 0%, transparent 70%);"
   >
   </div>
@@ -83,6 +96,13 @@ const testimonials = await getCollection('testimonials');
 
         </article>
       ))}
+    </div>
+
+    <!-- Centered CTA below testimonials -->
+    <div class="mt-16 flex justify-center">
+      <a href="/transformations" class="btn-apply">
+        View the Transformations
+      </a>
     </div>
   </div>
 </section>

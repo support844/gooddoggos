@@ -1,0 +1,110 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Vet Visit Desensitization San Jacinto | Good Doggos";
+const description = "Turn traumatic vet visits into neutral ones in San Jacinto. We specialize in Cooperative Care and Muzzle Conditioning to ensure safety and comfort for your dog.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Vet Visit and Handling Desensitization",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Good Doggos",
+    "url": "https://gooddoggos.com",
+    "telephone": "+19514016252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Jacinto",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Riverside County"
+  },
+  "url": "https://gooddoggos.com/services/vet-visit-desensitization"
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        <span>&rsaquo;</span>
+        <a href="/services/pet-trainer" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Pet Trainer</a>
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">Vet Visit Desensitization</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        Vet Visit Desensitization in San Jacinto
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <!-- Main Content -->
+      <div class="prose max-w-none">
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          If you dread your dog’s annual check-up, you aren't alone. For many San Jacinto owners, it’s a gauntlet of lunging in the lobby and a "Red Zone" panic in the exam room.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          These medical meltdowns are symptoms of underlying fear that medication alone can't fix. Because we are professionals, we do not guess or hand out generic care tips. We must evaluate your dog in person to build a cooperative care plan that ensures safety and comfort for everyone involved. Sedating the symptoms with medication doesn't fix the core problem.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mt-12 mb-6">
+          Cooperative Care and Calm Handling
+        </h2>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          At Good Doggos, I specialize in the "hard" veterinary cases—the dogs labeled "difficult" or "aggressive." For 8 years, I’ve helped Inland Empire owners turn traumatic events into neutral ones using "Cooperative Care." I use rewards for holding still and accepting touch, but I also set clear physical boundaries.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          I remember a "Cooperative Care" success with a dog that previously required three techs for restraint. We spent a session on "muzzle=party hat" conditioning and structured, rhythmic touch. By the next visit, the dog stood still for a blood draw with zero restraint needed. We taught the dog that yielding to pressure led to praise, whereas fighting it was never an option. This clarity is what allows a dog to stay safe during high-stress exams.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          I simulate the vet environment here in San Jacinto: the "white coat" presence, the cold table, and the restraint needed for draws or cleanings. I also provide expert Muzzle Conditioning so that if a muzzle is required for safety, it’s a source of comfort rather than panic in the heat of a busy clinic.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6 font-bold">
+          Stop fearing the exam room. Apply for a Free Behavioral Assessment and advocate for a safer dog.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>

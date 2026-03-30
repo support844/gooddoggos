@@ -1,0 +1,165 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Aggression Rehabilitation San Jacinto | Good Doggos";
+const description = "Living with an aggressive dog is exhausting. We use a balanced methodology to handle the red-zone cases that other trainers in Riverside County won't touch.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Aggression Rehabilitation",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Good Doggos",
+    "url": "https://gooddoggos.com",
+    "telephone": "+19514016252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Jacinto",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Riverside County"
+  },
+  "url": "https://gooddoggos.com/services/aggression-rehabilitation"
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">Aggression Rehabilitation</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        Aggression Rehabilitation in San Jacinto
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <!-- Main Content Block -->
+      <div>
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+          The Balanced Approach to Real Results
+        </h2>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Living with an aggressive dog is more than just stressful—it’s dangerous and isolating. Whether you are worried about your dog biting a guest or struggling with fights between dogs in your own home, the weight of that responsibility is heavy. These aggressive outbursts are symptoms of underlying issues that vary from dog to dog. Because we are professionals, we do not guess or give out generic advice. We must evaluate your dog in person to understand exactly what is triggering them before we begin any work.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          At Good Doggos, I don't sugarcoat the work. After 8 years of aggressive dog training in Riverside County—handling the "Red Zone" cases that other trainers won't touch—I know that "positive-only" training usually fails when real-world adrenaline hits. When a dog is red-lining, a cookie won't stop them. I use a balanced methodology: high-value rewards to teach the right choices, and fair, well-timed leash corrections to define the boundaries. We provide the "Yes" and the "No," creating a dog that understands the rules.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          My confidence in handling these cases comes from a personal place. When I was a boy in Mexico, a dog attacked me and wouldn't let go of my hand for five agonizing seconds. I lived in fear for years. I only overcame that trauma by mastering dog behavior and realizing that even the most "dangerous" looking dogs are often just looking for a leader they can follow.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Take Camila, for instance. She was a reactive Pitbull/Boxer mix whose previous trainer recommended euthanasia. On her first day with me, she was existing peacefully next to my helper dog, Simba. Later, when she tried to challenge Simba, he gave her a single, proper correction. From that moment on, her behavior changed. She respected his space because, for the first time, she had clear communication.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          We train in the real San Jacinto environment. Dealing with 105&deg;F heat is a reality here, so we manage thresholds and energy levels accordingly. Whether it's territorial guarding in your driveway or reactivity near Simpson Park, I address the root cause—fear or lack of control—to give you your life back.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6 font-semibold">
+          Stop hoping the problem will go away. Let’s get to work and build a safer future for you and your dog.
+        </p>
+      </div>
+
+      <!-- Specialized Child Services -->
+      <div class="space-y-12 pt-8 border-t border-primary-navy/10">
+        
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Fear-Based Aggression Therapy
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            When your dog snaps out of terror, they aren't being "mean"—they are desperate. I use <a href="/services/fear-based-aggression" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Fear-Based Aggression Therapy</a> to replace that panic with a sense of safety. My Balanced Clarity method removes the confusion that leads to defensive biting, teaching your dog that they no longer need to fight for survival.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Resource Guarding Modification
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            It is terrifying when your own dog growls over a bowl or toy. I provide <a href="/services/resource-guarding" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Resource Guarding Modification</a> to stop the tension in your kitchen or living room. By establishing clear communication, I show your dog that giving things up results in a reward, not a loss. We restore your safety.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Intra-Household Dog Conflict Resolution
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            Living in a house where dogs must be rotated behind baby gates is exhausting. My <a href="/services/intra-household-conflict" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Intra-Household Dog Conflict Resolution</a> focuses on neutralizing the friction between your pets. I step in to mediate their relationship, setting firm boundaries and clear expectations so your pack can finally exist in the same room again.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Territorial Aggression Management
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            If your dog views every guest or delivery driver as a threat to be neutralized, you need <a href="/services/territorial-aggression" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Territorial Aggression Management</a>. I teach your dog that you are the one in charge of the perimeter. Using Balanced Clarity, we shift the "guarding" burden off their shoulders so they can relax at home.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Redirected Aggression Prevention
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            Redirected bites are some of the most traumatic experiences for owners. I specialize in <a href="/services/redirected-aggression" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Redirected Aggression Prevention</a>, teaching you how to intervene before your dog’s frustration turns toward you. We build a reliable communication loop that allows you to safely de-escalate high-arousal moments before a physical strike occurs.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Human-Directed Reactivity Training
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            When your dog lunges at people on walks or in your home, the social isolation is real. My <a href="/services/human-directed-reactivity" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Human-Directed Reactivity Training</a> addresses the root cause of this outward lashing. I help your dog process the presence of strangers without reaching a breaking point, giving you both the freedom to go outside again.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>

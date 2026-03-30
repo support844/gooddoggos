@@ -1,0 +1,150 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Behavioral Modification & Foundation in San Jacinto | Good Doggos";
+const description = "Specialized behavioral modification and foundation training in San Jacinto. We handle the red-zone cases others avoid using Balanced Clarity.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Behavioral Modification & Foundation",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Good Doggos",
+    "url": "https://gooddoggos.com",
+    "telephone": "+19514016252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Jacinto",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Riverside County"
+  },
+  "url": "https://gooddoggos.com/services/behavioral-modification"
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">Behavioral Modification & Foundation</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        Behavioral Modification & Foundation in San Jacinto
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <!-- Main Content -->
+      <div>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Living with a dog that snaps, lunges, or lives in a state of constant fear is exhausting. You are likely tired of walking on eggshells, wondering if your dog will ever just be "normal." These clinical issues are symptoms of underlying stress and broken communication.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Because we are professionals, we never guess or hand out generic advice without evaluating the dog in person first. These issues do not fix themselves—they escalate without the right intervention. By using <strong>Balanced Clarity</strong>, I bridge the communication gap between you and your dog, replacing confusion with clear expectations.
+        </p>
+      </div>
+
+      <!-- Child Services Grid/List -->
+      <div class="space-y-12 pt-8 border-t border-primary-navy/10">
+        
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Behavior Assessment & Consultation
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            I start by identifying exactly why your dog acts out. During this deep-dive evaluation, I look past symptoms to find the emotional root. Through a <a href="/services/behavior-assessment-and-consultation" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Behavior Assessment & Consultation</a>, you get a clear breakdown and a realistic plan. No guesswork, just professional clarity to stop the cycle of stress.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Behavior Adjustment Training
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            I use Behavior Adjustment Training (BAT) to give your dog better choices in high-stress moments. Instead of reacting with lunging, I teach them to process environments calmly. This <a href="/services/behavior-adjustment-training" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Behavior Adjustment Training</a> focuses on functional rewards, helping your dog learn that peaceful behavior actually gets them what they want.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Counter-Conditioning & Desensitization
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            If your dog panics at strangers or pets, we must change their emotional response. I carefully manage triggers to ensure your dog stays below their boiling point. Through <a href="/services/counter-conditioning-and-desensitization" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Counter-Conditioning & Desensitization</a>, I pair scary things with positive outcomes, rewiring their brain to remain neutral instead of spiraling into chaos.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Muzzle Training & Conditioning
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            A muzzle is a tool of freedom, not a punishment. I help you condition your dog to love wearing one so you can train safely. My <a href="/services/muzzle-training-and-conditioning" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Muzzle Training & Conditioning</a> ensures your dog is comfortable and happy, removing physical risk while we work on the underlying behavioral issues together.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Fearful Dog Confidence Building
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            Rescue dogs often carry baggage that manifests as shut-down behavior. I focus on decompression and building a resilient foundation of trust. Through <a href="/services/fearful-dog-confidence-building" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Fearful Dog Confidence Building</a>, I slowly expand your dog's comfort zone, helping them navigate the world with curiosity instead of terror. We turn fear into functional confidence.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mb-4">
+            Dog Behaviorist
+          </h2>
+          <p class="text-secondary-slate leading-[1.8] font-body text-[15px]">
+            When general obedience fails, you need a specialist who understands canine psychology. I offer clinical expertise for severe cases like predatory drift or chronic anxiety. As a <a href="/services/dog-behaviorist" class="text-accent-teal hover:text-accent-teal/80 underline font-semibold">Dog Behaviorist</a>, my goal is to provide professional insight that goes far beyond "sit" and "stay" to save your relationship.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>

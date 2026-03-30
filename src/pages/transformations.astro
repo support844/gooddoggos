@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
 
 const videos = [
   {
@@ -37,16 +38,15 @@ const videos = [
 <!-- ══════════════════════════════════════════════
      HERO
 ══════════════════════════════════════════════ -->
-<section class="relative overflow-hidden bg-[#0B2744] flex items-end" style="min-height: 46vh;">
+<section class="relative overflow-hidden bg-[#0B2744] flex items-end" style="min-height: 52vh;">
   <div class="absolute inset-0 z-0">
     <img
-      src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=2400"
-      alt="Transformations"
-      class="w-full h-full object-cover object-center"
-      style="opacity: 0.30;"
+      src="/images/lukas-vanatko-M7_cpdicN44-unsplash.jpg"
+      alt="Transformations — Good Doggos"
+      class="w-full h-full object-cover"
+      style="opacity: 0.50; object-position: center 25%;"
     />
-    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(11,39,68,0.95) 0%, rgba(11,39,68,0.72) 55%, rgba(11,39,68,0.40) 100%);"></div>
-    <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.92) 0%, transparent 55%);"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"></div>
   </div>
 
   <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-16" style="padding-top: 150px;">
@@ -120,56 +120,19 @@ const videos = [
       ))}
     </div>
 
-    <!-- "What You'll See" mini section -->
-    <div class="mt-16 rounded-2xl p-8 md:p-10 border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
-      <div class="text-center mb-8">
-        <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-2" style="color: rgba(15,109,114,0.60);">In Every Video</p>
-        <h3 class="text-xl font-heading font-bold" style="color: #0B2744;">What You'll See</h3>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-2xl mx-auto">
-        {[
-          {icon: "🚶", label: "Calm Walks", desc: "Dogs that walked in pulling and lunging — walking out loose-leashed."},
-          {icon: "📏", label: "Threshold Work", desc: "Controlled distance sessions that expand the dog's comfort zone rep by rep."},
-          {icon: "🌍", label: "Real-World Reps", desc: "Public settings, real distractions, real improvement. No controlled studio environments."},
-        ].map(item => (
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(15,109,114,0.08);">
-              <span class="text-lg">{item.icon}</span>
-            </div>
-            <div>
-              <p class="font-bold text-sm mb-1" style="color: #0B2744;">{item.label}</p>
-              <p class="text-xs leading-relaxed" style="color: rgba(17,32,50,0.60);">{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
 
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     CTA BAND
-══════════════════════════════════════════════ -->
-<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
-  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
-  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
-    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
-    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
-      Ready to See What's Possible?<br/>
-      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
-    </h2>
-    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
-      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
-    </p>
-    <a href="/apply"
-       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
-       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
-      Apply for Free Behavioral Assessment →
-    </a>
-    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
-  </div>
-</div>
+  <CTASection
+    eyebrow="Your Dog Is Next"
+    title1="Ready to See"
+    title2="What's Possible?"
+    titleAccent="Start With a Free Assessment."
+    body="Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit."
+    imageSrc="/images/matthew-fournier-Ya-CK-_v_ZE-unsplash.jpg"
+    imageStyle="object-position: center 32%; transform: scale(1.1);"
+  />
 
 <!-- ══════════════════════════════════════════════
      VIDEO MODAL

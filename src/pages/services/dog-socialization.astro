@@ -1,0 +1,113 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Expert Dog Socialization San Jacinto | Good Doggos";
+const description = "Socialization means neutrality, not forced interaction. We specialize in controlled exposure and building confidence in San Jacinto using a balanced approach.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Dog Socialization & Neutrality Training",
+  "description": description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Good Doggos",
+    "url": "https://gooddoggos.com",
+    "telephone": "+19514016252",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "San Jacinto",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Riverside County"
+  },
+  "url": "https://gooddoggos.com/services/dog-socialization"
+};
+---
+
+<Layout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <!-- Hero Band -->
+  <section class="bg-primary-navy pt-32 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm font-body text-white/50 mt-6 mb-4" aria-label="Breadcrumb">
+        <a href="/" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Home</a>
+        <span>&rsaquo;</span>
+        <a href="/services/pet-trainer" class="text-accent-gold hover:text-accent-gold/80 underline font-semibold">Pet Trainer</a>
+        <span>&rsaquo;</span>
+        <span class="text-white/80 truncate">Dog Socialization</span>
+      </nav>
+
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-white leading-tight mb-6">
+        Dog Socialization & Neutrality Training in San Jacinto
+      </h1>
+    </div>
+  </section>
+
+  <!-- Body Content -->
+  <section class="py-16 px-4 bg-[#FCF9FA]">
+    <div class="max-w-4xl mx-auto space-y-12">
+      
+      <!-- Main Content -->
+      <div class="prose max-w-none">
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          If you think "socialization" means letting your dog "sort it out" at a San Jacinto dog park with twenty strangers, you are setting your dog up for disaster. True socialization isn't about being best friends with every dog at Hiram Deville Park; it’s about neutrality.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          These social struggles are symptoms of a dog that doesn't yet know how to coexist without conflict. Because we are professionals, we do not guess or give out generic socializing tips. We must evaluate your dog in person to determine their baseline before we can teach them to be stable and neutral.
+        </p>
+
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-primary-navy mt-12 mb-6">
+          The Art of Controlled Exposure
+        </h2>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          At Good Doggos, I don't believe in "throwing them in the deep end." For 8 years, I’ve specialized in reclaiming the narrative on socialization. My balanced approach focuses on building confidence through structured, calm exposure. I use high-value rewards to reward the choice to look at you instead of the distraction. However, I also believe in the power of a clear boundary. I use calibrated leash work to provide an "interrupt" if your dog decides to fixate or escalate.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          I often use my helper dog, Chico, for these sessions. Chico is my "happy-go-lucky" dog with a non-threatening, submissive personality. He’s the "icebreaker" who helps overwhelmed dogs realize they don't have to interact with everything to be safe. By watching Chico’s relaxed energy, a reactive dog learns that they can also choose to be neutral.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          We take our sessions to the real-world "hot zones" of San Jacinto—busy sidewalks near Valley-Wide Recreation, local shopping centers, and trails where the San Jacinto Mountains provide a high-distraction backdrop. We teach your dog that they don't need to interact with the world to exist in it.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6">
+          Whether it's the peak summer heat or the Santa Ana winds, I show you how to be the advocate your dog needs. By the time we’re finished, your dog will be a stable, neutral companion that you can take anywhere in Riverside County with total peace of mind.
+        </p>
+        <p class="text-secondary-slate leading-[1.8] font-body text-[16px] mb-6 font-bold">
+          Apply for a Free Behavioral Assessment
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════════════ -->
+<div class="relative overflow-hidden bg-[#FBF1E9]" style="border-top: 1px solid #E6DAC6;">
+  <div class="w-full h-[3px]" style="background: linear-gradient(to right, #0F6D72, #D1B27F, #0F6D72);"></div>
+  <div class="max-w-4xl mx-auto px-4 py-20 md:py-24 text-center">
+    <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style="color: rgba(15,109,114,0.60);">Your Dog Is Next</p>
+    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" style="color: #0B2744;">
+      Ready to See What's Possible?<br/>
+      <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Start With a Free Assessment.</span>
+    </h2>
+    <p class="text-base mb-10 max-w-lg mx-auto" style="color: rgba(17,32,50,0.60);">
+      Tell us about your dog. We'll do an honest assessment and point you toward the right program — or tell you if we're not the right fit.
+    </p>
+    <a href="/apply"
+       class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+       style="background: #D1B27F; color: #0B2744; padding: 18px 44px; box-shadow: 0 6px 24px rgba(209,178,127,0.35);">
+      Apply for Free Behavioral Assessment →
+    </a>
+    <p class="mt-4 text-xs" style="color: rgba(17,32,50,0.40);">Takes less than 3 minutes · No commitment required</p>
+  </div>
+</div>
+</Layout>
