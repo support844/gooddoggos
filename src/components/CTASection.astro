@@ -8,6 +8,7 @@ export interface Props {
   body?: string;
   imageStyle?: string;
   theme?: "gold" | "teal";
+  buttonTheme?: "gold" | "teal";
   enhancedOverlay?: boolean;
 }
 
@@ -20,10 +21,13 @@ const {
   body = "Our evaluation queue fills weeks in advance. Take the first step toward a safe, focused relationship with your dog today.",
   imageStyle = "object-position: center;",
   theme = "gold",
+  buttonTheme,
   enhancedOverlay = false,
 } = Astro.props;
 
+const finalButtonTheme = buttonTheme || theme;
 const isTeal = theme === "teal";
+const isButtonTeal = finalButtonTheme === "teal";
 const themeColorHex = isTeal ? "#0F6D72" : "#D1B27F";
 const themeBgRGBA = isTeal ? "rgba(15,109,114,0.12)" : "rgba(209,178,127,0.12)";
 ---
@@ -110,7 +114,7 @@ const themeBgRGBA = isTeal ? "rgba(15,109,114,0.12)" : "rgba(209,178,127,0.12)";
       <!-- Use global classes for buttons -->
       <a
         href="/apply"
-        class:list={[{ "btn-apply": !isTeal, "btn-apply-teal": isTeal }]}
+        class:list={[{ "btn-apply": !isButtonTeal, "btn-apply-teal": isButtonTeal }]}
       >
         BOOK YOUR FREE ASSESSMENT
         <svg
