@@ -190,8 +190,8 @@ import { Image } from "astro:assets";
                         alt="Confident dog listening to owner"
                         width={1500}
                         height={2000}
-                        loading="eager"
-                        fetchpriority="high"
+                        widths={[400, 800, 1500]}
+                        sizes="(max-width: 768px) 100vw, 50vw"
                     />
 
                     <!-- Abstract faint geometry lines matching reference -->

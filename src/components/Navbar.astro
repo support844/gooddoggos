@@ -36,13 +36,15 @@ const { alwaysSolid = false } = Astro.props;
         src={mascotLogo}
         alt="Good Doggos Mascot"
         class="h-12 md:h-13 w-auto transform group-hover:rotate-12 transition-transform duration-300"
-        loading="eager"
+        widths={[100, 200, 400]}
+        sizes="84px"
       />
       <Image
         src={brandLogoWhite}
         alt="Good Doggos Logo"
         class="h-16 md:h-20 w-auto"
-        loading="eager"
+        widths={[300, 600, 900]}
+        sizes="(max-width: 768px) 150px, 200px"
       />
     </a>
 
