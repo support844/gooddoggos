@@ -16,6 +16,7 @@ import { Image } from "astro:assets";
             width={2400}
             height={1600}
             loading="eager"
+            fetchpriority="high"
         />
 
         <!-- Cinematic Overlay: heavy navy on left (readability), fades right so image is visible -->
@@ -187,6 +188,8 @@ import { Image } from "astro:assets";
                         alt="Confident dog listening to owner"
                         width={1500}
                         height={2000}
+                        loading="eager"
+                        fetchpriority="high"
                     />
 
                     <!-- Abstract faint geometry lines matching reference -->
