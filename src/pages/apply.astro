@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import mascotNavy from "../assets/images/navy-dog-mascot-transparent---good-doggos.png";
 ---
 
 <Layout headerAlwaysSolid={true}>
@@ -48,8 +50,8 @@ import Layout from "../layouts/Layout.astro";
         <div
           class="absolute top-[80%] left-1/2 -translate-x-1/2 -translate-y-[20%] w-[120%] md:w-[130%] max-w-[600px] pointer-events-none z-0"
         >
-          <img
-            src="/images/Navy%20Dog%20Mascot%20Transparent%20-%20Good%20Doggos.png"
+          <Image
+            src={mascotNavy}
             alt=""
             class="w-full h-auto opacity-10 transform rotate-6"
           />

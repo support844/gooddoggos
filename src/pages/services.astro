@@ -1,5 +1,18 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+
+// Asset Imports
+import heroImage from "../assets/images/joe-caione-qO-PIF84Vxg-unsplash.jpg";
+import standardWalking from "../assets/images/christian-testa-kqLl6Ao7V4k-unsplash.jpg";
+import reactiveWalking from "../assets/images/sumeet-singh-0JEfPcomlZs-unsplash.jpg";
+import standardSitting from "../assets/images/jamie-street-s9Tf1eBDFqw-unsplash.jpg";
+import reactiveSitting from "../assets/images/andrescarlofotografia-muzzle-5240921_1920.jpg";
+import bottomCtaImage from "../assets/images/samantha-fortney-u3nTreADKH8-unsplash.jpg";
+import tealPaw from "../assets/images/Paw Prints/Teal Paw Print.png";
+import redPaw from "../assets/images/Paw Prints/Red Paw Print.png";
+import goldPaw from "../assets/images/Paw Prints/Gold Paw Print.png";
+import logoWhite from "../assets/images/Brand-Name-Logo---White---Good-Doggos.png";
 ---
 
 <style>
@@ -128,12 +141,13 @@ import Layout from "../layouts/Layout.astro";
        HERO
   ══════════════════════════════════════ -->
   <section class="relative overflow-hidden bg-[#0B2744]" style="min-height: 52vh; display:flex; align-items:flex-end;">
-    <div class="absolute inset-0 z-0">
-      <img
-        src="/images/joe-caione-qO-PIF84Vxg-unsplash.jpg"
+    <div class="absolute inset-0 z-0 text-white">
+      <Image
+        src={heroImage}
         alt="Support Services — Good Doggos"
         class="w-full h-full object-cover opacity-65"
         style="object-position: center 40%;"
+        loading="eager"
       />
       <div class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/45 via-[#0B2744]/25 to-[#0B2744]/65"></div>
     </div>
@@ -217,7 +231,7 @@ import Layout from "../layouts/Layout.astro";
         <!-- ── Standard Walking ── -->
         <div class="service-card">
           <div class="relative" style="height:200px; overflow:hidden;">
-            <img src="/images/christian-testa-kqLl6Ao7V4k-unsplash.jpg" alt="Standard Dog Walking" class="w-full h-full object-cover" style="object-position: center 30%;" />
+            <Image src={standardWalking} alt="Standard Dog Walking" class="w-full h-full object-cover" style="object-position: center 30%;" />
             <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(11,39,68,0.45) 0%, transparent 60%);"></div>
             <span class="absolute bottom-3 left-4 text-[9px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full badge-teal">Tier 1: Standard</span>
           </div>
@@ -239,7 +253,7 @@ import Layout from "../layouts/Layout.astro";
               ].map(b => (
                 <li class="paw-bullet">
                   <span class="bullet-icon">
-                    <img src="/images/Paw Prints/Teal Paw Print.png" alt="" width="14" height="14" />
+                    <Image src={tealPaw} alt="" width="14" height="14" />
                   </span>
                   {b}
                 </li>
@@ -275,7 +289,7 @@ import Layout from "../layouts/Layout.astro";
         <!-- ── Reactive Walking ── -->
         <div class="service-card">
           <div class="relative" style="height:200px; overflow:hidden;">
-            <img src="/images/sumeet-singh-0JEfPcomlZs-unsplash.jpg" alt="Reactive Dog Walking" class="w-full h-full object-cover" style="object-position: center 30%;" />
+            <Image src={reactiveWalking} alt="Reactive Dog Walking" class="w-full h-full object-cover" style="object-position: center 30%;" />
             <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(11,39,68,0.50) 0%, transparent 60%);"></div>
             <span class="absolute bottom-3 left-4 text-[9px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full badge-red">Tier 2: Specialized</span>
           </div>
@@ -295,7 +309,7 @@ import Layout from "../layouts/Layout.astro";
               ].map(b => (
                 <li class="paw-bullet">
                   <span class="bullet-icon">
-                    <img src="/images/Paw Prints/Red Paw Print.png" alt="" width="14" height="14" />
+                    <Image src={redPaw} alt="" width="14" height="14" />
                   </span>
                   {b}
                 </li>
@@ -350,7 +364,7 @@ import Layout from "../layouts/Layout.astro";
         <!-- ── Standard Sitting ── -->
         <div class="service-card">
           <div class="relative" style="height:200px; overflow:hidden;">
-            <img src="/images/jamie-street-s9Tf1eBDFqw-unsplash.jpg" alt="Standard Pet Sitting" class="w-full h-full object-cover" style="object-position: center 65%;" />
+            <Image src={standardSitting} alt="Standard Pet Sitting" class="w-full h-full object-cover" style="object-position: center 65%;" />
             <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(11,39,68,0.45) 0%, transparent 60%);"></div>
             <span class="absolute bottom-3 left-4 text-[9px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full badge-gold">Tier 1: Standard</span>
           </div>
@@ -370,7 +384,7 @@ import Layout from "../layouts/Layout.astro";
               ].map(b => (
                 <li class="paw-bullet">
                   <span class="bullet-icon">
-                    <img src="/images/Paw Prints/Gold Paw Print.png" alt="" width="14" height="14" />
+                    <Image src={goldPaw} alt="" width="14" height="14" />
                   </span>
                   {b}
                 </li>
@@ -404,7 +418,7 @@ import Layout from "../layouts/Layout.astro";
         <!-- ── Reactive Sitting ── -->
         <div class="service-card">
           <div class="relative" style="height:200px; overflow:hidden;">
-            <img src="/images/andrescarlofotografia-muzzle-5240921_1920.jpg" alt="Reactive Pet Sitting" class="w-full h-full object-cover" style="object-position: center 25%;" />
+            <Image src={reactiveSitting} alt="Reactive Pet Sitting" class="w-full h-full object-cover" style="object-position: center 25%;" />
             <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(11,39,68,0.50) 0%, transparent 60%);"></div>
             <span class="absolute bottom-3 left-4 text-[9px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full badge-red">Tier 2: Specialized</span>
           </div>
@@ -424,7 +438,7 @@ import Layout from "../layouts/Layout.astro";
               ].map(b => (
                 <li class="paw-bullet">
                   <span class="bullet-icon">
-                    <img src="/images/Paw Prints/Red Paw Print.png" alt="" width="14" height="14" />
+                    <Image src={redPaw} alt="" width="14" height="14" />
                   </span>
                   {b}
                 </li>
@@ -463,8 +477,8 @@ import Layout from "../layouts/Layout.astro";
        BOTTOM CTA — Bridge to Programs
   ══════════════════════════════════════ -->
   <section class="relative min-h-[520px] md:min-h-[640px] flex items-center overflow-hidden">
-    <div class="absolute inset-0 z-0">
-      <img src="/images/samantha-fortney-u3nTreADKH8-unsplash.jpg" alt="" class="w-full h-full object-cover object-center" />
+    <div class="absolute inset-0 z-0 text-white">
+      <Image src={bottomCtaImage} alt="" class="w-full h-full object-cover object-center" />
       <!-- Cinematic overlay: heavy navy on left fading toward photo on right -->
       <div class="absolute inset-0" style="background: linear-gradient(105deg, rgba(11,39,68,0.92) 0%, rgba(11,39,68,0.75) 35%, rgba(11,39,68,0.40) 62%, rgba(11,39,68,0.10) 100%);"></div>
       <!-- Subtle bottom grounding -->
@@ -473,7 +487,7 @@ import Layout from "../layouts/Layout.astro";
 
     <!-- Watermark Logo -->
     <div class="absolute right-0 bottom-0 top-0 z-10 flex items-end justify-end pr-8 pb-8 md:pr-16 md:pb-12 pointer-events-none select-none">
-      <img src="/images/Brand%20Name%20Logo%20-%20White%20-%20Good%20Doggos.png" alt="" aria-hidden="true" class="w-48 md:w-72 h-auto opacity-[0.08] object-contain" />
+      <Image src={logoWhite} alt="" aria-hidden="true" class="w-48 md:w-72 h-auto opacity-[0.08] object-contain" />
     </div>
 
     <div class="relative z-20 max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-20 w-full">

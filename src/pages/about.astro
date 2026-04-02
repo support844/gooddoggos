@@ -1,6 +1,17 @@
 ---
+import { Image } from "astro:assets";
 import Layout from '../layouts/Layout.astro';
 import CTASection from '../components/CTASection.astro';
+
+// Asset Imports
+import heroImage from "../assets/images/david-taffet-5gXPapBz40c-unsplash.jpg";
+import founderPhoto from "../assets/images/founder-photo.png";
+import simbaPhoto from "../assets/images/simba.png";
+import chicoPhoto from "../assets/images/chico.png";
+import rockyPhoto from "../assets/images/rocky.png";
+import mascotNavy from "../assets/images/navy-dog-mascot-transparent---good-doggos.png";
+import tealPaw from "../assets/images/Paw Prints/Teal Paw Print.png";
+import packBanner from "../assets/images/simba-and-pack-banner.png";
 ---
 
 <Layout>
@@ -9,12 +20,13 @@ import CTASection from '../components/CTASection.astro';
      HERO — ABOUT GOOD DOGGOS
 ══════════════════════════════════════════════ -->
 <section class="relative overflow-hidden bg-[#0B2744] flex items-end" style="min-height: 52vh;">
-  <div class="absolute inset-0 z-0">
-    <img
-      src="/images/david-taffet-5gXPapBz40c-unsplash.jpg"
+  <div class="absolute inset-0 z-0 text-white">
+    <Image
+      src={heroImage}
       alt="About Good Doggos"
-      class="w-full h-full object-cover"
-      style="opacity: 0.50; object-position: center 40%;"
+      class="w-full h-full object-cover opacity-50"
+      style="object-position: center 40%;"
+      loading="eager"
     />
     <div class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"></div>
   </div>
@@ -42,9 +54,9 @@ import CTASection from '../components/CTASection.astro';
     <div class="grid md:grid-cols-2 gap-14 items-start mb-20">
       <!-- Founder Photo -->
       <div class="relative mb-16 md:mb-0">
-        <div class="rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] aspect-[4/5]">
-          <img
-            src="/images/founder-photo.png"
+        <div class="rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] aspect-[4/5] relative">
+          <Image
+            src={founderPhoto}
             alt="Good Doggos Founder"
             class="w-full h-full object-cover object-top"
           />
@@ -61,7 +73,7 @@ import CTASection from '../components/CTASection.astro';
               "Focused on lasting results, not temporary fixes",
             ].map(b => (
               <li class="flex items-start gap-2 text-xs" style="color: rgba(17,32,50,0.70);">
-                <img src="/images/Paw Prints/Teal Paw Print.png" alt="Paw Print" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
+                <Image src={tealPaw} alt="Paw Print" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" />
                 {b}
               </li>
             ))}
@@ -133,9 +145,9 @@ import CTASection from '../components/CTASection.astro';
     <div class="grid md:grid-cols-5 gap-10 items-start mb-14">
       <!-- Photo -->
       <div class="md:col-span-2">
-        <div class="rounded-2xl overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.30)] aspect-square relative">
-          <img
-            src="/images/Simba.png"
+        <div class="rounded-2xl overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.30)] aspect-square relative text-white">
+          <Image
+            src={simbaPhoto}
             alt="Simba — Lead Helper Dog"
             class="w-full h-full object-cover"
           />
@@ -213,11 +225,11 @@ import CTASection from '../components/CTASection.astro';
 <div class="bg-[#FBF1E9] py-16 px-4 relative overflow-hidden">
   <!-- Upper Left Watermark (tilted left) -->
   <div class="absolute -top-10 -left-10 md:-top-32 md:-left-32 opacity-[0.06] pointer-events-none select-none w-[500px] h-[500px] md:w-[800px] md:h-[800px] transform -rotate-12">
-      <img src="/images/Navy Dog Mascot Transparent - Good Doggos.png" alt="" class="w-full h-full object-contain" />
+      <Image src={mascotNavy} alt="" class="w-full h-full object-contain" />
   </div>
   <!-- Lower Right Watermark (tilted right, flipped leftwards) -->
   <div class="absolute -bottom-20 -right-20 md:-bottom-32 md:-right-32 opacity-[0.06] pointer-events-none select-none w-[500px] h-[500px] md:w-[800px] md:h-[800px] transform rotate-12 scale-x-[-1]">
-      <img src="/images/Navy Dog Mascot Transparent - Good Doggos.png" alt="" class="w-full h-full object-contain" />
+      <Image src={mascotNavy} alt="" class="w-full h-full object-contain" />
   </div>
 
   <div class="max-w-7xl mx-auto relative z-10">
@@ -229,9 +241,9 @@ import CTASection from '../components/CTASection.astro';
     <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
       <!-- Chico -->
       <div class="flex flex-col rounded-3xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_12px_32px_rgba(0,0,0,0.06)] relative">
-        <div class="aspect-[4/3] overflow-hidden relative">
-          <img
-            src="/images/Chico.png"
+        <div class="aspect-[4/3] overflow-hidden relative text-white">
+          <Image
+            src={chicoPhoto}
             alt="Chico"
             class="w-full h-full object-cover object-center"
           />
@@ -253,9 +265,9 @@ import CTASection from '../components/CTASection.astro';
 
       <!-- Rocky -->
       <div class="flex flex-col rounded-3xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_12px_32px_rgba(0,0,0,0.06)] relative">
-        <div class="aspect-[4/3] overflow-hidden relative">
-          <img
-            src="/images/Rocky.png"
+        <div class="aspect-[4/3] overflow-hidden relative text-white">
+          <Image
+            src={rockyPhoto}
             alt="Rocky"
             class="w-full h-full object-cover object-center"
           />
@@ -326,7 +338,7 @@ import CTASection from '../components/CTASection.astro';
   title2=""
   titleAccent="With Your Dog."
   body="Start with a free behavioral assessment. No commitment — just an honest conversation about where your dog is and what's possible."
-  imageSrc="/images/simba and pack banner.png"
+  imageSrc={packBanner}
   imageStyle="object-position: 80% 10%;"
 />
 

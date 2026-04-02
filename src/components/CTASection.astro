@@ -1,6 +1,11 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import defaultCtaImage from "../assets/images/pauline-loroy-u3af7hgusrk-unsplash.jpg";
+import brandLogoWhite from "../assets/images/brand-logo-white.png";
+
 export interface Props {
-  imageSrc?: string;
+  imageSrc?: ImageMetadata | string;
   eyebrow?: string;
   title1?: string;
   title2?: string;
@@ -13,7 +18,7 @@ export interface Props {
 }
 
 const {
-  imageSrc = "/images/pauline-loroy-U3aF7hgUSrk-unsplash.jpg",
+  imageSrc = defaultCtaImage,
   eyebrow = "Limited Spots Available",
   title1 = "Ready to Transform",
   title2 = "Your Dog's",
@@ -37,12 +42,23 @@ const themeBgRGBA = isTeal ? "rgba(15,109,114,0.12)" : "rgba(209,178,127,0.12)";
 >
   <!-- Background: Golden-Hour Dog Photo -->
   <div class="absolute inset-0 z-0">
-    <img
-      src={imageSrc}
-      alt="Dog in golden hour light"
-      class="w-full h-full object-cover"
-      style={imageStyle}
-    />
+    {typeof imageSrc === 'string' ? (
+      <Image
+        src={imageSrc}
+        alt="Dog in golden hour light"
+        class="w-full h-full object-cover"
+        style={imageStyle}
+        width={1920}
+        height={1080}
+      />
+    ) : (
+      <Image
+        src={imageSrc}
+        alt="Dog in golden hour light"
+        class="w-full h-full object-cover"
+        style={imageStyle}
+      />
+    )}
 
     <!-- Cinematic Overlay: heavy navy on left fading toward dog on right -->
     <div
@@ -73,8 +89,8 @@ const themeBgRGBA = isTeal ? "rgba(15,109,114,0.12)" : "rgba(209,178,127,0.12)";
   <div
     class="absolute right-0 bottom-0 top-0 z-10 flex items-end justify-end pr-8 pb-8 md:pr-16 md:pb-12 pointer-events-none select-none"
   >
-    <img
-      src="/images/Brand%20Name%20Logo%20-%20White%20-%20Good%20Doggos.png"
+    <Image
+      src={brandLogoWhite}
       alt=""
       aria-hidden="true"
       class="w-48 md:w-72 h-auto opacity-[0.08] object-contain"

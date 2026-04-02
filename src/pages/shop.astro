@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import Layout from '../layouts/Layout.astro';
+import heroImage from "../assets/images/nicole-calmet-lbg7dumhig4-unsplash.jpg";
 
 const categories = [
   {
@@ -63,12 +65,12 @@ const categories = [
      HERO
 ══════════════════════════════════════════════ -->
 <section class="relative overflow-hidden bg-[#0B2744] flex items-end" style="min-height: 52vh;">
-  <div class="absolute inset-0 z-0">
-    <img
-      src="/images/nicole-calmet-LBG7DuMHiG4-unsplash.jpg"
+  <div class="absolute inset-0 z-0 text-white">
+    <Image
+      src={heroImage}
       alt="Shop — Trainer-approved gear"
-      class="w-full h-full object-cover object-center"
-      style="opacity: 0.50;"
+      class="w-full h-full object-cover object-center opacity-50"
+      loading="eager"
     />
     <div class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"></div>
   </div>
@@ -125,8 +127,9 @@ const categories = [
           {cat.products.map(p => (
             <div class="bg-[#FCF9FA] rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_3px_16px_rgba(0,0,0,0.06)] flex flex-col group hover:shadow-[0_6px_24px_rgba(0,0,0,0.10)] transition-shadow duration-200">
               <!-- Product image -->
-              <div class="relative overflow-hidden" style="height: 160px;">
-                <img src={p.img} alt={p.name} class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+              <div class="relative overflow-hidden text-white" style="height: 160px;">
+                {/* Remote product image temporarily replaced — FailedToFetchRemoteImageDimensions fix */}
+                <div class="w-full h-full" style="background-color: #0F6D7F;"></div>
                 <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 50%, rgba(11,39,68,0.45) 100%);"></div>
               </div>
               <!-- Card body -->

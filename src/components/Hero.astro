@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 ---
 
 <section
@@ -8,10 +9,13 @@
     <!-- Premium Background Texture: Ground and Trees -->
     <div class="absolute inset-0 z-0 bg-primary-navy">
         <!-- Forest Background Image — lighter, no blend mode so scene shows through -->
-        <img
+        <Image
             src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80&w=2400"
             alt="Forest Background"
             class="w-full h-full object-cover opacity-55"
+            width={2400}
+            height={1600}
+            loading="eager"
         />
 
         <!-- Cinematic Overlay: heavy navy on left (readability), fades right so image is visible -->
@@ -177,10 +181,12 @@
                     </div>
 
                     <!-- Image with zoom effect on hover -->
-                    <img
+                    <Image
                         src="https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=2662&auto=format&fit=crop"
                         class="absolute inset-0 w-full h-full object-cover z-0 transform group-hover:scale-105 transition-transform duration-[1200ms] ease-out select-none"
                         alt="Confident dog listening to owner"
+                        width={1500}
+                        height={2000}
                     />
 
                     <!-- Abstract faint geometry lines matching reference -->

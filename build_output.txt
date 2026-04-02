@@ -1,0 +1,205 @@
+
+> temp-site@0.0.1 build
+> astro build
+
+
+Auto-generating collections for folders in "src/content/" that are not defined as collections.
+This is deprecated, so you should define these collections yourself in "src/content.config.ts".
+The following collections have been auto-generated: good_doggos_seo_pages, good_doggos_seo_pages_final
+
+13:20:56 [content] Syncing content
+13:20:56 [WARN] [glob-loader] No files found matching "**/*.md,!**/_*/**/*.md,!**/_*.md" in directory "src/content/good_doggos_seo_pages_final"
+13:20:56 [WARN] [glob-loader] No files found matching "**/*.md,!**/_*/**/*.md,!**/_*.md" in directory "src/content/good_doggos_seo_pages"
+13:20:56 [content] Synced content
+13:20:56 [types] Generated 216ms
+13:20:56 [build] output: "static"
+13:20:56 [build] mode: "static"
+13:20:56 [build] directory: /Users/gooddoggos/Good Doggos Website/dist/
+13:20:56 [build] Collecting build info...
+13:20:56 [build] ✓ Completed in 229ms.
+13:20:56 [build] Building static entrypoints...
+13:20:58 [vite] ✓ built in 1.94s
+13:20:58 [build] ✓ Completed in 1.97s.
+
+ building client (vite) 
+13:20:58 [vite] transforming...
+13:20:58 [vite] ✓ 9 modules transformed.
+13:20:58 [vite] rendering chunks...
+13:20:58 [vite] ✓ built in 35ms
+
+ generating static routes 
+13:20:58 ▶ src/pages/about.astro
+13:20:58   └─ /about/index.html (+12ms) 
+13:20:58 ▶ src/pages/apply.astro
+13:20:58   └─ /apply/index.html (+2ms) 
+13:20:58 ▶ src/pages/blog.astro
+13:20:58   └─ /blog/index.html (+121ms) 
+13:20:58 ▶ src/pages/calm-companion-challenge.astro
+13:20:58   └─ /calm-companion-challenge/index.html (+8ms) 
+13:20:58 ▶ src/pages/guarantee.astro
+13:20:58   └─ /guarantee/index.html (+5ms) 
+13:20:58 ▶ src/pages/privacy.astro
+13:20:58   └─ /privacy/index.html (+4ms) 
+13:20:58 ▶ src/pages/programs.astro
+13:20:58   └─ /programs/index.html (+5ms) 
+13:20:58 ▶ src/pages/services/adult-dog-obedience.astro
+13:20:58   └─ /services/adult-dog-obedience/index.html (+2ms) 
+13:20:58 ▶ src/pages/services/aggression-rehabilitation.astro
+13:20:58   └─ /services/aggression-rehabilitation/index.html (+3ms) 
+13:20:58 ▶ src/pages/services/barrier-frustration.astro
+13:20:58   └─ /services/barrier-frustration/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/behavior-adjustment-training.astro
+13:20:58   └─ /services/behavior-adjustment-training/index.html (+2ms) 
+13:20:58 ▶ src/pages/services/behavioral-assessment.astro
+13:20:58   └─ /services/behavioral-assessment/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/behavioral-modification.astro
+13:20:58   └─ /services/behavioral-modification/index.html (+2ms) 
+13:20:58 ▶ src/pages/services/counter-conditioning.astro
+13:20:58   └─ /services/counter-conditioning/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/dog-behaviorist.astro
+13:20:58   └─ /services/dog-behaviorist/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/dog-socialization.astro
+13:20:58   └─ /services/dog-socialization/index.html (+3ms) 
+13:20:58 ▶ src/pages/services/dog-to-dog-reactivity.astro
+13:20:58   └─ /services/dog-to-dog-reactivity/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/fear-based-aggression.astro
+13:20:58   └─ /services/fear-based-aggression/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/fearful-dog-confidence.astro
+13:20:58   └─ /services/fearful-dog-confidence/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/human-directed-reactivity.astro
+13:20:58   └─ /services/human-directed-reactivity/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/intra-household-conflict.astro
+13:20:58   └─ /services/intra-household-conflict/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/leash-reactivity-bootcamp.astro
+13:20:58   └─ /services/leash-reactivity-bootcamp/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/muzzle-training.astro
+13:20:58   └─ /services/muzzle-training/index.html (+2ms) 
+13:20:58 ▶ src/pages/services/noise-phobia-training.astro
+13:20:58   └─ /services/noise-phobia-training/index.html (+2ms) 
+13:20:58 ▶ src/pages/services/off-leash-reliability.astro
+13:20:58   └─ /services/off-leash-reliability/index.html (+2ms) 
+13:20:58 ▶ src/pages/services/pet-trainer.astro
+13:20:58   └─ /services/pet-trainer/index.html (+3ms) 
+13:20:58 ▶ src/pages/services/private-reactive-dog-lessons.astro
+13:20:58   └─ /services/private-reactive-dog-lessons/index.html (+4ms) 
+13:20:58 ▶ src/pages/services/public-park-behavior.astro
+13:20:58   └─ /services/public-park-behavior/index.html (+2ms) 
+13:20:58 ▶ src/pages/services/puppy-foundations.astro
+13:20:58   └─ /services/puppy-foundations/index.html (+2ms) 
+13:20:58 ▶ src/pages/services/reactivity-threshold.astro
+13:20:58   └─ /services/reactivity-threshold/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/redirected-aggression.astro
+13:20:58   └─ /services/redirected-aggression/index.html (+2ms) 
+13:20:58 ▶ src/pages/services/resource-guarding.astro
+13:20:58   └─ /services/resource-guarding/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/territorial-aggression.astro
+13:20:58   └─ /services/territorial-aggression/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/vet-visit-desensitization.astro
+13:20:58   └─ /services/vet-visit-desensitization/index.html (+1ms) 
+13:20:58 ▶ src/pages/services/[slug].astro
+13:20:58 [WARN] [build] Could not render `/services/pet-trainer` from route `/services/[slug]` as it conflicts with higher priority route `/services/pet-trainer`.
+13:20:58 [WARN] [build] Could not render `/services/adult-dog-obedience` from route `/services/[slug]` as it conflicts with higher priority route `/services/adult-dog-obedience`.
+13:20:58 [WARN] [build] Could not render `/services/noise-phobia-training` from route `/services/[slug]` as it conflicts with higher priority route `/services/noise-phobia-training`.
+13:20:58 [WARN] [build] Could not render `/services/puppy-foundations` from route `/services/[slug]` as it conflicts with higher priority route `/services/puppy-foundations`.
+13:20:58 [WARN] [build] Could not render `/services/vet-visit-desensitization` from route `/services/[slug]` as it conflicts with higher priority route `/services/vet-visit-desensitization`.
+13:20:58 [WARN] [build] Could not render `/services/dog-socialization` from route `/services/[slug]` as it conflicts with higher priority route `/services/dog-socialization`.
+13:20:58 [WARN] [build] Could not render `/services/aggression-rehabilitation` from route `/services/[slug]` as it conflicts with higher priority route `/services/aggression-rehabilitation`.
+13:20:58 [WARN] [build] Could not render `/services/behavior-adjustment-training` from route `/services/[slug]` as it conflicts with higher priority route `/services/behavior-adjustment-training`.
+13:20:58 [WARN] [build] Could not render `/services/dog-behaviorist` from route `/services/[slug]` as it conflicts with higher priority route `/services/dog-behaviorist`.
+13:20:58 [WARN] [build] Could not render `/services/leash-reactivity-bootcamp` from route `/services/[slug]` as it conflicts with higher priority route `/services/leash-reactivity-bootcamp`.
+13:20:58 [WARN] [build] Could not render `/services/private-reactive-dog-lessons` from route `/services/[slug]` as it conflicts with higher priority route `/services/private-reactive-dog-lessons`.
+13:20:58   ├─ /services/dog-walker/index.html (+1ms) 
+13:20:58   ├─ /services/pet-sitter/index.html (+2ms) 
+13:20:58   ├─ /services/pet-service/index.html (+1ms) 
+13:20:58   ├─ /services/pet-trainer-san-jacinto/index.html (+1ms) 
+13:20:58   ├─ /services/loose-leash-walking-for-reactive-dogs/index.html (+1ms) 
+13:20:58   ├─ /services/on-leash-lunging-and-barking-correction/index.html (+1ms) 
+13:20:58   ├─ /services/reactive-dog-walking-skills/index.html (+1ms) 
+13:20:58   ├─ /services/urban-desensitization-training/index.html (+1ms) 
+13:20:58   ├─ /services/in-home-behavior-consultations/index.html (+1ms) 
+13:20:58   ├─ /services/in-home-dog-training/index.html (+1ms) 
+13:20:58   ├─ /services/separation-anxiety-training/index.html (+1ms) 
+13:20:58   ├─ /services/aggressive-dog-training-near-me/index.html (+1ms) 
+13:20:58   ├─ /services/anxiety-and-fear-behavior-modification/index.html (+1ms) 
+13:20:58   ├─ /services/barrier-frustration-training/index.html (+0ms) 
+13:20:58   ├─ /services/behavior-assessment-and-consultation/index.html (+1ms) 
+13:20:58   ├─ /services/counter-conditioning-and-desensitization/index.html (+1ms) 
+13:20:58   ├─ /services/dog-to-dog-reactivity-modification/index.html (+2ms) 
+13:20:58   ├─ /services/dog-training/index.html (+1ms) 
+13:20:58   ├─ /services/fear-based-aggression-therapy/index.html (+0ms) 
+13:20:58   ├─ /services/fearful-dog-confidence-building/index.html (+0ms) 
+13:20:58   ├─ /services/food-aggression-correction/index.html (+1ms) 
+13:20:58   ├─ /services/human-directed-reactivity-training/index.html (+0ms) 
+13:20:58   ├─ /services/intra-household-dog-conflict-resolution/index.html (+1ms) 
+13:20:58   ├─ /services/leash-reactivity-training/index.html (+1ms) 
+13:20:58   ├─ /services/muzzle-training-and-conditioning/index.html (+1ms) 
+13:20:58   ├─ /services/off-leash-reliability-for-reactive-dogs/index.html (+1ms) 
+13:20:58   ├─ /services/possessive-aggression-training/index.html (+1ms) 
+13:20:58   ├─ /services/public-park-behavior-sessions/index.html (+1ms) 
+13:20:58   ├─ /services/reactive-dog-evaluation-and-assessment/index.html (+1ms) 
+13:20:58   ├─ /services/reactivity-threshold-management/index.html (+1ms) 
+13:20:58   ├─ /services/reactivity-training/index.html (+2ms) 
+13:20:58   ├─ /services/redirected-aggression-prevention/index.html (+1ms) 
+13:20:58   ├─ /services/rescue-dog-decompression-support/index.html (+0ms) 
+13:20:58   ├─ /services/resource-guarding-modification/index.html (+1ms) 
+13:20:58   └─ /services/territorial-aggression-management/index.html (+1ms) 
+13:20:58 ▶ src/pages/services.astro
+13:20:58   └─ /services/index.html (+2ms) 
+13:20:58 ▶ src/pages/shop.astro
+13:20:58   └─ /shop/index.html (+3ms) 
+13:20:58 ▶ src/pages/terms.astro
+13:20:58   └─ /terms/index.html (+2ms) 
+13:20:58 ▶ src/pages/transformations.astro
+13:20:58   └─ /transformations/index.html (+1ms) 
+13:20:58 ▶ src/pages/index.astro
+13:20:58   └─ /index.html (+4ms) 
+13:20:58 ✓ Completed in 400ms.
+
+ generating optimized images 
+13:20:58   ▶ /_astro/brand-logo-white.11VtCPNH_Z9SWe.webp (reused cache entry) (+1ms) (1/50)
+13:20:58   ▶ /_astro/mascot-logo.DQJ6CASx_27x05t.webp (reused cache entry) (+2ms) (2/50)
+13:20:58   ▶ /_astro/Teal Paw Print.Ds9XFaN5_199tR1.webp (reused cache entry) (+3ms) (3/50)
+13:20:58   ▶ /_astro/Chico.DqIpBP-1_5PnEM.webp (reused cache entry) (+4ms) (4/50)
+13:20:58   ▶ /_astro/Simba.Dzi2uPoD_UIbc5.webp (reused cache entry) (+5ms) (5/50)
+13:20:58   ▶ /_astro/david-taffet-5gXPapBz40c-unsplash.wz-1kZU7_2fHInN.webp (reused cache entry) (+5ms) (6/50)
+13:20:58   ▶ /_astro/simba-and-pack-banner.GdZ7KZnk_Z24UnBk.webp (reused cache entry) (+6ms) (7/50)
+13:20:58   ▶ /_astro/Navy-Dog-Mascot-Transparent---Good-Doggos.BheDrZ6k_Z1U71vl.webp (reused cache entry) (+10ms) (8/50)
+13:20:58   ▶ /_astro/founder-photo.BJ4yHaIK_4aqRY.webp (reused cache entry) (+10ms) (9/50)
+13:20:58   ▶ /_astro/Teal Paw Print.Ds9XFaN5_ZeoKum.webp (reused cache entry) (+8ms) (10/50)
+13:20:58   ▶ /_astro/Rocky.BL10sm3M_2ju6CN.webp (reused cache entry) (+11ms) (11/50)
+13:20:58   ▶ /_astro/pauline-loroy-U3aF7hgUSrk-unsplash.CGb9kAd7_Z27PGgd.webp (reused cache entry) (+8ms) (12/50)
+13:20:58   ▶ /_astro/lukas-vanatko-M7_cpdicN44-unsplash.BKKrn1oB_2onKoT.webp (reused cache entry) (+9ms) (13/50)
+13:20:58   ▶ /_astro/photo-1587300003388-59208cc962cb_ZUc1md.webp (reused cache entry) (+12ms) (14/50)
+13:20:58   ▶ /_astro/jametlene-reskp-fliwkBbS7oM-unsplash.Ce-sd5JO_Cn5U9.webp (reused cache entry) (+11ms) (15/50)
+13:20:58   ▶ /_astro/jamie-street-MoDcnVRN5JU-unsplash.CKg_J6OT_23jFmC.webp (reused cache entry) (+14ms) (16/50)
+13:20:58   ▶ /_astro/ben-moreland-ISy9WVUXduw-unsplash.HcvboGEk_Z1BaGCq.webp (reused cache entry) (+15ms) (17/50)
+13:20:58   ▶ /_astro/oleksandr-horbach-qBnIX-B4n-w-unsplash.B2yCP7Ay_ZrrMjT.webp (reused cache entry) (+11ms) (18/50)
+13:20:58   ▶ /_astro/Gold Paw Print.Bpqx_OjM_1ckkRQ.webp (reused cache entry) (+5ms) (19/50)
+13:20:58   ▶ /_astro/Red Paw Print.BSgs93uo_Z1hD8kF.webp (reused cache entry) (+6ms) (20/50)
+13:20:58   ▶ /_astro/high-five.Bhir6Wqa_Z1YAXvv.webp (reused cache entry) (+16ms) (21/50)
+13:20:58   ▶ /_astro/dog-in-water.CFJbDzE9_1Tt27a.webp (reused cache entry) (+14ms) (22/50)
+13:20:58   ▶ /_astro/Gold Paw Print.Bpqx_OjM_TJeeo.webp (reused cache entry) (+11ms) (23/50)
+13:20:58   ▶ /_astro/ben-blumentritt-GbCee6shpx4-unsplash.Dj_DXu29_5C859.webp (reused cache entry) (+17ms) (24/50)
+13:20:58   ▶ /_astro/Red Paw Print.BSgs93uo_yYu9p.webp (reused cache entry) (+10ms) (25/50)
+13:20:58   ▶ /_astro/andrescarlofotografia-muzzle-5240921_1920.Ck1zBYDs_1GJWK1.webp (reused cache entry) (+14ms) (26/50)
+13:20:58   ▶ /_astro/hamza-gharnati-9S4GyfpxnTI-unsplash.B_lwNCbg_27Afgw.webp (reused cache entry) (+18ms) (27/50)
+13:20:58   ▶ /_astro/joe-caione-qO-PIF84Vxg-unsplash.DaX4RIN-_15NsXD.webp (reused cache entry) (+15ms) (28/50)
+13:20:58   ▶ /_astro/samantha-fortney-u3nTreADKH8-unsplash.BhSx7YYi_1SqWmR.webp (reused cache entry) (+5ms) (29/50)
+13:20:58   ▶ /_astro/photo-1601758124510-52d02ddb7cbd_ZwNbxj.webp (reused cache entry) (+5ms) (30/50)
+13:20:58   ▶ /_astro/christian-testa-kqLl6Ao7V4k-unsplash.CdAplQXK_Zdy148.webp (reused cache entry) (+18ms) (31/50)
+13:20:58   ▶ /_astro/jamie-street-s9Tf1eBDFqw-unsplash.Bvomp5us_182oy9.webp (reused cache entry) (+9ms) (32/50)
+13:20:58   ▶ /_astro/sumeet-singh-0JEfPcomlZs-unsplash.CYS9u2NQ_tzRxH.webp (reused cache entry) (+19ms) (33/50)
+file:///Users/gooddoggos/Good%20Doggos%20Website/node_modules/astro/dist/assets/build/remote.js:6
+    throw new Error(
+          ^
+
+Error: Failed to load remote image https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=400. The request did not return a 200 OK response. (received 404))
+    at loadRemoteImage (file:///Users/gooddoggos/Good%20Doggos%20Website/node_modules/astro/dist/assets/build/remote.js:6:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async loadImage (file:///Users/gooddoggos/Good%20Doggos%20Website/node_modules/astro/dist/assets/build/generate.js:239:12)
+    at async generateImageInternal (file:///Users/gooddoggos/Good%20Doggos%20Website/node_modules/astro/dist/assets/build/generate.js:157:23)
+    at async generateImage (file:///Users/gooddoggos/Good%20Doggos%20Website/node_modules/astro/dist/assets/build/generate.js:69:28)
+    at async generateImagesForPath (file:///Users/gooddoggos/Good%20Doggos%20Website/node_modules/astro/dist/assets/build/generate.js:53:5)
+    at async file:///Users/gooddoggos/Good%20Doggos%20Website/node_modules/p-queue/dist/index.js:230:36
+
+Node.js v22.21.0

@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import brandLogoWhite from "../assets/images/brand-logo-white.png";
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -8,8 +11,8 @@ const currentYear = new Date().getFullYear();
   <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
     <!-- Brand & Substack -->
     <div class="space-y-4">
-      <img
-        src="/images/Brand%20Name%20Logo%20-%20White%20-%20Good%20Doggos.png"
+      <Image
+        src={brandLogoWhite}
         alt="Good Doggos"
         class="h-16 w-auto object-contain mb-4"
       />

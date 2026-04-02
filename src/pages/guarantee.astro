@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import heroImage from "../assets/images/high-five.jpg";
 ---
 
 <Layout>
@@ -10,12 +12,13 @@ import Layout from "../layouts/Layout.astro";
     class="relative overflow-hidden bg-[#0B2744] flex items-end"
     style="min-height: 46vh;"
   >
-    <div class="absolute inset-0 z-0">
-      <img
-        src="/images/high five.jpg"
+    <div class="absolute inset-0 z-0 text-white">
+      <Image
+        src={heroImage}
         alt="Our Guarantee"
         class="w-full h-full object-cover opacity-50"
         style="object-position: center 35%;"
+        loading="eager"
       />
       <div
         class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"

@@ -1,4 +1,8 @@
 ---
+import { Image } from "astro:assets";
+import mascotLogo from "../assets/images/mascot-logo.png";
+import brandLogoWhite from "../assets/images/brand-logo-white.png";
+
 export interface Props {
   alwaysSolid?: boolean;
 }
@@ -28,15 +32,17 @@ const { alwaysSolid = false } = Astro.props;
   >
     <!-- Logo -->
     <a href="/" class="flex items-center gap-3 group">
-      <img
-        src="/images/Circle%20Navy%20Dog%20Mascot%20Light%20Gold%20BG%20Transparent%20-%20Good%20Doggos.png"
+      <Image
+        src={mascotLogo}
         alt="Good Doggos Mascot"
         class="h-12 md:h-13 w-auto transform group-hover:rotate-12 transition-transform duration-300"
+        loading="eager"
       />
-      <img
-        src="/images/Brand%20Name%20Logo%20-%20White%20-%20Good%20Doggos.png"
+      <Image
+        src={brandLogoWhite}
         alt="Good Doggos Logo"
         class="h-16 md:h-20 w-auto"
+        loading="eager"
       />
     </a>
 
@@ -116,7 +122,7 @@ const { alwaysSolid = false } = Astro.props;
     if (scrolled) {
       nav.style.background = "#0B2744";
       nav.style.backdropFilter = "none";
-      nav.style.webkitBackdropFilter = "none";
+      (nav.style as any).webkitBackdropFilter = "none";
       nav.style.borderBottom = "1px solid rgba(255,255,255,0.10)";
       nav.style.boxShadow = "0 10px 30px rgba(11,39,68,0.35)";
       nav.style.paddingTop = "14px";
@@ -124,7 +130,7 @@ const { alwaysSolid = false } = Astro.props;
     } else {
       nav.style.background = "transparent";
       nav.style.backdropFilter = "none";
-      nav.style.webkitBackdropFilter = "none";
+      (nav.style as any).webkitBackdropFilter = "none";
       nav.style.borderBottom = "none";
       nav.style.boxShadow = "none";
       nav.style.paddingTop = "20px";

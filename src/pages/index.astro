@@ -1,9 +1,30 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import TestimonialSlider from "../components/TestimonialSlider.astro";
 import CTASection from "../components/CTASection.astro";
 import { getCollection } from "astro:content";
+
+// Asset Imports
+import brandLogoNavy from "../assets/images/horizontal-logo---good-doggos---navy.png";
+import alexasFotos from "../assets/images/alexas_fotos-8Uw56bHhuOc-unsplash.jpg";
+import christianTesta from "../assets/images/christian-testa-kQLL6Ao7V4k-unsplash.jpg";
+import jamieStreet from "../assets/images/jamie-street-s9Tf1eBdFqw-unsplash.jpg";
+import simbaPackBanner from "../assets/images/Simba-and-Pack-Banner.png";
+import sumeetSingh from "../assets/images/sumeet-singh-0Jefpcomlzs-unsplash.jpg";
+import mascotNavy from "../assets/images/Navy-Dog-Mascot-Transparent---Good-Doggos.png";
+import paulineLoroy from "../assets/images/pauline-loroy-U3aF7hgUSrk-unsplash.jpg";
+// Paw print bullet
+import goldPawPrint from "../assets/images/Paw Prints/Gold Paw Print.png";
+// Rotating banner photos
+import rotatingAvi from "../assets/images/avi-richards-aYHgchNOsGY-unsplash.jpg";
+import rotatingDiana from "../assets/images/diana-parkhouse-e2YwwTG-viI-unsplash.jpg";
+import rotatingVictor from "../assets/images/victor-walking-pack.png";
+import rotatingBruce from "../assets/images/bruce-warrington-WSAOGHKEqFc-unsplash.jpg";
+import rotatingKojirou from "../assets/images/kojirou-sasaki-Tx7cJ3t207k-unsplash.jpg";
+import rotatingJoe from "../assets/images/joe-caione-qO-PIF84Vxg-unsplash.jpg";
+import rotatingDavid from "../assets/images/david-taffet-DNViTo3BUpk-unsplash.jpg";
 
 const programs = await getCollection("programs");
 ---
@@ -66,8 +87,8 @@ const programs = await getCollection("programs");
         <div
             class="absolute right-[-10%] top-1/2 -translate-y-1/2 opacity-[0.05] pointer-events-none z-0 w-[600px] h-[600px]"
         >
-            <img
-                src="/images/Horizontal logo - Good Doggos - Navy.png"
+            <Image
+                src={brandLogoNavy}
                 alt="Watermark"
                 class="w-full h-full object-contain filter grayscale invert"
             />
@@ -253,28 +274,34 @@ const programs = await getCollection("programs");
                                 <li
                                     class="flex items-center gap-4 text-white/90 font-body"
                                 >
-                                    <div
-                                        class="w-2 h-2 rounded-full bg-accent-gold shadow-[0_0_10px_rgba(209,178,127,0.5)]"
-                                    >
-                                    </div>
+                                    <Image
+                                        src={goldPawPrint}
+                                        alt=""
+                                        class="w-5 h-5 object-contain flex-shrink-0 opacity-90"
+                                        loading="eager"
+                                    />
                                     Your dog's root triggers
                                 </li>
                                 <li
                                     class="flex items-center gap-4 text-white/90 font-body"
                                 >
-                                    <div
-                                        class="w-2 h-2 rounded-full bg-accent-gold shadow-[0_0_10px_rgba(209,178,127,0.5)]"
-                                    >
-                                    </div>
+                                    <Image
+                                        src={goldPawPrint}
+                                        alt=""
+                                        class="w-5 h-5 object-contain flex-shrink-0 opacity-90"
+                                        loading="eager"
+                                    />
                                     Custom weekly roadmap
                                 </li>
                                 <li
                                     class="flex items-center gap-4 text-white/90 font-body"
                                 >
-                                    <div
-                                        class="w-2 h-2 rounded-full bg-accent-gold shadow-[0_0_10px_rgba(209,178,127,0.5)]"
-                                    >
-                                    </div>
+                                    <Image
+                                        src={goldPawPrint}
+                                        alt=""
+                                        class="w-5 h-5 object-contain flex-shrink-0 opacity-90"
+                                        loading="eager"
+                                    />
                                     First steps toward faster progress
                                 </li>
                             </ul>
@@ -298,7 +325,7 @@ const programs = await getCollection("programs");
     <section class="py-24 bg-[#FCF9FA] px-4 relative overflow-hidden">
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-20">
-                <p class="kicker kicker-dark mb-4">Diagnostics</p>
+                <p class="kicker kicker-dark mb-4">DOG TRAINING PROGRAMS</p>
                 <h2
                     class="text-4xl md:text-5xl font-heading font-bold text-primary-navy mb-4 leading-tight"
                 >
@@ -315,6 +342,7 @@ const programs = await getCollection("programs");
                 </p>
             </div>
 
+            <div class="lg:max-w-[1140px] lg:mx-auto">
             <div class="relative flex flex-col md:flex-row gap-8 lg:gap-12">
                 <!-- FAR LEFT VERTICAL RAIL (Desktop) -->
                 <div
@@ -362,11 +390,13 @@ const programs = await getCollection("programs");
                                 class="w-full md:w-[28%] flex-shrink-0 relative overflow-hidden flex items-center p-6 md:p-8"
                             >
                                 <!-- Dog Photo Background Texture Layer -->
-                                <div
-                                    class="absolute inset-0 grayscale bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                    style="background-image: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=1000');"
-                                >
-                                </div>
+                                <Image
+                                    src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80&w=1000"
+                                    alt="Frustrated greeter dog"
+                                    class="absolute inset-0 w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-110"
+                                    width={1000}
+                                    height={667}
+                                />
                                 <!-- Color Overlay Layer -->
                                 <div class="absolute inset-0 bg-[#00727A]/70">
                                 </div>
@@ -530,11 +560,11 @@ const programs = await getCollection("programs");
                                 class="w-full md:w-[28%] flex-shrink-0 relative overflow-hidden flex items-center p-6 md:p-8"
                             >
                                 <!-- Dog Photo Background Texture Layer -->
-                                <div
-                                    class="absolute inset-0 grayscale bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                    style="background-image: url('/DesignGuidelines/sumeet-singh-0JEfPcomlZs-unsplash.jpg');"
-                                >
-                                </div>
+                                <Image
+                                    src={sumeetSingh}
+                                    alt="Reactive protector dog"
+                                    class="absolute inset-0 w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-110"
+                                />
                                 <!-- Color Overlay Layer -->
                                 <div class="absolute inset-0 bg-[#D1B27F]/70">
                                 </div>
@@ -696,11 +726,11 @@ const programs = await getCollection("programs");
                                 class="w-full md:w-[28%] flex-shrink-0 relative overflow-hidden flex items-center p-6 md:p-8"
                             >
                                 <!-- Dog Photo Background Texture Layer -->
-                                <div
-                                    class="absolute inset-0 grayscale bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                    style="background-image: url('/DesignGuidelines/alexas_fotos-8UW56BhhUoc-unsplash.jpg');"
-                                >
-                                </div>
+                                <Image
+                                    src={alexasFotos}
+                                    alt="Red zone dog"
+                                    class="absolute inset-0 w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-110"
+                                />
                                 <!-- Color Overlay Layer -->
                                 <div class="absolute inset-0 bg-[#6B1B1B]/70">
                                 </div>
@@ -854,6 +884,7 @@ const programs = await getCollection("programs");
                     </div>
                 </div>
             </div>
+            </div><!-- /lg:max-w-[1140px] -->
 
             <!-- Global Section CTA Bottom -->
             <div class="text-center mt-16 relative z-10">
@@ -875,10 +906,11 @@ const programs = await getCollection("programs");
         >
             <!-- Hero Backdrop Layer -->
             <div class="absolute inset-0 z-0">
-                <img
-                    src="/DesignGuidelines/simba and pack banner.png"
+                <Image
+                    src={simbaPackBanner}
                     alt="Simba and the Pack training background"
                     class="w-full h-full object-cover object-[center_20%]"
+                    loading="lazy"
                 />
                 <!-- Targeted Legibility Overlay (Subtle Gradient-to-Right only behind text) -->
                 <div
@@ -919,7 +951,7 @@ const programs = await getCollection("programs");
                             <p
                                 class="kicker kicker-dark mb-4 text-[#0B2744] font-bold tracking-[0.2em] text-[10px]"
                             >
-                                THE DIFFERENTIATOR
+                                THE GOOD DOGGOS DIFFERENCE
                             </p>
                             <p
                                 class="text-xl md:text-2xl text-primary-navy/90 leading-relaxed font-medium"
@@ -1041,7 +1073,7 @@ const programs = await getCollection("programs");
                                     <p
                                         class="text-[13px] text-gray-600 leading-relaxed opacity-90"
                                     >
-                                        Dogs learn from dogs. Experience rapid
+                                        Dogs learn from other dogs. Experience rapid
                                         behavioral improvement from Day 1.
                                     </p>
                                 </div>
@@ -1053,7 +1085,7 @@ const programs = await getCollection("programs");
                     <div class="md:col-span-5 relative mt-12 md:mt-2">
                         <!-- Gold Results Stamp -->
                         <div
-                            class="absolute -top-12 -right-4 md:-top-16 md:-right-8 z-30 transform rotate-12 drop-shadow-2xl"
+                            class="absolute -top-20 -right-2 md:-top-16 md:-right-8 z-30 transform rotate-12 drop-shadow-2xl"
                         >
                             <div
                                 class="relative w-32 h-32 bg-accent-gold rounded-full flex items-center justify-center border-[6px] border-white shadow-lg"
@@ -1105,8 +1137,7 @@ const programs = await getCollection("programs");
                                     class="font-bold text-primary-navy"
                                     >Simba & Pack</span
                                 > has exhibited significant improvement in just 1
-                                day of training with our helper dogs. Experience
-                                the difference.
+                                day of training.
                             </p>
 
                             <a
@@ -1155,15 +1186,18 @@ const programs = await getCollection("programs");
 
 
 
-            <div class="grid md:grid-cols-2 gap-8 lg:gap-12 text-left">
+            <div class="lg:max-w-5xl lg:mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 lg:gap-10 text-left">
                 <!-- Dog Walker Card -->
                 <div class="bg-[#FCF9FA] rounded-[32px] border border-[#EAE1D3]/50 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4px_10px_rgba(11,39,68,0.04)] flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_25px_60px_rgba(11,39,68,0.08)] transition-all duration-500 group relative">
                     <!-- Photo Banner -->
                     <div class="relative">
                         <div class="h-64 overflow-hidden rounded-t-[32px] relative z-0">
-                            <img src="/images/christian-testa-kqLl6Ao7V4k-unsplash.jpg" alt="Dog Walking" class="w-full h-full object-cover transition-transform duration-700 delay-100 group-hover:scale-[1.03]" />
+                            <Image src={christianTesta} alt="Dog Walking" class="w-full h-full object-cover transition-transform duration-700 delay-100 group-hover:scale-[1.03]" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
                         </div>
+                        <!-- Mobile-only pill overlay (bottom-right of image) -->
+                        <span class="md:hidden absolute bottom-3 right-3 z-10 bg-white/80 backdrop-blur-sm text-accent-teal border border-accent-teal/20 text-[9px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest whitespace-nowrap shadow-sm">Includes simple reinforcement</span>
                         <!-- Icon Badge -->
                         <div class="absolute -bottom-6 left-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-premium border border-[#EAE1D3]/50 z-10 text-primary-navy">
                             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1174,14 +1208,14 @@ const programs = await getCollection("programs");
                     <div class="p-8 md:p-10 pt-12 flex flex-col flex-1 relative z-0">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="text-2xl font-heading font-bold text-primary-navy leading-tight">Dog Walker</h3>
-                            <span class="bg-accent-teal/10 text-accent-teal border border-accent-teal/20 text-[9px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest whitespace-nowrap shadow-sm">Includes simple reinforcement</span>
+                            <span class="hidden md:inline-flex bg-accent-teal/10 text-accent-teal border border-accent-teal/20 text-[9px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest whitespace-nowrap shadow-sm">Includes simple reinforcement</span>
                         </div>
                         <p class="text-secondary-slate text-[14px] font-body leading-relaxed mb-6 flex-grow">
                             A walk through your neighborhood should feel calm, structured, and productive. Our <a href="/services/dog-walker" class="text-accent-teal hover:underline font-semibold">professional dog walker in San Jacinto</a> treats each walk as an opportunity to reinforce better leash manners, engagement, and calmer responses around everyday distractions. When appropriate, we also incorporate controlled practice around helper dogs to build neutrality in the moments dogs usually react.
                         </p>
                         
                         <div class="mt-auto flex flex-col gap-6 pt-2">
-                            <div>
+                            <div class="hidden md:block">
                                 <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-2">BEST FOR:</p>
                                 <div class="bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-5 py-3 w-full">
                                     <span class="text-primary-navy font-body text-[13px] block leading-snug">
@@ -1201,9 +1235,11 @@ const programs = await getCollection("programs");
                     <!-- Photo Banner -->
                     <div class="relative">
                         <div class="h-64 overflow-hidden rounded-t-[32px] relative z-0">
-                            <img src="/images/jamie-street-s9Tf1eBDFqw-unsplash.jpg" alt="Pet Sitting" class="w-full h-full object-cover transition-transform duration-700 delay-100 group-hover:scale-[1.03]" />
+                            <Image src={jamieStreet} alt="Pet Sitting" class="w-full h-full object-cover transition-transform duration-700 delay-100 group-hover:scale-[1.03]" />
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
                         </div>
+                        <!-- Mobile-only pill overlay (bottom-right of image) -->
+                        <span class="md:hidden absolute bottom-3 right-3 z-10 bg-white/80 backdrop-blur-sm text-accent-teal border border-accent-teal/20 text-[9px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest whitespace-nowrap shadow-sm">Includes simple reinforcement</span>
                         <!-- Icon Badge -->
                         <div class="absolute -bottom-6 left-8 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-premium border border-[#EAE1D3]/50 z-10 text-primary-navy">
                             <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1214,14 +1250,14 @@ const programs = await getCollection("programs");
                     <div class="p-8 md:p-10 pt-12 flex flex-col flex-1 relative z-0">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="text-2xl font-heading font-bold text-primary-navy leading-tight">Pet Sitter</h3>
-                            <span class="bg-accent-teal/10 text-accent-teal border border-accent-teal/20 text-[9px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest whitespace-nowrap shadow-sm">Includes simple reinforcement</span>
+                            <span class="hidden md:inline-flex bg-accent-teal/10 text-accent-teal border border-accent-teal/20 text-[9px] font-bold px-3 py-1.5 rounded-full uppercase tracking-widest whitespace-nowrap shadow-sm">Includes simple reinforcement</span>
                         </div>
                         <p class="text-secondary-slate text-[14px] font-body leading-relaxed mb-6 flex-grow">
                             Real progress happens at home. Our <a href="/services/pet-sitter" class="text-accent-teal hover:underline font-semibold">behavior-focused pet sitter in San Jacinto</a> reinforces structure where it matters most, helping support house manners, boundaries, and more stable behavior in your dog’s everyday environment. When appropriate, we can also incorporate carefully managed work with Simba or the pack to help address territorial behavior on your property.
                         </p>
                         
                         <div class="mt-auto flex flex-col gap-6 pt-2">
-                            <div>
+                            <div class="hidden md:block">
                                 <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-2">BEST FOR:</p>
                                 <div class="bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-5 py-3 w-full">
                                     <span class="text-primary-navy font-body text-[13px] block leading-snug">
@@ -1237,11 +1273,56 @@ const programs = await getCollection("programs");
                     </div>
                 </div>
             </div>
+            </div><!-- /lg:max-w-5xl -->
 
             <!-- Comparison Panel (Moved Below Cards) -->
-            <div class="mt-16 max-w-4xl mx-auto w-full text-left bg-[#FCF9FA] border border-[#EAE1D3]/80 rounded-[32px] px-8 pt-5 pb-8 shadow-[0_15px_40px_rgba(11,39,68,0.04)]">
+            <!-- Outer wrapper — handles the background banner and aligns the card -->
+            <div class="mt-24 mb-6 relative w-full flex justify-center items-center">
+
+                <!-- Rotating photo strip — desktop only (lg:block), wider and taller than the card -->
+                <div class="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-screen overflow-hidden pointer-events-none" aria-hidden="true">
+                    <div class="comparison-photo-track flex">
+                        <!-- Set 1 -->
+                        <Image src={rotatingAvi} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingDiana} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingVictor} alt="" class="photo-tile-img object-cover object-[center_25%]" loading="lazy" />
+                        <Image src={rotatingBruce} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingKojirou} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingJoe} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingDavid} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <!-- Set 2 -->
+                        <Image src={rotatingAvi} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingDiana} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingVictor} alt="" class="photo-tile-img object-cover object-[center_25%]" loading="lazy" />
+                        <Image src={rotatingBruce} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingKojirou} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingJoe} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingDavid} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <!-- Set 3 -->
+                        <Image src={rotatingAvi} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingDiana} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingVictor} alt="" class="photo-tile-img object-cover object-[center_25%]" loading="lazy" />
+                        <Image src={rotatingBruce} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingKojirou} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingJoe} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingDavid} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <!-- Set 4 -->
+                        <Image src={rotatingAvi} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingDiana} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingVictor} alt="" class="photo-tile-img object-cover object-[center_25%]" loading="lazy" />
+                        <Image src={rotatingBruce} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingKojirou} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingJoe} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                        <Image src={rotatingDavid} alt="" class="photo-tile-img object-cover object-center" loading="lazy" />
+                    </div>
+                    <!-- Navy overlay/scrim for banner -->
+                    <div class="absolute inset-0 bg-[#0B2744]/30 mix-blend-multiply"></div>
+                </div>
+
+                <!-- Card content — sits in front of the banner on desktop, static on mobile -->
+            <div class="max-w-4xl mx-auto w-full text-left px-8 pt-5 pb-8 relative z-10 bg-[#FCF9FA] rounded-[32px] border border-[#EAE1D3]/80 shadow-[0_20px_60px_rgba(11,39,68,0.12)]">
                 <div class="text-center max-w-2xl mx-auto">
-                    <img src="/images/Horizontal logo - Good Doggos - Navy.png" alt="Good Doggos Logo" class="w-full max-w-[380px] h-auto mx-auto mb-3 -mt-2 block" />
+                    <Image src={brandLogoNavy} alt="Good Doggos Logo" class="w-full max-w-[380px] h-auto mx-auto mb-3 -mt-2 block" />
                     <h3 class="font-heading font-bold text-2xl md:text-3xl text-primary-navy mb-2">Training Programs vs Support Services</h3>
                     <p class="text-[11px] font-bold text-accent-gold uppercase tracking-widest mb-4">What's the difference?</p>
                     <p class="text-secondary-slate font-body text-[15px] leading-relaxed mb-6">
@@ -1307,10 +1388,11 @@ const programs = await getCollection("programs");
                         </div>
                     </div>
                 </details>
-            </div>
-            
+            </div><!-- /card content -->
+            </div><!-- /comparison outer wrapper -->
+
             <!-- Muted Note Below Panel -->
-            <p class="text-[13px] text-secondary-slate/60 font-body mt-6 mb-8 text-center tracking-wide">
+            <p class="text-[13px] text-secondary-slate/60 font-body mt-16 mb-8 text-center tracking-wide">
                 Not sure where to start? <a href="/apply" class="text-accent-gold hover:text-primary-navy transition-colors underline underline-offset-2 font-bold">Apply now</a> and we’ll help you choose the right fit.
             </p>
         </div>
@@ -1320,11 +1402,11 @@ const programs = await getCollection("programs");
     <section class="py-32 bg-[#FBF1E9] px-4 relative overflow-hidden">
         <!-- Upper Left Watermark (tilted left) -->
         <div class="absolute -top-10 -left-10 md:-top-40 md:-left-40 opacity-[0.06] pointer-events-none select-none w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] transform -rotate-12">
-            <img src="/images/Navy Dog Mascot Transparent - Good Doggos.png" alt="" class="w-full h-full object-contain" />
+            <Image src={mascotNavy} alt="" class="w-full h-full object-contain" />
         </div>
         <!-- Lower Right Watermark (tilted right, flipped leftwards) -->
         <div class="absolute -bottom-20 -right-20 md:-bottom-40 md:-right-40 opacity-[0.06] pointer-events-none select-none w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] transform rotate-12 scale-x-[-1]">
-            <img src="/images/Navy Dog Mascot Transparent - Good Doggos.png" alt="" class="w-full h-full object-contain" />
+            <Image src={mascotNavy} alt="" class="w-full h-full object-contain" />
         </div>
         
         <div class="max-w-6xl mx-auto relative z-10">
@@ -1412,5 +1494,28 @@ const programs = await getCollection("programs");
         </div>
     </section>
 
-    <CTASection imageSrc="/DesignGuidelines/pauline-loroy-U3aF7hgUSrk-unsplash.jpg" />
+    <CTASection imageSrc={paulineLoroy} />
 </Layout>
+
+<style>
+    /* Rotating photo strip behind the comparison card */
+    @keyframes scroll-comparison-photos {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX(-25%); }
+        /* 4 identical sets; -25% = exactly one set width = seamless loop */
+    }
+
+    .comparison-photo-track {
+        width: max-content;
+        animation: scroll-comparison-photos 120s linear infinite;
+        will-change: transform;
+    }
+
+    /* Hard-coded square tile: fixed dimensions, never stretches */
+    .photo-tile-img {
+        display: block;
+        width: 550px;
+        height: 550px;
+        flex-shrink: 0;
+    }
+</style>
