@@ -138,8 +138,7 @@ const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather mont
     </div>
 
     <div
-      class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-14"
-      style="padding-top: 160px;"
+      class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-14 pt-[200px] md:pt-[160px]"
     >
       <div class="text-center max-w-2xl mx-auto">
         <p
@@ -157,7 +156,7 @@ const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather mont
           Guaranteed results for families who want <span
             class="headline-accent"
             style="color:#D1B27F;">the best for their dog.</span
-          >
+          > We do not just train dogs. We train owners too, so your dog listens better with you, your family, and the people who care for them.
         </p>
 
         <!-- Segmented Navigation -->
@@ -463,7 +462,7 @@ const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather mont
               },
               {
                 q: "Is this right for excited greeters and leash pullers?",
-                a: "Yes — it's our most common entry point. We address over-arousal, threshold reactivity, and pulling using structured exposure and helper dog setups that simulate real-world triggers.",
+                a: "Yes. In fact, this is our most common entry point. We address over-arousal, threshold reactivity, and pulling using structured exposure and helper dog setups that simulate real-world triggers.",
               },
               {
                 q: "What if I miss a session?",
@@ -475,7 +474,7 @@ const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather mont
               },
               {
                 q: "Can I start if my dog has never been trained?",
-                a: "Absolutely. The Calm Companion is our foundational program — no prior training required.",
+                a: "Absolutely. The Calm Companion is our foundational program. No prior training required.",
               },
             ].map((faq, i) => (
               <div class="border-t border-[#E6DAC6]/50 bg-white">
@@ -675,7 +674,7 @@ const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather mont
                   [
                     {
                       icon: "🎯",
-                      text: "6+ Private 1-on-1 Training Sessions",
+                      text: "6 Private 1-on-1 Training Sessions",
                     },
                     { icon: "🌍", text: "Public Training Trip Transfers" },
                     {
@@ -687,14 +686,14 @@ const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather mont
                       text: "Helper Dog Exposure & Socialization Reps",
                     },
                     { icon: "📞", text: "VIP Priority Support" },
-                    { icon: "🏆", text: "Goal-Based Guarantee" },
+                    { icon: "🏆", text: 'Goal-Based Guarantee (<a href="/guarantee" style="color:#D1B27F; text-decoration: underline;">conditions apply</a>)' },
                   ].map((i) => (
                     <li
                       class="flex items-start gap-3 text-sm"
                       style="color:rgba(17,32,50,0.78);"
                     >
                       <span>{i.icon}</span>
-                      {i.text}
+                      <span set:html={i.text} />
                     </li>
                   ))
                 }
@@ -1120,7 +1119,7 @@ const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather mont
               },
               {
                 q: "What does a 'custom quote' actually include?",
-                a: "Sessions required, severity, equipment needs, and travel. After the free intake evaluation, you receive a clear itemized proposal — no surprise fees.",
+                a: "Sessions required, severity, equipment needs, and travel. After the free intake evaluation, you receive a clear itemized proposal. No surprise fees.",
               },
               {
                 q: "What safety protocols are required?",
@@ -1190,7 +1189,7 @@ const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather mont
         <Image
           src={logoWhite}
           alt="Good Doggos"
-          class="h-44 md:h-52 w-auto mx-auto mb-5"
+          class="h-44 md:h-52 w-auto mx-auto"
           style="filter: brightness(0) saturate(100%) invert(15%) sepia(30%) saturate(700%) hue-rotate(185deg);"
         />
         <p
@@ -1228,8 +1227,8 @@ const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather mont
             </div>
             <div class="absolute bottom-3 left-4">
               <span
-                class="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full text-white"
-                style="background: rgba(15,109,114,0.80); backdrop-filter: blur(4px);"
+                class="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full"
+                style="background: rgba(209,178,127,0.85); backdrop-filter: blur(4px); color: #0B2744;"
                 >Standard</span
               >
             </div>
@@ -1265,7 +1264,7 @@ const promoBannerText = "Seasonal Summer Rate: Save $200 during hot-weather mont
                     class="flex items-start gap-2.5 text-sm"
                     style="color:rgba(17,32,50,0.70);"
                   >
-                    <Image src={tealPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />
+                    <Image src={goldPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />
                     {b}
                   </li>
                 ))
