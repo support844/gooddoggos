@@ -1,0 +1,64 @@
+name: Scheduled Rebuild & Deploy
+
+on:
+  # Rebuild twice daily so new Substack posts appear within ~12 hours automatically
+  schedule:
+    - cron: "0 8,20 * * *"   # 8 AM and 8 PM UTC
+
+  # Also rebuild on every push to main (e.g. design tweaks)
+  push:
+    branches:
+      - main
+
+  # Allow a manual trigger from the GitHub Actions tab whenever you want
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      # ─────────────────────────────────────────────────────────────────────
+      # HOSTINGER DEPLOYMENT
+      #
+      # Option A — FTP (most common for Hostinger shared hosting)
+      #   Add these secrets in GitHub → Settings → Secrets → Actions:
+      #     FTP_SERVER   : your Hostinger FTP host (e.g. ftp.yourdomain.com)
+      #     FTP_USERNAME : your FTP username
+      #     FTP_PASSWORD : your FTP password
+      #
+      # Option B — SSH/rsync (Hostinger VPS or Business hosting)
+      #   Replace the FTP step below with your own rsync/SSH command.
+      # ─────────────────────────────────────────────────────────────────────
+
+      - name: Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          # Set server-dir to the public_html folder on your Hostinger account.
+          # Common values: /public_html/  or  /domains/yourdomain.com/public_html/
+          server-dir: /public_html/
+          # Only upload files that actually changed (faster deploys)
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**

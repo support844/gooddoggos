@@ -1,0 +1,204 @@
+---
+import { Image } from "astro:assets";
+import "../styles/global.css";
+import heroDogConfident from "../assets/images/hero-dog-confident.jpg";
+import brandLogoWhite from "../assets/images/brand-logo-white.png";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Free 30-Minute Intro Training Session | Good Doggos</title>
+    <meta
+      name="description"
+      content="Claim your complimentary 30-minute intro training session with Good Doggos — San Jacinto's expert dog trainer. Limited to 10 sessions this month."
+    />
+    <link rel="icon" type="image/png" href="/images/Circle%20Navy%20Dog%20Mascot%20Light%20Gold%20BG%20Transparent%20-%20Good%20Doggos.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="flex flex-col min-h-screen bg-primary-bg">
+
+    <!-- ── HERO ─────────────────────────────────────────────────── -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-primary-navy">
+
+      <!-- Background Image -->
+      <div class="absolute inset-0 z-0">
+        <Image
+          src={heroDogConfident}
+          alt="Confident, well-trained dog"
+          class="w-full h-full object-cover"
+          widths={[640, 768, 1024, 2048]}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <!-- Navy overlay for readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-primary-navy/80 via-primary-navy/65 to-primary-navy/90 z-10"></div>
+      </div>
+
+      <!-- Minimal Logo Header -->
+      <div class="absolute top-0 left-0 right-0 z-20 flex justify-center pt-6 pb-4">
+        <Image
+          src={brandLogoWhite}
+          alt="Good Doggos"
+          class="h-20 w-auto"
+          width={480}
+          height={96}
+        />
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-20 w-full max-w-3xl mx-auto px-6 pt-24 pb-16 text-center flex flex-col items-center">
+
+        <!-- Kicker -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full border border-accent-warmGold/40 bg-accent-warmGold/10 backdrop-blur-sm">
+          <span class="kicker kicker-gold">San Jacinto, CA &bull; Dog Trainer</span>
+        </div>
+
+        <!-- H1 -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-[1.1] mb-5 drop-shadow-2xl tracking-tight">
+          Tired of Your Dog<br class="hidden sm:block" /> Running The Show?
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="font-subheading italic text-xl md:text-2xl lg:text-3xl font-semibold text-accent-brightTeal mb-10 leading-snug">
+          Claim Your Free 30-Minute Intro Training Session
+        </p>
+
+        <!-- CTA Button (anchors to form section) -->
+        <a
+          href="#claim"
+          class="btn-apply text-base px-10 py-5 shadow-2xl"
+        >
+          Claim Your Free Session Now &darr;
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ── VALUE PROPS ───────────────────────────────────────────── -->
+    <section class="py-20 px-6 bg-surface">
+      <div class="max-w-2xl mx-auto">
+
+        <p class="kicker kicker-dark text-center mb-3">What You'll Walk Away With</p>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary-navy text-center mb-12 leading-tight">
+          In Just 30 Minutes, We Will:
+        </h2>
+
+        <div class="flex flex-col gap-6">
+
+          <!-- Bullet 1 -->
+          <div class="flex items-start gap-5 p-6 rounded-2xl bg-white shadow-premium border border-primary-navy/5">
+            <div class="flex-shrink-0 w-9 h-9 rounded-full bg-accent-brightTeal/15 flex items-center justify-center mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-brightTeal" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-lg font-heading font-semibold text-primary-navy leading-snug">
+                Discover the &ldquo;communication gap&rdquo; creating your daily chaos.
+              </p>
+              <p class="text-sm text-ink/65 mt-1 leading-relaxed">Identify the exact disconnect between you and your dog that's causing frustration on both ends of the leash.</p>
+            </div>
+          </div>
+
+          <!-- Bullet 2 -->
+          <div class="flex items-start gap-5 p-6 rounded-2xl bg-white shadow-premium border border-primary-navy/5">
+            <div class="flex-shrink-0 w-9 h-9 rounded-full bg-accent-brightTeal/15 flex items-center justify-center mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-brightTeal" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-lg font-heading font-semibold text-primary-navy leading-snug">
+                Prove, in real-time, that your dog actually can listen to you.
+              </p>
+              <p class="text-sm text-ink/65 mt-1 leading-relaxed">You'll see a measurable shift in your dog's responsiveness during the session itself — not weeks from now.</p>
+            </div>
+          </div>
+
+          <!-- Bullet 3 -->
+          <div class="flex items-start gap-5 p-6 rounded-2xl bg-white shadow-premium border border-primary-navy/5">
+            <div class="flex-shrink-0 w-9 h-9 rounded-full bg-accent-brightTeal/15 flex items-center justify-center mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent-brightTeal" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-lg font-heading font-semibold text-primary-navy leading-snug">
+                Get a personalized roadmap specific to your relationship with your dog.
+              </p>
+              <p class="text-sm text-ink/65 mt-1 leading-relaxed">Leave with a clear, step-by-step plan tailored to your dog's breed, temperament, and your household's real life.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── URGENCY BANNER ────────────────────────────────────────── -->
+    <section class="py-7 px-6 bg-primary-navy">
+      <div class="max-w-2xl mx-auto text-center flex flex-col sm:flex-row items-center justify-center gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-warmGold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+        </svg>
+        <p class="font-heading font-bold text-white text-base md:text-lg tracking-wide">
+          <span class="text-accent-warmGold">Limited Availability:</span>&nbsp; Strictly limited to <span class="underline decoration-accent-warmGold/60 decoration-2">10 complimentary sessions</span> this month.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── CTA SECTION ───────────────────────────────────────────── -->
+    <section id="claim" class="py-24 px-6 bg-primary-bg">
+      <div class="max-w-2xl mx-auto text-center flex flex-col items-center">
+
+        <p class="kicker kicker-dark mb-3">One Simple Step</p>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary-navy mb-5 leading-tight">
+          Ready to Get Started?
+        </h2>
+        <p class="text-lg text-ink/75 mb-10 max-w-lg leading-relaxed">
+          Fill out the short application below to instantly unlock your 30&#8209;minute booking link.
+        </p>
+
+        <a
+          href="https://forms.gle/gBytHHWSj7rM7uGV8"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-apply text-base px-10 py-5 shadow-2xl"
+        >
+          Claim Your Free Session Now &rarr;
+        </a>
+
+        <p class="mt-6 text-sm text-ink/50 max-w-sm leading-relaxed">
+          Opens a short Google Form. We review every application personally and respond within 24 hours to confirm your booking.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- ── MINIMAL FOOTER ────────────────────────────────────────── -->
+    <footer class="py-8 px-6 bg-primary-navy text-center">
+      <Image
+        src={brandLogoWhite}
+        alt="Good Doggos"
+        class="h-16 w-auto mx-auto mb-3 opacity-70"
+        width={360}
+        height={72}
+      />
+      <p class="text-white/40 text-xs font-body">
+        &copy; {new Date().getFullYear()} Good Doggos &bull; San Jacinto, CA &bull;
+        <a href="/privacy" class="hover:text-white/70 transition-colors">Privacy</a>
+      </p>
+    </footer>
+
+  </body>
+</html>
