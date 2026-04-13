@@ -8,9 +8,8 @@ import summerImage from "../assets/images/lukas-vanatko-M7_cpdicN44-unsplash.jpg
 import eligibilityImage from "../assets/images/ben-moreland-ISy9WVUXduw-unsplash.jpg";
 import journeyImage from "../assets/images/jametlene-reskp-fliwkBbS7oM-unsplash.jpg";
 import mascotNavy from "../assets/images/Navy-Dog-Mascot-Transparent---Good-Doggos.png";
+import heroImage from "../assets/images/pauline-loroy-U3aF7hgUSrk-unsplash.jpg";
 import ctaImage from "../assets/images/pauline-loroy-U3aF7hgUSrk-unsplash.jpg";
-
-const heroImageRemote = "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=85&w=2400";
 ---
 
 <Layout>
@@ -19,9 +18,8 @@ const heroImageRemote = "https://images.unsplash.com/photo-1587300003388-59208cc
      A) CINEMATIC HERO
 ══════════════════════════════════════════════ -->
 <section class="relative overflow-hidden bg-[#0B2744] flex items-end" style="min-height: 90vh;">
-  <div class="absolute inset-0 z-0 text-white">
-    {/* Remote image temporarily replaced — FailedToFetchRemoteImageDimensions fix */}
-    <div class="absolute inset-0 w-full h-full" style="background-color: #0B2744; opacity: 0.45;"></div>
+  <div class="absolute inset-0 z-0">
+    <Image src={heroImage} alt="Dog training" class="absolute inset-0 w-full h-full object-cover object-center" widths={[800, 1200, 1920]} sizes="100vw" loading="eager" />
     <!-- Cinematic overlay -->
     <div class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"></div>
   </div>
@@ -153,7 +151,7 @@ const heroImageRemote = "https://images.unsplash.com/photo-1587300003388-59208cc
           </div>
           <div class="flex items-start gap-3 p-3 rounded-xl" style="background:rgba(125,44,45,0.03);border:1px solid rgba(125,44,45,0.12);">
             <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="#7D2C2D" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <p class="text-[11px] leading-relaxed" style="color:rgba(17,32,50,0.75);">If your dog doesn't qualify for the Calm Companion Challenge, we may recommend our <strong>Reactive Dog Intensive</strong> or a private evaluation first.</p>
+            <p class="text-[11px] leading-relaxed" style="color:rgba(17,32,50,0.75);">If your dog doesn't qualify for the Calm Companion Challenge, we may recommend our <a href="/programs#red-zone" class="font-bold underline underline-offset-2" style="color:#7D2C2D;">Reactive Dog Intensive</a> or a private evaluation first.</p>
           </div>
         </div>
       </div>
@@ -161,13 +159,21 @@ const heroImageRemote = "https://images.unsplash.com/photo-1587300003388-59208cc
 
     <!-- CAROUSEL: visible at lg+ (desktop) -->
     <div class="hidden lg:block">
-      <div class="max-w-5xl mx-auto">
+      <div class="max-w-5xl mx-auto relative">
+      <!-- Prev Arrow -->
+      <button id="fit-prev" class="absolute left-[-52px] top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border border-[#E6DAC6] bg-white shadow-sm hover:bg-[#F5F0E8] transition-colors" aria-label="Previous card">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <!-- Next Arrow -->
+      <button id="fit-next" class="absolute right-[-52px] top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-10 h-10 rounded-full border border-[#E6DAC6] bg-white shadow-sm hover:bg-[#F5F0E8] transition-colors" aria-label="Next card">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
       <div id="fit-carousel" class="overflow-hidden">
         <div id="fit-track" class="flex transition-transform duration-500 ease-in-out">
 
           <!-- SLIDE 1 -->
           <div class="w-full flex-shrink-0">
-            <div class="rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,109,114,0.06)] border border-[#E6DAC6] flex flex-col sm:flex-row bg-white relative min-h-[490px]">
+            <div class="rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,109,114,0.06)] border border-[#E6DAC6] flex flex-col sm:flex-row bg-white relative h-[490px]">
               <div class="block sm:hidden absolute top-0 left-0 right-0 h-2" style="background:#0F6D72;"></div>
               <div class="hidden sm:block absolute left-0 top-0 bottom-0 w-2" style="background:#0F6D72;"></div>
               <div class="sm:w-[45%] relative aspect-[4/3] sm:aspect-auto text-white">
@@ -194,7 +200,7 @@ const heroImageRemote = "https://images.unsplash.com/photo-1587300003388-59208cc
 
           <!-- SLIDE 2 -->
           <div class="w-full flex-shrink-0">
-            <div class="rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,109,114,0.06)] border border-[#E6DAC6] flex flex-col sm:flex-row bg-white relative min-h-[490px]">
+            <div class="rounded-3xl overflow-hidden shadow-[0_8px_32px_rgba(15,109,114,0.06)] border border-[#E6DAC6] flex flex-col sm:flex-row bg-white relative h-[490px]">
               <div class="block sm:hidden absolute top-0 left-0 right-0 h-2" style="background:#0F6D72;"></div>
               <div class="hidden sm:block absolute left-0 top-0 bottom-0 w-2" style="background:#0F6D72;"></div>
               <div class="sm:w-[45%] relative aspect-[4/3] sm:aspect-auto text-white">
@@ -231,7 +237,7 @@ const heroImageRemote = "https://images.unsplash.com/photo-1587300003388-59208cc
                 </div>
                 <div class="flex items-start gap-3 p-3 rounded-xl" style="background:rgba(125,44,45,0.03);border:1px solid rgba(125,44,45,0.12);">
                   <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="#7D2C2D" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                  <p class="text-[11px] leading-relaxed" style="color:rgba(17,32,50,0.75);">If your dog doesn't qualify for the Calm Companion Challenge, we may recommend our <strong>Reactive Dog Intensive</strong> or a private evaluation first.</p>
+                  <p class="text-[11px] leading-relaxed" style="color:rgba(17,32,50,0.75);">If your dog doesn't qualify for the Calm Companion Challenge, we may recommend our <a href="/programs#red-zone" class="font-bold underline underline-offset-2" style="color:#7D2C2D;">Reactive Dog Intensive</a> or a private evaluation first.</p>
                 </div>
               </div>
             </div>
@@ -266,9 +272,13 @@ const heroImageRemote = "https://images.unsplash.com/photo-1587300003388-59208cc
       d.style.background = idx === current ? '#0F6D72' : 'rgba(15,109,114,0.25)';
     });
   }
-  var timer = setInterval(function() { goTo((current + 1) % 2); }, 5000);
-  function reset() { clearInterval(timer); timer = setInterval(function() { goTo((current + 1) % 2); }, 5000); }
+  var timer = setInterval(function() { goTo((current + 1) % 2); }, 10000);
+  function reset() { clearInterval(timer); timer = setInterval(function() { goTo((current + 1) % 2); }, 10000); }
   dots.forEach(function(d, i) { d.addEventListener('click', function() { goTo(i); reset(); }); });
+  var prev = document.getElementById('fit-prev');
+  var next = document.getElementById('fit-next');
+  if (prev) prev.addEventListener('click', function() { goTo((current + 1) % 2); reset(); });
+  if (next) next.addEventListener('click', function() { goTo((current + 1) % 2); reset(); });
   var carousel = document.getElementById('fit-carousel');
   if (carousel) {
     carousel.addEventListener('mouseenter', function() { clearInterval(timer); });

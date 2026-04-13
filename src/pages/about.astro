@@ -31,7 +31,7 @@ import packBanner from "../assets/images/simba-and-pack-banner.png";
     <div class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"></div>
   </div>
 
-  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-16" style="padding-top: 160px;">
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-16 pt-[220px] md:pt-[160px]">
     <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-5" style="color: rgba(209,178,127,0.60);">Our Story</p>
     <h1 class="font-heading font-bold text-white leading-[1.05] mb-5" style="font-size: clamp(2.8rem, 5.5vw, 4.5rem);">
       About Good Doggos
@@ -53,7 +53,7 @@ import packBanner from "../assets/images/simba-and-pack-banner.png";
 
     <div class="grid md:grid-cols-2 gap-14 items-start mb-20">
       <!-- Founder Photo -->
-      <div class="relative mb-16 md:mb-0">
+      <div class="relative mb-4 md:mb-0">
         <div class="rounded-2xl overflow-hidden shadow-[0_12px_40px_rgba(0,0,0,0.12)] aspect-[4/5] relative">
           <Image
             src={founderPhoto}
@@ -61,8 +61,8 @@ import packBanner from "../assets/images/simba-and-pack-banner.png";
             class="w-full h-full object-cover object-top"
           />
         </div>
-        <!-- Trainer Background Card — overlaid bottom -->
-        <div class="absolute -bottom-20 left-6 right-6 md:-bottom-12 md:-right-8 rounded-2xl p-6 border border-[#E6DAC6] shadow-[0_8px_24px_rgba(0,0,0,0.10)]" style="background: #FCF9FA;">
+        <!-- Trainer Background Card — overlaid bottom; flow on mobile (slight overlap), absolute on desktop -->
+        <div class="-mt-6 mx-6 md:absolute md:-bottom-12 md:left-6 md:-right-8 md:mx-0 rounded-2xl p-6 border border-[#E6DAC6] shadow-[0_8px_24px_rgba(0,0,0,0.10)]" style="background: #FCF9FA;">
           <p class="text-[10px] font-bold tracking-[0.22em] uppercase mb-3" style="color: rgba(15,109,114,0.65);">Trainer Background</p>
           <p class="font-heading font-bold text-base mb-3" style="color: #0B2744;">Victor · Head Trainer & Founder</p>
           <ul class="space-y-2">
@@ -90,7 +90,7 @@ import packBanner from "../assets/images/simba-and-pack-banner.png";
         </h2>
         <div class="space-y-5 text-base leading-relaxed" style="color: rgba(17,32,50,0.75);">
           <p>Good Doggos was built for the misunderstood.</p>
-          <p>We have a deep love and respect for reactive, aggressive, anxious, and easily overwhelmed dogs because we know <strong style="color: #0F6D72;">behavior is communication.</strong> Here at Good Doggos, we do not believe in "bad dogs." We believe in dogs whose stress, fear, frustration, or intensity has been mishandled for too long.</p>
+          <p>We have a deep love and respect for reactive, aggressive, anxious, and easily overwhelmed dogs because we know <span style="color: #0F6D72;">behavior is communication.</span> Here at Good Doggos, we do not believe in "bad dogs." We believe in dogs whose stress, fear, frustration, or intensity has been mishandled for too long.</p>
           <p>This work is personal for our head trainer, Victor. When he was a child, he was badly bitten by a dog. That experience could have made him afraid of dogs for life. Instead, it made him want to understand them. Over time, that became years of studying dog behavior, stress, body language, and what helps "difficult" dogs feel safer and behave better.</p>
           <p>Today, we help the dogs other people give up on. We look at what is causing the behavior, build a plan that fits the dog, and teach owners how to create real change at home and in public. We use clear structure, honest training, and the right tools for the right dog. Our goal is simple: safer walks, calmer behavior, more trust, and a dog you can enjoy living with again.</p>
           <p>Simba, Chico, and Rocky are sometimes a part of that work. They are calm, stable helper dogs who show client dogs what steady behavior looks like. They help us create controlled practice that leads to real-world progress.</p>

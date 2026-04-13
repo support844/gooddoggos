@@ -2,59 +2,156 @@
 import { Image } from "astro:assets";
 import Layout from '../layouts/Layout.astro';
 import heroImage from "../assets/images/nicole-calmet-LBG7DuMHiG4-unsplash.jpg";
+import merchImage from "../assets/images/victor-walking-pack.png";
+import { leashProducts, collarProducts, foodProducts, placeProducts, enrichmentProducts } from '../data/shopProducts';
+import type { ShopProduct } from '../data/shopProducts';
 
-const categories = [
+// ── Shop product images ──────────────────────────────────────────────────────
+import imgWoof from '../assets/images/shop images/WOOF Starter Pack - Interactive Dog Ball Toy for Boredom.jpg';
+import imgMonsterK9 from '../assets/images/shop images/Monster K9 Ring Ball.jpg';
+import imgFidaRope from '../assets/images/shop images/Fida Dog Rope Toys for Large:Medium Aggressive Chewers.jpg';
+import imgChuckit from '../assets/images/shop images/Chuckit! Paraflight Flying Disc Dog Toy.jpg';
+import imgK9Ballistics from '../assets/images/shop images/K9 Ballistics Chew Proof Elevated Cooling Dog Bed.jpg';
+import imgAmazonBed from '../assets/images/shop images/Amazon Basics Cooling Breathable Elevated Dog Bed.jpg';
+import imgImpactCrate from '../assets/images/shop images/Impact Collapsible Dog Crate.jpg';
+import imgBoldbone from '../assets/images/shop images/BOLDBONE 38 inch Heavy Duty Indestructible and Escape-Proof Dog Crate.jpg';
+import imgAmazonCrate from "../assets/images/shop images/Amazon Basics - Durable, Foldable Metal Wire Dog Crate .jpg";
+import imgJustFresh from '../assets/images/shop images/JustFresh Wet Dog Food.jpg';
+import imgHillsScience from "../assets/images/shop images/Hill's Science Diet.jpg";
+import imgZukes from '../assets/images/shop images/Zukes, Treats Mini Naturals Chicken Recipe.jpg';
+import imgVitalEssentials from '../assets/images/shop images/Vital Essentials Freeze Dried Dog Treats.jpg';
+import imgBaskerville from '../assets/images/shop images/Baskerville ULTRA Muzzle .jpg';
+import imgBarkless from '../assets/images/shop images/BARKLESS Dog Muzzle.jpg';
+import imgHermSprenger from '../assets/images/shop images/Herm Sprenger Prong Dog Training Collar.jpg';
+import imgSafiman from '../assets/images/shop images/Safiman Prong Collar for Dogs.jpg';
+import imgHermSprengerQR from '../assets/images/shop images/Herm Sprenger 2.25mm Prong Collar for Dog Training .jpg';
+import imgET300 from '../assets/images/shop images/Educator ET-300 Mini E Collar for Dog Training with Remote.jpg';
+import imgDogtra from '../assets/images/shop images/Dogtra E-Collar Tom Davis 280C 2.0.jpg';
+import imgFunTags from '../assets/images/shop images/FunTags 6ft Reflective Training Leash.jpg';
+import imgFidaDouble from '../assets/images/shop images/Fida 6 FT Heavy Duty Dog Leash with 2 Comfortable Padded Handles.jpg';
+import imgFidaSlip from '../assets/images/shop images/Fida Durable Slip Lead Dog Leash.jpg';
+import imgHiKiss from '../assets/images/shop images/Hi Kiss Dog:Puppy Obedience Recall Training Agility Lead.jpg';
+import imgXiaZ from '../assets/images/shop images/XiaZ Long Leash for Dogs Waterproof, Training Long Line Lead with Padded Handle.jpg';
+import imgViper from '../assets/images/shop images/Viper Biothane Working Tracking Lead Leash Long Line.jpg';
+
+const leashImageMap: Record<string, string> = {
+  'https://www.amazon.com/dp/B089231T8H': imgFunTags.src,
+  'https://www.amazon.com/dp/B09NVM8YPW': imgFidaDouble.src,
+  'https://www.amazon.com/dp/B08Y5RYPTS': imgFidaSlip.src,
+  'https://www.amazon.com/dp/B072MNCJ8K': imgHiKiss.src,
+  'https://www.amazon.com/dp/B0DPKWLRQV': imgXiaZ.src,
+  'https://www.amazon.com/dp/B01A7HN3P4': imgViper.src,
+};
+
+const enrichmentImageMap: Record<string, string> = {
+  'https://www.amazon.com/dp/B0C6QQ3ZF7': imgWoof.src,
+  'https://www.amazon.com/dp/B084YRYHG2': imgMonsterK9.src,
+  'https://www.amazon.com/dp/B08RYXFV76': imgFidaRope.src,
+  'https://www.amazon.com/dp/B008ESY894': imgChuckit.src,
+};
+
+const resolvedEnrichmentProducts = enrichmentProducts.map(p => ({
+  ...p,
+  image: enrichmentImageMap[p.url] ?? p.image,
+}));
+
+const placeImageMap: Record<string, string> = {
+  'https://www.amazon.com/dp/B0FHRNDP6F': imgK9Ballistics.src,
+  'https://www.amazon.com/dp/B076VXVB2L': imgAmazonBed.src,
+  'https://www.amazon.com/dp/B0CV64FPB5': imgImpactCrate.src,
+  'https://www.amazon.com/dp/B0CD2NRXJ1': imgBoldbone.src,
+  'https://www.amazon.com/dp/B09G4R4161': imgAmazonCrate.src,
+};
+
+const resolvedPlaceProducts = placeProducts.map(p => ({
+  ...p,
+  image: placeImageMap[p.url] ?? p.image,
+}));
+
+const foodImageMap: Record<string, string> = {
+  'https://www.amazon.com/dp/B0F63YYZK1': imgJustFresh.src,
+  'https://www.amazon.com/dp/B000634160': imgHillsScience.src,
+  'https://www.amazon.com/ZukeS-Naturals-Chicken-Recipe-Treats/dp/B0007A0AQM': imgZukes.src,
+  'https://www.amazon.com/dp/B0CLYL61KP': imgVitalEssentials.src,
+};
+
+const resolvedFoodProducts = foodProducts.map(p => ({
+  ...p,
+  image: foodImageMap[p.url] ?? p.image,
+}));
+
+const collarImageMap: Record<string, string> = {
+  'https://www.amazon.com/dp/B07W4WYLL5': imgHermSprenger.src,
+  'https://www.amazon.com/dp/B09WHDG6RL': imgSafiman.src,
+  'https://www.amazon.com/dp/B07WK7MGJY': imgHermSprengerQR.src,
+  'https://www.amazon.com/dp/B01CRLQBXO': imgET300.src,
+  'https://www.amazon.com/dp/B0DSPF748B': imgDogtra.src,
+};
+
+const resolvedCollarProducts = collarProducts.map(p => ({
+  ...p,
+  image: collarImageMap[p.url] ?? p.image,
+}));
+
+const resolvedLeashProducts = leashProducts.map(p => ({
+  ...p,
+  image: leashImageMap[p.url] ?? p.image,
+}));
+
+interface OldProduct {
+  name: string;
+  why: string;
+  bullets: string[];
+  tags: string[];
+  img: string;
+  link: string;
+}
+
+interface Category {
+  id: string;
+  label: string;
+  useCarousel?: boolean;
+  products: OldProduct[] | ShopProduct[];
+}
+
+const categories: Category[] = [
   {
     id: "leashes",
     label: "Leashes & Long Lines",
-    products: [
-      {name: "Mendota Pet Slip Lead", why: "The trainer gold standard. One piece, no hardware to fail, correct in an instant.", bullets: ["British-style slip mechanism","Floats in water, easy to clean","Sizes for all breeds"], tags: ["Best for: Reactivity","Training Walks"], img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-      {name: "Biothane Long Line — 30ft", why: "Waterproof, no-tangle recall training line. Doesn't absorb mud, dries instantly.", bullets: ["Rated to 400 lbs","Easy to disinfect between dogs","Available in multiple lengths"], tags: ["Recall Training","Outdoor Use"], img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-      {name: "Ruffwear Knot-a-Leash", why: "Bomber build for dogs that pull hard. Great for transitioning between handler and tie-out.", bullets: ["Reflective threading","Stainless swivel clip","6ft standard length"], tags: ["Heavy Pullers","Safety"], img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-    ]
+    useCarousel: true,
+    products: resolvedLeashProducts,
   },
   {
     id: "collars",
     label: "Collars & Harnesses",
-    products: [
-      {name: "Herm Sprenger Prong Collar", why: "When fitted correctly, the most humane and effective pressure tool for leash reactivity. Must be sized properly.", bullets: ["Stainless steel, lasts a lifetime","Distributor pressure evenly around neck","Multiple size options"], tags: ["Reactivity","Leash Training"], img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-      {name: "Ruffwear Front Range Harness", why: "Our top harness pick for calm, leash-trained dogs who need comfortable daily wear.", bullets: ["Four points of adjustment","Padded chest & belly panel","Front & back clip options"], tags: ["Puppies","Daily Wear"], img: "https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-      {name: "Martingale Collar — Limited Slip", why: "Safe for escape artists. Tightens just enough to prevent backing out, then releases.", bullets: ["No choke mechanism","Great for sighthounds & slim-necked breeds","Machine washable nylon version available"], tags: ["Safety","Puppies","Travel"], img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-    ]
+    useCarousel: true,
+    products: resolvedCollarProducts,
   },
   {
     id: "muzzles",
     label: "Muzzles & Safety",
     products: [
-      {name: "Baskerville Ultra Muzzle", why: "The best basket muzzle on the market. Allows panting, drinking, and treat delivery — fully humane.", bullets: ["Soft rubber basket design","Padded nose bridge","Pairs perfectly with muzzle conditioning protocol"], tags: ["Safety","Aggression Cases","Required Gear"], img: "https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-      {name: "Dean & Tyler DT No-Bite Muzzle", why: "Heavy-duty leather muzzle for maximum aggression management during early rehab stages.", bullets: ["Tooled leather, durable","Adjustable straps for security","Professional-grade hold"], tags: ["Advanced Cases","Safety"], img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
+      {name: "Baskerville Ultra Muzzle", why: "The gold standard basket muzzle. Allows full panting, drinking, and treat delivery while worn — making muzzle conditioning straightforward and humane.", bullets: ["Patented humane design — dog can pant, drink, and take treats normally","Padded nose bridge for extended comfort during long training sessions","Adjustable straps lock a secure, slip-proof fit"], tags: ["Safety","Training Use","Premium"], img: imgBaskerville.src, link: "https://www.amazon.com/dp/B00596TFVA"},
+      {name: "BARKLESS Basket Muzzle", why: "A reliable cage muzzle for reactive and aggressive dogs during grooming, vet visits, or early conditioning stages when safety has to come first.", bullets: ["Open basket design — dog can pant and drink freely","Built for large, aggressive, and reactive dogs","Solid budget option for starting muzzle conditioning work"], tags: ["Safety","Budget Friendly"], img: imgBarkless.src, link: "https://www.amazon.com/dp/B0B4P1RYJX"},
     ]
   },
   {
     id: "treats",
-    label: "Treats & Training Rewards",
-    products: [
-      {name: "Zuke's Mini Naturals", why: "Small, soft, low-calorie — the perfect reward for high-repetition training sessions.", bullets: ["Pea-sized, great for rate of reinforcement","Multiple flavors to test preference","No wheat, corn, or soy"], tags: ["Puppies","Training Sessions"], img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-      {name: "Vital Farms Freeze-Dried Beef Liver", why: "High-value 'jackpot' reward for breakthrough moments. Use sparingly — this is the big gun.", bullets: ["Single ingredient: beef liver","Break into smaller pieces","Powerful motivator for food-driven dogs"], tags: ["Reactivity","High Drive Dogs"], img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-      {name: "Farmer's Dog (Fresh Food)", why: "If your dog is on kibble, this is the upgrade. Diet affects behavior. Fresh food = calmer baseline.", bullets: ["Vet-formulated recipes","Pre-portioned delivery","Significant coat + energy improvement"], tags: ["Nutrition","Daily Use"], img: "https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-    ]
+    label: "Food & Training Rewards",
+    useCarousel: true,
+    products: resolvedFoodProducts,
   },
   {
     id: "place",
     label: "Place Beds & Crates",
-    products: [
-      {name: "Kuranda Dog Bed (Aluminum Frame)", why: "Elevated, chew-resistant, easy to clean. The 'place' command needs a real place bed.", bullets: ["23-gauge aluminum frame","Ballistic nylon cover option","Sized for every breed"], tags: ["Place Training","Daily Use"], img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-      {name: "MidWest iCrate Single Door", why: "Properly-sized crating is foundational for calm behavior at home. This is the reliable standard.", bullets: ["Foldable, portable","Includes divider panel for puppies","Easy latch mechanism"], tags: ["Puppies","Crate Training"], img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-    ]
+    useCarousel: true,
+    products: resolvedPlaceProducts,
   },
   {
     id: "enrichment",
     label: "Toys & Enrichment",
-    products: [
-      {name: "KONG Classic", why: "Stuffed with kibble + a little peanut butter and frozen — the gold-standard calm enrichment tool.", bullets: ["Durable natural rubber","Dishwasher safe","Satisfies foraging instinct"], tags: ["Enrichment","Daily Use","Puppies"], img: "https://images.unsplash.com/photo-1548767797-d8c844163c4a?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-      {name: "Snuffle Mat — Varied Texture", why: "Nose work lowers arousal fast. A snuffle mat before a walk is a game-changer for reactive dogs.", bullets: ["Encourages slow foraging","Machine washable","Reduces pre-walk excitement"], tags: ["Reactivity","Enrichment"], img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-      {name: "West Paw Toppl", why: "Like a KONG but easier to fill and more durable. Great for breed-specific jaw shapes.", bullets: ["Interlocks with KONG for bigger challenge","Dishwasher safe","Float-friendly"], tags: ["Enrichment","Daily Use"], img: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&q=80&w=400", link: "https://amzn.to/placeholder"},
-    ]
+    useCarousel: true,
+    products: resolvedEnrichmentProducts,
   },
 ];
 ---
@@ -74,7 +171,7 @@ const categories = [
     />
     <div class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"></div>
   </div>
-  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-14" style="padding-top: 150px;">
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-14 pt-[220px] md:pt-[150px]">
     <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4" style="color: rgba(209,178,127,0.60);">Trainer-Approved Gear</p>
     <h1 class="font-heading font-bold text-white leading-[1.06] mb-3" style="font-size: clamp(2.6rem, 5vw, 4rem);">Shop</h1>
     <p class="headline-accent text-2xl md:text-3xl mb-4" style="color: #D1B27F; font-style: italic; font-weight: 700;">"Tools we actually use in training."</p>
@@ -96,7 +193,7 @@ const categories = [
 <!-- ══════════════════════════════════════════════
      CATEGORY TABS + PRODUCT GRID
 ══════════════════════════════════════════════ -->
-<div class="bg-[#FBF1E9] py-14 px-4">
+<div class="bg-[#FBF1E9] py-14 px-4 overflow-x-clip">
   <div class="max-w-7xl mx-auto">
 
     <!-- Sticky category tabs -->
@@ -106,7 +203,7 @@ const categories = [
           href={`#${c.id}`}
           class="px-4 py-2 rounded-full text-[11px] font-bold tracking-widest uppercase transition-all duration-200"
           style="border: 1px solid #E6DAC6; background: #FCF9FA; color: rgba(17,32,50,0.55);"
-          onmouseover={`this.style.borderColor='#D1B27F'; this.style.color='#B08A4A';`}
+          onmouseover={`this.style.borderColor='#D1B27F'; this.style.color='#D1B27F';`}
           onmouseout={`this.style.borderColor='#E6DAC6'; this.style.color='rgba(17,32,50,0.55)';`}
         >
           {c.label}
@@ -118,81 +215,327 @@ const categories = [
     {categories.map(cat => (
       <div id={cat.id} class="scroll-mt-28 mb-16">
         <div class="flex items-center gap-4 mb-8">
-          <div class="h-[2px] flex-1 rounded-full" style="background: linear-gradient(to right, #E6DAC6, transparent);"></div>
+          <div class="divider-line flex-1"></div>
           <h2 class="font-heading font-bold text-xl whitespace-nowrap" style="color: #0B2744;">{cat.label}</h2>
-          <div class="h-[2px] flex-1 rounded-full" style="background: linear-gradient(to left, #E6DAC6, transparent);"></div>
+          <div class="divider-line flex-1"></div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {cat.products.map(p => (
-            <div class="bg-[#FCF9FA] rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_3px_16px_rgba(0,0,0,0.06)] flex flex-col group hover:shadow-[0_6px_24px_rgba(0,0,0,0.10)] transition-shadow duration-200">
-              <!-- Product image -->
-              <div class="relative overflow-hidden text-white" style="height: 160px;">
-                {/* Remote product image temporarily replaced — FailedToFetchRemoteImageDimensions fix */}
-                <div class="w-full h-full" style="background-color: #0F6D7F;"></div>
-                <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 50%, rgba(11,39,68,0.45) 100%);"></div>
-              </div>
-              <!-- Card body -->
-              <div class="flex flex-col flex-1 p-6">
-                <h3 class="font-heading font-bold text-base mb-2" style="color: #0B2744;">{p.name}</h3>
-                <p class="text-xs italic mb-4 leading-relaxed" style="color: rgba(17,32,50,0.58);">{p.why}</p>
-                <ul class="space-y-1.5 mb-4">
-                  {p.bullets.map(b => (
-                    <li class="flex items-start gap-2 text-xs" style="color: rgba(17,32,50,0.65);">
-                      <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#D1B27F" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-                <!-- Tag chips -->
-                <div class="flex flex-wrap gap-1.5 mb-5">
-                  {p.tags.map(t => (
-                    <span class="text-[9px] font-bold tracking-wider uppercase px-2 py-1 rounded-full" style="background: rgba(209,178,127,0.10); color: #B08A4A; border: 1px solid rgba(209,178,127,0.20);">{t}</span>
-                  ))}
-                </div>
-                <div class="flex-1"></div>
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                  class="w-full inline-flex items-center justify-center gap-2 text-xs font-bold tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
-                  style="background: #D1B27F; color: #0B2744; padding: 12px 20px; box-shadow: 0 4px 12px rgba(209,178,127,0.28);"
-                >
-                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                  Shop on Amazon
-                </a>
+        <style>
+          .divider-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #E6DAC6 40%, #E6DAC6 60%, transparent);
+          }
+          .hide-scrollbar::-webkit-scrollbar { display: none; }
+          .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        </style>
+
+        {cat.useCarousel ? (
+          <!-- ── Data-driven multi-breakpoint carousel ── -->
+          <!-- Wrapper has no padding — viewport is full content width, matching the static grid rows exactly.
+               Arrows use -translate-x-1/2 / translate-x-1/2 to straddle the card boundary.
+               overflow-x-clip on the parent section prevents horizontal scroll. -->
+          <div class="relative" data-carousel>
+            <button
+              data-carousel-prev
+              disabled
+              class="absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-[#E6DAC6] bg-white flex items-center justify-center shadow-sm transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:enabled:border-[#D1B27F] active:enabled:scale-95"
+              aria-label="Previous products"
+            >
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button
+              data-carousel-next
+              class="absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full border border-[#E6DAC6] bg-white flex items-center justify-center shadow-sm transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:enabled:border-[#D1B27F] active:enabled:scale-95"
+              aria-label="Next products"
+            >
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+            <div class="overflow-hidden">
+              <div
+                data-carousel-track
+                class="flex gap-5 transition-transform duration-300 ease-in-out will-change-transform"
+              >
+                {(cat.products as ShopProduct[]).map(p => (
+                  <div class="flex-none w-full md:w-[calc(50%-10px)] lg:w-[calc(33.333%-13.334px)]">
+                    <div class="bg-[#FCF9FA] h-full rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_3px_16px_rgba(0,0,0,0.06)] flex flex-col group hover:shadow-[0_6px_24px_rgba(0,0,0,0.10)] transition-shadow duration-200">
+                      <!-- Product image -->
+                      <div class="relative overflow-hidden aspect-[2/1] py-[15px] bg-white">
+                        {p.image
+                          ? <img src={p.image} alt={p.title} class="w-full h-full object-contain" style="background:#ffffff;" loading="lazy" />
+                          : <div class="w-full h-full" style="background-color: #0F6D7F;"></div>
+                        }
+                      </div>
+                      <!-- Card body -->
+                      <div class="flex flex-col flex-1 p-6">
+                        <h3 class="font-heading font-bold text-base mb-2" style="color: #0B2744;">{p.title}</h3>
+                        <p class="text-xs italic mb-4 leading-relaxed" style="color: rgba(17,32,50,0.58);">{p.blurb}</p>
+                        <ul class="space-y-1.5 mb-4">
+                          {p.bullets.map(b => (
+                            <li class="flex items-start gap-2 text-xs" style="color: rgba(17,32,50,0.65);">
+                              <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#D1B27F" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                              {b}
+                            </li>
+                          ))}
+                        </ul>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                          {p.tags.map(t => (
+                            <span class="text-[9px] font-bold tracking-wider uppercase px-2 py-1 rounded-full" style="background: rgba(209,178,127,0.10); color: #D1B27F; border: 1px solid rgba(209,178,127,0.20);">{t}</span>
+                          ))}
+                        </div>
+                        <div class="flex-1"></div>
+                        <a
+                          href={p.url}
+                          target="_blank"
+                          rel="noopener noreferrer nofollow"
+                          class="w-full inline-flex items-center justify-center gap-2 text-xs font-bold tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+                          style="background: #D1B27F; color: #0B2744; padding: 12px 20px; box-shadow: 0 4px 12px rgba(209,178,127,0.28);"
+                        >
+                          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                          Shop on Amazon
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ) : (
+          <!-- ── Legacy grid + mobile-snap carousel for other sections ── -->
+          <div class="relative group/carousel">
+            <div
+              id={`carousel-${cat.id}`}
+              class="flex md:grid overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:grid-cols-2 lg:grid-cols-3 gap-5 pb-4 md:pb-0 hide-scrollbar scroll-smooth"
+            >
+              {(cat.products as OldProduct[]).map(p => (
+                <div class="min-w-full md:min-w-0 snap-center">
+                  <div class="bg-[#FCF9FA] h-full rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_3px_16px_rgba(0,0,0,0.06)] flex flex-col group hover:shadow-[0_6px_24px_rgba(0,0,0,0.10)] transition-shadow duration-200">
+                    <div class="relative overflow-hidden aspect-[2/1] py-[15px] bg-white">
+                      {p.img
+                        ? <img src={p.img} alt={p.name} class="w-full h-full object-contain" style="background:#ffffff;" loading="lazy" />
+                        : <div class="w-full h-full" style="background-color: #0F6D7F;"></div>
+                      }
+                    </div>
+                    <div class="flex flex-col flex-1 p-6">
+                      <h3 class="font-heading font-bold text-base mb-2" style="color: #0B2744;">{p.name}</h3>
+                      <p class="text-xs italic mb-4 leading-relaxed" style="color: rgba(17,32,50,0.58);">{p.why}</p>
+                      <ul class="space-y-1.5 mb-4">
+                        {p.bullets.map(b => (
+                          <li class="flex items-start gap-2 text-xs" style="color: rgba(17,32,50,0.65);">
+                            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#D1B27F" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                      <div class="flex flex-wrap gap-1.5 mb-5">
+                        {p.tags.map(t => (
+                          <span class="text-[9px] font-bold tracking-wider uppercase px-2 py-1 rounded-full" style="background: rgba(209,178,127,0.10); color: #D1B27F; border: 1px solid rgba(209,178,127,0.20);">{t}</span>
+                        ))}
+                      </div>
+                      <div class="flex-1"></div>
+                      <a
+                        href={p.link}
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        class="w-full inline-flex items-center justify-center gap-2 text-xs font-bold tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
+                        style="background: #D1B27F; color: #0B2744; padding: 12px 20px; box-shadow: 0 4px 12px rgba(209,178,127,0.28);"
+                      >
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        Shop on Amazon
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {cat.products.length > 1 && (
+              <div class="flex md:hidden justify-between items-center mt-4 px-2">
+                <button
+                  data-prev
+                  class="w-10 h-10 rounded-full border border-[#E6DAC6] bg-white flex items-center justify-center shadow-sm active:scale-95 transition-transform"
+                  aria-label="Previous product"
+                >
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <div class="flex gap-2 items-center">
+                  {cat.products.map((_, i) => (
+                    <button
+                      data-dot
+                      class="w-2 h-2 rounded-full transition-all duration-200 cursor-pointer"
+                      style={i === 0 ? "background: #0B2744; transform: scale(1.3);" : "background: #E6DAC6;"}
+                      aria-label={`Go to product ${i + 1}`}
+                    ></button>
+                  ))}
+                </div>
+                <button
+                  data-next
+                  class="w-10 h-10 rounded-full border border-[#E6DAC6] bg-white flex items-center justify-center shadow-sm active:scale-95 transition-transform"
+                  aria-label="Next product"
+                >
+                  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     ))}
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════════
-     MERCH COMING SOON
+     MERCH TEASER - FLUID COLLECTION SECTION
 ══════════════════════════════════════════════ -->
-<div class="bg-[#0B2744] py-16 px-4">
-  <div class="max-w-3xl mx-auto text-center">
-    <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4" style="color: rgba(209,178,127,0.50);">Coming Soon</p>
-    <h2 class="text-2xl md:text-3xl font-heading font-bold text-white mb-3">
-      Good Doggos <span class="headline-accent" style="color: #D1B27F; font-style: italic; font-weight: 700;">Merch</span>
-    </h2>
-    <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-xl mx-auto">
-      Hats, hoodies, and pack gear — for owners who take their dog's training seriously. Drop alerts go out to our Substack community first.
-    </p>
-    <a
-      href="https://gooddoggos.substack.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center justify-center gap-2 font-bold text-sm tracking-widest uppercase rounded-full transition-all duration-200 hover:-translate-y-0.5"
-      style="border: 2px solid rgba(209,178,127,0.40); color: #D1B27F; padding: 14px 32px; background: rgba(209,178,127,0.06);"
-    >
-      Subscribe on Substack →
-    </a>
-    <p class="mt-4 text-xs" style="color: rgba(255,255,255,0.30);">Be first to know when merch drops.</p>
+<section id="merch-coming-soon" class="bg-white py-20 md:py-28 border-y border-[#E6DAC6]/60">
+  <div class="max-w-7xl mx-auto px-5 md:px-10">
+    
+    <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-16 xl:gap-20">
+      
+      <!-- Content Side -->
+      <div class="w-full md:w-1/2 flex flex-col justify-center items-start lg:pl-6 order-2 md:order-1">
+        
+        <div class="inline-flex items-center gap-2 mb-6">
+          <span class="text-[10px] font-bold tracking-[0.22em] uppercase px-4 py-2 rounded-full border border-[#D1B27F]/60 text-[#D1B27F]" style="background: rgba(209,178,127,0.12);">
+            Coming Soon
+          </span>
+        </div>
+
+        <h2 class="text-4xl lg:text-5xl font-heading font-bold text-[#0B2744] mb-4 leading-tight">
+          Good Doggos <br class="hidden md:block" />
+          <span class="italic text-[#D1B27F]" style="font-family: 'Playfair Display', serif;">Merch</span>
+        </h2>
+
+        <p class="text-[#0B2744]/75 text-[16px] lg:text-[17px] leading-relaxed mb-10 max-w-md font-medium">
+          Custom hoodies, t-shirts, leashes, and other Good Doggos favorites are on the way.
+        </p>
+
+        <div class="w-full mt-2">
+          <a href="https://gooddoggos.substack.com" target="_blank" rel="noopener noreferrer" class="btn-apply w-full sm:w-auto uppercase tracking-[0.14em]">
+            FOLLOW OUR SUBSTACK FOR UPDATES
+          </a>
+        </div>
+        
+      </div>
+
+      <!-- Image Side (Soft, Elevated) -->
+      <div class="w-full md:w-1/2 relative h-[380px] md:h-[500px] order-1 md:order-2">
+        <div class="absolute inset-0 rounded-[2rem] overflow-hidden shadow-[0_12px_45px_rgba(11,39,68,0.06)] border border-[#E6DAC6]/40 text-white">
+          <Image src={merchImage} alt="Good Doggos Merch Coming Soon" class="w-full h-full object-cover object-center" style="filter: brightness(0.98);" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[rgba(11,39,68,0.15)] via-transparent to-transparent"></div>
+        </div>
+      </div>
+      
+    </div>
+    
   </div>
-</div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+
+    // ── Legacy mobile-snap carousel for non-data-carousel sections ──
+    document.querySelectorAll('[id^="carousel-"]').forEach(carousel => {
+      const wrapper = carousel.parentElement;
+      if (!wrapper) return;
+
+      const prevBtn = wrapper.querySelector('[data-prev]');
+      const nextBtn = wrapper.querySelector('[data-next]');
+      const dots = Array.from(wrapper.querySelectorAll('[data-dot]'));
+
+      function cardWidth() {
+        const first = carousel.firstElementChild;
+        if (!first) return carousel.offsetWidth;
+        const gap = parseFloat(getComputedStyle(carousel).gap) || 20;
+        return first.offsetWidth + gap;
+      }
+
+      function updateDots() {
+        if (!dots.length) return;
+        const index = Math.round(carousel.scrollLeft / (carousel.firstElementChild?.offsetWidth ?? 1));
+        dots.forEach((dot, i) => {
+          (dot as HTMLElement).style.background = i === index ? '#0B2744' : '#E6DAC6';
+          (dot as HTMLElement).style.transform = i === index ? 'scale(1.3)' : 'scale(1)';
+        });
+      }
+
+      prevBtn?.addEventListener('click', () => {
+        carousel.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+      });
+
+      nextBtn?.addEventListener('click', () => {
+        carousel.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+      });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          carousel.scrollTo({ left: i * (carousel.firstElementChild?.offsetWidth ?? 0), behavior: 'smooth' });
+        });
+      });
+
+      carousel.addEventListener('scroll', updateDots, { passive: true });
+    });
+
+    // ── Multi-breakpoint carousel for data-driven sections ──
+    document.querySelectorAll('[data-carousel]').forEach(carouselEl => {
+      const track = carouselEl.querySelector('[data-carousel-track]') as HTMLElement | null;
+      const prevBtn = carouselEl.querySelector('[data-carousel-prev]') as HTMLButtonElement | null;
+      const nextBtn = carouselEl.querySelector('[data-carousel-next]') as HTMLButtonElement | null;
+      if (!track || !prevBtn || !nextBtn) return;
+
+      let currentIndex = 0;
+
+      function getVisibleCount(): number {
+        if (window.innerWidth >= 1024) return 3;
+        if (window.innerWidth >= 768) return 2;
+        return 1;
+      }
+
+      function getTotalCards(): number {
+        return track!.children.length;
+      }
+
+      function getCardPlusGap(): number {
+        const card = track!.children[0] as HTMLElement | undefined;
+        if (!card) return 0;
+        // gap-5 = 20px; read actual gap in case CSS changes
+        const gap = parseFloat(getComputedStyle(track!).gap) || 20;
+        return card.getBoundingClientRect().width + gap;
+      }
+
+      function maxIndex(): number {
+        return Math.max(0, getTotalCards() - getVisibleCount());
+      }
+
+      function update(): void {
+        const offset = currentIndex * getCardPlusGap();
+        track!.style.transform = `translateX(-${offset}px)`;
+        prevBtn!.disabled = currentIndex === 0;
+        nextBtn!.disabled = currentIndex >= maxIndex();
+      }
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex = Math.max(0, currentIndex - 1);
+        update();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = Math.min(maxIndex(), currentIndex + 1);
+        update();
+      });
+
+      let resizeTimer: ReturnType<typeof setTimeout>;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          currentIndex = Math.min(currentIndex, maxIndex());
+          update();
+        }, 100);
+      });
+
+      update();
+    });
+
+  });
+</script>
 
 </Layout>
