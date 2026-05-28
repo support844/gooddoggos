@@ -223,6 +223,100 @@ import membershipImage from "../assets/images/diana-parkhouse-e2YwwTG-viI-unspla
   </div>
 
   <!-- ══════════════════════════════════════
+       GENERAL SUPPORT SERVICES FAQ
+  ══════════════════════════════════════ -->
+  <div class="bg-[#F8F4EF] pt-10 pb-2">
+    <div class="max-w-7xl mx-auto px-5 md:px-10">
+      <div class="rounded-xl overflow-hidden border border-[#E6DAC6]/50">
+        <button
+          onclick="toggleFaqBlock('gen-faqs')"
+          class="w-full flex items-center justify-between px-6 py-4 bg-white text-left"
+        >
+          <span
+            class="text-xs font-bold tracking-widest uppercase"
+            style="color:rgba(17,32,50,0.42);">General Support Services FAQs (6)</span
+          >
+          <svg
+            id="gen-faqs-chevron"
+            class="w-4 h-4 transition-transform duration-200"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="#0B2744"
+            stroke-width="2"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="gen-faqs" class="hidden">
+          {
+            [
+              {
+                q: "What makes Good Doggos support services different from regular dog walking or pet sitting?",
+                a: "Our support services are built to do more than cover care. Each visit is structured to reinforce calm behavior, routines, leash manners, and household expectations, so your dog is practicing better habits while you get help.",
+              },
+              {
+                q: 'What does "+ training" mean in these services?',
+                a: "It means we reinforce the standards your dog is learning, not just supervise them. Depending on the service, that may include leash structure, calm exits, boundaries around doors, settling, crate routine, place work, engagement, and everyday manners.",
+              },
+              {
+                q: "Do I need to schedule a consultation before booking?",
+                a: "Yes. All new support service clients begin with a free consultation so we can meet your dog, understand behavior and handling needs, and make sure we place you in the right service tier. Because of this, we typically cannot accept last-minute first-time bookings.",
+              },
+              {
+                q: "Are these services only for existing Good Doggos training clients?",
+                a: "No. New clients are welcome. We simply require a consultation first so we can make sure the service is a safe and appropriate fit for your dog.",
+              },
+              {
+                q: "Who are support services best for?",
+                a: "Support services are a fit for several kinds of dogs and owners. Some clients use them to maintain progress after training. Others use them as a structured starting point because their dog has never had formal training before. They can also be a great fit for busy owners who want help reinforcing better habits, or for families who are interested in a Good Doggos program and want to start with a lower-commitment service first.",
+              },
+              {
+                q: "How do I know whether my dog needs the standard tier or the reactive/aggressive tier?",
+                a: "The standard tier is for dogs who can be handled safely in normal everyday situations. The reactive/aggressive tier is for dogs with more serious behavior concerns, such as lunging, intense reactivity, stranger danger, handling sensitivity, or bite history. We will help place you in the correct tier during your consultation.",
+              },
+            ].map((faq, i) => (
+              <div class="border-t border-[#E6DAC6]/50 bg-white">
+                <button
+                  class="w-full flex justify-between items-center px-6 py-4 text-left"
+                  onclick={`toggleFaq('gen-q${i}')`}
+                >
+                  <span class="text-sm font-medium pr-4" style="color:#112032;">
+                    {faq.q}
+                  </span>
+                  <svg
+                    id={`gen-q${i}-icon`}
+                    class="w-4 h-4 flex-shrink-0 transition-transform duration-200"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#0B2744"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                </button>
+                <div id={`gen-q${i}`} class="hidden px-6 pb-4">
+                  <p
+                    class="text-sm leading-relaxed"
+                    style="color:rgba(17,32,50,0.65);"
+                  >
+                    {faq.a}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
        DOG WALKING
   ══════════════════════════════════════ -->
   <section id="dog-walking" class="bg-[#F8F4EF] py-16 md:py-20 scroll-mt-20">
@@ -347,6 +441,90 @@ import membershipImage from "../assets/images/diana-parkhouse-e2YwwTG-viI-unspla
           </div>
         </div>
 
+      </div>
+
+      <!-- FAQ: DOG WALKING -->
+      <div class="mt-10 rounded-xl overflow-hidden border border-[#E6DAC6]/50">
+        <button
+          onclick="toggleFaqBlock('dw-faqs')"
+          class="w-full flex items-center justify-between px-6 py-4 bg-white text-left"
+        >
+          <span
+            class="text-xs font-bold tracking-widest uppercase"
+            style="color:rgba(17,32,50,0.42);">Dog Walking FAQs (5)</span
+          >
+          <svg
+            id="dw-faqs-chevron"
+            class="w-4 h-4 transition-transform duration-200"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="#0F8992"
+            stroke-width="2"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="dw-faqs" class="hidden">
+          {
+            [
+              {
+                q: "What is included in Dog Walking + Training?",
+                a: "Dog Walking + Training includes a structured walk with built-in reinforcement of better behavior. We focus on calm leash handling, engagement, walking manners, and real-world exposure so your dog is practicing useful skills during every outing.",
+              },
+              {
+                q: "Is this a good fit for dogs that pull, bark, lunge, or get overstimulated on walks?",
+                a: "Absolutely. Dogs who struggle with arousal, pulling, barking, or leash frustration often benefit from more structured handling. Dogs with more serious behavior issues may need the reactive/aggressive tier so we can approach the walk with the right level of caution and skill.",
+              },
+              {
+                q: "Will this still help if my dog has never had formal training before?",
+                a: "Yes. Dog Walking + Training can be helpful for dogs who already have training, but it can also be a strong starting point for dogs who need more structure and better habits in everyday life. For busy owners, it can also provide helpful consistency while deciding whether a fuller training program is the right next step.",
+              },
+              {
+                q: "Will you reinforce my dog's existing commands, structure, and walking tools?",
+                a: "Yes. We aim to keep handling consistent and reinforce the structure your dog already knows, as long as it is safe and appropriate. That way, your dog gets clearer repetition instead of mixed messages.",
+              },
+              {
+                q: "Are walks done solo or with other dogs?",
+                a: "Support walks are planned based on your dog's needs and safety. For many dogs, especially those working on behavior, solo handling is the best fit. We will discuss what is most appropriate during your consultation.",
+              },
+            ].map((faq, i) => (
+              <div class="border-t border-[#E6DAC6]/50 bg-white">
+                <button
+                  class="w-full flex justify-between items-center px-6 py-4 text-left"
+                  onclick={`toggleFaq('dw-q${i}')`}
+                >
+                  <span class="text-sm font-medium pr-4" style="color:#112032;">
+                    {faq.q}
+                  </span>
+                  <svg
+                    id={`dw-q${i}-icon`}
+                    class="w-4 h-4 flex-shrink-0 transition-transform duration-200"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#0F8992"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                </button>
+                <div id={`dw-q${i}`} class="hidden px-6 pb-4">
+                  <p
+                    class="text-sm leading-relaxed"
+                    style="color:rgba(17,32,50,0.65);"
+                  >
+                    {faq.a}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   </section>
@@ -477,6 +655,94 @@ import membershipImage from "../assets/images/diana-parkhouse-e2YwwTG-viI-unspla
         </div>
 
       </div>
+
+      <!-- FAQ: PET SITTING -->
+      <div class="mt-10 rounded-xl overflow-hidden border border-[#E6DAC6]/50">
+        <button
+          onclick="toggleFaqBlock('ps-faqs')"
+          class="w-full flex items-center justify-between px-6 py-4 bg-white text-left"
+        >
+          <span
+            class="text-xs font-bold tracking-widest uppercase"
+            style="color:rgba(17,32,50,0.42);">Pet Sitting FAQs (6)</span
+          >
+          <svg
+            id="ps-faqs-chevron"
+            class="w-4 h-4 transition-transform duration-200"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="#D1B27F"
+            stroke-width="2"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div id="ps-faqs" class="hidden">
+          {
+            [
+              {
+                q: "What is included in Pet Sitting + Training?",
+                a: "Pet Sitting + Training includes in-home care with structure built in. We care for your dog while also reinforcing routines, boundaries, and everyday behavior expectations, so your dog stays more consistent while you are away.",
+              },
+              {
+                q: "Will you keep my dog's routines, rules, and boundaries consistent while I'm away?",
+                a: "Yes. That is a major part of the service. We aim to follow the structure your dog is used to, including routines around crate time, doors, feeding, settling, leash handling, and household rules, so progress is maintained as much as possible.",
+              },
+              {
+                q: "Do you offer overnight care or drop-in visits?",
+                a: "We currently offer hour-long drop-in visits only. Multiple drop-ins can be scheduled per day depending on your dog's needs and our availability. This format lets us provide more intentional, structured care while reinforcing routines, boundaries, and everyday expectations throughout the day.",
+              },
+              {
+                q: "Can this still help if my dog has never had formal training before?",
+                a: "Yes. Pet Sitting + Training is not only for dogs already in training. It can also be a helpful starting point for dogs who need more structure, clearer routines, and steadier handling, especially for busy owners who want better habits reinforced even before committing to a full program.",
+              },
+              {
+                q: "Can you care for dogs with anxiety, reactivity, or aggression?",
+                a: "Yes, when it is a fit for the service and we have met the dog first. Dogs with more serious behavior needs may require the reactive/aggressive tier so we can plan handling, safety, and structure appropriately.",
+              },
+              {
+                q: "Can Pet Sitting + Training help prevent backsliding while I travel?",
+                a: "That is exactly the goal. Travel can disrupt routines and lower consistency, which often causes behavior to slip. Pet Sitting + Training helps keep expectations in place so your dog stays more stable while you are gone.",
+              },
+            ].map((faq, i) => (
+              <div class="border-t border-[#E6DAC6]/50 bg-white">
+                <button
+                  class="w-full flex justify-between items-center px-6 py-4 text-left"
+                  onclick={`toggleFaq('ps-q${i}')`}
+                >
+                  <span class="text-sm font-medium pr-4" style="color:#112032;">
+                    {faq.q}
+                  </span>
+                  <svg
+                    id={`ps-q${i}-icon`}
+                    class="w-4 h-4 flex-shrink-0 transition-transform duration-200"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="#D1B27F"
+                    stroke-width="2"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 4v16m8-8H4"
+                    />
+                  </svg>
+                </button>
+                <div id={`ps-q${i}`} class="hidden px-6 pb-4">
+                  <p
+                    class="text-sm leading-relaxed"
+                    style="color:rgba(17,32,50,0.65);"
+                  >
+                    {faq.a}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </section>
 
@@ -590,6 +856,23 @@ import membershipImage from "../assets/images/diana-parkhouse-e2YwwTG-viI-unspla
   </section>
 
   <script>
+    function toggleFaqBlock(id: string) {
+      const block = document.getElementById(id);
+      const chev = document.getElementById(`${id}-chevron`);
+      if (!block || !chev) return;
+      const wasHidden = block.classList.toggle("hidden");
+      (chev as HTMLElement).style.transform = wasHidden ? "" : "rotate(180deg)";
+    }
+    function toggleFaq(id: string) {
+      const content = document.getElementById(id);
+      const icon = document.getElementById(`${id}-icon`);
+      if (!content || !icon) return;
+      const wasHidden = content.classList.toggle("hidden");
+      (icon as HTMLElement).style.transform = wasHidden ? "" : "rotate(45deg)";
+    }
+    (window as any).toggleFaqBlock = toggleFaqBlock;
+    (window as any).toggleFaq = toggleFaq;
+
     // Smooth scroll + active state for segmented nav
     const navItems = document.querySelectorAll('.segment-item');
     navItems.forEach(item => {

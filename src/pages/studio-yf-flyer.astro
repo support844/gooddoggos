@@ -1,0 +1,586 @@
+---
+import { Image } from "astro:assets";
+import heroDogConfident from "../assets/images/hero-dog-confident.jpg";
+import brandLogoWhite from "../assets/images/brand-logo-white.png";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Good Doggos × Studio YF — Free Session Flyer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Poppins:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── PRINT SETUP ─────────────────────────────── */
+      @page {
+        size: letter portrait;
+        margin: 0;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 8.5in;
+        height: 11in;
+        overflow: hidden;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        font-family: 'Poppins', sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ── PAGE WRAPPER ───────────────────────────── */
+      .flyer {
+        width: 8.5in;
+        height: 11in;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      /* ── HERO SECTION (~43% height) ─────────────── */
+      .hero {
+        position: relative;
+        height: 4.73in;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #0B2744;
+        flex-shrink: 0;
+      }
+
+      .hero-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(11, 39, 68, 0.82) 0%,
+          rgba(11, 39, 68, 0.62) 50%,
+          rgba(11, 39, 68, 0.92) 100%
+        );
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 0.6in;
+        padding-top: 0.65in;
+      }
+
+      /* Logo */
+      .logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        display: flex;
+        justify-content: center;
+        padding-top: 0.22in;
+      }
+
+      .logo img {
+        height: 0.52in;
+        width: auto;
+      }
+
+      /* Partnership pill */
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 14px;
+        margin-bottom: 0.18in;
+        border-radius: 9999px;
+        border: 1px solid rgba(209, 178, 127, 0.45);
+        background-color: rgba(209, 178, 127, 0.12);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .pill-text {
+        font-family: 'Poppins', sans-serif;
+        font-size: 8.5pt;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #D1B27F;
+      }
+
+      /* H1 */
+      .hero-h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 38pt;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.15in;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+      }
+
+      /* Subheadline */
+      .hero-sub {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 16.5pt;
+        font-weight: 700;
+        color: #0F8992;
+        line-height: 1.3;
+        margin-bottom: 0.22in;
+        max-width: 5.5in;
+      }
+
+      /* Partnership intro text */
+      .hero-body {
+        font-family: 'Poppins', sans-serif;
+        font-size: 9.5pt;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.55;
+        max-width: 5.2in;
+      }
+
+      .hero-body strong {
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.95);
+      }
+
+      /* ── BENEFITS SECTION (~35% height) ─────────── */
+      .benefits {
+        background-color: #FBF1E9;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        height: 3.85in;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 0.28in 0.55in 0.22in;
+        gap: 0;
+      }
+
+      .benefits-header {
+        text-align: center;
+        margin-bottom: 0.18in;
+      }
+
+      .kicker {
+        font-family: 'Poppins', sans-serif;
+        font-size: 7.5pt;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(11, 39, 68, 0.55);
+        margin-bottom: 6px;
+      }
+
+      .benefits-h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 19pt;
+        font-weight: 700;
+        color: #0B2744;
+        line-height: 1.15;
+      }
+
+      /* Cards */
+      .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1in;
+        flex: 1;
+      }
+
+      .card {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.15in;
+        background-color: #ffffff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        border: 1px solid rgba(11, 39, 68, 0.07);
+        border-radius: 12px;
+        padding: 0.14in 0.18in;
+        box-shadow: 0 2px 12px rgba(11, 39, 68, 0.07);
+        flex: 1;
+      }
+
+      .check-circle {
+        flex-shrink: 0;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: #F3EDE6;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+      }
+
+      .check-icon {
+        width: 14px;
+        height: 14px;
+        color: #0F8992;
+      }
+
+      .card-text-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 10pt;
+        font-weight: 700;
+        color: #0B2744;
+        line-height: 1.3;
+        margin-bottom: 3px;
+      }
+
+      .card-text-body {
+        font-family: 'Poppins', sans-serif;
+        font-size: 8.5pt;
+        font-weight: 400;
+        color: rgba(19, 32, 42, 0.62);
+        line-height: 1.5;
+      }
+
+      /* ── URGENCY BANNER (~8% height) ────────────── */
+      .urgency {
+        background-color: #0B2744;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        height: 0.55in;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 0.5in;
+      }
+
+      .urgency-icon {
+        width: 16px;
+        height: 16px;
+        color: #D1B27F;
+        flex-shrink: 0;
+      }
+
+      .urgency-text {
+        font-family: 'Poppins', sans-serif;
+        font-size: 9.5pt;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: 0.02em;
+      }
+
+      .urgency-text .gold {
+        color: #D1B27F;
+      }
+
+      .urgency-text .underlined {
+        text-decoration: underline;
+        text-decoration-color: rgba(209, 178, 127, 0.55);
+        text-underline-offset: 2px;
+      }
+
+      /* ── CTA SECTION (~14% height) ──────────────── */
+      .cta {
+        background-color: #0B2744;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        height: 1.87in;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35in;
+        padding: 0 0.55in;
+      }
+
+      .cta-left {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1in;
+        flex: 1;
+      }
+
+      .cta-kicker {
+        font-family: 'Poppins', sans-serif;
+        font-size: 7.5pt;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(209, 178, 127, 0.75);
+      }
+
+      .cta-h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 18pt;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.1;
+        margin-bottom: 2px;
+      }
+
+      .cta-body {
+        font-family: 'Poppins', sans-serif;
+        font-size: 9pt;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.55;
+        max-width: 3.2in;
+      }
+
+      /* ── QR Code block ──────────────────────────── */
+      .qr-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+
+      .qr-frame {
+        background-color: #FBF1E9;
+        border-radius: 10px;
+        padding: 8px;
+        border: 2px solid rgba(209, 178, 127, 0.55);
+        box-shadow:
+          0 0 0 4px rgba(209, 178, 127, 0.18),
+          0 6px 20px rgba(0,0,0,0.25);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .qr-img {
+        display: block;
+        width: 1.35in;
+        height: 1.35in;
+        image-rendering: pixelated;
+      }
+
+      .qr-label {
+        font-family: 'Poppins', sans-serif;
+        font-size: 8pt;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #D1B27F;
+        margin-top: 2px;
+      }
+
+      /* Logo footer */
+      .cta-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+      }
+
+      .cta-logo img {
+        height: 0.38in;
+        width: auto;
+        opacity: 0.6;
+      }
+
+      .cta-logo-tagline {
+        font-family: 'Poppins', sans-serif;
+        font-size: 7pt;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 0.05em;
+      }
+
+      /* ── SCREEN PREVIEW FRAME ────────────────────── */
+      @media screen {
+        body {
+          background: #444;
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          min-height: 100vh;
+          padding: 40px;
+          overflow: auto;
+        }
+
+        .flyer {
+          box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="flyer">
+
+      <!-- ── HERO ─────────────────────────────────── -->
+      <section class="hero">
+        <!-- Background image -->
+        <Image
+          src={heroDogConfident}
+          alt="Confident, well-trained dog"
+          class="hero-img"
+          width={1200}
+          height={680}
+          loading="eager"
+        />
+        <!-- Navy gradient overlay -->
+        <div class="hero-overlay"></div>
+
+        <!-- Logo -->
+        <div class="logo">
+          <Image
+            src={brandLogoWhite}
+            alt="Good Doggos"
+            width={320}
+            height={64}
+          />
+        </div>
+
+        <!-- Hero copy -->
+        <div class="hero-content">
+          <!-- Partnership eyebrow pill -->
+          <div class="pill">
+            <span class="pill-text">An Exclusive Benefit for the Studio YF Community</span>
+          </div>
+
+          <!-- H1 -->
+          <h1 class="hero-h1">
+            Tired of Your Dog<br />Running The Show?
+          </h1>
+
+          <!-- Italic teal subheadline -->
+          <p class="hero-sub">
+            Claim Your <span style="color: #ffffff; text-decoration: underline;">Free</span> 30-Minute Intro Training Session<br />(Studio YF Member Exclusive).
+          </p>
+
+          <!-- Body intro -->
+          <p class="hero-body">
+            <strong>A Special Benefit for Our Community:</strong> To express our gratitude to our dedicated clients,
+            Studio YF is proud to partner with <em>Good Doggos</em>, San Jacinto's premier specialists
+            for reactive dogs, to offer you an exclusive VIP advantage.
+          </p>
+        </div>
+      </section>
+
+      <!-- ── BENEFITS ──────────────────────────────── -->
+      <section class="benefits">
+        <div class="benefits-header">
+          <p class="kicker">What You'll Walk Away With</p>
+          <h2 class="benefits-h2">In Just 30 Minutes, We Will:</h2>
+        </div>
+
+        <div class="cards">
+          <!-- Card 1 -->
+          <div class="card">
+            <div class="check-circle">
+              <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <p class="card-text-title">Discover the &ldquo;communication gap&rdquo; creating your daily chaos.</p>
+              <p class="card-text-body">Identify the exact disconnect between you and your dog that&rsquo;s causing frustration on both ends of the leash.</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card">
+            <div class="check-circle">
+              <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <p class="card-text-title">Prove, in real-time, that your dog actually <em>can</em> listen to you.</p>
+              <p class="card-text-body">You&rsquo;ll see a measurable shift in your dog&rsquo;s responsiveness during the session itself &mdash; not weeks from now.</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card">
+            <div class="check-circle">
+              <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <p class="card-text-title">Get a personalized roadmap specific to your relationship with your dog.</p>
+              <p class="card-text-body">Leave with a clear, step-by-step plan tailored to your dog&rsquo;s breed, temperament, and your household&rsquo;s real life.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── URGENCY BANNER ────────────────────────── -->
+      <div class="urgency">
+        <svg class="urgency-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+        </svg>
+        <p class="urgency-text">
+          <span class="gold">Limited Availability:</span>&nbsp;
+          Strictly limited to <span class="underlined">10 complimentary sessions</span> this month.
+        </p>
+      </div>
+
+      <!-- ── CTA ───────────────────────────────────── -->
+      <section class="cta">
+        <div class="cta-left">
+          <p class="cta-kicker">One Simple Step</p>
+          <h2 class="cta-h2">Unlock Your Free Session</h2>
+          <p class="cta-body">
+            Fill out the short application to instantly unlock your 30&#8209;minute booking link.
+            We review every application personally and respond within 24 hours.
+          </p>
+        </div>
+
+        <!-- QR Code block -->
+        <div class="qr-block">
+          <div class="qr-frame">
+            <img src="/images/studio-yf-qr.png" alt="Scan to claim your free session" class="qr-img" />
+          </div>
+          <p class="qr-label">Scan to Claim</p>
+        </div>
+
+        <div class="cta-logo">
+          <Image
+            src={brandLogoWhite}
+            alt="Good Doggos"
+            width={200}
+            height={40}
+          />
+          <span class="cta-logo-tagline">gooddoggos.com</span>
+        </div>
+      </section>
+
+    </div>
+  </body>
+</html>
