@@ -1,6 +1,6 @@
 ---
 export interface Props {
-    program: "ccc" | "pa" | "rdi";
+    program: "ccc" | "pa" | "rdi" | "bt";
 }
 
 const { program } = Astro.props;
@@ -26,6 +26,13 @@ const config = {
         linkText: "See Guarantee Details.",
         color: "#7D2C2D",
         bg: "rgba(125,44,45,0.06)",
+    },
+    bt: {
+        title: "Full Satisfaction Guarantee",
+        body: "Your dog lives with us for 5 days. If you're not seeing real progress, we'll make it right.",
+        linkText: "See Guarantee Details.",
+        color: "#0B2744",
+        bg: "rgba(11,39,68,0.07)",
     },
 };
 
@@ -69,7 +76,7 @@ const g = config[program];
         >
             <span class="hidden lg:inline">{g.body}</span>
             <a
-                href="/guarantee"
+                href={program === "bt" ? "/guarantee#bt-guarantee" : "/guarantee"}
                 class="font-medium hover:underline inline"
                 style={`color: ${g.color};`}>{g.linkText}</a
             >

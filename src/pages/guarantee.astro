@@ -78,6 +78,149 @@ import heroImage from "../assets/images/high-five.jpg";
 ══════════════════════════════════════════════ -->
   <div class="bg-[#FBF1E9] py-20 px-4">
     <div class="max-w-4xl mx-auto space-y-8">
+      <!-- ── BOARD & TRAIN GUARANTEE ── -->
+      <div
+        id="bt-guarantee"
+        class="rounded-2xl overflow-hidden border border-[#E6DAC6] shadow-[0_6px_28px_rgba(0,0,0,0.07)] bg-[#FCF9FA] flex flex-col"
+      >
+        <div class="h-[6px] w-full" style="background: #0B2744;"></div>
+        <div class="p-8 md:p-10">
+          <!-- Header -->
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-5">
+            <div>
+              <span
+                class="text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-3 inline-block"
+                style="background: rgba(11,39,68,0.07); color: #0B2744; border: 1px solid rgba(11,39,68,0.18);"
+                >5-Day Blitz · Board &amp; Train</span
+              >
+              <h2
+                class="text-2xl md:text-3xl font-heading font-bold"
+                style="color: #0B2744;"
+              >
+                Full Satisfaction Guarantee
+              </h2>
+            </div>
+            <div
+              class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+              style="background: rgba(11,39,68,0.08); border: 1.5px solid rgba(11,39,68,0.18);"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#0B2744"
+                stroke-width="1.8"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+
+          <p class="text-base leading-relaxed mb-8" style="color: rgba(17,32,50,0.72);">
+            We're so confident you'll see a real transformation in your dog's behavior during the 5-Day Blitz, we back every stay with a simple promise: if you don't see a noticeable difference in your dog's behavior compared to where they started, you get your money back.
+          </p>
+
+          <!-- What We Guarantee callout -->
+          <div
+            class="rounded-xl p-5 border mb-7"
+            style="background: rgba(11,39,68,0.04); border-color: rgba(11,39,68,0.14);"
+          >
+            <p class="font-bold text-sm mb-2" style="color: #0B2744;">What We Guarantee</p>
+            <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.78);">
+              A visible, noticeable improvement in your dog's behavior by the end of the 5 days — compared to where they started. This could be calmer leash behavior, improved responsiveness to basic cues, better social manners with other dogs, or any agreed-upon behavior we discussed at drop-off. You'll see it on pickup day. Or you get a full refund.
+            </p>
+          </div>
+
+          <!-- How It Works -->
+          <div class="mb-7">
+            <p
+              class="text-[11px] font-bold tracking-[0.22em] uppercase mb-4"
+              style="color: rgba(11,39,68,0.55);"
+            >
+              How It Works
+            </p>
+            <div class="grid md:grid-cols-3 gap-4">
+              {
+                [
+                  {
+                    step: "01",
+                    title: "Day 1 Baseline",
+                    desc: "We note where your dog is starting and agree on the behaviors you most want to see improve.",
+                  },
+                  {
+                    step: "02",
+                    title: "5 Days of Work",
+                    desc: "Your dog trains, socializes, and bonds with our trainer every day in a structured home environment.",
+                  },
+                  {
+                    step: "03",
+                    title: "Pickup Day",
+                    desc: "We demonstrate the progress. You see the difference with your own eyes — or you get a full refund.",
+                  },
+                ].map((s) => (
+                  <div
+                    class="rounded-xl p-5 border border-[#E6DAC6]"
+                    style="background: rgba(11,39,68,0.02);"
+                  >
+                    <p class="font-heading font-extrabold text-2xl mb-1" style="color: rgba(11,39,68,0.18);">{s.step}</p>
+                    <p class="font-bold text-sm mb-1" style="color: #0B2744;">{s.title}</p>
+                    <p class="text-xs leading-relaxed" style="color: rgba(17,32,50,0.60);">{s.desc}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+
+          <!-- Conditions accordion -->
+          <div class="rounded-xl border border-[#E6DAC6] overflow-hidden mb-5">
+            <button
+              class="w-full flex justify-between items-center px-6 py-4 text-left bg-white transition-colors hover:bg-gray-50"
+              onclick="toggleGuaranteeFaq('bt-conditions')"
+            >
+              <span class="font-bold text-sm" style="color: #0B2744;">Conditions Apply — See Full Details</span>
+              <svg
+                id="bt-conditions-icon"
+                class="w-4 h-4 flex-shrink-0 transition-transform duration-200"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#0B2744"
+                stroke-width="2"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+              </svg>
+            </button>
+            <div
+              id="bt-conditions"
+              class="hidden px-6 py-4 border-t border-[#E6DAC6]"
+              style="background: rgba(11,39,68,0.02);"
+            >
+              <p class="text-[11px] mb-3 leading-relaxed" style="color: rgba(17,32,50,0.72);">
+                This guarantee is built around honest intake and full participation. The following may affect eligibility:
+              </p>
+              <ul
+                class="text-[11px] leading-relaxed space-y-2 list-disc pl-4 mb-4"
+                style="color: rgba(17,32,50,0.72);"
+              >
+                <li>Dog does not complete the full 5-day stay (early pickup without prior agreement)</li>
+                <li>Owner withholds or misrepresents behavioral history, bite incidents, medical conditions, or known triggers at drop-off</li>
+                <li>A medical or health issue arises during the stay that prevents normal training participation</li>
+                <li>Owner refuses the recommended follow-up plan or handoff instructions on pickup day</li>
+                <li>The "noticeable difference" claim is assessed against the behaviors agreed upon at intake — not open-ended lifestyle expectations</li>
+              </ul>
+              <p class="text-[11px] font-medium mb-2" style="color: rgba(11,39,68,0.70);">
+                If something comes up during the stay that might affect outcomes, we'll communicate with you promptly and work toward the best path forward.
+              </p>
+              <p class="text-[10px]" style="color: rgba(17,32,50,0.5);">
+                <a href="/terms" class="hover:underline transition-colors">Additional terms of service can be found here.</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- ── CCC GUARANTEE ── -->
       <div
         id="ccc-guarantee"
