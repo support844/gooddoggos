@@ -1,9 +1,10 @@
 {
     "id": "t1",
-    "client_name": "Sarah Montgomery",
-    "dog_name": "Atlas",
-    "dog_breed": "German Shepherd",
-    "program_id": "Private Accelerator",
-    "quote": "Before Atlas, I was terrified to leave the house. Good Doggos provided the structure we both needed. Today, Atlas is calm, focused, and a joy to walk.",
-    "image_path": "https://images.unsplash.com/photo-1625316709695-c580581a539d?q=80&w=1500&auto=format&fit=crop"
+    "title": "I can't say enough great things",
+    "client_name": "Brooke Milholland",
+    "dog_name": "Penny",
+    "program_id": "",
+    "quote": "I can't say enough great things about Victor as a dog trainer! His knowledge, professionalism, and genuine passion for what he does truly set him apart. At just our very first session, it was clear that he understands not just dogs, but how to effectively teach owners as well.\n\nHe worked with my very hyperactive dog Penny on \"place,\" helping create a calm, safe space for her that will make such a difference in her behavior.\n\nWe also focused on leash walking, and Victor introduced us to new redirection techniques that are going to completely change our walks for the better. I'm looking forward to our walks being less stressful and more enjoyable, and feeling so much more confident handling her.\n\nVictor explains everything in a way that's easy to understand and practical to apply, and he's incredibly patient and encouraging throughout the process. If you're looking for a trainer who is skilled, professional, and truly cares about both you and your dog, I highly recommend Good Doggos!",
+    "image_path": "testimonials-penny.png",
+    "object_position": "50% 32%"
 }

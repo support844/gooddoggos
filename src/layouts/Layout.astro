@@ -1,7 +1,6 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import Banner from "../components/Banner.astro";
 import "../styles/global.css";
 
 export interface Props {
@@ -39,8 +38,7 @@ const { title = "Good Doggos", description = "Good Doggos — Expert dog trainer
             id="site-header"
             class="fixed top-0 left-0 right-0 z-50 flex flex-col"
         >
-            <Banner />
-            <Navbar alwaysSolid={headerAlwaysSolid} />
+<Navbar alwaysSolid={headerAlwaysSolid} />
         </div>
         <main class="flex-grow">
             <slot />

@@ -25,6 +25,10 @@ import rotatingBruce from "../assets/images/bruce-warrington-WSAOGHKEqFc-unsplas
 import rotatingKojirou from "../assets/images/kojirou-sasaki-Tx7cJ3t207k-unsplash.jpg";
 import rotatingJoe from "../assets/images/joe-caione-qO-PIF84Vxg-unsplash.jpg";
 import rotatingDavid from "../assets/images/david-taffet-DNViTo3BUpk-unsplash.jpg";
+// Process card photos
+import processCardApplication from "../assets/images/Cerberus & Toy.png";
+import processCardDiagnostic from "../assets/images/Cerberus Tugging.png";
+import processCardRoadmap from "../assets/images/Victor Playing W Cerberus.png";
 
 const programs = await getCollection("programs");
 ---
@@ -118,135 +122,150 @@ const programs = await getCollection("programs");
 
                 <!-- STEP 1: Application -->
                 <div
-                    class="bg-[#FCF9FA] rounded-[24px] border border-[#EAE1D3]/60 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4px_10px_rgba(11,39,68,0.04)] p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500"
+                    class="bg-[#FCF9FA] rounded-[24px] border border-[#EAE1D3]/60 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4px_10px_rgba(11,39,68,0.04)] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col"
                 >
-                    <!-- Step Watermark Number -->
-                    <div
-                        class="absolute top-6 right-8 font-heading font-bold text-[80px] leading-none text-primary-navy/10 select-none group-hover:text-primary-navy/15 transition-colors"
-                    >
-                        01
-                    </div>
-
-                    <!-- Icon Chip -->
-                    <div
-                        class="w-14 h-14 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-accent-gold/20"
-                    >
-                        <svg
-                            class="w-7 h-7 text-accent-gold"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
+                    <div class="p-8 md:p-10 relative flex-1">
+                        <!-- Step Watermark Number -->
+                        <div
+                            class="absolute top-6 right-8 font-heading font-bold text-[80px] leading-none text-primary-navy/10 select-none group-hover:text-primary-navy/15 transition-colors"
                         >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                            ></path>
-                        </svg>
-                    </div>
+                            01
+                        </div>
 
-                    <h3
-                        class="text-2xl font-heading font-bold text-primary-navy mb-4"
-                    >
-                        The Application
-                    </h3>
-                    <p
-                        class="text-secondary-slate/85 leading-[1.7] text-[15px] font-body"
-                    >
-                        Secure your spot. Because we take a limited number of
-                        cases, we review every application so we can come
-                        prepared with the right plan and confirm you're a
-                        candidate for our programs.
-                    </p>
+                        <!-- Icon Chip -->
+                        <div
+                            class="w-14 h-14 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-accent-gold/20"
+                        >
+                            <svg
+                                class="w-7 h-7 text-accent-gold"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                ></path>
+                            </svg>
+                        </div>
+
+                        <h3
+                            class="text-2xl font-heading font-bold text-primary-navy mb-4"
+                        >
+                            The Application
+                        </h3>
+                        <p
+                            class="text-secondary-slate/85 leading-[1.7] text-[15px] font-body"
+                        >
+                            Secure your spot. Because we take a limited number of
+                            cases, we review every application so we can come
+                            prepared with the right plan and confirm you're a
+                            candidate for our programs.
+                        </p>
+                    </div>
+                    <div class="relative overflow-hidden flex-shrink-0" style="height: 180px;">
+                        <Image src={processCardApplication} alt="Cerberus playing with a toy" class="w-full h-full object-cover" style="object-position: center 15%;" />
+                    </div>
                 </div>
 
                 <!-- STEP 2: In-Person Diagnostic -->
                 <div
-                    class="bg-[#FCF9FA] rounded-[24px] border border-[#EAE1D3]/60 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4px_10px_rgba(11,39,68,0.04)] p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500"
+                    class="bg-[#FCF9FA] rounded-[24px] border border-[#EAE1D3]/60 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4px_10px_rgba(11,39,68,0.04)] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col"
                 >
-                    <!-- Step Watermark Number -->
-                    <div
-                        class="absolute top-6 right-8 font-heading font-bold text-[80px] leading-none text-primary-navy/10 select-none group-hover:text-primary-navy/15 transition-colors"
-                    >
-                        02
-                    </div>
-
-                    <!-- Icon Chip -->
-                    <div
-                        class="w-14 h-14 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-accent-gold/20"
-                    >
-                        <svg
-                            class="w-7 h-7 text-accent-gold"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
+                    <div class="p-8 md:p-10 relative flex-1">
+                        <!-- Step Watermark Number -->
+                        <div
+                            class="absolute top-6 right-8 font-heading font-bold text-[80px] leading-none text-primary-navy/10 select-none group-hover:text-primary-navy/15 transition-colors"
                         >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                            ></path>
-                        </svg>
-                    </div>
+                            02
+                        </div>
 
-                    <h3
-                        class="text-2xl font-heading font-bold text-primary-navy mb-4"
-                    >
-                        In-Person Diagnostic
-                    </h3>
-                    <p
-                        class="text-secondary-slate/85 leading-[1.7] text-[15px] font-body"
-                    >
-                        We assess triggers, reactivity patterns, and handling
-                        gaps, then teach you 1–2 starter drills you can use
-                        immediately to start shifting your dog's state.
-                    </p>
+                        <!-- Icon Chip -->
+                        <div
+                            class="w-14 h-14 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-accent-gold/20"
+                        >
+                            <svg
+                                class="w-7 h-7 text-accent-gold"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                ></path>
+                            </svg>
+                        </div>
+
+                        <h3
+                            class="text-2xl font-heading font-bold text-primary-navy mb-4"
+                        >
+                            In-Person Diagnostic
+                        </h3>
+                        <p
+                            class="text-secondary-slate/85 leading-[1.7] text-[15px] font-body"
+                        >
+                            We assess triggers, reactivity patterns, and handling
+                            gaps, then teach you 1–2 starter drills you can use
+                            immediately to start shifting your dog's state.
+                        </p>
+                    </div>
+                    <div class="relative overflow-hidden flex-shrink-0" style="height: 180px;">
+                        <Image src={processCardDiagnostic} alt="Cerberus during a tugging exercise" class="w-full h-full object-cover" style="object-position: center top;" />
+                    </div>
                 </div>
 
                 <!-- STEP 3: The Roadmap -->
                 <div
-                    class="bg-[#FCF9FA] rounded-[24px] border border-[#EAE1D3]/60 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4_10px_rgba(11,39,68,0.04)] p-8 md:p-10 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-500"
+                    class="bg-[#FCF9FA] rounded-[24px] border border-[#EAE1D3]/60 shadow-[0_15px_40px_rgba(11,39,68,0.06),0_4px_10px_rgba(11,39,68,0.04)] overflow-hidden group hover:-translate-y-1 transition-transform duration-500 flex flex-col"
                 >
-                    <!-- Step Watermark Number -->
-                    <div
-                        class="absolute top-6 right-8 font-heading font-bold text-[80px] leading-none text-primary-navy/10 select-none group-hover:text-primary-navy/15 transition-colors"
-                    >
-                        03
-                    </div>
-
-                    <!-- Icon Chip -->
-                    <div
-                        class="w-14 h-14 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-accent-gold/20"
-                    >
-                        <svg
-                            class="w-7 h-7 text-accent-gold"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
+                    <div class="p-8 md:p-10 relative flex-1">
+                        <!-- Step Watermark Number -->
+                        <div
+                            class="absolute top-6 right-8 font-heading font-bold text-[80px] leading-none text-primary-navy/10 select-none group-hover:text-primary-navy/15 transition-colors"
                         >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                            ></path>
-                        </svg>
-                    </div>
+                            03
+                        </div>
 
-                    <h3
-                        class="text-2xl font-heading font-bold text-primary-navy mb-4"
-                    >
-                        The Roadmap
-                    </h3>
-                    <p
-                        class="text-secondary-slate/85 leading-[1.7] text-[15px] font-body"
-                    >
-                        We sit down to review findings and hand you a custom
-                        plan. You'll know what's driving the behavior, what to
-                        do first, and the best program to support you.
-                    </p>
+                        <!-- Icon Chip -->
+                        <div
+                            class="w-14 h-14 bg-accent-gold/10 rounded-2xl flex items-center justify-center mb-8 border border-accent-gold/20"
+                        >
+                            <svg
+                                class="w-7 h-7 text-accent-gold"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+                                ></path>
+                            </svg>
+                        </div>
+
+                        <h3
+                            class="text-2xl font-heading font-bold text-primary-navy mb-4"
+                        >
+                            The Roadmap
+                        </h3>
+                        <p
+                            class="text-secondary-slate/85 leading-[1.7] text-[15px] font-body"
+                        >
+                            We sit down to review findings and hand you a custom
+                            plan. You'll know what's driving the behavior, what to
+                            do first, and the best program to support you.
+                        </p>
+                    </div>
+                    <div class="relative overflow-hidden flex-shrink-0" style="height: 180px;">
+                        <Image src={processCardRoadmap} alt="Victor playing with Cerberus" class="w-full h-full object-cover" style="transform: scale(1.25); transform-origin: center center;" />
+                    </div>
                 </div>
             </div>
 
@@ -538,12 +557,12 @@ const programs = await getCollection("programs");
                                         >
                                             <span
                                                 class="text-primary-navy font-bold text-[13px] block leading-tight tracking-tight text-center lg:text-left"
-                                                >Calm Companion Challenge</span
+                                                >Private Lessons</span
                                             >
                                         </div>
                                     </div>
                                     <a
-                                        href="/programs#calm-companion"
+                                        href="/training#private-lessons"
                                         class="bg-[#00727A] text-white font-bold text-[13px] py-3.5 rounded-xl w-full flex items-center justify-center gap-2 hover:bg-[#005F65] transition-colors tracking-wide shadow-sm"
                                     >
                                         Learn More <span>&rarr;</span>
@@ -704,12 +723,12 @@ const programs = await getCollection("programs");
                                         >
                                             <span
                                                 class="text-primary-navy font-bold text-[13px] block leading-tight tracking-tight text-center lg:text-left"
-                                                >Private Accelerator</span
+                                                >Board &amp; Train</span
                                             >
                                         </div>
                                     </div>
                                     <a
-                                        href="/programs#private-accelerator"
+                                        href="/training#board-train"
                                         class="bg-[#D1B27F] text-white font-bold text-[13px] py-3.5 rounded-xl w-full flex items-center justify-center gap-2 hover:bg-[#C2A36F] transition-colors tracking-wide shadow-sm"
                                     >
                                         Learn More <span>&rarr;</span>
@@ -876,7 +895,7 @@ const programs = await getCollection("programs");
                                         </div>
                                     </div>
                                     <a
-                                        href="/programs#red-zone"
+                                        href="/training#reactivity"
                                         class="bg-[#6B1B1B] text-white font-bold text-[13px] py-3.5 rounded-xl w-full flex items-center justify-center gap-2 hover:bg-[#5A1717] transition-colors tracking-wide shadow-sm"
                                     >
                                         Learn More <span>&rarr;</span>
@@ -1431,11 +1450,11 @@ const programs = await getCollection("programs");
                     <div class="border-t border-[#EAE1D3]/50 pt-5 mt-auto">
                         <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-3">BEST FIT:</p>
                         <div class="flex flex-col sm:flex-row gap-2">
-                            <a href="/programs#private-accelerator" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
-                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Private Accelerator <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
+                            <a href="/training#private-lessons" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
+                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Private Lessons <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
                             </a>
                             <div class="flex items-center justify-center text-[10px] font-bold text-secondary-slate/40 uppercase px-1 py-1">or</div>
-                            <a href="/programs" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
+                            <a href="/training#individual-sessions" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
                                 <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Hourly Training <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
                             </a>
                         </div>
@@ -1451,7 +1470,7 @@ const programs = await getCollection("programs");
                     <div class="border-t border-[#EAE1D3]/50 pt-5 mt-auto">
                         <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-3">BEST FIT:</p>
                         <div class="flex flex-col sm:flex-row gap-2">
-                            <a href="/programs#red-zone" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center w-full hover:bg-primary-navy/10 transition-colors">
+                            <a href="/training#reactivity" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center w-full hover:bg-primary-navy/10 transition-colors">
                                 <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Reactive Dog Intensive <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
                             </a>
                         </div>
@@ -1467,11 +1486,11 @@ const programs = await getCollection("programs");
                     <div class="border-t border-[#EAE1D3]/50 pt-5 mt-auto">
                         <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-3">BEST FIT:</p>
                         <div class="flex flex-col sm:flex-row gap-2">
-                            <a href="/programs#private-accelerator" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
-                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Private Accelerator <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
+                            <a href="/training#private-lessons" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
+                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Private Lessons <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
                             </a>
                             <div class="flex items-center justify-center text-[10px] font-bold text-secondary-slate/40 uppercase px-1 py-1">or</div>
-                            <a href="/programs#red-zone" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
+                            <a href="/training#reactivity" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center flex-1 hover:bg-primary-navy/10 transition-colors">
                                 <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Reactive Dog Intensive <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
                             </a>
                         </div>
@@ -1487,8 +1506,8 @@ const programs = await getCollection("programs");
                     <div class="border-t border-[#EAE1D3]/50 pt-5 mt-auto">
                         <p class="text-[11px] font-bold text-secondary-slate/40 uppercase tracking-widest mb-3">BEST FIT:</p>
                         <div class="flex flex-col sm:flex-row gap-2">
-                            <a href="/programs#calm-companion" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center w-full hover:bg-primary-navy/10 transition-colors">
-                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Calm Companion Challenge <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
+                            <a href="/training#board-train" class="group bg-primary-navy/5 border border-primary-navy/10 rounded-xl px-4 py-3 text-center w-full hover:bg-primary-navy/10 transition-colors">
+                                <span class="text-primary-navy font-bold text-[12px] leading-tight flex items-center justify-center gap-1">Board &amp; Train <span class="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span></span>
                             </a>
                         </div>
                     </div>

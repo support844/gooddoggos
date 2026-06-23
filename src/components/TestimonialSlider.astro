@@ -1,14 +1,36 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from 'astro:content';
+import type { ImageMetadata } from 'astro';
 import bgImage from "../assets/images/jametlene-reskp-fliwkBbS7oM-unsplash.jpg";
+import pawPrintGold from "../assets/images/paw-print-gold.png";
 
 interface Review {
   client_name: string;
+  first_name: string;
+  title: string;
   quote: string;
   rating: number;
-  sub_label: string;
+  dog_name: string;
+  image_path: string | null;
+  image_position: string;
   profile_photo: string | null;
+}
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/images/testimonials-*.{png,jpg,jpeg,webp}',
+  { eager: true }
+);
+
+function resolveImage(path: string | null | undefined): ImageMetadata | null {
+  if (!path) return null;
+  return imageModules[`../assets/images/${path}`]?.default ?? null;
+}
+
+function fallbackTitle(quote: string): string {
+  const sentence = quote.match(/^(.{15,55}[.!?])/);
+  if (sentence) return sentence[1];
+  return quote.split(' ').slice(0, 7).join(' ') + '…';
 }
 
 let reviews: Review[] = [];
@@ -26,134 +48,404 @@ if (apiKey && placeId) {
     if (data.status === 'OK' && data.result?.reviews?.length) {
       reviews = data.result.reviews
         .filter((r: any) => r.rating >= 4 && r.text?.trim())
-        .slice(0, 3)
-        .map((r: any) => ({
-          client_name: r.author_name,
-          quote: r.text.trim(),
-          rating: r.rating,
-          sub_label: r.relative_time_description ?? '',
-          profile_photo: r.profile_photo_url ?? null,
-        }));
+        .slice(0, 6)
+        .map((r: any) => {
+          const q = r.text.trim();
+          return {
+            client_name: r.author_name,
+            first_name: r.author_name.split(' ')[0],
+            title: fallbackTitle(q),
+            quote: q,
+            rating: r.rating,
+            dog_name: '',
+            image_path: null,
+            image_position: 'center',
+            profile_photo: r.profile_photo_url ?? null,
+          };
+        });
       usingGoogleReviews = reviews.length > 0;
     }
-  } catch (_) {
-    // fall through to static testimonials
-  }
+  } catch (_) {}
 }
 
 if (!usingGoogleReviews) {
   const testimonials = await getCollection('testimonials');
   reviews = testimonials.map(t => ({
     client_name: t.data.client_name,
+    first_name: t.data.client_name.split(' ')[0],
+    title: t.data.title ?? fallbackTitle(t.data.quote),
     quote: t.data.quote,
     rating: 5,
-    sub_label: t.data.dog_name + (t.data.dog_breed ? ` • ${t.data.dog_breed}` : ''),
+    dog_name: t.data.dog_name ?? '',
+    image_path: t.data.image_path ?? null,
+    image_position: t.data.object_position ?? 'center',
     profile_photo: null,
   }));
 }
 ---
 
-<section class="relative py-24 md:py-32 bg-primary-navy overflow-hidden">
-  <!-- Premium Background Image with Overlay -->
-  <div class="absolute inset-0 z-0 text-white">
+<section class="relative py-24 md:py-32 bg-primary-navy" style="overflow-x: clip;">
+  <!-- Background — unchanged -->
+  <div class="absolute inset-0 z-0">
     <Image
       src={bgImage}
       alt="Happy dogs background"
       class="w-full h-full object-cover object-center opacity-35"
     />
-    <div
-      class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/85 via-[#0B2744]/65 to-[#0B2744]"
-    >
-    </div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/85 via-[#0B2744]/65 to-[#0B2744]"></div>
   </div>
-
-  <!-- Subtle Radial Vignette / Cinematic Spotlight -->
   <div
     class="absolute inset-0 pointer-events-none z-[1]"
     style="background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 60%), radial-gradient(ellipse at 50% 100%, rgba(0,0,0,0.22) 0%, transparent 70%);"
-  >
-  </div>
+  ></div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-    <!-- Section Header -->
-    <div class="text-center mb-16">
+  <div class="relative z-10 max-w-[1240px] mx-auto px-4 md:px-8">
+
+    <!-- Section header — unchanged -->
+    <div class="text-center mb-12">
       <p class="kicker mb-5" style="color: #D1B27F80; letter-spacing: 0.25em;">HAPPY PACK MEMBERS</p>
-
-      <h2 class="text-4xl md:text-5xl font-heading font-bold text-white leading-tight mb-1">
-        Real Families.
-      </h2>
-
+      <h2 class="text-4xl md:text-5xl font-heading font-bold text-white leading-tight mb-1">Real Families.</h2>
       <p class="headline-accent text-4xl md:text-5xl" style="color: #D1B27F;">Real Results.</p>
-
       <div class="mt-6 flex justify-center">
         <div class="w-16 h-[3px] rounded-full" style="background: #D1B27F;"></div>
       </div>
-
       {usingGoogleReviews && (
         <div class="mt-4 flex items-center justify-center gap-2 text-white/50 text-sm">
-          <svg viewBox="0 0 24 24" class="w-4 h-4 flex-shrink-0" fill="currentColor"><path d="M21.35 11.1H12.18V13.83H18.69C18.36 17.64 15.19 19.27 12.19 19.27C8.36 19.27 5 16.25 5 12C5 7.9 8.2 4.73 12.2 4.73C15.29 4.73 17.1 6.7 17.1 6.7L19 4.72C19 4.72 16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12C2.03 17.05 6.16 22 12.25 22C17.6 22 21.5 18.33 21.5 12.91C21.5 11.76 21.35 11.1 21.35 11.1Z"/></svg>
+          <svg viewBox="0 0 24 24" class="w-4 h-4 flex-shrink-0" fill="currentColor">
+            <path d="M21.35 11.1H12.18V13.83H18.69C18.36 17.64 15.19 19.27 12.19 19.27C8.36 19.27 5 16.25 5 12C5 7.9 8.2 4.73 12.2 4.73C15.29 4.73 17.1 6.7 17.1 6.7L19 4.72C19 4.72 16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12C2.03 17.05 6.16 22 12.25 22C17.6 22 21.5 18.33 21.5 12.91C21.5 11.76 21.35 11.1 21.35 11.1Z"/>
+          </svg>
           <span>Reviews from Google</span>
         </div>
       )}
     </div>
 
-    <!-- 3-Column Responsive Card Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
-      {reviews.map((r) => (
-        <article class="bg-[#FCF9FA] rounded-2xl p-7 shadow-[0_8px_32px_rgba(0,0,0,0.28)] border border-white/10 flex flex-col gap-5 h-full">
+    <!--
+      Carousel structure mirrors the shop page pattern:
+        • Outer `relative` div — anchor for arrow positioning, no overflow clipping
+        • Inner viewport — `overflow-x: clip; overflow-y: visible`
+            clip hides off-screen cards horizontally
+            visible lets expanded cards grow downward without being cut off
+        • Track — `flex; flex-wrap: nowrap` translated via JS transform
+    -->
+    <div class="relative" id="ts-carousel">
 
-          <!-- Star Row -->
-          <div class="flex gap-1" aria-label={`${r.rating} stars`}>
-            {[...Array(r.rating)].map(() => (
-              <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="#D1B27F" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            ))}
-          </div>
+      <!-- Prev arrow -->
+      <button
+        id="ts-prev"
+        disabled
+        aria-label="Previous testimonials"
+        class="flex absolute left-0 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center border border-[#D1B27F] bg-[#D1B27F] shadow-sm transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:enabled:bg-[#c9a76e] active:enabled:scale-95"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
 
-          <!-- Quote -->
-          <blockquote class="flex-grow text-primary-navy/80 text-[15px] leading-relaxed font-body italic">
-            "{r.quote}"
-          </blockquote>
+      <!-- Next arrow -->
+      <button
+        id="ts-next"
+        aria-label="Next testimonials"
+        class="flex absolute right-0 top-1/2 translate-x-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full items-center justify-center border border-[#D1B27F] bg-[#D1B27F] shadow-sm transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:enabled:bg-[#c9a76e] active:enabled:scale-95"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
 
-          <hr class="border-gray-200" />
+      <!-- Viewport: clips X only, so expanded cards can grow downward freely -->
+      <div id="ts-viewport" class="ts-viewport">
+        <!-- Track: flex row, no wrap, moves via translateX -->
+        <div
+          id="ts-track"
+          class="flex flex-nowrap"
+          style="gap: 24px; transition: transform 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform;"
+        >
+          {reviews.map((r, i) => {
+            const dogImg = resolveImage(r.image_path);
+            const previewText = r.quote.replace(/\n\n/g, ' ').trim();
+            const paragraphs = r.quote.split('\n\n').filter(p => p.trim());
 
-          <!-- Client Meta -->
-          <div class="flex items-center gap-4">
-            <!-- Avatar -->
-            <div class="w-11 h-11 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-[#D1B27F]/30">
-              {r.profile_photo ? (
-                <img
-                  src={r.profile_photo}
-                  alt={r.client_name}
-                  class="w-full h-full object-cover"
-                  referrerpolicy="no-referrer"
-                />
-              ) : (
-                <div class="w-full h-full flex items-center justify-center text-xl text-white" style="background-color: #0F6D7F;">🐶</div>
-              )}
-            </div>
+            return (
+              <div class="ts-card-wrap flex-none" data-card-idx={i}>
+                <article class="ts-card bg-[#FCF9FA] rounded-2xl overflow-hidden flex flex-col h-full" style="box-shadow: 0 4px 24px rgba(0,0,0,0.13);">
 
-            <!-- Name + Sub Label -->
-            <div>
-              <p class="font-bold text-primary-navy text-[15px] leading-snug">{r.client_name}</p>
-              {r.sub_label && (
-                <p class="text-[11px] font-bold tracking-[0.18em] uppercase mt-0.5" style="color: #0F8992;">
-                  {r.sub_label}
-                </p>
-              )}
-            </div>
-          </div>
+                  <!-- Photo -->
+                  <div class="relative flex-shrink-0" style="aspect-ratio: 4/3; overflow: hidden;">
+                    {dogImg ? (
+                      <Image
+                        src={dogImg}
+                        alt={r.dog_name || r.client_name}
+                        class="w-full h-full object-cover"
+                        style={`object-position: ${r.image_position};`}
+                      />
+                    ) : r.profile_photo ? (
+                      <img
+                        src={r.profile_photo}
+                        alt={r.client_name}
+                        class="w-full h-full object-cover"
+                        referrerpolicy="no-referrer"
+                      />
+                    ) : (
+                      <div class="w-full h-full flex items-center justify-center text-6xl" style="background: linear-gradient(135deg, #0B2744, #0F6D7F);">🐶</div>
+                    )}
 
-        </article>
+                    <!-- Dog name pill with gold paw print -->
+                    {r.dog_name && (
+                      <div
+                        class="absolute bottom-3 left-3 flex items-center gap-1.5 px-3 py-1.5 rounded-full"
+                        style="background: rgba(11,39,68,0.88); backdrop-filter: blur(6px);"
+                      >
+                        <Image
+                          src={pawPrintGold}
+                          alt=""
+                          width={13}
+                          height={13}
+                          style="display: block; flex-shrink: 0;"
+                        />
+                        <span class="text-white font-semibold" style="font-size: 12.5px; line-height: 1;">{r.dog_name}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <!-- Card body -->
+                  <div class="flex flex-col flex-1 p-5 md:p-6">
+
+                    <!-- Stars -->
+                    <div class="flex gap-0.5 mb-3" aria-label={`${r.rating} out of 5 stars`}>
+                      {[...Array(r.rating)].map(() => (
+                        <svg width="17" height="17" viewBox="0 0 20 20" fill="#D1B27F" class="flex-shrink-0">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                        </svg>
+                      ))}
+                    </div>
+
+                    <!-- Review title -->
+                    <h3 class="font-heading font-bold text-primary-navy leading-snug mb-2" style="font-size: 17px;">
+                      {r.title}
+                    </h3>
+
+                    <!-- Preview: 3-line clamp in collapsed state -->
+                    <p data-ts-preview class="ts-preview text-primary-navy/70 leading-relaxed mb-4" style="font-size: 14.5px;">
+                      {previewText}
+                    </p>
+
+                    <!-- Full review: hidden via inline style so component CSS cannot override it -->
+                    <div
+                      data-ts-full
+                      class="text-primary-navy/70 leading-relaxed mb-4"
+                      style="font-size: 14.5px; display: none;"
+                    >
+                      {paragraphs.map((para, idx) => (
+                        <p style={idx > 0 ? 'margin-top: 0.85em;' : ''}>
+                          {idx === 0 ? '“' : ''}{para}{idx === paragraphs.length - 1 ? '”' : ''}
+                        </p>
+                      ))}
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="mt-auto pt-4" style="border-top: 1px solid #E5DDD0;">
+                      <div class="flex items-center justify-between gap-3">
+
+                        <!-- Author -->
+                        <div class="flex items-center gap-2.5 min-w-0">
+                          <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background: #E4EEFF;">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="#0B2744">
+                              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v1.2h19.2v-1.2c0-3.2-6.4-4.8-9.6-4.8z"/>
+                            </svg>
+                          </div>
+                          <div class="min-w-0">
+                            <p class="font-bold text-primary-navy leading-tight" style="font-size: 13.5px;">{r.first_name}</p>
+                            <p class="font-bold uppercase tracking-widest mt-0.5" style="font-size: 9.5px; color: #0F8992; letter-spacing: 0.15em;">Dog Owner</p>
+                          </div>
+                        </div>
+
+                        <!-- Read more/less toggle -->
+                        <button
+                          data-ts-toggle
+                          class="flex-shrink-0 flex items-center gap-1 font-semibold transition-opacity hover:opacity-70"
+                          style="color: #C9A96A; font-size: 12.5px;"
+                          aria-expanded="false"
+                        >
+                          <span data-toggle-label>Read more</span>
+                          <svg
+                            data-toggle-icon
+                            class="w-3 h-3 transition-transform duration-200"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+                          </svg>
+                        </button>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </article>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile-only dots (desktop uses arrows) -->
+    <div class="md:hidden flex justify-center gap-2.5 mt-6" aria-hidden="true">
+      {reviews.map((_, i) => (
+        <button
+          class="ts-mobile-dot rounded-full transition-all duration-300"
+          style={i === 0
+            ? "width: 20px; height: 8px; background: #D1B27F;"
+            : "width: 8px; height: 8px; background: rgba(255,255,255,0.28);"}
+          aria-label={`Go to testimonial ${i + 1}`}
+          data-dot-idx={i}
+        ></button>
       ))}
     </div>
 
-    <!-- CTA -->
-    <div class="mt-16 flex justify-center">
-      <a href="/transformations" class="btn-apply">
-        View the Transformations
-      </a>
+    <!-- CTA — unchanged -->
+    <div class="mt-12 flex justify-center">
+      <a href="/transformations" class="btn-apply">View the Transformations</a>
     </div>
+
   </div>
 </section>
+
+<style>
+  /*
+   * Viewport: clip X so off-screen cards are invisible,
+   * but keep Y visible so expanded cards can grow downward freely.
+   * `overflow-x: clip` does NOT create a block formatting context,
+   * so `overflow-y: visible` is respected (unlike overflow-x: hidden).
+   */
+  .ts-viewport {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  /* Mobile: each card fills the full viewport width */
+  .ts-card-wrap {
+    width: 100%;
+  }
+
+  /* Desktop: 3 cards across with 24px gaps between them */
+  @media (min-width: 768px) {
+    .ts-card-wrap {
+      width: calc((100% - 48px) / 3);
+    }
+  }
+
+  /* Collapsed preview: 3-line clamp */
+  .ts-preview {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  const track     = document.getElementById('ts-track')    as HTMLElement;
+  const viewport  = document.getElementById('ts-viewport') as HTMLElement;
+  const prevBtn   = document.getElementById('ts-prev')     as HTMLButtonElement | null;
+  const nextBtn   = document.getElementById('ts-next')     as HTMLButtonElement | null;
+  const cardWraps = track.querySelectorAll<HTMLElement>('.ts-card-wrap');
+  const mobileDots = document.querySelectorAll<HTMLElement>('[data-dot-idx]');
+  const total     = cardWraps.length;
+  let currentIdx  = 0;
+
+  // ── Carousel navigation ──
+
+  function getCardWidth(): number {
+    return cardWraps[0]?.offsetWidth ?? 0;
+  }
+  function getGap(): number {
+    return parseInt(window.getComputedStyle(track).gap) || 24;
+  }
+  function getVisibleCount(): number {
+    const vw = viewport.offsetWidth;
+    const cw = getCardWidth();
+    const g  = getGap();
+    // How many cards fit in the viewport
+    return Math.max(1, Math.round((vw + g) / (cw + g)));
+  }
+  function getMaxIdx(): number {
+    return Math.max(0, total - getVisibleCount());
+  }
+
+  function goTo(idx: number) {
+    currentIdx = Math.max(0, Math.min(idx, getMaxIdx()));
+    const offset = currentIdx * (getCardWidth() + getGap());
+    track.style.transform = `translateX(-${offset}px)`;
+
+    if (prevBtn) prevBtn.disabled = currentIdx === 0;
+    if (nextBtn) nextBtn.disabled = currentIdx >= getMaxIdx();
+
+    // Update mobile dots
+    mobileDots.forEach((d, i) => {
+      const on = i === currentIdx;
+      d.style.background = on ? '#D1B27F' : 'rgba(255,255,255,0.28)';
+      d.style.width      = on ? '20px'    : '8px';
+    });
+  }
+
+  prevBtn?.addEventListener('click', () => goTo(currentIdx - 1));
+  nextBtn?.addEventListener('click', () => goTo(currentIdx + 1));
+
+  // Mobile dot taps
+  mobileDots.forEach((dot, i) => {
+    dot.addEventListener('click', () => goTo(i));
+  });
+
+  // Recalculate on resize (breakpoint change resets card widths)
+  let resizeTimer: ReturnType<typeof setTimeout>;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      // Clamp index in case we resized from mobile→desktop
+      goTo(Math.min(currentIdx, getMaxIdx()));
+    }, 100);
+  });
+
+  // Touch swipe on the track
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 44) goTo(dx < 0 ? currentIdx + 1 : currentIdx - 1);
+  }, { passive: true });
+
+  // ── Read more / Read less per card ──
+  document.querySelectorAll<HTMLElement>('[data-ts-toggle]').forEach(btn => {
+    const card    = btn.closest<HTMLElement>('.ts-card');
+    const preview = card?.querySelector<HTMLElement>('[data-ts-preview]');
+    const full    = card?.querySelector<HTMLElement>('[data-ts-full]');
+    const label   = btn.querySelector<HTMLElement>('[data-toggle-label]');
+    const icon    = btn.querySelector<HTMLElement>('[data-toggle-icon]');
+    if (!preview || !full) return;
+
+    let expanded = false;
+
+    btn.addEventListener('click', () => {
+      expanded = !expanded;
+      // Use inline style so specificity always beats the .ts-preview display rule
+      preview.style.display = expanded ? 'none' : '';
+      full.style.display    = expanded ? ''     : 'none';
+      btn.setAttribute('aria-expanded', String(expanded));
+      if (label) label.textContent = expanded ? 'Read less' : 'Read more';
+      if (icon)  icon.style.transform = expanded ? 'rotate(180deg)' : 'rotate(0)';
+    });
+  });
+
+  // Hide "Read more" on cards whose preview text is not actually clamped
+  document.querySelectorAll<HTMLElement>('.ts-card').forEach(card => {
+    const preview   = card.querySelector<HTMLElement>('[data-ts-preview]');
+    const toggleBtn = card.querySelector<HTMLElement>('[data-ts-toggle]');
+    if (!preview || !toggleBtn) return;
+    if (preview.scrollHeight <= preview.clientHeight + 2) {
+      toggleBtn.style.visibility = 'hidden';
+    }
+  });
+
+  // Initialise
+  goTo(0);
+</script>

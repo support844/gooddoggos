@@ -1,0 +1,1362 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import CTASection from "../components/CTASection.astro";
+import GuaranteeBadge from "../components/GuaranteeBadge.astro";
+
+// Hero
+import heroImage from "../assets/images/oleksandr-horbach-qBnIX-B4n-w-unsplash.jpg";
+
+// Board & Train: one image per card
+import coreBTImage from "../assets/images/victor-and-cocoa.png";
+import advancedBTImage from "../assets/images/Victor and Tupac at Park Zoomed Out.png";
+import eliteBTImage from "../assets/images/victor-cocoa-landscape-mountains.png";
+
+// Private Lessons: one image per card
+import starterPLImage from "../assets/images/puppy-teal-harness.png";
+import advancedPLImage from "../assets/images/oleksandr-horbach-qBnIX-B4n-w-unsplash.jpg";
+import premierPLImage from "../assets/images/victor-happy-walking-pack.png";
+
+// Reactivity: 3 photos for the RDI card
+import rdiPhoto2 from "../assets/images/cerberus.png";
+import rdiPhoto3 from "../assets/images/david-taffet-DNViTo3BUpk-unsplash.jpg";
+import rdiPhoto4 from "../assets/images/sumeet-singh-0JEfPcomlZs-unsplash.jpg";
+
+// Individual Sessions (kept exactly as-is)
+import breakthroughStandard from "../assets/images/ben-blumentritt-GbCee6shpx4-unsplash.jpg";
+import breakthroughReactive from "../assets/images/andrescarlofotografia-muzzle-5240921_1920.jpg";
+
+// Shared assets
+import mascotNavy from "../assets/images/Navy-Dog-Mascot-Transparent---Good-Doggos.png";
+import tealPaw from "../assets/images/Paw Prints/Teal Paw Print.png";
+import goldPaw from "../assets/images/Paw Prints/Gold Paw Print.png";
+import redPaw from "../assets/images/Paw Prints/Red Paw Print.png";
+import navyPaw from "../assets/images/Paw Prints/Ink Black Paw Print.png";
+---
+
+<style>
+  /* ── Segmented Navigation ── */
+  .segmented-nav {
+    display: flex;
+    background: rgba(248, 250, 252, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 100px;
+    padding: 6px;
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+  }
+  .segment-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.75);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .segment-item[href="#board-train"]:hover,
+  .segment-item[href="#board-train"].active {
+    background: #0B2744; color: white !important;
+    box-shadow: 0 4px 15px rgba(11, 39, 68, 0.45);
+  }
+  .segment-item[href="#private-lessons"]:hover,
+  .segment-item[href="#private-lessons"].active {
+    background: #0f6d72; color: white !important;
+    box-shadow: 0 4px 15px rgba(15, 109, 114, 0.35);
+  }
+  .segment-item[href="#reactivity"]:hover,
+  .segment-item[href="#reactivity"].active {
+    background: #7D2C2D; color: white !important;
+    box-shadow: 0 4px 15px rgba(125, 44, 45, 0.40);
+  }
+  .segment-item[href="#individual-sessions"]:hover,
+  .segment-item[href="#individual-sessions"].active {
+    background: #d1b27f; color: #0b2744 !important;
+    box-shadow: 0 4px 15px rgba(209, 178, 127, 0.35);
+  }
+  @media (max-width: 768px) {
+    .segmented-nav { max-width: 100%; gap: 2px; }
+    .segment-item { font-size: 8px; padding: 10px 3px; letter-spacing: 0.06em; }
+  }
+
+  /* ── Section divider ── */
+  .divider-line {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #E6DAC6 40%, #E6DAC6 60%, transparent);
+  }
+
+  /* ── Panel section labels ── */
+  .panel-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(17, 32, 50, 0.38);
+    margin-bottom: 10px;
+  }
+
+  /* ── Secondary "View Details" toggle ── */
+  .view-details-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 14px;
+    border-radius: 9999px;
+    border: 1.5px solid currentColor;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    background: transparent;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+    opacity: 0.75;
+    font-family: var(--font-heading, 'Poppins', sans-serif);
+  }
+  .view-details-btn:hover { opacity: 1; }
+  .view-details-btn-full {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ── Clickable card header (B&T only) ── */
+  .card-header { cursor: pointer; }
+  .card-header:hover .card-image-col img { transform: scale(1.03); }
+  .card-image-col img { transition: transform 0.4s ease; }
+
+  /* ── At-a-glance bullet dot (fallback) ── */
+  .glance-dot {
+    width: 6px; height: 6px;
+    border-radius: 9999px;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* ── Private Lessons 3-col cards equal height ── */
+  .pl-card { display: flex; flex-direction: column; height: 100%; }
+
+  @media (max-width: 767px) {
+    .rdi-photo { object-position: center 20% !important; }
+    /* Panels containers are hidden on mobile; panels move into card columns via JS */
+    #bt-panels-container, #pl-panels-container { display: none !important; }
+    /* Let cards size to their own content (no cross-row height stretching) */
+    .pl-card { height: auto; }
+  }
+</style>
+
+<Layout
+  title="Dog Training | Good Doggos | Murrieta & Temecula"
+  description="Expert dog training in Murrieta and Temecula. Board & Train, Private Lessons, Reactive Dog Intensive, and Individual Sessions. Guaranteed results for every family."
+>
+
+  <!-- ════════════════════════════════════════
+       HERO: Choose Your Path
+  ════════════════════════════════════════ -->
+  <section class="relative flex items-end overflow-hidden bg-[#0B2744]" style="min-height: 52vh;">
+    <div class="absolute inset-0 z-0">
+      <Image src={heroImage} alt="Dog training programs" class="w-full h-full object-cover opacity-50" style="object-position: center 15%;" loading="eager" />
+      <div class="absolute inset-0 bg-gradient-to-b from-[#0B2744]/60 via-[#0B2744]/40 to-[#0B2744]/80"></div>
+    </div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 pb-14 pt-[240px] md:pt-[160px]">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-[11px] font-bold tracking-[0.28em] uppercase mb-4" style="color: rgba(209,178,127,0.65);">Dog Training</p>
+        <h1 class="text-5xl md:text-6xl font-heading font-bold text-white leading-tight mb-3">Choose Your Path</h1>
+        <p class="text-gray-300 mb-8 text-lg">
+          For families who want <span class="headline-accent" style="color:#D1B27F;">the best for their dog.</span> We do not just train dogs. We train owners too, so your dog listens better with you, your family, and the people who care for them.
+        </p>
+        <nav class="segmented-nav" aria-label="Program sections">
+          <a href="#board-train" class="segment-item">Board &amp; Train</a>
+          <a href="#private-lessons" class="segment-item">Private Lessons</a>
+          <a href="#reactivity" class="segment-item">Reactivity</a>
+          <a href="#individual-sessions" class="segment-item">Individual Sessions</a>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       BOARD & TRAIN
+  ════════════════════════════════════════ -->
+  <section id="board-train" class="scroll-mt-28 bg-[#FBF1E9] py-12">
+    <div class="max-w-[1440px] mx-auto px-4 md:px-8">
+
+      <div class="text-center mb-10">
+        <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-3" style="color: rgba(15,109,114,0.65);">Residential Training</p>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-3" style="color: #0B2744;">Board &amp; <span class="headline-accent">Train</span></h2>
+        <p class="max-w-2xl mx-auto text-base leading-relaxed" style="color: rgba(17,32,50,0.65);">Your dog lives with our trainer and is cared for as part of the household. The fastest path to a reliable foundation, with full owner support built in.</p>
+      </div>
+
+      <!-- Three side-by-side B&T cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+
+        <!-- ── CORE BOARD & TRAIN (Level 1 · Teal) ── -->
+        <div id="bt-core-col">
+        <div class="pl-card rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_6px_28px_rgba(0,0,0,0.09)]">
+          <div class="relative overflow-hidden flex-shrink-0" style="height: 240px;">
+            <Image src={coreBTImage} alt="Core Board and Train residential dog training" class="w-full h-full object-cover" style="object-position: center 60%;" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.55) 0%, transparent 60%);"></div>
+            <div class="absolute bottom-3 left-3 flex gap-1.5">
+              <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full" style="background: rgba(15,109,114,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">Level 1</span>
+              <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full" style="background: rgba(15,109,114,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">2 Weeks</span>
+            </div>
+          </div>
+          <div class="h-[6px] w-full" style="background: #0F6D72;"></div>
+          <div class="flex flex-col flex-1 px-6 py-6">
+            <h3 class="text-2xl font-heading font-extrabold mb-1.5" style="color: #0F6D72;">CORE</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(17,32,50,0.65);">Foundations, leash manners, and everyday structure for dogs starting from scratch.</p>
+            <ul class="space-y-2 mb-6">
+              {["Foundation reset & basic obedience", "Leash manners, crate & settle routines", "Threshold, door manners & impulse control"].map(s => (
+                <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.72);">
+                  <Image src={tealPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{s}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-auto space-y-4">
+              <div>
+                <a href="/apply" class="btn-apply-teal w-full justify-center">
+                  Apply for Free Assessment
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <p class="text-center text-[11px] mt-2" style="color: rgba(17,32,50,0.42);">Availability is limited. Apply today to secure your spot.</p>
+              </div>
+              <button onclick="toggleBTPanel('bt-core-panel')" id="bt-core-btn" data-color="#0F6D72" class="view-details-btn view-details-btn-full" style="color: #0F6D72;">
+                <span id="bt-core-label">View Details</span>
+                <svg id="bt-core-chevron" class="w-3 h-3 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div><!-- /bt-core-col -->
+
+        <!-- ── ADVANCED BOARD & TRAIN (Level 2 · Navy) ── -->
+        <div id="bt-advanced-col">
+        <div class="pl-card rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_6px_28px_rgba(0,0,0,0.09)]">
+          <div class="relative overflow-hidden flex-shrink-0" style="height: 240px;">
+            <Image src={advancedBTImage} alt="Advanced Board and Train dog training" class="w-full h-full object-cover" style="object-position: center 50%;" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.55) 0%, transparent 60%);"></div>
+            <div class="absolute bottom-3 left-3 flex gap-1.5">
+              <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full" style="background: rgba(11,39,68,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">Level 2</span>
+              <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full" style="background: rgba(11,39,68,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">3 Weeks</span>
+            </div>
+          </div>
+          <div class="h-[6px] w-full" style="background: #0B2744;"></div>
+          <div class="flex flex-col flex-1 px-6 py-6">
+            <h3 class="text-2xl font-heading font-extrabold mb-1.5" style="color: #0B2744;">PLUS</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(17,32,50,0.65);">Household manners, place work, and deeper consistency for dogs ready to go further.</p>
+            <ul class="space-y-2 mb-6">
+              {["Deeper consistency across daily situations", "Place work, greeting & household manners", "Leash reliability in real environments"].map(s => (
+                <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.72);">
+                  <Image src={navyPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{s}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-auto space-y-4">
+              <div>
+                <a href="/apply" class="btn-apply-navy w-full justify-center">
+                  Apply for Free Assessment
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <p class="text-center text-[11px] mt-2" style="color: rgba(17,32,50,0.42);">Availability is limited. Apply today to secure your spot.</p>
+              </div>
+              <button onclick="toggleBTPanel('bt-advanced-panel')" id="bt-advanced-btn" data-color="#0B2744" class="view-details-btn view-details-btn-full" style="color: #0B2744;">
+                <span id="bt-advanced-label">View Details</span>
+                <svg id="bt-advanced-chevron" class="w-3 h-3 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div><!-- /bt-advanced-col -->
+
+        <!-- ── ELITE BOARD & TRAIN (Level 3 · Gold) ── -->
+        <div class="relative" id="bt-elite-col">
+          <!-- "Best Value" corner ribbon -->
+          <div class="absolute top-[22px] -right-[30px] z-20 w-[130px] pointer-events-none select-none" style="transform: rotate(45deg);">
+            <div class="text-white text-[10px] font-extrabold tracking-[0.16em] uppercase text-center py-[5px] w-full" style="background: #CAA467; box-shadow: 0 2px 6px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.25);">Best Value</div>
+          </div>
+        <div class="pl-card rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_6px_28px_rgba(0,0,0,0.09)]">
+          <div class="relative overflow-hidden flex-shrink-0" style="height: 240px;">
+            <Image src={eliteBTImage} alt="Elite Board and Train advanced dog training" class="w-full h-full object-cover" style="transform: scale(1.8); transform-origin: 50% 86%;" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.55) 0%, transparent 60%);"></div>
+            <div class="absolute bottom-3 left-3 flex gap-1.5">
+              <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(209,178,127,0.90); backdrop-filter: blur(6px); color: #0B2744; border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">Level 3</span>
+              <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(209,178,127,0.90); backdrop-filter: blur(6px); color: #0B2744; border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">4 Weeks</span>
+            </div>
+          </div>
+          <div class="h-[6px] w-full" style="background: #D1B27F;"></div>
+          <div class="flex flex-col flex-1 px-6 py-6">
+            <h3 class="text-2xl font-heading font-extrabold mb-1.5" style="color: #CAA467;">ELITE</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(17,32,50,0.65);">Advanced reliability, recall foundations, and real-world proofing for the most complete transformation.</p>
+            <ul class="space-y-2 mb-6">
+              {["Recall foundations & real-world proofing", "Distance, duration & distraction work", "Most advanced residential transformation"].map(s => (
+                <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.72);">
+                  <Image src={goldPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" widths={[50,100,200]} sizes="16px" />{s}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-auto space-y-4">
+              <div>
+                <a href="/apply" class="btn-apply w-full justify-center">
+                  Apply for Free Assessment
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <p class="text-center text-[11px] mt-2" style="color: rgba(17,32,50,0.42);">Availability is limited. Apply today to secure your spot.</p>
+              </div>
+              <button onclick="toggleBTPanel('bt-elite-panel')" id="bt-elite-btn" data-color="#CAA467" class="view-details-btn view-details-btn-full" style="color: #CAA467;">
+                <span id="bt-elite-label">View Details</span>
+                <svg id="bt-elite-chevron" class="w-3 h-3 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div><!-- /Elite wrapper -->
+
+      </div><!-- /bt cards grid -->
+
+      <!-- Full-width B&T detail panels (one at a time below the row; hidden on mobile via CSS) -->
+      <div id="bt-panels-container" class="mt-5">
+
+        <div id="bt-core-panel" class="hidden rounded-2xl border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_4px_16px_rgba(0,0,0,0.07)]">
+          <div class="border-t-[3px] rounded-t-2xl" style="border-color: #0F6D72;"></div>
+          <div class="px-7 md:px-10 py-8 space-y-6">
+            <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.72);">Your dog lives with our trainer for 2 weeks, trained and cared for as part of the household. Core is for dogs with no prior structured training, building leash manners, basic obedience, and calm daily structure from the ground up.</p>
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-5">
+              <div>
+                <span class="panel-label">Training Focus</span>
+                <ul class="space-y-2">
+                  {["Leash manners and walking structure", "Sit, down, stay, and place foundations", "Crate and settle routines", "Door and threshold manners", "Impulse control and handler focus"].map(s => (
+                    <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                      <Image src={tealPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <span class="panel-label">Included Support</span>
+                <ul class="space-y-2">
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0F6D72;" viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
+                    Structured owner handoff session at pickup
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0F6D72;" viewBox="0 0 20 20" fill="currentColor"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/></svg>
+                    1 follow-up private lesson
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0F6D72;" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+                    Regular photo and video updates
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0F6D72;" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+                    Report cards throughout the stay
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="bt-advanced-panel" class="hidden rounded-2xl border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_4px_16px_rgba(0,0,0,0.07)]">
+          <div class="border-t-[3px] rounded-t-2xl" style="border-color: #0B2744;"></div>
+          <div class="px-7 md:px-10 py-8 space-y-6">
+            <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.72);">PLUS adds a third week to push further, with more household structure, deeper compliance, and more intensive behavior work. This tier suits dogs who need more than CORE provides, or owners who want more precision and consistency from their dog.</p>
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-5">
+              <div>
+                <span class="panel-label">Training Focus</span>
+                <p class="text-xs mb-2" style="color: rgba(17,32,50,0.45);">Everything in CORE, plus:</p>
+                <ul class="space-y-2">
+                  {["Longer duration place work", "Greeting manners with guests and family", "Leash reliability in moderate-distraction environments", "Structured household calm throughout the day", "Consistent behavior from setting to setting"].map(s => (
+                    <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                      <Image src={navyPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <span class="panel-label">Included Support</span>
+                <ul class="space-y-2">
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0B2744;" viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
+                    Structured owner handoff session at pickup
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0B2744;" viewBox="0 0 20 20" fill="currentColor"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/></svg>
+                    1 follow-up private lesson
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0B2744;" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+                    Regular photo and video updates
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0B2744;" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+                    Report cards throughout the stay
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="bt-elite-panel" class="hidden rounded-2xl border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_4px_16px_rgba(0,0,0,0.07)]">
+          <div class="border-t-[3px] rounded-t-2xl" style="border-color: #D1B27F;"></div>
+          <div class="px-7 md:px-10 py-8 space-y-6">
+            <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.72);">Elite is our highest residential tier at 4 weeks, designed for dogs who need the most intensive Board &amp; Train program we offer, or for owners who want the highest level of training available. More time means more complex skills, more real-world proofing, and the most polished results.</p>
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-5">
+              <div>
+                <span class="panel-label">Training Focus</span>
+                <p class="text-xs mb-2" style="color: rgba(17,32,50,0.45);">Everything in CORE and PLUS, plus:</p>
+                <ul class="space-y-2">
+                  {["Recall foundations: come when called under distraction", "Off-leash reliability in lower-distraction settings", "Advanced leash manners in public environments", "Distance and duration across multiple commands", "Real-world proofing: stores, parks, busy neighborhoods"].map(s => (
+                    <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                      <Image src={goldPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" widths={[50,100,200]} sizes="16px" />{s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <span class="panel-label">Included Support</span>
+                <ul class="space-y-2">
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#CAA467;" viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
+                    Structured owner handoff session at pickup
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#CAA467;" viewBox="0 0 20 20" fill="currentColor"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/></svg>
+                    1 follow-up private lesson
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#CAA467;" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
+                    Regular photo and video updates
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#CAA467;" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+                    Report cards throughout the stay
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /bt detail panels -->
+
+      <div class="mt-8 [&>div]:!w-full"><GuaranteeBadge program="goal-navy" /></div>
+
+      <!-- Board & Train FAQ -->
+      <div class="rounded-xl overflow-hidden border border-[#E6DAC6]/50 mt-8">
+        <button onclick="toggleFaqBlock('bt-faq')" class="w-full flex items-center justify-between px-6 py-4 bg-white text-left">
+          <span class="text-xs font-bold tracking-widest uppercase" style="color:rgba(17,32,50,0.42);">Board &amp; Train FAQs (8)</span>
+          <svg id="bt-faq-chevron" class="w-4 h-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="bt-faq" class="hidden">
+          {[
+            { q: "Which Board & Train tier is right for my dog?", a: "CORE is for dogs starting with no structured foundation, or owners building from scratch. PLUS is for dogs who need more work than CORE provides, or owners who want more precision and consistency. ELITE is the highest tier, with the most time, the most intensive work, and the most advanced goals. The free assessment will tell you directly which tier fits." },
+            { q: "What does my dog do during the stay?", a: "Your dog lives in our trainer's home as part of the household, not kenneled between sessions. Every day includes training sessions, structured exercise, leash work, and real-life household practice. Socialization with the trainer's own dogs is included when safe and appropriate." },
+            { q: "Will I receive updates?", a: "Yes. Photos, videos, and report cards are built into every program. You will know how your dog is progressing without having to ask." },
+            { q: "Do I provide my dog's food?", a: "Yes. Please bring enough of your dog's regular food for the full duration. Switching food mid-stay can cause digestive issues that interfere with training." },
+            { q: "What happens at intake?", a: "We go over your dog's full history: what's been tried, what has worked, and your goals for the stay. You'll provide food, medications, vet information, and any special care instructions. A thorough intake is what sets the program up to succeed." },
+            { q: "Is Board & Train right for reactive or aggressive dogs?", a: "Standard Board & Train is designed for dogs without significant safety concerns. Dogs with bite history, serious aggression, or severe reactivity belong in the Reactive Dog Intensive. The free assessment will clarify which path fits if you're unsure." },
+            { q: "What happens at pickup?", a: "Pickup is a structured handoff, not just a key exchange. We walk you through every skill your dog learned and how to maintain it. Your included follow-up private lesson is where we make sure those skills transfer to your home and daily life." },
+            { q: "What does the Goal-Based Guarantee mean?", a: "Before your dog's stay begins, we define one clear, measurable goal together. If that goal isn't achieved through the program, you receive your money back. Full details are on the guarantee page." },
+          ].map((faq, i) => (
+            <div class="border-t border-[#E6DAC6]/50 bg-white">
+              <button class="w-full flex justify-between items-center px-6 py-4 text-left" onclick={`toggleFaq('bt-q${i}')`}>
+                <span class="text-sm font-medium pr-4" style="color:#112032;">{faq.q}</span>
+                <svg id={`bt-q${i}-icon`} class="w-4 h-4 flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="#0B2744" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div id={`bt-q${i}`} class="hidden px-6 pb-4">
+                <p class="text-sm leading-relaxed" style="color:rgba(17,32,50,0.65);">{faq.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="bg-[#FBF1E9] px-4 md:px-8"><div class="max-w-7xl mx-auto"><div class="divider-line"></div></div></div>
+
+
+  <!-- ════════════════════════════════════════
+       PRIVATE LESSONS: 3-column comparison cards
+  ════════════════════════════════════════ -->
+  <section id="private-lessons" class="scroll-mt-28 bg-[#FBF1E9] py-12 relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 md:-top-32 md:-right-32 opacity-[0.04] pointer-events-none select-none w-[500px] h-[500px] md:w-[800px] md:h-[800px] transform rotate-12 scale-x-[-1]">
+      <Image src={mascotNavy} alt="" class="w-full h-full object-contain" />
+    </div>
+    <div class="absolute -bottom-20 -left-20 md:-bottom-32 md:-left-32 opacity-[0.04] pointer-events-none select-none w-[500px] h-[500px] md:w-[800px] md:h-[800px] transform -rotate-12">
+      <Image src={mascotNavy} alt="" class="w-full h-full object-contain" />
+    </div>
+    <div class="max-w-[1440px] mx-auto px-4 md:px-8">
+
+      <div class="text-center mb-10">
+        <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-3" style="color: rgba(15,109,114,0.65);">Private Dog Training</p>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-3" style="color: #0B2744;">Private <span class="headline-accent">Lessons</span></h2>
+        <p class="max-w-2xl mx-auto text-base leading-relaxed" style="color: rgba(17,32,50,0.65);">Owner-involved, one-on-one coaching built around your dog's specific goals, in your home, on your streets, and in the real-world environments where your dog needs to perform.</p>
+      </div>
+
+      <!-- Three side-by-side cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+
+        <!-- ── STARTER PRIVATE LESSONS (Level 1 · Teal) ── -->
+        <div id="pl-starter-col">
+        <div class="pl-card rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_6px_28px_rgba(0,0,0,0.09)]">
+          <!-- Image -->
+          <div class="relative overflow-hidden flex-shrink-0" style="height: 240px;">
+            <Image src={starterPLImage} alt="Starter Private Lessons dog training" class="w-full h-full object-cover" style="object-position: center 12%;" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.55) 0%, transparent 60%);"></div>
+            <div class="absolute bottom-3 left-3 flex gap-1.5">
+              <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full" style="background: rgba(15,109,114,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">Level 1</span>
+              <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full" style="background: rgba(15,109,114,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">4 Weeks</span>
+            </div>
+          </div>
+          <!-- Teal accent strip -->
+          <div class="h-[6px] w-full" style="background: #0F6D72;"></div>
+          <!-- Card content -->
+          <div class="flex flex-col flex-1 px-6 py-6">
+            <h3 class="text-2xl font-heading font-extrabold mb-1.5" style="color: #0F6D72;">BASICS</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(17,32,50,0.65);">Weekly owner coaching for foundations, structure, and better communication.</p>
+            <ul class="space-y-2 mb-6">
+              {["Foundations, obedience & leash manners", "Household rules & impulse control", "Owner coaching from session one"].map(s => (
+                <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.72);">
+                  <Image src={tealPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{s}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-auto space-y-4">
+              <a href="/apply" class="btn-apply-teal w-full justify-center">
+                Apply for Free Assessment
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <button onclick="togglePLPanel('pl-starter-panel')" id="pl-starter-btn" data-color="#0F6D72" class="view-details-btn view-details-btn-full" style="color: #0F6D72;">
+                <span id="pl-starter-label">View Details</span>
+                <svg id="pl-starter-chevron" class="w-3 h-3 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div><!-- /pl-starter-col -->
+
+        <!-- ── ADVANCED PRIVATE LESSONS (Level 2 · Navy) ── -->
+        <div class="relative" id="pl-advanced-col">
+          <!-- "Most Popular" corner ribbon — upper left -->
+          <div class="absolute top-[22px] -left-[30px] z-20 w-[130px] pointer-events-none select-none" style="transform: rotate(-45deg);">
+            <div class="text-white text-[10px] font-extrabold tracking-[0.16em] uppercase text-center py-[5px] w-full" style="background: #0B2744; box-shadow: 0 2px 6px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.15);">Most Popular</div>
+          </div>
+        <div class="pl-card rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_6px_28px_rgba(0,0,0,0.09)]">
+          <div class="relative overflow-hidden flex-shrink-0" style="height: 240px;">
+            <Image src={advancedPLImage} alt="Advanced Private Lessons dog training" class="w-full h-full object-cover" style="object-position: center 20%;" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.55) 0%, transparent 60%);"></div>
+            <div class="absolute bottom-3 left-3 flex gap-1.5">
+              <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full" style="background: rgba(11,39,68,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">Level 2</span>
+              <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full" style="background: rgba(11,39,68,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">6 Weeks</span>
+            </div>
+          </div>
+          <div class="h-[6px] w-full" style="background: #0B2744;"></div>
+          <div class="flex flex-col flex-1 px-6 py-6">
+            <h3 class="text-2xl font-heading font-extrabold mb-1.5" style="color: #0B2744;">SELECT</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(17,32,50,0.65);">More consistency, deeper proofing, and stronger real-world reliability over 6 weeks.</p>
+            <ul class="space-y-2 mb-6">
+              {["More skill-building over 6 full weeks", "Distraction proofing & real-world environments", "Sharper owner handling and follow-through"].map(s => (
+                <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.72);">
+                  <Image src={navyPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{s}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-auto space-y-4">
+              <a href="/apply" class="btn-apply-navy w-full justify-center">
+                Apply for Free Assessment
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <button onclick="togglePLPanel('pl-advanced-panel')" id="pl-advanced-btn" data-color="#0B2744" class="view-details-btn view-details-btn-full" style="color: #0B2744;">
+                <span id="pl-advanced-label">View Details</span>
+                <svg id="pl-advanced-chevron" class="w-3 h-3 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div><!-- /Advanced PL wrapper -->
+
+        <!-- ── PREMIER PRIVATE LESSONS (Level 3 · Gold) ── -->
+        <div id="pl-premier-col">
+        <div class="pl-card rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_6px_28px_rgba(0,0,0,0.09)]">
+          <div class="relative overflow-hidden flex-shrink-0" style="height: 240px;">
+            <Image src={premierPLImage} alt="Premier Private Lessons advanced dog training" class="w-full h-full object-cover" style="object-position: center 55%;" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.55) 0%, transparent 60%);"></div>
+            <div class="absolute bottom-3 left-3 flex gap-1.5">
+              <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(209,178,127,0.90); backdrop-filter: blur(6px); color: #0B2744; border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">Level 3</span>
+              <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(209,178,127,0.90); backdrop-filter: blur(6px); color: #0B2744; border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">8 Weeks</span>
+            </div>
+          </div>
+          <div class="h-[6px] w-full" style="background: #D1B27F;"></div>
+          <div class="flex flex-col flex-1 px-6 py-6">
+            <h3 class="text-2xl font-heading font-extrabold mb-1.5" style="color: #CAA467;">PRO</h3>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(17,32,50,0.65);">The highest-support private program: 8 weeks of advanced coaching for ambitious goals and real-world reliability.</p>
+            <ul class="space-y-2 mb-6">
+              {["Advanced real-world reliability & precision", "Off-leash foundations where appropriate", "Deepest customization of any private tier"].map(s => (
+                <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.72);">
+                  <Image src={goldPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" widths={[50,100,200]} sizes="16px" />{s}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-auto space-y-4">
+              <a href="/apply" class="btn-apply w-full justify-center">
+                Apply for Free Assessment
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <button onclick="togglePLPanel('pl-premier-panel')" id="pl-premier-btn" data-color="#CAA467" class="view-details-btn view-details-btn-full" style="color: #CAA467;">
+                <span id="pl-premier-label">View Details</span>
+                <svg id="pl-premier-chevron" class="w-3 h-3 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        </div><!-- /pl-premier-col -->
+
+      </div><!-- /3-col grid -->
+
+      <!-- Full-width detail panels (one at a time below the row; hidden on mobile via CSS) -->
+      <div id="pl-panels-container" class="mt-5">
+
+        <!-- Starter detail panel -->
+        <div id="pl-starter-panel" class="hidden rounded-2xl border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_4px_16px_rgba(0,0,0,0.07)]">
+          <div class="border-t-[3px] rounded-t-2xl" style="border-color: #0F6D72;"></div>
+          <div class="px-7 md:px-10 py-8 space-y-6">
+            <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.72);">Four weekly sessions focused on leash manners, household structure, and the communication foundation your dog needs. You are part of every session, learning to handle and guide your dog alongside them.</p>
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-5">
+              <div>
+                <span class="panel-label">What We Work On</span>
+                <ul class="space-y-2">
+                  {["Leash walking and handling mechanics", "Sit, down, place, and come when called", "Household rules and boundary training", "Impulse control and calm behavior", "Handler timing and communication"].map(s => (
+                    <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                      <Image src={tealPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <span class="panel-label">Included Support</span>
+                <ul class="space-y-2">
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0F6D72;" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+                    Direct owner coaching every session
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0F6D72;" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    Session homework and practice plan
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0F6D72;" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                    Location tailored to your goals
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advanced detail panel -->
+        <div id="pl-advanced-panel" class="hidden rounded-2xl border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_4px_16px_rgba(0,0,0,0.07)]">
+          <div class="border-t-[3px] rounded-t-2xl" style="border-color: #0B2744;"></div>
+          <div class="px-7 md:px-10 py-8 space-y-6">
+            <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.72);">Six weekly sessions for owners who want more depth: more intensive coaching, stronger real-world proofing, and more complex skill development than BASICS provides. This tier is right for dogs who need more work, or for owners who want to demand more from their training.</p>
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-5">
+              <div>
+                <span class="panel-label">What We Work On</span>
+                <p class="text-xs mb-2" style="color: rgba(17,32,50,0.45);">Everything in BASICS, plus:</p>
+                <ul class="space-y-2">
+                  {["Extended duration on commands", "Higher-distraction proofing", "Greeting manners and guest protocols", "Leash reliability in busier locations", "Real-world skill transfer"].map(s => (
+                    <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                      <Image src={navyPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <span class="panel-label">Included Support</span>
+                <ul class="space-y-2">
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0B2744;" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+                    Direct owner coaching every session
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0B2744;" viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+                    More complex handling skill development
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0B2744;" viewBox="0 0 20 20" fill="currentColor"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    Session homework and practice plan
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#0B2744;" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                    Location follows training objective
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premier detail panel -->
+        <div id="pl-premier-panel" class="hidden rounded-2xl border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_4px_16px_rgba(0,0,0,0.07)]">
+          <div class="border-t-[3px] rounded-t-2xl" style="border-color: #D1B27F;"></div>
+          <div class="px-7 md:px-10 py-8 space-y-6">
+            <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.72);">Eight weekly sessions make up the highest-support private program we offer. More time, deeper customization, and more real-world application than any other private tier.</p>
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-5">
+              <div>
+                <span class="panel-label">What We Work On</span>
+                <p class="text-xs mb-2" style="color: rgba(17,32,50,0.45);">Everything in BASICS and SELECT, plus:</p>
+                <ul class="space-y-2">
+                  {["Advanced reliability in high-distraction environments", "Off-leash foundations where appropriate", "Precision obedience and command refinement", "Distance and duration under pressure", "Long-term plan built around your lifestyle"].map(s => (
+                    <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                      <Image src={goldPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" widths={[50,100,200]} sizes="16px" />{s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <span class="panel-label">Included Support</span>
+                <ul class="space-y-2">
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#CAA467;" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
+                    Direct coaching every session
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#CAA467;" viewBox="0 0 20 20" fill="currentColor"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"/></svg>
+                    Highly customized training plan
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#CAA467;" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                    Sessions wherever your goals require
+                  </li>
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                    <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#CAA467;" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                    Most sessions of any private program
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /pl detail panels -->
+
+      <div class="mt-8 [&>div]:!w-full"><GuaranteeBadge program="goal-teal" /></div>
+
+      <!-- Private Lessons FAQ -->
+      <div class="rounded-xl overflow-hidden border border-[#E6DAC6]/50 mt-8">
+        <button onclick="toggleFaqBlock('pl-faq')" class="w-full flex items-center justify-between px-6 py-4 bg-white text-left">
+          <span class="text-xs font-bold tracking-widest uppercase" style="color:rgba(17,32,50,0.42);">Private Lessons FAQs (8)</span>
+          <svg id="pl-faq-chevron" class="w-4 h-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="#0F6D72" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="pl-faq" class="hidden">
+          {[
+            { q: "Which Private Lessons tier is right for us?", a: "BASICS is for owners building communication and structure for the first time. SELECT is for dogs who need more intensive training, or owners who want more sophisticated results across 6 weeks of deeper coaching. PRO is for owners who want the most sessions and the most advanced goals over 8 weeks. The free assessment will tell you directly." },
+            { q: "Where do lessons happen?", a: "Lessons are scheduled based on your goals. Some happen at your home, others on neighborhood walks or in public environments. The location always follows the training objective." },
+            { q: "Are owners involved in the training?", a: "Yes. Owners are the point. You handle your dog, give the cues, and receive direct feedback every session. Your dog learns because you learn, and that is what makes results last." },
+            { q: "What goals can Private Lessons help with?", a: "Leash manners, foundational obedience, household rules, greeting behavior, impulse control, distraction work, and public manners. Goals are set at the free assessment and the program is built around them." },
+            { q: "Why are there different program lengths?", a: "More time means more depth. BASICS builds structure over 4 weeks. SELECT adds more complexity and proofing over 5 weeks. PRO gives you 8 weeks for the deepest customization and most advanced goals." },
+            { q: "Are Private Lessons right for reactive dogs?", a: "Mild to moderate leash reactivity is something Private Lessons can address. Serious reactivity, escalating behavior, or confirmed aggression typically belongs in the Reactive Dog Intensive. The free assessment clarifies which path fits." },
+            { q: "What happens after the free assessment?", a: "You receive a clear recommendation for which tier fits, with next steps for enrolling. No pressure. The assessment is genuinely about finding what is right for you and your dog." },
+            { q: "What does the Goal-Based Guarantee mean?", a: "Before your program begins, we define one clear, measurable goal together. If that goal isn't achieved, you receive your money back. Full details are on the guarantee page." },
+          ].map((faq, i) => (
+            <div class="border-t border-[#E6DAC6]/50 bg-white">
+              <button class="w-full flex justify-between items-center px-6 py-4 text-left" onclick={`toggleFaq('pl-q${i}')`}>
+                <span class="text-sm font-medium pr-4" style="color:#112032;">{faq.q}</span>
+                <svg id={`pl-q${i}-icon`} class="w-4 h-4 flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="#0F6D72" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div id={`pl-q${i}`} class="hidden px-6 pb-4">
+                <p class="text-sm leading-relaxed" style="color:rgba(17,32,50,0.65);">{faq.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="bg-[#FBF1E9] px-4 md:px-8"><div class="max-w-7xl mx-auto"><div class="divider-line"></div></div></div>
+
+
+  <!-- ════════════════════════════════════════
+       BEHAVIOR MODIFICATION (formerly Reactivity)
+  ════════════════════════════════════════ -->
+  <section id="reactivity" class="scroll-mt-28 bg-[#FBF1E9] py-12">
+    <div class="max-w-[1440px] mx-auto px-4 md:px-8">
+
+      <div class="text-center mb-10">
+        <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-3" style="color: rgba(15,109,114,0.65);">Specialized Training</p>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-3" style="color: #0B2744;">Behavior <span class="headline-accent">Modification</span></h2>
+        <p class="max-w-2xl mx-auto text-base leading-relaxed" style="color: rgba(17,32,50,0.65);">A high-support behavior program that combines residential Board &amp; Train with follow-up Private Lessons. Designed for dogs who need structured behavior work first, then guided owner coaching for long-term success at home.</p>
+      </div>
+
+      <!-- Reactive Dog Intensive card -->
+      <div class="relative max-w-[1032px] mx-auto">
+        <!-- "Expert Care" corner ribbon — upper right -->
+        <div class="absolute top-[22px] -right-[30px] z-20 w-[130px] pointer-events-none select-none" style="transform: rotate(45deg);">
+          <div class="text-white text-[10px] font-extrabold tracking-[0.16em] uppercase text-center py-[5px] w-full" style="background: #7D2C2D; box-shadow: 0 2px 6px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.15);">Expert Care</div>
+        </div>
+      <div class="rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_6px_28px_rgba(0,0,0,0.10)]">
+
+        <!-- 3-photo grid: single image on mobile, 3-across on desktop -->
+        <div class="grid grid-cols-1 md:grid-cols-3">
+          <div class="hidden md:block relative overflow-hidden" style="height: 220px;">
+            <Image src={rdiPhoto2} alt="Reactive dog with tactical harness" class="absolute inset-0 w-full h-full object-cover" style="object-position: center 28%;" />
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 40%, rgba(75,20,20,0.40) 100%);"></div>
+          </div>
+          <div class="relative overflow-hidden" style="height: 220px;">
+            <Image src={rdiPhoto3} alt="Two dogs reacting to each other" class="absolute inset-0 w-full h-full object-cover" style="object-position: center 40%;" />
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 40%, rgba(75,20,20,0.40) 100%);"></div>
+          </div>
+          <div class="hidden md:block relative overflow-hidden" style="height: 220px;">
+            <!-- Outer wrapper flips; inner Image zooms on the dog face in original coords -->
+            <div class="absolute inset-0" style="transform: scaleX(-1);">
+              <Image src={rdiPhoto4} alt="Dog lunging on leash during training" class="absolute inset-0 w-full h-full object-cover" style="transform: scale(2.6); transform-origin: 22% 28%;" />
+            </div>
+            <div class="absolute inset-0" style="background: linear-gradient(to bottom, transparent 40%, rgba(75,20,20,0.40) 100%);"></div>
+          </div>
+        </div>
+
+        <!-- Red accent strip -->
+        <div class="h-[7px] w-full" style="background: #7D2C2D;"></div>
+
+        <!-- Card content -->
+        <div
+          id="rdi-panel-trigger"
+          class="card-header px-7 py-8 flex flex-col text-center"
+          onclick="toggleAccordion('rdi-panel','rdi')"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleAccordion('rdi-panel','rdi');}"
+          tabindex="0" role="button" aria-expanded="false" aria-controls="rdi-panel"
+        >
+          <div class="flex flex-wrap gap-2 mb-4 justify-center">
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(125,44,45,0.08); color: #7D2C2D; border: 1px solid rgba(125,44,45,0.22);">~4 Weeks Residential</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(125,44,45,0.08); color: #7D2C2D; border: 1px solid rgba(125,44,45,0.22);">+ ~6 Weeks Follow-Up</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(125,44,45,0.08); color: #7D2C2D; border: 1px solid rgba(125,44,45,0.22);">Custom Program</span>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-heading font-bold mb-2" style="color: #112032;">Reactive Dog Intensive</h3>
+          <p class="text-sm font-semibold mb-3" style="color: #7D2C2D;">Behavior modification for serious reactivity, aggression, resource guarding, and bite history.</p>
+          <!-- Two-column body: bullet box left, description + CTA right -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-5 text-left">
+            <!-- Left: "What this program includes" box -->
+            <div class="rounded-lg p-4 border" style="background: rgba(125,44,45,0.04); border-color: rgba(125,44,45,0.14);">
+              <span class="panel-label" style="color: rgba(125,44,45,0.60);">What this program includes</span>
+              <ul class="space-y-2">
+                {[
+                  "Behavior modification, not just obedience",
+                  "Safety planning and management from day one",
+                  "Residential training followed by hands-on handler coaching",
+                  "Designed for serious behavior concerns without shame, blame, or \"bad dog\" labels",
+                ].map(s => (
+                  <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.72);">
+                    <Image src={redPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <!-- Right: description + CTA stacked -->
+            <div class="flex flex-col">
+              <p class="text-sm leading-relaxed mb-6" style="color: rgba(17,32,50,0.72);">Specialized behavior modification for dogs who need more support than standard Board &amp; Train or Private Lessons are designed to provide. Every case is evaluated individually, with safety planning, structured management, and owner coaching built into every step.</p>
+              <div class="space-y-4 mt-auto">
+                <a href="/apply" onclick="event.stopPropagation()" class="btn-apply-red w-full justify-center">
+                  Request Free Reactive Evaluation
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <button onclick="event.stopPropagation(); toggleAccordion('rdi-panel','rdi')" id="rdi-panel-btn" data-color="#7D2C2D" data-active-bg="rgba(125,44,45,0.50)" class="view-details-btn view-details-btn-full" style="color: #7D2C2D;">
+                  <span id="rdi-panel-label">View Details</span>
+                  <svg id="rdi-panel-chevron" class="w-3 h-3 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RDI Expanded panel -->
+        <div id="rdi-panel" class="hidden border-t border-[#E6DAC6]">
+          <div class="px-7 md:px-10 py-8 space-y-6">
+
+            <!-- Two-column: Behavior Concerns + Program Structure -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+              <div>
+                <span class="panel-label">Behavior Concerns We Work With</span>
+                <ul class="space-y-2">
+                  {[
+                    "Serious leash reactivity (barking, lunging, or struggling to recover)",
+                    "Human-directed reactions or aggression",
+                    "Dog-directed reactions or aggression",
+                    "Resource guarding with escalation history",
+                    "Bite history, whether minor or more serious",
+                    "Fear-based aggression or extreme threshold sensitivity",
+                    "Handling difficulty or behavior that makes daily care feel unsafe",
+                  ].map(s => (
+                    <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                      <Image src={redPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <span class="panel-label">Program Structure</span>
+                <ul class="space-y-2">
+                  {[
+                    "Approximately 3–4 weeks of residential Board & Train for structured behavior modification",
+                    "Approximately 4–6 weeks of follow-up Private Lessons for handler coaching",
+                    "Trigger work, threshold management, and safety planning throughout",
+                    "Muzzle conditioning introduced when appropriate",
+                    "Structured management plans designed around the dog's real life",
+                    "Every case assessed individually, with no fixed template",
+                  ].map(s => (
+                    <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.78);">
+                      <span class="w-1.5 h-1.5 rounded-full mt-[5px] flex-shrink-0" style="background: #7D2C2D;"></span>
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Our Approach callout -->
+            <div class="rounded-lg p-5 border" style="background: rgba(125,44,45,0.05); border-color: rgba(125,44,45,0.18);">
+              <span class="panel-label" style="color: #7D2C2D;">Our Approach</span>
+              <p class="text-sm leading-relaxed" style="color: rgba(17,32,50,0.68);">Behavior modification is not a cure, because your dog is not broken. We believe there is no such thing as bad doggos. Serious behavior has a reason, and lasting change requires understanding the dog in front of us. What we work toward is meaningful progress, safer daily life, clearer communication, and a long-term management plan you can actually live with.</p>
+            </div>
+
+            <!-- Safety note -->
+            <p class="text-xs leading-relaxed" style="color: rgba(17,32,50,0.48);">NOTE: Safety protocols are established from day one, and we do not move forward with any training plan unless the owner understands it, feels comfortable with it, and gives clear approval.</p>
+
+          </div>
+        </div>
+      </div>
+      </div><!-- /RDI card wrapper -->
+
+      <!-- Reactivity FAQ -->
+      <div class="rounded-xl overflow-hidden border border-[#E6DAC6]/50 mt-8 max-w-[1032px] mx-auto">
+        <button onclick="toggleFaqBlock('rx-faq')" class="w-full flex items-center justify-between px-6 py-4 bg-white text-left">
+          <span class="text-xs font-bold tracking-widest uppercase" style="color:rgba(17,32,50,0.42);">Reactive Dog Intensive FAQs (5)</span>
+          <svg id="rx-faq-chevron" class="w-4 h-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="#7D2C2D" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="rx-faq" class="hidden">
+          {[
+            {
+              q: "Do you work with dogs that have a bite history?",
+              a: ["Yes. These are the cases our trainer at Good Doggos is most passionate about. At Good Doggos, we do not believe in \"bad dogs.\" Every bite-history case begins with a mandatory intake evaluation so we can assess severity, context, and history, then build the safest and clearest plan forward from day one."],
+            },
+            {
+              q: "How is this program different from the standard Board & Train programs?",
+              a: ["This program includes a residential Board & Train phase, but it is not a standard obedience program. Standard Board & Train focuses on obedience, manners, and structure. The Reactive Dog Intensive focuses on behavior modification, safety planning, trigger work, threshold management, and handler coaching."],
+            },
+            {
+              q: "Am I part of the training?",
+              a: ["Yes. This is not a \"drop off and get a fixed dog back\" program. The Board & Train phase gives your dog a strong foundation, but the follow-up Private Lessons are where you learn how to handle your dog safely, read early warning signs, manage stressful situations, and continue the work at home."],
+            },
+            {
+              q: "What safety protocols are required?",
+              a: [
+                "This is case-dependent. Some dogs may need muzzle conditioning, specific leash handling, home management rules, or other safety steps. These are not punishments or labels. They are tools that help keep everyone safer while your dog learns.",
+                "While our trainer uses a balanced training approach, we do not move forward with any training method, tool, or protocol that the owner is not comfortable with. Your dog's plan is built collaboratively, with your consent, your dog's needs, and everyone's safety in mind.",
+                "Any required safety steps will be explained clearly during the evaluation before training begins.",
+              ],
+            },
+            {
+              q: "Will my dog ever be fully \"cured\"?",
+              a: ["Your dog is not broken, so we do not look at this work through the lens of a \"cure.\" We believe there are no bad dogs, and serious behavior always has a reason. Our job is to help you understand what is driving the behavior, learn your dog's cues and thresholds, and build safer patterns through clearer handling, better communication, and more informed decisions. Not all dogs want playdates. Not all dogs are cuddle bugs. That is okay. We are not here to change your dog's personality. We are here to change behavior and to help you build a safer, happier, more fulfilling life with the dog you love."],
+            },
+          ].map((faq, i) => (
+            <div class="border-t border-[#E6DAC6]/50 bg-white">
+              <button class="w-full flex justify-between items-center px-6 py-4 text-left" onclick={`toggleFaq('rx-q${i}')`}>
+                <span class="text-sm font-medium pr-4" style="color:#112032;">{faq.q}</span>
+                <svg id={`rx-q${i}-icon`} class="w-4 h-4 flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="#7D2C2D" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+              </button>
+              <div id={`rx-q${i}`} class="hidden px-6 pb-4 space-y-3">
+                {faq.a.map(para => (
+                  <p class="text-sm leading-relaxed" style="color:rgba(17,32,50,0.65);">{para}</p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="bg-[#FBF1E9] px-4 md:px-8"><div class="max-w-7xl mx-auto"><div class="divider-line"></div></div></div>
+
+
+  <!-- ════════════════════════════════════════
+       INDIVIDUAL SESSIONS
+  ════════════════════════════════════════ -->
+  <div id="individual-sessions" class="scroll-mt-28 bg-[#FBF1E9] border-t border-[#E6DAC6]/40 relative overflow-hidden">
+    <div class="absolute -top-10 -left-10 md:-top-32 md:-left-32 opacity-[0.04] pointer-events-none select-none w-[500px] h-[500px] md:w-[800px] md:h-[800px] transform -rotate-12">
+      <Image src={mascotNavy} alt="" class="w-full h-full object-contain" />
+    </div>
+    <div class="absolute -bottom-20 -right-20 md:-bottom-32 md:-right-32 opacity-[0.04] pointer-events-none select-none w-[500px] h-[500px] md:w-[800px] md:h-[800px] transform rotate-12 scale-x-[-1]">
+      <Image src={mascotNavy} alt="" class="w-full h-full object-contain" />
+    </div>
+    <div class="max-w-[1440px] mx-auto px-4 md:px-8 py-12 relative z-10">
+      <div class="text-center mb-10">
+        <p class="text-[11px] font-bold tracking-[0.25em] uppercase mb-3" style="color: rgba(15,109,114,0.65);">One-Time Private Training Session</p>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-3" style="color: #0B2744;">Individual <span class="headline-accent">Sessions</span></h2>
+        <p class="max-w-2xl mx-auto text-base leading-relaxed" style="color: rgba(17,32,50,0.68);">Not ready to commit to a full program? Book a one-time private session designed to jump-start progress fast. You'll get hands-on coaching, real reps, and a clear roadmap to take home.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch max-w-[920px] mx-auto">
+
+        <!-- Standard Session -->
+        <div class="pl-card rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_6px_28px_rgba(0,0,0,0.09)]">
+          <div class="relative overflow-hidden flex-shrink-0" style="height: 240px;">
+            <Image src={breakthroughStandard} alt="Standard private training session" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.55) 0%, transparent 60%);"></div>
+            <div class="absolute bottom-3 left-3 flex gap-1.5">
+              <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style="background: rgba(209,178,127,0.90); backdrop-filter: blur(6px); color: #0B2744; border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">Standard</span>
+            </div>
+          </div>
+          <div class="h-[6px] w-full" style="background: #D1B27F;"></div>
+          <div class="flex flex-col flex-1 px-6 py-6">
+            <p class="text-[10px] font-bold tracking-[0.18em] uppercase mb-3" style="color: rgba(17,32,50,0.40);">Ages 12+ Mo · Occasional Reactivity</p>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(17,32,50,0.65);">A strong starting point for owners who want hands-on coaching, a focused training plan, and real reps in a single private session.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              {[["60 Min", "rgba(209,178,127,0.09)", "#D1B27F", "rgba(209,178,127,0.22)"], ["One-Time", "rgba(209,178,127,0.09)", "#D1B27F", "rgba(209,178,127,0.22)"], ["Private", "rgba(209,178,127,0.09)", "#D1B27F", "rgba(209,178,127,0.22)"]].map(([label, bg, color, border]) => (
+                <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style={`background: ${bg}; color: ${color}; border: 1px solid ${border};`}>{label}</span>
+              ))}
+            </div>
+            <ul class="space-y-2 mb-6">
+              {["Live 1-on-1 training session", "Customized roadmap & homework", "Trainer feedback on your handling"].map(b => (
+                <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.72);">
+                  <Image src={goldPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" widths={[50,100,200]} sizes="16px" />{b}
+                </li>
+              ))}
+            </ul>
+            <a href="/apply" class="btn-apply w-full justify-center mt-auto">
+              Request Private Session
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Reactive & Aggressive Session -->
+        <div class="pl-card rounded-2xl overflow-hidden border border-[#E6DAC6] bg-[#FCF9FA] shadow-[0_6px_28px_rgba(0,0,0,0.09)]">
+          <div class="relative overflow-hidden flex-shrink-0" style="height: 240px;">
+            <Image src={breakthroughReactive} alt="Reactive and aggressive dog private training session" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(11,39,68,0.55) 0%, transparent 60%);"></div>
+            <div class="absolute bottom-3 left-3 flex gap-1.5">
+              <span class="text-[10px] font-bold tracking-widest uppercase text-white px-2.5 py-1 rounded-full" style="background: rgba(125,44,45,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.22); box-shadow: 0 2px 8px rgba(0,0,0,0.18);">Reactive &amp; Aggressive</span>
+            </div>
+          </div>
+          <div class="h-[6px] w-full" style="background: #7D2C2D;"></div>
+          <div class="flex flex-col flex-1 px-6 py-6">
+            <p class="text-[10px] font-bold tracking-[0.18em] uppercase mb-3" style="color: rgba(17,32,50,0.40);">Ages 12+ Mo · Confirmed Aggression</p>
+            <p class="text-sm leading-relaxed mb-4" style="color: rgba(17,32,50,0.65);">For dogs with confirmed reactivity or aggression history. Includes an intake evaluation, targeted behavior work, and a clear safety management plan.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              {[["60–75 Min", "rgba(125,44,45,0.08)", "#7D2C2D", "rgba(125,44,45,0.22)"], ["One-Time", "rgba(125,44,45,0.08)", "#7D2C2D", "rgba(125,44,45,0.22)"], ["Private", "rgba(125,44,45,0.08)", "#7D2C2D", "rgba(125,44,45,0.22)"]].map(([label, bg, color, border]) => (
+                <span class="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full" style={`background: ${bg}; color: ${color}; border: 1px solid ${border};`}>{label}</span>
+              ))}
+            </div>
+            <ul class="space-y-2 mb-6">
+              {["Intake + safety protocol review", "Targeted behavioral exercise sets", "Clear management plan & safety tools"].map(b => (
+                <li class="flex items-start gap-2.5 text-sm" style="color: rgba(17,32,50,0.72);">
+                  <Image src={redPaw} alt="" class="w-4 h-4 mt-0.5 flex-shrink-0" />{b}
+                </li>
+              ))}
+            </ul>
+            <a href="/apply" class="btn-apply-red w-full justify-center mt-auto">
+              Request Private Session
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <CTASection />
+
+  <script>
+    // ── RDI accordion ──
+    const ACCORDION_GROUPS: Record<string, string[]> = {
+      rdi: ['rdi-panel'],
+    };
+
+    // ── Board & Train: full-width shared panel (desktop) / inline panel (mobile) ──
+    const BT_PANELS   = ['bt-core-panel', 'bt-advanced-panel', 'bt-elite-panel'];
+    const BT_PREFIXES = ['bt-core', 'bt-advanced', 'bt-elite'];
+    const BT_ACTIVE_BG: Record<string, string> = {
+      'bt-core':     'rgba(15,109,114,0.50)',
+      'bt-advanced': 'rgba(11,39,68,0.50)',
+      'bt-elite':    'rgba(202,164,103,0.50)',
+    };
+    const BT_COL_IDS: Record<string, string> = {
+      'bt-core-panel':     'bt-core-col',
+      'bt-advanced-panel': 'bt-advanced-col',
+      'bt-elite-panel':    'bt-elite-col',
+    };
+
+    function resetBTButtons() {
+      const btContainer = document.getElementById('bt-panels-container')!;
+      BT_PREFIXES.forEach(prefix => {
+        const label = document.getElementById(`${prefix}-label`);
+        const chev  = document.getElementById(`${prefix}-chevron`);
+        const btn   = document.getElementById(`${prefix}-btn`) as HTMLElement | null;
+        if (label) label.textContent = 'View Details';
+        if (chev)  (chev as HTMLElement).style.transform = '';
+        if (btn) {
+          btn.style.background = 'transparent';
+          btn.style.borderColor = '';
+          btn.style.color = btn.getAttribute('data-color') || '';
+          btn.style.opacity = '';
+        }
+        // Return any out-of-place panel back to the shared container
+        const panel = document.getElementById(`${prefix}-panel`);
+        if (panel && panel.parentElement !== btContainer) btContainer.appendChild(panel);
+      });
+    }
+
+    function toggleBTPanel(panelId: string) {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      const wasHidden = panel.classList.contains('hidden');
+      // Close all panels and restore them to the container
+      BT_PANELS.forEach(id => document.getElementById(id)?.classList.add('hidden'));
+      resetBTButtons();
+      if (wasHidden) {
+        const isMobile = window.innerWidth < 768;
+        if (isMobile) {
+          // Move the panel into the card's own column so it appears directly below the card
+          const col = document.getElementById(BT_COL_IDS[panelId]);
+          if (col) col.appendChild(panel);
+        }
+        panel.classList.remove('hidden');
+        const prefix = panelId.replace('-panel', '');
+        const label  = document.getElementById(`${prefix}-label`);
+        const chev   = document.getElementById(`${prefix}-chevron`);
+        const btn    = document.getElementById(`${prefix}-btn`) as HTMLElement | null;
+        if (label) label.textContent = 'Hide Details';
+        if (chev)  (chev as HTMLElement).style.transform = 'rotate(180deg)';
+        if (btn) {
+          const tierColor = btn.getAttribute('data-color') || '';
+          btn.style.background = BT_ACTIVE_BG[prefix] || '';
+          btn.style.borderColor = tierColor;
+          btn.style.color = '#ffffff';
+          btn.style.opacity = '1';
+        }
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // On resize across breakpoint, close any open panel and return it home
+    let _btResizeTimer: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', () => {
+      clearTimeout(_btResizeTimer);
+      _btResizeTimer = setTimeout(() => {
+        BT_PANELS.forEach(id => {
+          const p = document.getElementById(id);
+          if (p && !p.classList.contains('hidden')) {
+            p.classList.add('hidden');
+            resetBTButtons();
+          }
+        });
+      }, 200);
+    });
+
+    function openPanel(panelId: string) {
+      const panel   = document.getElementById(panelId);
+      if (!panel) return;
+      panel.classList.remove('hidden');
+      const chevron = document.getElementById(`${panelId}-chevron`);
+      const label   = document.getElementById(`${panelId}-label`);
+      const trigger = document.getElementById(`${panelId}-trigger`);
+      const btn     = document.getElementById(`${panelId}-btn`) as HTMLElement | null;
+      if (chevron) (chevron as HTMLElement).style.transform = 'rotate(180deg)';
+      if (label)   label.textContent = 'Hide Details';
+      if (trigger) trigger.setAttribute('aria-expanded', 'true');
+      if (btn) {
+        const tierColor = btn.getAttribute('data-color') || '';
+        const activeBg  = btn.getAttribute('data-active-bg') || '';
+        btn.style.background  = activeBg;
+        btn.style.borderColor = tierColor;
+        btn.style.color       = '#ffffff';
+        btn.style.opacity     = '1';
+      }
+    }
+
+    function closePanel(panelId: string) {
+      const panel   = document.getElementById(panelId);
+      if (!panel) return;
+      panel.classList.add('hidden');
+      const chevron = document.getElementById(`${panelId}-chevron`);
+      const label   = document.getElementById(`${panelId}-label`);
+      const trigger = document.getElementById(`${panelId}-trigger`);
+      const btn     = document.getElementById(`${panelId}-btn`) as HTMLElement | null;
+      if (chevron) (chevron as HTMLElement).style.transform = '';
+      if (label)   label.textContent = 'View Details';
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+      if (btn) {
+        btn.style.background  = 'transparent';
+        btn.style.borderColor = '';
+        btn.style.color       = btn.getAttribute('data-color') || '';
+        btn.style.opacity     = '';
+      }
+    }
+
+    function toggleAccordion(panelId: string, groupId: string) {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      const wasHidden = panel.classList.contains('hidden');
+      (ACCORDION_GROUPS[groupId] ?? []).forEach(id => closePanel(id));
+      if (wasHidden) openPanel(panelId);
+    }
+
+    // ── Private Lessons: full-width shared panel (desktop) / inline panel (mobile) ──
+    const PL_PANELS = ['pl-starter-panel', 'pl-advanced-panel', 'pl-premier-panel'];
+    const PL_PREFIXES = ['pl-starter', 'pl-advanced', 'pl-premier'];
+    const PL_ACTIVE_BG: Record<string, string> = {
+      'pl-starter': 'rgba(15,109,114,0.50)',
+      'pl-advanced': 'rgba(11,39,68,0.50)',
+      'pl-premier': 'rgba(202,164,103,0.50)',
+    };
+    const PL_COL_IDS: Record<string, string> = {
+      'pl-starter-panel': 'pl-starter-col',
+      'pl-advanced-panel': 'pl-advanced-col',
+      'pl-premier-panel': 'pl-premier-col',
+    };
+
+    function resetPLButtons() {
+      const plContainer = document.getElementById('pl-panels-container')!;
+      PL_PREFIXES.forEach(prefix => {
+        const label = document.getElementById(`${prefix}-label`);
+        const chev  = document.getElementById(`${prefix}-chevron`);
+        const btn   = document.getElementById(`${prefix}-btn`) as HTMLElement | null;
+        if (label) label.textContent = 'View Details';
+        if (chev)  (chev as HTMLElement).style.transform = '';
+        if (btn) {
+          btn.style.background  = 'transparent';
+          btn.style.borderColor = '';
+          btn.style.color       = btn.getAttribute('data-color') || '';
+          btn.style.opacity     = '';
+        }
+        // Return any out-of-place panel back to the shared container
+        const panel = document.getElementById(`${prefix}-panel`);
+        if (panel && panel.parentElement !== plContainer) plContainer.appendChild(panel);
+      });
+    }
+
+    function togglePLPanel(panelId: string) {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      const wasHidden = panel.classList.contains('hidden');
+      // Close all PL panels and restore them to the container
+      PL_PANELS.forEach(id => document.getElementById(id)?.classList.add('hidden'));
+      resetPLButtons();
+      // If it was closed, open it and update its button
+      if (wasHidden) {
+        const isMobile = window.innerWidth < 768;
+        if (isMobile) {
+          // Move the panel into the card's own column so it appears directly below the card
+          const col = document.getElementById(PL_COL_IDS[panelId]);
+          if (col) col.appendChild(panel);
+        }
+        panel.classList.remove('hidden');
+        const prefix = panelId.replace('-panel', '');
+        const label  = document.getElementById(`${prefix}-label`);
+        const chev   = document.getElementById(`${prefix}-chevron`);
+        const btn    = document.getElementById(`${prefix}-btn`) as HTMLElement | null;
+        if (label) label.textContent = 'Hide Details';
+        if (chev)  (chev as HTMLElement).style.transform = 'rotate(180deg)';
+        if (btn) {
+          const tierColor = btn.getAttribute('data-color') || '';
+          btn.style.background  = PL_ACTIVE_BG[prefix] || '';
+          btn.style.borderColor = tierColor;
+          btn.style.color       = '#ffffff';
+          btn.style.opacity     = '1';
+        }
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // On resize across breakpoint, close any open PL panel and return it home
+    let _plResizeTimer: ReturnType<typeof setTimeout>;
+    window.addEventListener('resize', () => {
+      clearTimeout(_plResizeTimer);
+      _plResizeTimer = setTimeout(() => {
+        PL_PANELS.forEach(id => {
+          const p = document.getElementById(id);
+          if (p && !p.classList.contains('hidden')) {
+            p.classList.add('hidden');
+            resetPLButtons();
+          }
+        });
+      }, 200);
+    });
+
+    // ── FAQ section toggles ──
+    function toggleFaqBlock(id: string) {
+      const block = document.getElementById(id);
+      const chev  = document.getElementById(`${id}-chevron`);
+      if (!block || !chev) return;
+      const wasHidden = block.classList.toggle('hidden');
+      (chev as HTMLElement).style.transform = wasHidden ? '' : 'rotate(180deg)';
+    }
+
+    // ── Individual FAQ items ──
+    function toggleFaq(id: string) {
+      const content = document.getElementById(id);
+      const icon    = document.getElementById(`${id}-icon`);
+      if (!content || !icon) return;
+      const wasHidden = content.classList.toggle('hidden');
+      (icon as HTMLElement).style.transform = wasHidden ? '' : 'rotate(45deg)';
+    }
+
+    (window as any).toggleAccordion = toggleAccordion;
+    (window as any).toggleBTPanel   = toggleBTPanel;
+    (window as any).togglePLPanel   = togglePLPanel;
+    (window as any).toggleFaqBlock  = toggleFaqBlock;
+    (window as any).toggleFaq       = toggleFaq;
+
+    // ── Segmented nav scroll spy + smooth scroll ──
+    const navItems   = document.querySelectorAll('.segment-item');
+    const sectionIds = ['board-train', 'private-lessons', 'reactivity', 'individual-sessions'];
+    const sections   = sectionIds.map(id => document.getElementById(id));
+
+    navItems.forEach(item => {
+      item.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = (item as HTMLAnchorElement).getAttribute('href');
+        const el = document.querySelector(targetId!);
+        if (el) {
+          window.scrollTo({ top: (el as HTMLElement).offsetTop - 120, behavior: 'smooth' });
+          navItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+          history.pushState(null, '', targetId);
+        }
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navItems.forEach(item => {
+            item.classList.toggle('active', item.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { root: null, rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+    sections.forEach(s => { if (s) observer.observe(s); });
+  </script>
+
+</Layout>

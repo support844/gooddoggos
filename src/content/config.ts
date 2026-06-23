@@ -20,11 +20,13 @@ const testimonials = defineCollection({
     schema: z.object({
         id: z.string(),
         client_name: z.string(),
-        dog_name: z.string(),
+        dog_name: z.string().optional(),
         dog_breed: z.string().optional(),
         program_id: z.string(),
         quote: z.string(),
+        title: z.string().optional(),
         image_path: z.string().optional(),
+        object_position: z.string().optional(),
     })
 });
 
